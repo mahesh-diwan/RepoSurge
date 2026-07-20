@@ -1,48 +1,10 @@
-import Database from "better-sqlite3";
 import path from "path";
+import fs from "fs";
 
-const DB_PATH = path.join(process.cwd(), "data", "repos.db");
+const DATA_PATH = path.join(process.cwd(), "data", "repos.json");
 
-let dbInstance: Database.Database | null = null;
-
-export function getDb(): Database.Database {
-  if (dbInstance) return dbInstance;
-  const db = new Database(DB_PATH);
-  db.pragma("journal_mode = WAL");
-  initializeDb(db);
-  dbInstance = db;
-  return db;
-}
-
-function initializeDb(db: Database.Database): void {
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS repos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      full_name TEXT UNIQUE NOT NULL,
-      name TEXT NOT NULL,
-      owner TEXT NOT NULL,
-      description TEXT,
-      language TEXT,
-      url TEXT,
-      stars INTEGER NOT NULL DEFAULT 0,
-      fetched_at TEXT NOT NULL
-    );
-
-    CREATE TABLE IF NOT EXISTS star_history (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      repo_id INTEGER NOT NULL,
-      stars INTEGER NOT NULL,
-      recorded_at TEXT NOT NULL,
-      UNIQUE(repo_id, recorded_at),
-      FOREIGN KEY (repo_id) REFERENCES repos(id) ON DELETE CASCADE
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_star_history_repo ON star_history(repo_id);
-  `);
-}
-
-export type RepoRow = {
-  id: number;
+type HistoryRow = { stars: number; recorded_at: string };
+type RepoRecord = {
   full_name: string;
   name: string;
   owner: string;
@@ -51,13 +13,10 @@ export type RepoRow = {
   url: string;
   stars: number;
   fetched_at: string;
+  history: HistoryRow[];
 };
 
-export type RepoWithVelocity = RepoRow & {
-  stars_gained: number;
-  sparkline: number[];
-  velocity: number;
-};
+type Store = { repos: RepoRecord[] };
 
 const PERIOD_TO_DAYS: Record<string, number> = {
   day: 1,
@@ -67,53 +26,65 @@ const PERIOD_TO_DAYS: Record<string, number> = {
   year: 365,
 };
 
+function readStore(): Store {
+  try {
+    return JSON.parse(fs.readFileSync(DATA_PATH, "utf8")) as Store;
+  } catch {
+    return { repos: [] };
+  }
+}
+
+function writeStore(store: Store): void {
+  fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
+  fs.writeFileSync(DATA_PATH, JSON.stringify(store));
+}
+
+export type RepoRow = Omit<RepoRecord, "history">;
+
+export type RepoWithVelocity = RepoRow & {
+  stars_gained: number;
+  sparkline: number[];
+  velocity: number;
+};
+
 export function getRepos(period: string): RepoWithVelocity[] {
   const days = PERIOD_TO_DAYS[period] ?? 7;
-  const db = getDb();
-  const cutoff = new Date(Date.now() - days * 86400000).toISOString();
+  const cutoff = Date.now() - days * 86400000;
+  const store = readStore();
 
-  const rows = db
-    .prepare(
-      `
-      SELECT r.*,
-        COALESCE(
-          (SELECT sh.stars FROM star_history sh
-           WHERE sh.repo_id = r.id AND sh.recorded_at <= ?
-           ORDER BY sh.recorded_at DESC LIMIT 1),
-          r.stars
-        ) AS baseline_stars,
-        r.stars - COALESCE(
-          (SELECT sh.stars FROM star_history sh
-           WHERE sh.repo_id = r.id AND sh.recorded_at <= ?
-           ORDER BY sh.recorded_at DESC LIMIT 1),
-          r.stars
-        ) AS stars_gained,
-        (SELECT GROUP_CONCAT(sh.stars, ',') FROM (
-           SELECT stars FROM star_history sh2
-           WHERE sh2.repo_id = r.id
-           ORDER BY sh2.recorded_at ASC LIMIT 7
-         ) sh) AS sparkline_csv
-      FROM repos r
-      ORDER BY stars_gained DESC
-    `
-    )
-    .all(cutoff, cutoff) as Array<RepoRow & { baseline_stars: number; stars_gained: number; sparkline_csv: string | null }>;
+  return store.repos
+    .map((r) => {
+      const inWindow = r.history.filter(
+        (h) => new Date(h.recorded_at).getTime() >= cutoff
+      );
+      const baseline = inWindow.length ? inWindow[0].stars : r.stars;
+      const stars_gained = r.stars - baseline;
+      const sparkline = (inWindow.length ? inWindow : r.history)
+        .slice(-7)
+        .map((h) => h.stars);
+      const velocity =
+        baseline > 0 ? (stars_gained / baseline) * 1000 : stars_gained;
+      return {
+        full_name: r.full_name,
+        name: r.name,
+        owner: r.owner,
+        description: r.description,
+        language: r.language,
+        url: r.url,
+        stars: r.stars,
+        fetched_at: r.fetched_at,
+        stars_gained,
+        sparkline,
+        velocity,
+      };
+    })
+    .sort((a, b) => b.stars_gained - a.stars_gained);
+}
 
-  return rows.map((row) => {
-    const velocity =
-      row.baseline_stars > 0
-        ? (row.stars_gained / row.baseline_stars) * 1000
-        : row.stars_gained;
-    const sparkline = row.sparkline_csv
-      ? row.sparkline_csv.split(",").map(Number)
-      : [row.stars];
-    return {
-      ...row,
-      stars_gained: row.stars_gained,
-      sparkline,
-      velocity,
-    };
-  });
+export function getRepoId(fullName: string): number | null {
+  const store = readStore();
+  const idx = store.repos.findIndex((r) => r.full_name === fullName);
+  return idx >= 0 ? idx : null;
 }
 
 export function insertRepo(repo: {
@@ -126,52 +97,16 @@ export function insertRepo(repo: {
   stars: number;
   fetched_at: string;
 }): number {
-  const db = getDb();
-  const existing = db
-    .prepare("SELECT id FROM repos WHERE full_name = ?")
-    .get(repo.full_name) as { id: number } | undefined;
-
+  const store = readStore();
+  const existing = store.repos.find((r) => r.full_name === repo.full_name);
   if (existing) {
-    db.prepare(
-      `UPDATE repos SET name = ?, owner = ?, description = ?, language = ?,
-       url = ?, stars = ?, fetched_at = ? WHERE id = ?`
-    ).run(
-      repo.name,
-      repo.owner,
-      repo.description,
-      repo.language,
-      repo.url,
-      repo.stars,
-      repo.fetched_at,
-      existing.id
-    );
-    return existing.id;
+    Object.assign(existing, repo);
+    writeStore(store);
+    return store.repos.indexOf(existing);
   }
-
-  const res = db
-    .prepare(
-      `INSERT INTO repos (full_name, name, owner, description, language, url, stars, fetched_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    .run(
-      repo.full_name,
-      repo.name,
-      repo.owner,
-      repo.description,
-      repo.language,
-      repo.url,
-      repo.stars,
-      repo.fetched_at
-    );
-  return res.lastInsertRowid as number;
-}
-
-export function getRepoId(fullName: string): number | null {
-  const db = getDb();
-  const row = db
-    .prepare("SELECT id FROM repos WHERE full_name = ?")
-    .get(fullName) as { id: number } | undefined;
-  return row ? row.id : null;
+  store.repos.push({ ...repo, history: [] });
+  writeStore(store);
+  return store.repos.length - 1;
 }
 
 export function insertStarHistory(
@@ -179,9 +114,11 @@ export function insertStarHistory(
   stars: number,
   recordedAt: string
 ): void {
-  const db = getDb();
-  db.prepare(
-    `INSERT INTO star_history (repo_id, stars, recorded_at) VALUES (?, ?, ?)
-     ON CONFLICT(repo_id, recorded_at) DO UPDATE SET stars = excluded.stars`
-  ).run(repoId, stars, recordedAt);
+  const store = readStore();
+  const repo = store.repos[repoId];
+  if (!repo) return;
+  const dup = repo.history.find((h) => h.recorded_at === recordedAt);
+  if (dup) dup.stars = stars;
+  else repo.history.push({ stars, recorded_at: recordedAt });
+  writeStore(store);
 }

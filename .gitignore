@@ -1,5 +1,5 @@
 node_modules
 .next
-data/repos.db
+data/repos.json
 *.log
 .DS_Store
