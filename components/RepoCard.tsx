@@ -37,12 +37,12 @@ export default function RepoCard({
         {String(rank).padStart(2, "0")}
       </div>
       <div className="flex-1 min-w-0">
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer"
-          className="text-bone hover:text-electric truncate block font-bold"
-        >
+<a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        className="text-bone hover:text-electric active:scale-[0.98] transition-transform truncate block font-bold"
+      >
           {full_name}
         </a>
         <p className="text-bone/50 text-xs truncate">

@@ -1,4 +1,4 @@
-"use client";
+import Link from "next/link";
 
 const LANGUAGES = [
   { key: "all", label: "ALL" },
@@ -12,17 +12,17 @@ const LANGUAGES = [
 
 export default function LanguageFilter({
   selected,
-  onChange,
+  period,
 }: {
   selected: string;
-  onChange: (key: string) => void;
+  period: string;
 }) {
   return (
     <div className="flex flex-wrap gap-1">
       {LANGUAGES.map((lang) => (
-        <button
+        <Link
           key={lang.key}
-          onClick={() => onChange(lang.key)}
+          href={`/?period=${period}&language=${lang.key}`}
           className={`px-2 py-1 text-xs tracking-widest border border-bone/30 ${
             selected === lang.key
               ? "bg-electric text-midnight"
@@ -30,7 +30,7 @@ export default function LanguageFilter({
           }`}
         >
           {lang.label}
-        </button>
+        </Link>
       ))}
     </div>
   );

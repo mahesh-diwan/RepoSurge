@@ -1,4 +1,4 @@
-"use client";
+import Link from "next/link";
 
 const TABS = [
   { key: "day", label: "DAY" },
@@ -8,21 +8,19 @@ const TABS = [
   { key: "year", label: "YEAR" },
 ] as const;
 
-export type Period = (typeof TABS)[number]["key"];
-
 export default function TimeTabs({
   selected,
-  onChange,
+  language,
 }: {
   selected: string;
-  onChange: (key: string) => void;
+  language: string;
 }) {
   return (
-    <div className="flex border border-bone/30">
+    <div className="flex flex-wrap border border-bone/30">
       {TABS.map((tab) => (
-        <button
+        <Link
           key={tab.key}
-          onClick={() => onChange(tab.key)}
+          href={`/?period=${tab.key}&language=${language}`}
           className={`px-3 py-2 text-xs tracking-widest border-r border-bone/30 last:border-r-0 ${
             selected === tab.key
               ? "bg-electric text-midnight"
@@ -30,7 +28,7 @@ export default function TimeTabs({
           }`}
         >
           {tab.label}
-        </button>
+        </Link>
       ))}
     </div>
   );

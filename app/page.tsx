@@ -19,7 +19,7 @@ export default function Home({
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
-      <header className="mb-6">
+      <header className="mb-6 text-left">
         <h1 className="text-3xl font-bold tracking-tight">
           REP<span className="text-electric">Ø</span>SURGE
         </h1>
@@ -29,18 +29,8 @@ export default function Home({
       </header>
 
       <div className="flex flex-col gap-3 mb-6">
-        <TimeTabs
-          selected={period}
-          onChange={(k) =>
-            (window.location.href = `/?period=${k}&language=${language}`)
-          }
-        />
-        <LanguageFilter
-          selected={language}
-          onChange={(k) =>
-            (window.location.href = `/?period=${period}&language=${k}`)
-          }
-        />
+        <TimeTabs selected={period} language={language} />
+        <LanguageFilter selected={language} period={period} />
       </div>
 
       <section>
