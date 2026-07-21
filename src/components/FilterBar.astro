@@ -1,0 +1,62 @@
+---
+interface Props {
+  period: string;
+  language: string;
+}
+
+const { period, language } = Astro.props;
+
+const TABS = [
+  { key: 'day', label: 'DAY' },
+  { key: 'week', label: 'WEEK' },
+  { key: 'month', label: 'MONTH' },
+  { key: '6m', label: '6MO' },
+  { key: 'year', label: 'YEAR' },
+];
+
+const LANGUAGES = [
+  { key: 'all', label: 'ALL' },
+  { key: 'javascript', label: 'JS' },
+  { key: 'python', label: 'PY' },
+  { key: 'rust', label: 'RS' },
+  { key: 'go', label: 'GO' },
+  { key: 'typescript', label: 'TS' },
+  { key: 'java', label: 'JV' },
+];
+---
+<div class="flex flex-col gap-3 mb-6">
+  <div class="flex flex-wrap border border-bone/30" role="tablist">
+    {TABS.map((tab) => (
+      <a
+        href={`/?period=${tab.key}&language=${language}`}
+        class={`px-3 py-2 text-xs tracking-widest border-r border-bone/30 last:border-r-0 ${
+          period === tab.key
+            ? 'bg-electric text-midnight'
+            : 'bg-transparent text-bone hover:bg-bone/10'
+        }`}
+        aria-current={period === tab.key ? 'page' : undefined}
+        role="tab"
+        aria-selected={period === tab.key}
+      >
+        {tab.label}
+      </a>
+    ))}
+  </div>
+  <div class="flex flex-wrap gap-1" role="tablist">
+    {LANGUAGES.map((lang) => (
+      <a
+        href={`/?period=${period}&language=${lang.key}`}
+        class={`px-2 py-1 text-xs tracking-widest border border-bone/30 ${
+          language === lang.key
+            ? 'bg-electric text-midnight'
+            : 'bg-transparent text-bone hover:bg-bone/10'
+        }`}
+        aria-current={language === lang.key ? 'page' : undefined}
+        role="tab"
+        aria-selected={language === lang.key}
+      >
+        {lang.label}
+      </a>
+    ))}
+  </div>
+</div>
