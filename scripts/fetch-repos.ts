@@ -2,7 +2,6 @@ import { fetchTopRepos } from "../lib/github";
 import {
   insertRepo,
   insertStarHistory,
-  getRepoId,
 } from "../lib/db";
 
 const LANGUAGES = [
