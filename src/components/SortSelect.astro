@@ -1,0 +1,33 @@
+---
+---
+<div class="mb-4 flex items-center gap-2">
+  <label for="sort-select" class="text-bone/50 text-xs tracking-widest">SORT BY</label>
+  <select
+    id="sort-select"
+    class="bg-transparent border border-bone/30 px-3 py-2 text-xs text-bone focus:border-electric focus:outline-none"
+  >
+    <option value="gained">Stars Gained</option>
+    <option value="velocity">Velocity</option>
+    <option value="total">Total Stars</option>
+    <option value="name">Name</option>
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('sort-select') as HTMLSelectElement;
+  select?.addEventListener('change', () => {
+    const container = document.getElementById('repo-list');
+    if (!container) return;
+    const cards = Array.from(container.querySelectorAll('[data-repo-card]'));
+    const key = select.value;
+    cards.sort((a, b) => {
+      const aEl = a as HTMLElement;
+      const bEl = b as HTMLElement;
+      if (key === 'name') return (aEl.dataset.repoName ?? '').localeCompare(bEl.dataset.repoName ?? '');
+      const aVal = parseInt(aEl.dataset[`repoSort${key.charAt(0).toUpperCase() + key.slice(1)}`] ?? '0');
+      const bVal = parseInt(bEl.dataset[`repoSort${key.charAt(0).toUpperCase() + key.slice(1)}`] ?? '0');
+      return bVal - aVal;
+    });
+    cards.forEach((card) => container.appendChild(card));
+  });
+</script>
