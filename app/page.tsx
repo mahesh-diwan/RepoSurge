@@ -6,7 +6,6 @@ import SearchBar from "@/components/SearchBar";
 import SortSelect from "@/components/SortSelect";
 import RepoCard from "@/components/RepoCard";
 
-export const revalidate = 3600;
 
 export default function Home({
   searchParams,

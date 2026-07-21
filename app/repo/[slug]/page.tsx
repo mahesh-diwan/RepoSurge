@@ -8,12 +8,12 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function RepoDetailPage({
+export default function RepoDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const repo = getRepoBySlug(slug);
 
   if (!repo) {
