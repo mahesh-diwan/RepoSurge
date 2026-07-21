@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import StarChart from '../../components/StarChart.astro';
+import { getRepos } from '../../lib/repo-utils';
+
+export async function getStaticPaths() {
+  const repos = getRepos('year');
+  return repos.map((repo) => ({
+    params: { slug: repo.slug },
+    props: { repo },
+  }));
+}
+
+const { repo } = Astro.props;
+---
+<Base title={`${repo.full_name} — RepoSurge`}>
+  <main class="max-w-7xl mx-auto px-4 py-16">
+    <a href="/" class="text-bone/50 text-sm hover:text-electric transition-colors mb-8 inline-block">
+      ← Back to Rankings
+    </a>
+
+    <div class="border border-bone/20 p-8">
+      <div class="flex items-start justify-between mb-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight mb-2">
+            {repo.full_name}
+          </h1>
+          <p class="text-bone/50 text-sm">
+            {repo.description ?? '—'}
+          </p>
+        </div>
+        <a
+          href={repo.url}
+          target="_blank"
+          rel="noreferrer"
+          class="bg-electric text-midnight px-4 py-2 text-xs tracking-widest hover:bg-electric/80 transition-colors"
+        >
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div>
+          <p class="text-bone/40 text-xs tracking-widest mb-1">TOTAL STARS</p>
+          <p class="text-2xl font-bold tabular-nums">{repo.stars.toLocaleString()}</p>
+        </div>
+        <div>
+          <p class="text-bone/40 text-xs tracking-widest mb-1">STARS GAINED</p>
+          <p class={`text-2xl font-bold tabular-nums ${repo.stars_gained > 0 ? 'text-electric' : repo.stars_gained < 0 ? 'text-red-500' : 'text-bone/40'}`}>
+            {repo.stars_gained > 0 ? '+' : ''}{repo.stars_gained.toLocaleString()}
+          </p>
+        </div>
+        <div>
+          <p class="text-bone/40 text-xs tracking-widest mb-1">VELOCITY</p>
+          <p class="text-2xl font-bold tabular-nums text-electric">{repo.velocity} v</p>
+        </div>
+        <div>
+          <p class="text-bone/40 text-xs tracking-widest mb-1">LANGUAGE</p>
+          <p class="text-2xl font-bold">{repo.language ?? '—'}</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-bone/40 text-xs tracking-widest mb-3">STAR HISTORY (7 DAYS)</p>
+        <StarChart data={repo.sparkline} />
+      </div>
+    </div>
+  </main>
+</Base>
