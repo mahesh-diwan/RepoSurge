@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useCallback } from "react";
 
 const TABS = [
   { key: "day", label: "DAY" },
@@ -25,13 +27,26 @@ export default function FilterBar({
   period: string;
   language: string;
 }) {
+  const savePrefs = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, period: string, language: string) => {
+      try {
+        localStorage.setItem(
+          "reposurge-prefs",
+          JSON.stringify({ period, language })
+        );
+      } catch {}
+    },
+    []
+  );
+
   return (
     <div className="flex flex-col gap-3 mb-6 glass p-4">
       <div className="flex flex-wrap border border-bone/30" role="tablist">
         {TABS.map((tab) => (
-          <Link
+          <a
             key={tab.key}
             href={`/?period=${tab.key}&language=${language}`}
+            onClick={(e) => savePrefs(e, tab.key, language)}
             className={`px-3 py-2 text-xs tracking-widest border-r border-bone/30 last:border-r-0 ${
               period === tab.key
                 ? "bg-electric text-midnight"
@@ -42,14 +57,15 @@ export default function FilterBar({
             aria-selected={period === tab.key}
           >
             {tab.label}
-          </Link>
+          </a>
         ))}
       </div>
       <div className="flex flex-wrap gap-1" role="tablist">
         {LANGUAGES.map((lang) => (
-          <Link
+          <a
             key={lang.key}
             href={`/?period=${period}&language=${lang.key}`}
+            onClick={(e) => savePrefs(e, period, lang.key)}
             className={`px-2 py-1 text-xs tracking-widest border border-bone/30 ${
               language === lang.key
                 ? "bg-electric text-midnight"
@@ -60,7 +76,7 @@ export default function FilterBar({
             aria-selected={language === lang.key}
           >
             {lang.label}
-          </Link>
+          </a>
         ))}
       </div>
     </div>

@@ -28,7 +28,7 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-electric text-xs tracking-widest uppercase mb-3">Data source</h2>
+          <h2 className="text-bone font-bold mb-3">Data source</h2>
           <p>
             All data comes from the GitHub Search API. Star counts are snapshots,
             not real-time. History is accumulated over daily fetches.
@@ -36,7 +36,7 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-electric text-xs tracking-widest uppercase mb-3">Stack</h2>
+          <h2 className="text-bone font-bold mb-3">Stack</h2>
           <p>
             Next.js 14, React 18, Tailwind CSS, vanilla JavaScript for client
             interactivity. No heavy frameworks, no unnecessary dependencies.
