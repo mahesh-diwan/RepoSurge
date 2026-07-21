@@ -1,0 +1,124 @@
+{
+  "repos": [
+    {
+      "full_name": "facebook/react",
+      "name": "react",
+      "owner": "facebook",
+      "description": "The library for web UIs",
+      "language": "javascript",
+      "url": "https://github.com/facebook/react",
+      "stars": 228000,
+      "fetched_at": "2026-07-20T17:32:43.128Z",
+      "history": [
+        {
+          "stars": 228000,
+          "recorded_at": "2026-07-14T17:32:43.128Z"
+        },
+        {
+          "stars": 227500,
+          "recorded_at": "2026-07-15T17:32:43.128Z"
+        },
+        {
+          "stars": 227000,
+          "recorded_at": "2026-07-16T17:32:43.128Z"
+        },
+        {
+          "stars": 226500,
+          "recorded_at": "2026-07-17T17:32:43.128Z"
+        },
+        {
+          "stars": 226000,
+          "recorded_at": "2026-07-18T17:32:43.128Z"
+        },
+        {
+          "stars": 225500,
+          "recorded_at": "2026-07-19T17:32:43.128Z"
+        },
+        {
+          "stars": 225000,
+          "recorded_at": "2026-07-20T17:32:43.128Z"
+        }
+      ]
+    },
+    {
+      "full_name": "vercel/next.js",
+      "name": "next.js",
+      "owner": "vercel",
+      "description": "The React Framework",
+      "language": "typescript",
+      "url": "https://github.com/vercel/next.js",
+      "stars": 125000,
+      "fetched_at": "2026-07-20T17:32:43.128Z",
+      "history": [
+        {
+          "stars": 125000,
+          "recorded_at": "2026-07-14T17:32:43.128Z"
+        },
+        {
+          "stars": 124700,
+          "recorded_at": "2026-07-15T17:32:43.128Z"
+        },
+        {
+          "stars": 124400,
+          "recorded_at": "2026-07-16T17:32:43.128Z"
+        },
+        {
+          "stars": 124100,
+          "recorded_at": "2026-07-17T17:32:43.128Z"
+        },
+        {
+          "stars": 123800,
+          "recorded_at": "2026-07-18T17:32:43.128Z"
+        },
+        {
+          "stars": 123500,
+          "recorded_at": "2026-07-19T17:32:43.128Z"
+        },
+        {
+          "stars": 123200,
+          "recorded_at": "2026-07-20T17:32:43.128Z"
+        }
+      ]
+    },
+    {
+      "full_name": "rust-lang/rust",
+      "name": "rust",
+      "owner": "rust-lang",
+      "description": "Empowering everyone to build",
+      "language": "rust",
+      "url": "https://github.com/rust-lang/rust",
+      "stars": 98000,
+      "fetched_at": "2026-07-20T17:32:43.128Z",
+      "history": [
+        {
+          "stars": 98000,
+          "recorded_at": "2026-07-14T17:32:43.128Z"
+        },
+        {
+          "stars": 97800,
+          "recorded_at": "2026-07-15T17:32:43.128Z"
+        },
+        {
+          "stars": 97600,
+          "recorded_at": "2026-07-16T17:32:43.128Z"
+        },
+        {
+          "stars": 97400,
+          "recorded_at": "2026-07-17T17:32:43.128Z"
+        },
+        {
+          "stars": 97200,
+          "recorded_at": "2026-07-18T17:32:43.128Z"
+        },
+        {
+          "stars": 97000,
+          "recorded_at": "2026-07-19T17:32:43.128Z"
+        },
+        {
+          "stars": 96800,
+          "recorded_at": "2026-07-20T17:32:43.128Z"
+        }
+      ]
+    }
+  ]
+}
