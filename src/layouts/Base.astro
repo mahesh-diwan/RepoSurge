@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'repos rising. fast. ranked by star velocity.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content={description}>
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen">
+    <nav class="border-b border-bone/20 sticky top-0 z-40 bg-midnight/95 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold tracking-tight text-bone hover:text-electric transition-colors">
+          REP<span class="text-electric">Ø</span>SURGE
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="/#repos" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">Rankings</a>
+          <a href="/about" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">About</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">GitHub</a>
+        </div>
+        <button id="mobile-toggle" class="md:hidden text-bone hover:text-electric transition-colors" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-bone/20">
+        <nav class="flex flex-col gap-4 px-4">
+          <a href="/#repos" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">Rankings</a>
+          <a href="/about" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">About</a>
+          <a href="https://github.com" target="_blank" rel="noreferrer" class="text-bone/70 text-sm tracking-widest hover:text-electric transition-colors">GitHub</a>
+        </nav>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="mt-10 text-bone/30 text-xs border-t border-bone/20 pt-4 pb-8">
+      <div class="max-w-7xl mx-auto px-4">
+        data: github api | refreshed daily
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('mobile-toggle');
+      const menu = document.getElementById('mobile-menu');
+      toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    </script>
+  </body>
+</html>
