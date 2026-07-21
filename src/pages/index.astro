@@ -60,4 +60,37 @@ if (language !== 'all') {
       )}
     </div>
   </main>
+
+  <script>
+    const stored = localStorage.getItem('reposurge-prefs');
+    if (stored) {
+      try {
+        const prefs = JSON.parse(stored);
+        const params = new URLSearchParams(window.location.search);
+        if (!params.has('period') && prefs.period) {
+          params.set('period', prefs.period);
+        }
+        if (!params.has('language') && prefs.language) {
+          params.set('language', prefs.language);
+        }
+        if (params.toString() !== window.location.search.slice(1)) {
+          window.location.search = params.toString();
+        }
+      } catch {}
+    }
+
+    document.querySelectorAll('a[href*="period="]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const url = new URL((link as HTMLAnchorElement).href);
+        const period = url.searchParams.get('period');
+        const language = url.searchParams.get('language');
+        if (period || language) {
+          localStorage.setItem('reposurge-prefs', JSON.stringify({
+            period: period ?? 'week',
+            language: language ?? 'all',
+          }));
+        }
+      });
+    });
+  </script>
 </Base>
