@@ -1,8 +1,63 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import TrustLogos from '../components/TrustLogos.astro';
+import FilterBar from '../components/FilterBar.astro';
+import SearchBar from '../components/SearchBar.astro';
+import SortSelect from '../components/SortSelect.astro';
+import RepoCard from '../components/RepoCard.astro';
+import { getRepos } from '../lib/repo-utils';
+
+const period = Astro.url.searchParams.get('period') ?? 'week';
+const language = Astro.url.searchParams.get('language') ?? 'all';
+
+let repos = getRepos(period);
+if (language !== 'all') {
+  repos = repos.filter(
+    (r) => (r.language ?? '').toLowerCase() === language
+  );
+}
 ---
-<Base title="RepoSurge">
-  <main class="max-w-7xl mx-auto px-4">
-    <h1 class="text-electric text-4xl">Test</h1>
+<Base title="RepoSurge — repos rising fast">
+  <Header />
+  <TrustLogos />
+
+  <main class="max-w-7xl mx-auto px-4" id="repos">
+    <FilterBar period={period} language={language} />
+    <SearchBar />
+    <SortSelect />
+
+    <div id="repo-list">
+      {repos.length === 0 ? (
+        <div class="py-12 text-center">
+          <p class="text-bone/40 text-sm">no repos for this filter.</p>
+        </div>
+      ) : (
+        repos.map((repo) => (
+          <div
+            data-repo-card
+            data-repo-name={repo.full_name.toLowerCase()}
+            data-repo-desc={(repo.description ?? '').toLowerCase()}
+            data-repo-lang={(repo.language ?? '').toLowerCase()}
+            data-repo-sort-gained={repo.stars_gained}
+            data-repo-sort-velocity={repo.velocity}
+            data-repo-sort-total={repo.stars}
+          >
+            <RepoCard
+              rank={repo.rank}
+              full_name={repo.full_name}
+              description={repo.description}
+              language={repo.language}
+              url={repo.url}
+              stars={repo.stars}
+              stars_gained={repo.stars_gained}
+              velocity={repo.velocity}
+              sparkline={repo.sparkline}
+              slug={repo.slug}
+            />
+          </div>
+        ))
+      )}
+    </div>
   </main>
 </Base>
