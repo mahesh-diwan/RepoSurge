@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 
-const GITHUB_API = "https://api.github";
+const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
-const DATA = path.join(process.cwd(), "data", "repos.json");
+const OLD_DATA = path.join(process.cwd(), "data", "repos.json");
 
 const LANGUAGES = ["javascript", "python", "rust", "go", "typescript", "java"];
 const REPOS_PER_LANGUAGE = 100;
@@ -45,17 +45,14 @@ function githubFetch(path: string): Promise<any> {
   });
 }
 
-async function fetchTopRepos(
-  language: string,
-  count = 100,
-): Promise<GitHubRepo[]> {
+async function fetchTopRepos(language: string, count = 100): Promise<GitHubRepo[]> {
   const q = encodeURIComponent(`language:${language} stars:>1`);
   const repos: GitHubRepo[] = [];
   const perPage = 100;
   const pages = Math.ceil(count / perPage);
   for (let page = 1; page <= pages; page++) {
     const data = await githubFetch(
-      `/search/repositories?q=${q}&sort=stars&order=desc&per_page=${perPage}&page=${page}`,
+      `/search/repositories?q=${q}&sort=stars&order=desc&per_page=${perPage}&page=${page}`
     );
     repos.push(...data.items);
     if (data.items.length < perPage) break;
@@ -64,19 +61,11 @@ async function fetchTopRepos(
 }
 
 function readExisting(): { repos: RepoRecord[] } {
-  try {
-    return JSON.parse(fs.readFileSync(OUTPUT, "utf8"));
-  } catch {
-    return { repos: [] };
-  }
+  try { return JSON.parse(fs.readFileSync(OUTPUT, "utf8")); } catch { return { repos: [] }; }
 }
 
 function readOldData(): { repos: RepoRecord[] } {
-  try {
-    return JSON.parse(fs.readFileSync(DATA, "utf8"));
-  } catch {
-    return { repos: [] };
-  }
+  try { return JSON.parse(fs.readFileSync(OLD_DATA, "utf8")); } catch { return { repos: [] }; }
 }
 
 async function main() {
@@ -89,18 +78,13 @@ async function main() {
     try {
       const repos = await fetchTopRepos(language, REPOS_PER_LANGUAGE);
       for (const repo of repos) {
-        const existing = store.repos.find(
-          (r) => r.full_name === repo.full_name,
-        );
+        const existing = store.repos.find((r) => r.full_name === repo.full_name);
         const old = oldStore.repos.find((r) => r.full_name === repo.full_name);
 
         if (existing) {
           existing.stars = repo.stargazers_count;
           existing.fetched_at = today;
-          existing.history.push({
-            stars: repo.stargazers_count,
-            recorded_at: today,
-          });
+          existing.history.push({ stars: repo.stargazers_count, recorded_at: today });
         } else {
           const history: HistoryRow[] = old?.history ?? [];
           history.push({ stars: repo.stargazers_count, recorded_at: today });
@@ -128,7 +112,4 @@ async function main() {
   console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main().catch((err) => { console.error(err); process.exit(1); });

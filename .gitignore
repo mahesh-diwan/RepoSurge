@@ -1,6 +1,5 @@
 node_modules
-.astro
-dist
-data/repos.json
+.next
+src/content/repos.json
 *.log
 .DS_Store
