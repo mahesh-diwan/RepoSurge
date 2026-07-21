@@ -2,13 +2,30 @@
 interface Props {
   data: number[];
 }
+
 const { data } = Astro.props;
+
+if (!data || data.length === 0) {
+  return null;
+}
+
+const max = Math.max(...data);
+const min = Math.min(...data);
+const range = max - min || 1;
+
+const bars = data.map((value, i) => {
+  const height = Math.max(10, ((value - min) / range) * 100);
+  const prev = i > 0 ? data[i - 1] : value;
+  const color = value > prev ? 'bg-electric' : value < prev ? 'bg-red-500' : 'bg-bone/40';
+  return { height, color, value };
+});
 ---
-<div class="flex items-end h-8 gap-px">
-  {data.map((v) => (
+<div class="flex items-end h-8 gap-px" aria-label="star history" role="img" aria-roledescription="sparkline chart">
+  {bars.map((bar) => (
     <div
-      class="w-2 bg-electric"
-      style={`height: ${Math.max(10, v)}%`}
+      class={`w-2 ${bar.color}`}
+      style={`height: ${bar.height}%`}
+      title={String(bar.value)}
     />
   ))}
 </div>
