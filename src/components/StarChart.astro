@@ -1,0 +1,14 @@
+---
+interface Props {
+  data: number[];
+}
+const { data } = Astro.props;
+---
+<div class="flex items-end h-8 gap-px">
+  {data.map((v) => (
+    <div
+      class="w-2 bg-electric"
+      style={`height: ${Math.max(10, v)}%`}
+    />
+  ))}
+</div>

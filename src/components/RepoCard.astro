@@ -1,0 +1,50 @@
+---
+import StarChart from './StarChart.astro';
+
+interface Props {
+  rank: number;
+  full_name: string;
+  description: string | null;
+  language: string | null;
+  url: string;
+  stars: number;
+  stars_gained: number;
+  velocity: number;
+  sparkline: number[];
+  slug: string;
+}
+
+const { rank, full_name, description, language, url, stars, stars_gained, velocity, sparkline, slug } = Astro.props;
+
+const trend = stars_gained > 0 ? '↑' : stars_gained < 0 ? '↓' : '→';
+const trendColor = stars_gained > 0 ? 'text-electric' : stars_gained < 0 ? 'text-red-500' : 'text-bone/40';
+---
+<div class="flex items-center gap-4 border-b border-bone/20 py-3 hover:bg-bone/5 transition-colors">
+  <div class="w-8 text-right text-bone/50 tabular-nums">
+    {String(rank).padStart(2, '0')}
+  </div>
+  <div class="flex-1 min-w-0">
+    <a
+      href={`/repo/${slug}`}
+      class="text-bone hover:text-electric active:scale-[0.98] transition-transform truncate block font-bold"
+    >
+      {full_name}
+    </a>
+    <p class="text-bone/50 text-xs truncate">
+      {description ?? '—'}
+    </p>
+    <div class="flex gap-3 text-xs mt-1 text-bone/40">
+      <span>{language ?? '—'}</span>
+      <span>★ {stars.toLocaleString()}</span>
+      <span class={trendColor}>
+        {trend} {Math.abs(stars_gained).toLocaleString()}
+      </span>
+    </div>
+  </div>
+  <div class="flex flex-col items-end">
+    <StarChart data={sparkline} />
+    <span class="text-xs text-electric mt-1 tabular-nums">
+      {velocity} v
+    </span>
+  </div>
+</div>
