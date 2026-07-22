@@ -12,6 +12,7 @@ type RepoRecord = {
   language: string | null;
   url: string;
   stars: number;
+  created_at: string;
   fetched_at: string;
   history: HistoryRow[];
 };
@@ -22,8 +23,6 @@ const PERIOD_TO_DAYS: Record<string, number> = {
   day: 1,
   week: 7,
   month: 30,
-  "6m": 180,
-  year: 365,
 };
 
 function readStore(): Store {
@@ -34,9 +33,16 @@ function readStore(): Store {
   }
 }
 
-export type RepoRow = Omit<RepoRecord, "history">;
-
-export type RepoWithVelocity = RepoRow & {
+export type RepoWithVelocity = {
+  full_name: string;
+  name: string;
+  owner: string;
+  description: string | null;
+  language: string | null;
+  url: string;
+  stars: number;
+  created_at: string;
+  fetched_at: string;
   rank: number;
   stars_gained: number;
   sparkline: number[];
@@ -52,7 +58,7 @@ export function getRepos(period: string): RepoWithVelocity[] {
   return store.repos
     .map((r) => {
       const inWindow = r.history.filter(
-        (h) => new Date(h.recorded_at).getTime() >= cutoff
+        (h) => new Date(h.recorded_at).getTime() >= cutoff,
       );
       const baseline = inWindow.length ? inWindow[0].stars : r.stars;
       const stars_gained = r.stars - baseline;
@@ -71,6 +77,7 @@ export function getRepos(period: string): RepoWithVelocity[] {
         language: r.language,
         url: r.url,
         stars: r.stars,
+        created_at: r.created_at,
         fetched_at: r.fetched_at,
         stars_gained,
         sparkline,
@@ -84,4 +91,12 @@ export function getRepos(period: string): RepoWithVelocity[] {
 
 export function getRepoBySlug(slug: string): RepoWithVelocity | undefined {
   return getRepos("week").find((r) => r.slug === slug);
+}
+
+export function getStats() {
+  const store = readStore();
+  const totalRepos = store.repos.length;
+  const totalStars = store.repos.reduce((sum, r) => sum + r.stars, 0);
+  const languages = new Set(store.repos.map((r) => r.language).filter(Boolean));
+  return { totalRepos, totalStars, languages: languages.size };
 }

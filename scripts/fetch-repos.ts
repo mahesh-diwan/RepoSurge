@@ -5,8 +5,7 @@ const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
 const OLD_DATA = path.join(process.cwd(), "data", "repos.json");
 
-const LANGUAGES = ["javascript", "python", "rust", "go", "typescript", "java"];
-const REPOS_PER_LANGUAGE = 100;
+const REPOS_TO_FETCH = 500;
 
 type GitHubRepo = {
   id: number;
@@ -17,6 +16,7 @@ type GitHubRepo = {
   language: string | null;
   html_url: string;
   stargazers_count: number;
+  created_at: string;
 };
 
 type HistoryRow = { stars: number; recorded_at: string };
@@ -28,31 +28,31 @@ type RepoRecord = {
   language: string | null;
   url: string;
   stars: number;
+  created_at: string;
   fetched_at: string;
   history: HistoryRow[];
 };
 
-function githubFetch(path: string): Promise<any> {
+function githubFetch(apiPath: string): Promise<any> {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
     "User-Agent": "RepoSurge",
   };
   const token = process.env.GITHUB_TOKEN;
   if (token) headers.Authorization = `Bearer ${token}`;
-  return fetch(`${GITHUB_API}${path}`, { headers }).then((res) => {
-    if (!res.ok) throw new Error(`GitHub API ${res.status} for ${path}`);
+  return fetch(`${GITHUB_API}${apiPath}`, { headers }).then((res) => {
+    if (!res.ok) throw new Error(`GitHub API ${res.status} for ${apiPath}`);
     return res.json();
   });
 }
 
-async function fetchTopRepos(language: string, count = 100): Promise<GitHubRepo[]> {
-  const q = encodeURIComponent(`language:${language} stars:>1`);
+async function fetchTopRepos(count: number): Promise<GitHubRepo[]> {
   const repos: GitHubRepo[] = [];
   const perPage = 100;
   const pages = Math.ceil(count / perPage);
   for (let page = 1; page <= pages; page++) {
     const data = await githubFetch(
-      `/search/repositories?q=${q}&sort=stars&order=desc&per_page=${perPage}&page=${page}`
+      `/search/repositories?q=stars:>1&sort=stars&order=desc&per_page=${perPage}&page=${page}`,
     );
     repos.push(...data.items);
     if (data.items.length < perPage) break;
@@ -61,11 +61,19 @@ async function fetchTopRepos(language: string, count = 100): Promise<GitHubRepo[
 }
 
 function readExisting(): { repos: RepoRecord[] } {
-  try { return JSON.parse(fs.readFileSync(OUTPUT, "utf8")); } catch { return { repos: [] }; }
+  try {
+    return JSON.parse(fs.readFileSync(OUTPUT, "utf8"));
+  } catch {
+    return { repos: [] };
+  }
 }
 
 function readOldData(): { repos: RepoRecord[] } {
-  try { return JSON.parse(fs.readFileSync(OLD_DATA, "utf8")); } catch { return { repos: [] }; }
+  try {
+    return JSON.parse(fs.readFileSync(OLD_DATA, "utf8"));
+  } catch {
+    return { repos: [] };
+  }
 }
 
 async function main() {
@@ -73,37 +81,35 @@ async function main() {
   const store = readExisting();
   const oldStore = readOldData();
 
-  for (const language of LANGUAGES) {
-    console.log(`Fetching top ${REPOS_PER_LANGUAGE} ${language} repos...`);
-    try {
-      const repos = await fetchTopRepos(language, REPOS_PER_LANGUAGE);
-      for (const repo of repos) {
-        const existing = store.repos.find((r) => r.full_name === repo.full_name);
-        const old = oldStore.repos.find((r) => r.full_name === repo.full_name);
+  console.log(`Fetching top ${REPOS_TO_FETCH} repos by stars...`);
+  const repos = await fetchTopRepos(REPOS_TO_FETCH);
 
-        if (existing) {
-          existing.stars = repo.stargazers_count;
-          existing.fetched_at = today;
-          existing.history.push({ stars: repo.stargazers_count, recorded_at: today });
-        } else {
-          const history: HistoryRow[] = old?.history ?? [];
-          history.push({ stars: repo.stargazers_count, recorded_at: today });
-          store.repos.push({
-            full_name: repo.full_name,
-            name: repo.name,
-            owner: repo.owner.login,
-            description: repo.description,
-            language: repo.language,
-            url: repo.html_url,
-            stars: repo.stargazers_count,
-            fetched_at: today,
-            history,
-          });
-        }
-      }
-      console.log(`  saved ${repos.length} ${language} repos`);
-    } catch (err) {
-      console.error(`  failed ${language}:`, (err as Error).message);
+  for (const repo of repos) {
+    const existing = store.repos.find((r) => r.full_name === repo.full_name);
+    const old = oldStore.repos.find((r) => r.full_name === repo.full_name);
+
+    if (existing) {
+      existing.stars = repo.stargazers_count;
+      existing.fetched_at = today;
+      existing.history.push({
+        stars: repo.stargazers_count,
+        recorded_at: today,
+      });
+    } else {
+      const history: HistoryRow[] = old?.history ?? [];
+      history.push({ stars: repo.stargazers_count, recorded_at: today });
+      store.repos.push({
+        full_name: repo.full_name,
+        name: repo.name,
+        owner: repo.owner.login,
+        description: repo.description,
+        language: repo.language,
+        url: repo.html_url,
+        stars: repo.stargazers_count,
+        created_at: repo.created_at,
+        fetched_at: today,
+        history,
+      });
     }
   }
 
@@ -112,4 +118,7 @@ async function main() {
   console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
 }
 
-main().catch((err) => { console.error(err); process.exit(1); });
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
