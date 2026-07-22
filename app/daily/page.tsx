@@ -1,65 +1,75 @@
 import { getRepos } from "@/lib/db";
-import TrustLogos from "@/components/TrustLogos";
 import RepoCard from "@/components/RepoCard";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function DailyPage() {
   const repos = getRepos("day");
 
   return (
-    <>
-      <section className="pt-24 pb-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold tracking-tight">Daily</h1>
-          <p className="text-bone/50 text-sm mt-2">
+    <main className="max-w-7xl mx-auto px-6">
+      <ScrollReveal>
+        <section className="mb-16">
+          <div className="pill-badge glass-panel inline-block mb-6 text-electric">
+            DAILY
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Daily Rankings
+          </h1>
+          <p className="text-bone/40 text-sm mt-3 max-w-md">
             top repos by stars gained in the last 24 hours
           </p>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
-      <TrustLogos />
-
-      <main className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center gap-6 mb-6 border-b border-bone/20 pb-3">
-          <h2 className="text-xs tracking-widest text-bone/40">RANKINGS</h2>
-          <div className="flex gap-4 text-xs tracking-widest">
-            <span className="text-electric">DAILY</span>
+      <ScrollReveal>
+        <div className="flex items-center gap-4 mb-8">
+          <div className="flex gap-2 text-[10px] tracking-widest">
+            <span className="px-3 py-1.5 rounded-full bg-white/10 text-bone">
+              DAILY
+            </span>
             <a
               href="/weekly"
-              className="text-bone/50 hover:text-electric transition-colors"
+              className="px-3 py-1.5 rounded-full text-bone/40 hover:text-bone hover:bg-white/5 transition-all duration-500"
             >
               WEEKLY
             </a>
             <a
               href="/monthly"
-              className="text-bone/50 hover:text-electric transition-colors"
+              className="px-3 py-1.5 rounded-full text-bone/40 hover:text-bone hover:bg-white/5 transition-all duration-500"
             >
               MONTHLY
             </a>
           </div>
+          <div className="h-px flex-1 bg-white/5" />
         </div>
+      </ScrollReveal>
 
-        {repos.length === 0 ? (
-          <p className="py-12 text-center text-bone/40 text-sm">
+      {repos.length === 0 ? (
+        <div className="glass-card p-12 text-center">
+          <p className="text-bone/30 text-sm">
             no repos data yet. run npm run fetch first.
           </p>
-        ) : (
-          repos.map((repo) => (
-            <RepoCard
-              key={repo.full_name}
-              rank={repo.rank}
-              full_name={repo.full_name}
-              description={repo.description}
-              language={repo.language}
-              url={repo.url}
-              stars={repo.stars}
-              stars_gained={repo.stars_gained}
-              velocity={repo.velocity}
-              sparkline={repo.sparkline}
-              slug={repo.slug}
-            />
-          ))
-        )}
-      </main>
-    </>
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {repos.map((repo, i) => (
+            <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.05, 0.5)}>
+              <RepoCard
+                rank={repo.rank}
+                full_name={repo.full_name}
+                description={repo.description}
+                language={repo.language}
+                url={repo.url}
+                stars={repo.stars}
+                stars_gained={repo.stars_gained}
+                velocity={repo.velocity}
+                sparkline={repo.sparkline}
+                slug={repo.slug}
+              />
+            </ScrollReveal>
+          ))}
+        </div>
+      )}
+    </main>
   );
 }

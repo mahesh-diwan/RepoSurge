@@ -1,79 +1,83 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const NAV_LINKS = [
+  { href: "/", label: "HOME" },
+  { href: "/daily", label: "DAILY" },
+  { href: "/weekly", label: "WEEKLY" },
+  { href: "/monthly", label: "MONTHLY" },
+  { href: "/about", label: "ABOUT" },
+];
 
 export default function MobileNav() {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const menu = menuRef.current;
-    const toggle = toggleRef.current;
-    if (!menu || !toggle) return;
-
-    const handler = () => menu.classList.toggle("hidden");
-    toggle.addEventListener("click", handler);
-    return () => toggle.removeEventListener("click", handler);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
       <button
-        ref={toggleRef}
-        className="md:hidden text-bone hover:text-electric transition-colors"
+        onClick={() => setOpen(!open)}
+        className="md:hidden w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors duration-300"
         aria-label="Toggle menu"
       >
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
+        <div className="w-4 h-3 flex flex-col justify-between">
+          <motion.span
+            className="block h-[1.5px] bg-bone origin-left"
+            animate={open ? { rotate: 42, y: -0.5 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
           />
-        </svg>
+          <motion.span
+            className="block h-[1.5px] bg-bone"
+            animate={open ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+          <motion.span
+            className="block h-[1.5px] bg-bone origin-left"
+            animate={open ? { rotate: -42, y: 0.5 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+          />
+        </div>
       </button>
-      <div
-        ref={menuRef}
-        className="hidden md:hidden py-4 border-t border-bone/20"
-      >
-        <nav className="flex flex-col gap-3 px-4 text-xs tracking-widest">
-          <a
-            href="/"
-            className="text-bone/70 hover:text-electric transition-colors"
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-midnight/90 backdrop-blur-3xl flex items-center justify-center md:hidden"
+            onClick={() => setOpen(false)}
           >
-            HOME
-          </a>
-          <a
-            href="/daily"
-            className="text-bone/70 hover:text-electric transition-colors"
-          >
-            DAILY
-          </a>
-          <a
-            href="/weekly"
-            className="text-bone/70 hover:text-electric transition-colors"
-          >
-            WEEKLY
-          </a>
-          <a
-            href="/monthly"
-            className="text-bone/70 hover:text-electric transition-colors"
-          >
-            MONTHLY
-          </a>
-          <a
-            href="/about"
-            className="text-bone/70 hover:text-electric transition-colors"
-          >
-            ABOUT
-          </a>
-        </nav>
-      </div>
+            <motion.nav
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center gap-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {NAV_LINKS.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.1 + i * 0.05,
+                    ease: [0.32, 0.72, 0, 1],
+                  }}
+                  className="text-2xl font-bold tracking-tight text-bone/70 hover:text-electric transition-colors duration-500"
+                  style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

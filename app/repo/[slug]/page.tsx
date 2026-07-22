@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getRepoBySlug, getRepos } from "@/lib/db";
 import StarChart from "@/components/StarChart";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export function generateStaticParams() {
   return getRepos("week").map((repo) => ({
@@ -21,14 +22,16 @@ export default function RepoDetailPage({
 
   if (!repo) {
     return (
-      <main className="max-w-7xl mx-auto px-4 py-16">
+      <main className="max-w-7xl mx-auto px-6 py-16">
         <Link
           href="/"
-          className="text-bone/50 text-sm hover:text-electric transition-colors mb-8 inline-block"
+          className="text-bone/40 text-sm hover:text-electric transition-colors duration-500 mb-8 inline-block"
         >
           ← Back
         </Link>
-        <p className="text-bone/40">Repo not found.</p>
+        <div className="glass-card p-12 text-center">
+          <p className="text-bone/30">Repo not found.</p>
+        </div>
       </main>
     );
   }
@@ -44,110 +47,99 @@ export default function RepoDetailPage({
     day: "numeric",
   });
 
+  const stats = [
+    { label: "TOTAL STARS", value: repo.stars.toLocaleString() },
+    {
+      label: "STARS GAINED",
+      value: `${stars_gained > 0 ? "+" : ""}${stars_gained.toLocaleString()}`,
+      color: stars_gained > 0 ? "text-electric" : stars_gained < 0 ? "text-red-400" : "text-bone/40",
+    },
+    { label: "VELOCITY", value: velocity.toString(), color: "text-electric" },
+    { label: "CREATED", value: createdDate },
+  ];
+
+  const periods = [
+    { key: "day", label: "DAILY" },
+    { key: "week", label: "WEEKLY" },
+    { key: "month", label: "MONTHLY" },
+  ];
+
   return (
-    <main className="max-w-7xl mx-auto px-4 py-16">
+    <main className="max-w-7xl mx-auto px-6 py-16">
       <Link
         href="/"
-        className="text-bone/50 text-sm hover:text-electric transition-colors mb-8 inline-block"
+        className="text-bone/40 text-sm hover:text-electric transition-colors duration-500 mb-12 inline-block"
+        style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
       >
         ← Back
       </Link>
 
-      <div className="border border-bone/20 p-8">
-        <div className="flex items-start justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight mb-2">
-              {repo.full_name}
-            </h1>
-            <p className="text-bone/50 text-sm">{repo.description ?? "-"}</p>
-          </div>
-          <a
-            href={repo.url}
-            target="_blank"
-            rel="noreferrer"
-            className="bg-electric text-midnight px-4 py-2 text-xs tracking-widest hover:bg-electric/80 transition-colors"
-          >
-            View on GitHub
-          </a>
-        </div>
+      <ScrollReveal>
+        <div className="double-bezel mb-8">
+          <div className="double-bezel-inner p-8 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10">
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+                  {repo.full_name}
+                </h1>
+                <p className="text-bone/40 text-sm max-w-lg">{repo.description ?? "—"}</p>
+              </div>
+              <a
+                href={repo.url}
+                target="_blank"
+                rel="noreferrer"
+                className="pill-button bg-electric text-midnight font-medium shrink-0 inline-flex items-center gap-2 group"
+              >
+                View on GitHub
+                <span className="w-6 h-6 rounded-full bg-midnight/10 flex items-center justify-center text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500">
+                  ↗
+                </span>
+              </a>
+            </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-          <div>
-            <p className="text-bone/40 text-xs tracking-widest mb-1">
-              TOTAL STARS
-            </p>
-            <p className="text-2xl font-bold tabular-nums">
-              {repo.stars.toLocaleString()}
-            </p>
-          </div>
-          <div>
-            <p className="text-bone/40 text-xs tracking-widest mb-1">
-              STARS GAINED
-            </p>
-            <p
-              className={`text-2xl font-bold tabular-nums ${stars_gained > 0 ? "text-electric" : stars_gained < 0 ? "text-red-500" : "text-bone/40"}`}
-            >
-              {stars_gained > 0 ? "+" : ""}
-              {stars_gained.toLocaleString()}
-            </p>
-          </div>
-          <div>
-            <p className="text-bone/40 text-xs tracking-widest mb-1">
-              VELOCITY
-            </p>
-            <p className="text-2xl font-bold tabular-nums text-electric">
-              {velocity}
-            </p>
-          </div>
-          <div>
-            <p className="text-bone/40 text-xs tracking-widest mb-1">CREATED</p>
-            <p className="text-2xl font-bold">{createdDate}</p>
-          </div>
-        </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-bone/30 text-[10px] tracking-[0.2em] mb-2 font-medium">
+                    {stat.label}
+                  </p>
+                  <p className={`text-2xl md:text-3xl font-bold tabular-nums font-mono ${stat.color ?? ""}`}>
+                    {stat.value}
+                  </p>
+                </div>
+              ))}
+            </div>
 
-        <div className="mb-6">
-          <div className="flex gap-4 text-xs tracking-widest mb-3">
-            <span className="text-bone/40">PERIOD:</span>
-            <Link
-              href={`/repo/${slug}?period=day`}
-              className={
-                period === "day"
-                  ? "text-electric"
-                  : "text-bone/50 hover:text-electric transition-colors"
-              }
-            >
-              DAILY
-            </Link>
-            <Link
-              href={`/repo/${slug}?period=week`}
-              className={
-                period === "week"
-                  ? "text-electric"
-                  : "text-bone/50 hover:text-electric transition-colors"
-              }
-            >
-              WEEKLY
-            </Link>
-            <Link
-              href={`/repo/${slug}?period=month`}
-              className={
-                period === "month"
-                  ? "text-electric"
-                  : "text-bone/50 hover:text-electric transition-colors"
-              }
-            >
-              MONTHLY
-            </Link>
+            <div className="mb-8">
+              <div className="flex gap-2 text-[10px] tracking-widest">
+                <span className="text-bone/30 mr-2">PERIOD:</span>
+                {periods.map((p) => (
+                  <Link
+                    key={p.key}
+                    href={`/repo/${slug}?period=${p.key}`}
+                    className={`px-3 py-1.5 rounded-full transition-all duration-500 ${
+                      period === p.key
+                        ? "bg-white/10 text-bone"
+                        : "text-bone/40 hover:text-bone hover:bg-white/5"
+                    }`}
+                  >
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-bone/30 text-[10px] tracking-[0.2em] mb-4 font-medium">
+                STAR HISTORY
+              </p>
+              <div className="glass-panel rounded-2xl p-4">
+                <StarChart data={repo.sparkline} />
+              </div>
+            </div>
           </div>
         </div>
-
-        <div>
-          <p className="text-bone/40 text-xs tracking-widest mb-3">
-            STAR HISTORY
-          </p>
-          <StarChart data={repo.sparkline} />
-        </div>
-      </div>
+      </ScrollReveal>
     </main>
   );
 }
