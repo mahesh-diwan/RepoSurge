@@ -8,6 +8,8 @@ export type RepoCardData = {
   velocity?: number;
   sparkline: number[];
   slug: string;
+  stars?: number;
+  liveDelta?: number;
 };
 
 export default function RepoCard({
@@ -16,6 +18,7 @@ export default function RepoCard({
   stars_gained,
   sparkline,
   slug,
+  liveDelta,
 }: RepoCardData) {
   const gainedColor =
     stars_gained > 0
@@ -46,6 +49,11 @@ export default function RepoCard({
           {stars_gained > 0 ? "+" : ""}
           {stars_gained.toLocaleString("en-US")}
         </span>
+        {liveDelta !== undefined && liveDelta !== 0 && (
+          <span className="text-terminal text-[10px] ml-1 align-super">
+            +{liveDelta}
+          </span>
+        )}
       </div>
     </div>
   );

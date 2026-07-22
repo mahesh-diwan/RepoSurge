@@ -1,13 +1,19 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import type { RepoCardData } from "./RepoCard";
+import { useLiveStars } from "@/lib/useLiveStars";
 import RepoCard from "./RepoCard";
 import ScrollReveal from "./ScrollReveal";
 import SearchInput from "./SearchInput";
 
 export default function RepoList({ repos }: { repos: RepoCardData[] }) {
   const [search, setSearch] = useState("");
+  const { starsMap, live } = useLiveStars();
+  const initStars = useRef<Record<string, number>>({});
+  if (repos.length > 0 && Object.keys(initStars.current).length === 0) {
+    for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
+  }
 
   type SortKey = "rank" | "name" | "gained" | "velocity";
   type SortDir = "asc" | "desc";
@@ -58,8 +64,16 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
 
   return (
     <>
-      <div className="mb-6">
+      <div className="flex items-center gap-2 mb-4">
         <SearchInput value={search} onChange={setSearch} />
+        <span className="flex items-center gap-1.5 text-[10px] text-dim shrink-0">
+          <span
+            className={`inline-block w-1.5 h-1.5 rounded-full ${
+              live ? "bg-terminal shadow-[0_0_4px_#00FF41]" : "bg-dim"
+            }`}
+          />
+          {live ? "live" : "polling"}
+        </span>
       </div>
 
       <div className="flex items-center gap-4 py-1.5 text-[10px] sm:text-xs text-dim border-b border-terminal/10 mb-1">
@@ -96,6 +110,14 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
                 stars_gained={repo.stars_gained}
                 sparkline={repo.sparkline}
                 slug={repo.slug}
+                stars={repo.stars}
+                liveDelta={(() => {
+                  const liveStars = starsMap[repo.full_name];
+                  const initial = initStars.current[repo.full_name];
+                  if (!liveStars || !initial) return undefined;
+                  const delta = liveStars - initial;
+                  return delta > 0 ? delta : undefined;
+                })()}
               />
             </ScrollReveal>
           ))}
