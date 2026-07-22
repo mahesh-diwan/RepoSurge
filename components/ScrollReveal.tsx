@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 
 type Props = {
@@ -23,6 +23,12 @@ const variants = {
 };
 
 export default function ScrollReveal({ children, delay = 0, className }: Props) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial="hidden"

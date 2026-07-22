@@ -5,7 +5,7 @@ export default function Header() {
   const stats = getStats();
 
   return (
-    <section className="pt-16 pb-24 px-6">
+    <section className="pb-24 px-6">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="pill-badge glass-panel inline-block mb-6 text-electric">

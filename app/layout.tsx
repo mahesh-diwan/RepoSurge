@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import MobileNav from "@/components/MobileNav";
 import FilmGrain from "@/components/FilmGrain";
 import "./globals.css";
@@ -33,19 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <MeshBackground />
         <FilmGrain />
@@ -81,7 +71,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <div className="pt-28">{children}</div>
+        <div className="pt-24">{children}</div>
 
         <footer className="mt-20 py-12 border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 text-center">

@@ -19,28 +19,22 @@ export default function Home() {
         {trending.length > 0 && (
           <ScrollReveal>
             <section className="mb-20">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="pill-badge glass-panel text-electric">
-                  TRENDING
-                </div>
+                      <div className="flex items-center gap-4 mb-8">
                 <div className="h-px flex-1 bg-white/5" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {trending.map((repo, i) => (
-                  <ScrollReveal key={repo.full_name} delay={i * 0.1}>
+                  <ScrollReveal key={repo.full_name} delay={i * 0.1} className={i === 0 ? "md:col-span-2" : ""}>
                     <a
                       href={`/repo/${repo.slug}`}
                       className="glass-card block p-6 group"
                     >
-                      <p className="text-bone/30 text-[10px] tracking-[0.2em] font-medium mb-3">
-                        #{i + 1} TRENDING
-                      </p>
                       <p className="font-bold text-sm truncate group-hover:text-electric transition-colors duration-500">
                         {repo.full_name}
                       </p>
                       <p className="text-electric text-2xl font-bold tabular-nums mt-4 font-mono">
-                        +{repo.stars_gained.toLocaleString()} ★
+                        +{repo.stars_gained.toLocaleString()}
                       </p>
                       <p className="text-bone/30 text-xs mt-2 font-mono">
                         {repo.velocity} velocity

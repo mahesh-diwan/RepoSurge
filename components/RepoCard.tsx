@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Star } from "@phosphor-icons/react/dist/ssr/Star";
 import StarChart from "./StarChart";
 
 export type RepoCardData = {
@@ -48,7 +49,7 @@ export default function RepoCard({
               {full_name}
             </Link>
             <p className="text-bone/30 text-xs truncate mt-1">
-              {description ?? "—"}
+              {description ?? "-"}
             </p>
           </div>
 
@@ -62,10 +63,11 @@ export default function RepoCard({
                 {language}
               </span>
             )}
-            <div className="text-right min-w-[70px]">
+            <div className="text-right min-w-[70px] flex items-center gap-1">
+              <Star weight="fill" size={10} className="text-bone/30" />
               <span className={`text-sm tabular-nums font-bold font-mono ${gainedColor}`}>
                 {stars_gained > 0 ? "+" : ""}
-                {stars_gained.toLocaleString()} ★
+                {stars_gained.toLocaleString()}
               </span>
             </div>
           </div>

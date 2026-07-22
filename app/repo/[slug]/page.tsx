@@ -82,7 +82,7 @@ export default function RepoDetailPage({
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
                   {repo.full_name}
                 </h1>
-                <p className="text-bone/40 text-sm max-w-lg">{repo.description ?? "—"}</p>
+                <p className="text-bone/40 text-sm max-w-lg">{repo.description ?? "-"}</p>
               </div>
               <a
                 href={repo.url}
