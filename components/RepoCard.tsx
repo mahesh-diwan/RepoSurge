@@ -5,6 +5,7 @@ export type RepoCardData = {
   rank: number;
   full_name: string;
   stars_gained: number;
+  velocity?: number;
   sparkline: number[];
   slug: string;
 };
