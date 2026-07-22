@@ -1,0 +1,47 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "REPØSURGE" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Toggle menu" [ref=e5] [cursor=pointer]: "[=]"
+  - main [ref=e192]:
+    - link "← back" [ref=e193] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e195]:
+      - heading "anomalyco/opencode" [level=1] [ref=e196]
+      - paragraph [ref=e197]: The open source AI coding agent. Free models included.
+      - link "view on github" [ref=e198] [cursor=pointer]:
+        - /url: https://github.com/anomalyco/opencode
+      - generic [ref=e199]:
+        - generic [ref=e200]:
+          - paragraph [ref=e201]: stars
+          - paragraph [ref=e202]: 1,86,998
+        - generic [ref=e203]:
+          - paragraph [ref=e204]: gained
+          - paragraph [ref=e205]: +8,900
+        - generic [ref=e206]:
+          - paragraph [ref=e207]: velocity
+          - paragraph [ref=e208]: "50"
+        - generic [ref=e209]:
+          - paragraph [ref=e210]: created
+          - paragraph [ref=e211]: Invalid Date
+      - generic [ref=e212]:
+        - generic [ref=e213]: "period:"
+        - link "day" [ref=e214] [cursor=pointer]:
+          - /url: /repo/anomalyco-opencode?period=day
+        - generic [ref=e215]: week
+        - link "month" [ref=e216] [cursor=pointer]:
+          - /url: /repo/anomalyco-opencode?period=month
+      - generic [ref=e217]:
+        - paragraph [ref=e218]: star history
+        - img "star history" [ref=e219]:
+          - generic "178098" [ref=e220]
+          - generic "178298" [ref=e221]
+          - generic "178598" [ref=e222]
+          - generic "178998" [ref=e223]
+          - generic "179598" [ref=e224]
+          - generic "180398" [ref=e225]
+          - generic "181898" [ref=e226]
+  - contentinfo [ref=e188]:
+    - paragraph [ref=e190]: "data: github api · refreshed daily"
+  - alert [ref=e191]

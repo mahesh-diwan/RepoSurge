@@ -1,0 +1,166 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "REPØSURGE" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Toggle menu" [ref=e5] [cursor=pointer]: "[=]"
+  - generic [ref=e6]:
+    - generic [ref=e8]:
+      - paragraph [ref=e10]: repos rising. fast.
+      - heading "REPØSURGE" [level=1] [ref=e12]
+      - paragraph [ref=e14]: 2 repos · 239,256 stars · 0 languages
+    - main [ref=e15]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: "period:"
+        - link "daily" [ref=e19] [cursor=pointer]:
+          - /url: /daily
+        - generic [ref=e20]: weekly
+        - link "monthly" [ref=e21] [cursor=pointer]:
+          - /url: /monthly
+      - generic [ref=e22]:
+        - generic [ref=e24]:
+          - generic [ref=e25]: "1"
+          - link "graphify-labs/graphify" [ref=e26] [cursor=pointer]:
+            - /url: /repo/graphify-labs-graphify
+          - img "star history" [ref=e28]:
+            - generic "73460" [ref=e29]
+            - generic "73860" [ref=e30]
+            - generic "74360" [ref=e31]
+            - generic "74960" [ref=e32]
+            - generic "75660" [ref=e33]
+            - generic "76560" [ref=e34]
+            - generic "77560" [ref=e35]
+          - generic [ref=e36]: +16,900
+        - generic [ref=e39]:
+          - generic [ref=e40]: "2"
+          - link "anomalyco/opencode" [ref=e41] [cursor=pointer]:
+            - /url: /repo/anomalyco-opencode
+          - img "star history" [ref=e43]:
+            - generic "178098" [ref=e44]
+            - generic "178298" [ref=e45]
+            - generic "178598" [ref=e46]
+            - generic "178998" [ref=e47]
+            - generic "179598" [ref=e48]
+            - generic "180398" [ref=e49]
+            - generic "181898" [ref=e50]
+          - generic [ref=e51]: +8,900
+        - generic [ref=e54]:
+          - generic [ref=e55]: "3"
+          - link "koala73/worldmonitor" [ref=e56] [cursor=pointer]:
+            - /url: /repo/koala73-worldmonitor
+          - img "star history" [ref=e58]:
+            - generic "58620" [ref=e59]
+            - generic "58720" [ref=e60]
+            - generic "58920" [ref=e61]
+            - generic "59320" [ref=e62]
+            - generic "59920" [ref=e63]
+            - generic "60720" [ref=e64]
+            - generic "62015" [ref=e65]
+          - generic [ref=e66]: +8,495
+        - generic [ref=e69]:
+          - generic [ref=e70]: "4"
+          - link "diegosouzapw/omniroute" [ref=e71] [cursor=pointer]:
+            - /url: /repo/diegosouzapw-omniroute
+          - img "star history" [ref=e73]:
+            - generic "18021" [ref=e74]
+            - generic "18421" [ref=e75]
+            - generic "18621" [ref=e76]
+            - generic "18921" [ref=e77]
+            - generic "19521" [ref=e78]
+            - generic "19621" [ref=e79]
+            - generic "19921" [ref=e80]
+          - generic [ref=e81]: +6,184
+        - generic [ref=e84]:
+          - generic [ref=e85]: "5"
+          - link "tirth8205/code-review-graph" [ref=e86] [cursor=pointer]:
+            - /url: /repo/tirth8205-code-review-graph
+          - img "star history" [ref=e88]:
+            - generic "14555" [ref=e89]
+            - generic "14855" [ref=e90]
+            - generic "15005" [ref=e91]
+            - generic "15255" [ref=e92]
+            - generic "15755" [ref=e93]
+            - generic "16105" [ref=e94]
+            - generic "16305" [ref=e95]
+          - generic [ref=e96]: +5,275
+        - generic [ref=e99]:
+          - generic [ref=e100]: "6"
+          - link "n8n-io/n8n" [ref=e101] [cursor=pointer]:
+            - /url: /repo/n8n-io-n8n
+          - img "star history" [ref=e103]:
+            - generic "193716" [ref=e104]
+            - generic "193916" [ref=e105]
+            - generic "194016" [ref=e106]
+            - generic "194266" [ref=e107]
+            - generic "194416" [ref=e108]
+            - generic "194616" [ref=e109]
+            - generic "194966" [ref=e110]
+          - generic [ref=e111]: +3,150
+        - generic [ref=e114]:
+          - generic [ref=e115]: "7"
+          - link "trycua/cua" [ref=e116] [cursor=pointer]:
+            - /url: /repo/trycua-cua
+          - img "star history" [ref=e118]:
+            - generic "17270" [ref=e119]
+            - generic "17490" [ref=e120]
+            - generic "17670" [ref=e121]
+            - generic "17920" [ref=e122]
+            - generic "18320" [ref=e123]
+            - generic "18470" [ref=e124]
+            - generic "18670" [ref=e125]
+          - generic [ref=e126]: +2,930
+        - generic [ref=e129]:
+          - generic [ref=e130]: "8"
+          - link "1jehuang/jcode" [ref=e131] [cursor=pointer]:
+            - /url: /repo/1jehuang-jcode
+          - img "star history" [ref=e133]:
+            - generic "7928" [ref=e134]
+            - generic "8028" [ref=e135]
+            - generic "8178" [ref=e136]
+            - generic "8378" [ref=e137]
+            - generic "8438" [ref=e138]
+            - generic "8518" [ref=e139]
+            - generic "8618" [ref=e140]
+          - generic [ref=e141]: +2,633
+        - generic [ref=e144]:
+          - generic [ref=e145]: "9"
+          - link "shubhamsaboo/awesome-llm-apps" [ref=e146] [cursor=pointer]:
+            - /url: /repo/shubhamsaboo-awesome-llm-apps
+          - img "star history" [ref=e148]:
+            - generic "121379" [ref=e149]
+            - generic "121479" [ref=e150]
+            - generic "121529" [ref=e151]
+            - generic "121609" [ref=e152]
+            - generic "121709" [ref=e153]
+            - generic "121859" [ref=e154]
+            - generic "122059" [ref=e155]
+          - generic [ref=e156]: +2,280
+        - generic [ref=e159]:
+          - generic [ref=e160]: "10"
+          - link "codecrafters-io/build-your-own-x" [ref=e161] [cursor=pointer]:
+            - /url: /repo/codecrafters-io-build-your-own-x
+          - img "star history" [ref=e163]:
+            - generic "526299" [ref=e164]
+            - generic "526389" [ref=e165]
+            - generic "526449" [ref=e166]
+            - generic "526569" [ref=e167]
+            - generic "526649" [ref=e168]
+            - generic "526749" [ref=e169]
+            - generic "526799" [ref=e170]
+          - generic [ref=e171]: +1,260
+        - generic [ref=e174]:
+          - generic [ref=e175]: "11"
+          - link "ibelick/ui-skills" [ref=e176] [cursor=pointer]:
+            - /url: /repo/ibelick-ui-skills
+          - img "star history" [ref=e178]:
+            - generic "4057" [ref=e179]
+            - generic "4117" [ref=e180]
+            - generic "4142" [ref=e181]
+            - generic "4182" [ref=e182]
+            - generic "4262" [ref=e183]
+            - generic "4282" [ref=e184]
+            - generic "4312" [ref=e185]
+          - generic [ref=e186]: "+590"
+  - contentinfo [ref=e188]:
+    - paragraph [ref=e190]: "data: github api · refreshed daily"
+  - alert [ref=e191]

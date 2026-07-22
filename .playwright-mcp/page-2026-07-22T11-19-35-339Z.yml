@@ -1,0 +1,63 @@
+- generic [active] [ref=f2e1]:
+  - navigation [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "REPØSURGE" [ref=f2e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f2e5]:
+        - link "HOME" [ref=f2e6] [cursor=pointer]:
+          - /url: /
+        - link "DAILY" [ref=f2e7] [cursor=pointer]:
+          - /url: /daily
+        - link "WEEKLY" [ref=f2e8] [cursor=pointer]:
+          - /url: /weekly
+        - link "MONTHLY" [ref=f2e9] [cursor=pointer]:
+          - /url: /monthly
+        - link "ABOUT" [ref=f2e10] [cursor=pointer]:
+          - /url: /about
+  - main [ref=f2e12]:
+    - link "← back" [ref=f2e13] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f2e15]:
+      - heading "anomalyco/opencode" [level=1] [ref=f2e16]
+      - paragraph [ref=f2e17]: The open source AI coding agent. Free models included.
+      - link "view on github" [ref=f2e18] [cursor=pointer]:
+        - /url: https://github.com/anomalyco/opencode
+      - generic [ref=f2e19]:
+        - generic [ref=f2e20]:
+          - paragraph [ref=f2e21]: stars
+          - paragraph [ref=f2e22]: 1,86,998
+        - generic [ref=f2e23]:
+          - paragraph [ref=f2e24]: gained
+          - paragraph [ref=f2e25]: +8,900
+        - generic [ref=f2e26]:
+          - paragraph [ref=f2e27]: velocity
+          - paragraph [ref=f2e28]: "50"
+        - generic [ref=f2e29]:
+          - paragraph [ref=f2e30]: created
+          - paragraph [ref=f2e31]: Jul 22, 2026
+      - generic [ref=f2e32]:
+        - generic [ref=f2e33]: "period:"
+        - link "day" [ref=f2e34] [cursor=pointer]:
+          - /url: /repo/anomalyco-opencode?period=day
+        - link "week" [ref=f2e35] [cursor=pointer]:
+          - /url: /repo/anomalyco-opencode?period=week
+        - generic [ref=f2e36]: month
+      - generic [ref=f2e37]:
+        - paragraph [ref=f2e38]: star history
+        - img "star history" [ref=f2e39]:
+          - generic "178298" [ref=f2e40]
+          - generic "178598" [ref=f2e41]
+          - generic "178998" [ref=f2e42]
+          - generic "179598" [ref=f2e43]
+          - generic "180398" [ref=f2e44]
+          - generic "181898" [ref=f2e45]
+          - generic "183098" [ref=f2e46]
+          - generic "183798" [ref=f2e47]
+          - generic "184198" [ref=f2e48]
+          - generic "184498" [ref=f2e49]
+          - generic "185398" [ref=f2e50]
+          - generic "185998" [ref=f2e51]
+          - generic "186198" [ref=f2e52]
+          - generic "186998" [ref=f2e53]
+  - contentinfo [ref=f2e54]:
+    - paragraph [ref=f2e56]: "data: github api · refreshed daily"

@@ -33,7 +33,7 @@ function loadRepos(): RepoRecord[] {
     const list = raw.repos ?? raw;
     cache = (Array.isArray(list) ? list : []).map((r: any) => ({
       ...r,
-      created_at: r.created_at ?? r.fetched_at ?? "",
+      created_at: r.created_at ?? r.fetched_at ?? (r.history?.[0]?.recorded_at ?? ""),
     }));
   } catch {
     cache = [];

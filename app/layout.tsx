@@ -5,6 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "REPOSURGE - repos rising. fast.",
   description: "terminal velocity tracker for github repos",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({

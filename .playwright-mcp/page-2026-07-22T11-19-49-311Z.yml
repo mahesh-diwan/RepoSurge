@@ -1,0 +1,30 @@
+- generic [active] [ref=f3e1]:
+  - navigation [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "REPØSURGE" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e5]:
+        - link "HOME" [ref=f3e6] [cursor=pointer]:
+          - /url: /
+        - link "DAILY" [ref=f3e7] [cursor=pointer]:
+          - /url: /daily
+        - link "WEEKLY" [ref=f3e8] [cursor=pointer]:
+          - /url: /weekly
+        - link "MONTHLY" [ref=f3e9] [cursor=pointer]:
+          - /url: /monthly
+        - link "ABOUT" [ref=f3e10] [cursor=pointer]:
+          - /url: /about
+  - main [ref=f3e12]:
+    - generic [ref=f3e13]:
+      - generic [ref=f3e15]:
+        - paragraph [ref=f3e16]: what is this
+        - paragraph [ref=f3e17]: "reposurge tracks the fastest-rising open source projects on github. repos are ranked by star velocity: how quickly a repo gains stars relative to its existing count."
+      - generic [ref=f3e19]:
+        - paragraph [ref=f3e20]: how it works
+        - paragraph [ref=f3e21]: "top repos by stars are fetched daily from the github search api. star counts are compared against a baseline to calculate velocity:"
+        - paragraph [ref=f3e22]: velocity = (stars gained / baseline) × 1000
+      - generic [ref=f3e24]:
+        - paragraph [ref=f3e25]: stack
+        - paragraph [ref=f3e26]: next.js 14 · react 18 · tailwind css · motion
+  - contentinfo [ref=f3e27]:
+    - paragraph [ref=f3e29]: "data: github api · refreshed daily"

@@ -68,13 +68,13 @@ export default function RepoDetailPage({
           <div className="flex gap-8 mb-8">
             <div>
               <p className="text-dim text-[10px] mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums">{repo.stars.toLocaleString()}</p>
+              <p className="text-lg font-bold tabular-nums">{repo.stars.toLocaleString("en-US")}</p>
             </div>
             <div>
               <p className="text-dim text-[10px] mb-1">gained</p>
               <p className={`text-lg font-bold tabular-nums ${gainedColor}`}>
                 {repo.stars_gained > 0 ? "+" : ""}
-                {repo.stars_gained.toLocaleString()}
+                {repo.stars_gained.toLocaleString("en-US")}
               </p>
             </div>
             <div>

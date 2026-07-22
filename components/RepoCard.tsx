@@ -43,7 +43,7 @@ export default function RepoCard({
       <div className="text-right min-w-[80px] shrink-0">
         <span className={`text-xs tabular-nums font-bold ${gainedColor}`}>
           {stars_gained > 0 ? "+" : ""}
-          {stars_gained.toLocaleString()}
+          {stars_gained.toLocaleString("en-US")}
         </span>
       </div>
     </div>

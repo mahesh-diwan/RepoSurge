@@ -40,7 +40,7 @@ export default function AnimatedStat({ value, suffix = "", duration = 1500 }: Pr
 
   return (
     <span ref={ref} className="tabular-nums">
-      {display.toLocaleString()}
+      {display.toLocaleString("en-US")}
       {suffix}
     </span>
   );
