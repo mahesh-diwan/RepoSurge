@@ -24,7 +24,7 @@ export default function MonthlyPage() {
           <span className="text-terminal">|</span>
           <a href="/weekly" className="text-dim hover:text-terminal transition-colors">WEEKLY</a>
           <span className="text-terminal">|</span>
-          <span className="text-bone">MONTHLY</span>
+          <span className="text-bone">MONTHLY <span className="px-1 py-0.5 border border-terminal/50 text-[8px] tracking-widest text-terminal ml-1">LIVE</span></span>
         </div>
       </ScrollReveal>
 

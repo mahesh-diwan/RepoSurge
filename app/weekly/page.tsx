@@ -22,7 +22,7 @@ export default function WeeklyPage() {
         <div className="flex items-center gap-2 text-[10px] tracking-wider mb-6 border-b border-[#1a1a1a] pb-3">
           <a href="/daily" className="text-dim hover:text-terminal transition-colors">DAILY</a>
           <span className="text-terminal">|</span>
-          <span className="text-bone">WEEKLY</span>
+          <span className="text-bone">WEEKLY <span className="px-1 py-0.5 border border-terminal/50 text-[8px] tracking-widest text-terminal ml-1">LIVE</span></span>
           <span className="text-terminal">|</span>
           <a href="/monthly" className="text-dim hover:text-terminal transition-colors">MONTHLY</a>
         </div>

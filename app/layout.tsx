@@ -34,7 +34,7 @@ export default function RootLayout({
               <span className="animate-blink text-terminal ml-1">_</span>
             </a>
             <div className="hidden md:flex items-center gap-6">
-              {[
+               {[
                 { href: "/", label: "HOME" },
                 { href: "/daily", label: "DAILY" },
                 { href: "/weekly", label: "WEEKLY" },
@@ -47,6 +47,11 @@ export default function RootLayout({
                   className="text-dim hover:text-terminal transition-colors duration-300"
                 >
                   {link.label}
+                  {link.href === "/" && (
+                    <span className="ml-1.5 inline-block px-1 py-0.5 border border-terminal/50 text-[8px] tracking-widest text-terminal">
+                      LIVE
+                    </span>
+                  )}
                 </a>
               ))}
             </div>
