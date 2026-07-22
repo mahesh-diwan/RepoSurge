@@ -1,60 +1,784 @@
 {
   "repos": [
     {
-      "full_name": "facebook/react",
-      "name": "react",
-      "owner": "facebook",
-      "description": "The library for web UIs",
-      "language": "javascript",
-      "url": "https://github.com/facebook/react",
-      "stars": 228000,
-      "fetched_at": "2026-07-20T17:32:43.128Z",
-      "history": [
-        { "stars": 227400, "recorded_at": "2026-07-14T17:32:43.128Z" },
-        { "stars": 227500, "recorded_at": "2026-07-15T17:32:43.128Z" },
-        { "stars": 227600, "recorded_at": "2026-07-16T17:32:43.128Z" },
-        { "stars": 227700, "recorded_at": "2026-07-17T17:32:43.128Z" },
-        { "stars": 227800, "recorded_at": "2026-07-18T17:32:43.128Z" },
-        { "stars": 227900, "recorded_at": "2026-07-19T17:32:43.128Z" },
-        { "stars": 228000, "recorded_at": "2026-07-20T17:32:43.128Z" }
-      ]
-    },
-    {
-      "full_name": "vercel/next.js",
-      "name": "next.js",
-      "owner": "vercel",
-      "description": "The React Framework",
+      "full_name": "anomalyco/opencode",
+      "name": "opencode",
+      "owner": "anomalyco",
       "language": "typescript",
-      "url": "https://github.com/vercel/next.js",
-      "stars": 125000,
-      "fetched_at": "2026-07-20T17:32:43.128Z",
+      "url": "https://github.com/anomalyco/opencode",
+      "description": "The open source AI coding agent. Free models included.",
+      "stars": 186998,
       "history": [
-        { "stars": 124400, "recorded_at": "2026-07-14T17:32:43.128Z" },
-        { "stars": 124500, "recorded_at": "2026-07-15T17:32:43.128Z" },
-        { "stars": 124600, "recorded_at": "2026-07-16T17:32:43.128Z" },
-        { "stars": 124700, "recorded_at": "2026-07-17T17:32:43.128Z" },
-        { "stars": 124800, "recorded_at": "2026-07-18T17:32:43.128Z" },
-        { "stars": 124900, "recorded_at": "2026-07-19T17:32:43.128Z" },
-        { "stars": 125000, "recorded_at": "2026-07-20T17:32:43.128Z" }
+        {
+          "stars": 178098,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 178298,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 178598,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 178998,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 179598,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 180398,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 181898,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 183098,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 183798,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 184198,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 184498,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 185398,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 185998,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 186198,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 186998,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
       ]
     },
     {
-      "full_name": "rust-lang/rust",
-      "name": "rust",
-      "owner": "rust-lang",
-      "description": "Empowering everyone to build reliable and efficient software.",
-      "language": "rust",
-      "url": "https://github.com/rust-lang/rust",
-      "stars": 98000,
-      "fetched_at": "2026-07-20T17:32:43.128Z",
+      "full_name": "graphify-labs/graphify",
+      "name": "graphify",
+      "owner": "graphify-labs",
+      "language": "python",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "description": "AI coding skill that turns codebases into knowledge graphs.",
+      "stars": 90360,
       "history": [
-        { "stars": 97400, "recorded_at": "2026-07-14T17:32:43.128Z" },
-        { "stars": 97500, "recorded_at": "2026-07-15T17:32:43.128Z" },
-        { "stars": 97600, "recorded_at": "2026-07-16T17:32:43.128Z" },
-        { "stars": 97700, "recorded_at": "2026-07-17T17:32:43.128Z" },
-        { "stars": 97800, "recorded_at": "2026-07-18T17:32:43.128Z" },
-        { "stars": 97900, "recorded_at": "2026-07-19T17:32:43.128Z" },
-        { "stars": 98000, "recorded_at": "2026-07-20T17:32:43.128Z" }
+        {
+          "stars": 73460,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 73860,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 74360,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 74960,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 75660,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 76560,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 77560,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 78960,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 80560,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 82360,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 84860,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 86860,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 88360,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 89160,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 90360,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "n8n-io/n8n",
+      "name": "n8n",
+      "owner": "n8n-io",
+      "language": "typescript",
+      "url": "https://github.com/n8n-io/n8n",
+      "description": "Fair-code workflow automation with native AI.",
+      "stars": 196866,
+      "history": [
+        {
+          "stars": 193716,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 193916,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 194016,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 194266,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 194416,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 194616,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 194966,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 195266,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 195516,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 195666,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 195866,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 196266,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 196366,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 196566,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 196866,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "shubhamsaboo/awesome-llm-apps",
+      "name": "awesome-llm-apps",
+      "owner": "shubhamsaboo",
+      "language": "python",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "description": "100+ AI Agent and RAG apps you can run.",
+      "stars": 123659,
+      "history": [
+        {
+          "stars": 121379,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 121479,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 121529,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 121609,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 121709,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 121859,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 122059,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 122359,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 122609,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 122809,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 122909,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 123209,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 123359,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 123459,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 123659,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "koala73/worldmonitor",
+      "name": "worldmonitor",
+      "owner": "koala73",
+      "language": "typescript",
+      "url": "https://github.com/koala73/worldmonitor",
+      "description": "Global real-time monitoring dashboard.",
+      "stars": 67115,
+      "history": [
+        {
+          "stars": 58620,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 58720,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 58920,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 59320,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 59920,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 60720,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 62015,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 63815,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 64215,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 64515,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 64715,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 65215,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 65315,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 65615,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 67115,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "diegosouzapw/omniroute",
+      "name": "omniroute",
+      "owner": "diegosouzapw",
+      "language": "typescript",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "description": "All-in-one routing and networking solution.",
+      "stars": 24205,
+      "history": [
+        {
+          "stars": 18021,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 18421,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 18621,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 18921,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 19521,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 19621,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 19921,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 20121,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 20271,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 20371,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 20571,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 20871,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 21371,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 22171,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 24205,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "tirth8205/code-review-graph",
+      "name": "code-review-graph",
+      "owner": "tirth8205",
+      "language": "python",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "description": "Local-first code intelligence graph for MCP and CLI.",
+      "stars": 19830,
+      "history": [
+        {
+          "stars": 14555,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 14855,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 15005,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 15255,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 15755,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 16105,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 16305,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 16705,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 16755,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 16855,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 17005,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 17205,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 17505,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 17905,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 19830,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "trycua/cua",
+      "name": "cua",
+      "owner": "trycua",
+      "language": "typescript",
+      "url": "https://github.com/trycua/cua",
+      "description": "Computer Use Agent — AI that controls your computer.",
+      "stars": 20200,
+      "history": [
+        {
+          "stars": 17270,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 17490,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 17670,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 17920,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 18320,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 18470,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 18670,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 18770,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 19070,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 19120,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 19320,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 19420,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 19570,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 19850,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 20200,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "1jehuang/jcode",
+      "name": "jcode",
+      "owner": "1jehuang",
+      "language": "rust",
+      "url": "https://github.com/1jehuang/jcode",
+      "description": "Next-gen JavaScript runtime written in Rust.",
+      "stars": 10561,
+      "history": [
+        {
+          "stars": 7928,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 8028,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 8178,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 8378,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 8438,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 8518,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 8618,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 8668,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 8768,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 8968,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 9118,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 9218,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 9418,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 9718,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 10561,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "ibelick/ui-skills",
+      "name": "ui-skills",
+      "owner": "ibelick",
+      "language": "typescript",
+      "url": "https://github.com/ibelick/ui-skills",
+      "description": "Skills for Design Engineers.",
+      "stars": 4647,
+      "history": [
+        {
+          "stars": 4057,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 4117,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 4142,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 4182,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 4262,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 4282,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 4312,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 4362,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 4372,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 4387,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 4407,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 4437,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 4477,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 4547,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 4647,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "codecrafters-io/build-your-own-x",
+      "name": "build-your-own-x",
+      "owner": "codecrafters-io",
+      "language": "markdown",
+      "url": "https://github.com/codecrafters-io/build-your-own-x",
+      "description": "Master programming by recreating technologies.",
+      "stars": 527559,
+      "history": [
+        {
+          "stars": 526299,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        },
+        {
+          "stars": 526389,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 526449,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 526569,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 526649,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 526749,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 526799,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 526929,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 526999,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 527109,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 527199,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 527259,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 527379,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 527459,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 527559,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
       ]
     }
   ]
