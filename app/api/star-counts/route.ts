@@ -28,7 +28,6 @@ export async function GET() {
       REPOS.map(({ owner, name }) =>
         fetch(`https://api.github.com/repos/${owner}/${name}`, {
           headers: { Accept: "application/vnd.github.v3+json" },
-          next: { revalidate: 30 },
         }).then((r) => (r.ok ? r.json() : Promise.reject(r.status))),
       ),
     );
@@ -48,7 +47,7 @@ export async function GET() {
   } catch {
     if (cached) return NextResponse.json(cached.data);
     return NextResponse.json(
-      { repos: [], timestamp: now.toString() },
+      { repos: [], timestamp: new Date().toISOString() },
       { status: 503 },
     );
   }

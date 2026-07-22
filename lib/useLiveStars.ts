@@ -15,10 +15,11 @@ export function useLiveStars() {
     let aborter: AbortController | null = null;
 
     async function poll() {
+      aborter?.abort();
       aborter = new AbortController();
       try {
         const res = await fetch("/api/star-counts", { signal: aborter.signal });
-        if (!res.ok) return;
+        if (!res.ok) { setLive(false); return; }
         const data: LiveData = await res.json();
         if (!mounted) return;
         const map: Record<string, number> = {};
