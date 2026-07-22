@@ -3,13 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-const NAV_LINKS = [
-  { href: "/", label: "HOME" },
-  { href: "/daily", label: "DAILY" },
-  { href: "/weekly", label: "WEEKLY" },
-  { href: "/monthly", label: "MONTHLY" },
-  { href: "/about", label: "ABOUT" },
-];
+const NAV_LINKS = ["HOME", "DAILY", "WEEKLY", "MONTHLY", "ABOUT"];
+const NAV_PATHS = ["/", "/daily", "/weekly", "/monthly", "/about"];
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -18,7 +13,7 @@ export default function MobileNav() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden text-dim hover:text-terminal transition-colors text-xs tracking-wider"
+        className="md:hidden text-dim hover:text-terminal transition-colors text-xs"
         aria-label="Toggle menu"
       >
         [{open ? "X" : "="}]
@@ -40,14 +35,14 @@ export default function MobileNav() {
               className="flex flex-col items-center gap-6"
               onClick={(e) => e.stopPropagation()}
             >
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map((label, i) => (
                 <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-bone/70 hover:text-terminal transition-colors text-lg tracking-wider"
+                  key={label}
+                  href={NAV_PATHS[i]}
+                  className="text-bone/70 hover:text-terminal transition-colors text-lg"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="text-terminal">&gt;</span> {link.label}
+                  {label}
                 </a>
               ))}
             </motion.nav>

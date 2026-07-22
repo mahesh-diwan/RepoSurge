@@ -31,10 +31,9 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between text-xs tracking-wider">
             <a href="/" className="text-terminal font-bold">
               REP<span className="text-bone">Ø</span>SURGE
-              <span className="animate-blink text-terminal ml-1">_</span>
             </a>
             <div className="hidden md:flex items-center gap-6">
-               {[
+              {[
                 { href: "/", label: "HOME" },
                 { href: "/daily", label: "DAILY" },
                 { href: "/weekly", label: "WEEKLY" },
@@ -44,14 +43,9 @@ export default function RootLayout({
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-dim hover:text-terminal transition-colors duration-300"
+                  className="text-dim hover:text-terminal transition-colors"
                 >
                   {link.label}
-                  {link.href === "/" && (
-                    <span className="ml-1.5 inline-block px-1 py-0.5 border border-terminal/50 text-[8px] tracking-widest text-terminal">
-                      LIVE
-                    </span>
-                  )}
                 </a>
               ))}
             </div>
@@ -61,10 +55,10 @@ export default function RootLayout({
 
         <div className="pt-16">{children}</div>
 
-        <footer className="border-t border-[#1a1a1a] py-4 mt-20">
+        <footer className="border-t border-[#1a1a1a] py-6 mt-24">
           <div className="max-w-7xl mx-auto px-6">
-            <p className="text-dim text-[10px] tracking-wider">
-              <span className="text-terminal">$</span> data: github api | refreshed daily
+            <p className="text-dim text-[10px]">
+              data: github api &middot; refreshed daily
             </p>
           </div>
         </footer>

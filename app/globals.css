@@ -30,21 +30,3 @@
     color: inherit;
   }
 }
-
-@layer components {
-  .prompt {
-    @apply text-terminal;
-  }
-
-  .prompt::before {
-    content: "> ";
-  }
-
-  .dim {
-    @apply text-dim;
-  }
-
-  .row {
-    @apply border-b border-[#1a1a1a] py-2 flex items-center gap-4;
-  }
-}

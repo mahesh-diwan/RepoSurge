@@ -12,24 +12,19 @@ const LOGOS = [
 export default function TrustLogos() {
   return (
     <ScrollReveal>
-      <section className="border-y border-[#1a1a1a] py-4">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-dim text-[10px] tracking-wider mb-3">
-            <span className="text-terminal">$</span> ecosystem
-          </p>
-          <div className="flex items-center gap-8 flex-wrap">
-            {LOGOS.map((logo) => (
-              <img
-                key={logo.slug}
-                src={`https://cdn.simpleicons.org/${logo.slug}/666666`}
-                alt={logo.alt}
-                width={14}
-                height={14}
-                className="hover:brightness-150 transition-all duration-300"
-                loading="lazy"
-              />
-            ))}
-          </div>
+      <section className="border-y border-[#1a1a1a] py-4 mb-12">
+        <div className="max-w-7xl mx-auto px-6 flex items-center gap-8 flex-wrap">
+          {LOGOS.map((logo) => (
+            <img
+              key={logo.slug}
+              src={`https://cdn.simpleicons.org/${logo.slug}/666666`}
+              alt={logo.alt}
+              width={14}
+              height={14}
+              className="hover:brightness-150 transition-all duration-300"
+              loading="lazy"
+            />
+          ))}
         </div>
       </section>
     </ScrollReveal>

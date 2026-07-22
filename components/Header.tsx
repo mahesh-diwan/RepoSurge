@@ -1,16 +1,15 @@
 import { getStats } from "@/lib/db";
+import AnimatedStat from "./AnimatedStat";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Header() {
   const stats = getStats();
 
   return (
-    <section className="px-6 pt-12 pb-16">
+    <section className="px-6 pt-16 pb-12">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <p className="text-terminal text-xs tracking-wider mb-4">
-            <span className="text-terminal">$</span> ./tracker --scan
-          </p>
+          <p className="text-terminal text-xs mb-4">repos rising. fast.</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
@@ -19,27 +18,12 @@ export default function Header() {
           </h1>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
-          <p className="text-dim text-sm mt-4">
-            repos rising. fast. <span className="animate-blink text-terminal">_</span>
+        <ScrollReveal delay={0.15}>
+          <p className="text-dim text-xs mt-6">
+            <AnimatedStat value={stats.totalRepos} /> repos &middot;{" "}
+            <AnimatedStat value={stats.totalStars} duration={2000} /> stars &middot;{" "}
+            <AnimatedStat value={stats.languages} /> languages
           </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <div className="mt-12 space-y-1 text-xs tracking-wider">
-            <p>
-              <span className="text-terminal">$</span> cat ./stats
-            </p>
-            <p className="text-dim">
-              repos tracked: <span className="text-bone">{stats.totalRepos}</span>
-            </p>
-            <p className="text-dim">
-              stars monitored: <span className="text-bone">{stats.totalStars.toLocaleString()}</span>
-            </p>
-            <p className="text-dim">
-              languages: <span className="text-bone">{stats.languages}</span>
-            </p>
-          </div>
         </ScrollReveal>
       </div>
     </section>
