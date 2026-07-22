@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Star } from "@phosphor-icons/react/dist/ssr/Star";
 import StarChart from "./StarChart";
 
 export type RepoCardData = {
@@ -23,54 +22,50 @@ export default function RepoCard({
   stars_gained,
   sparkline,
   slug,
-  stars,
-}: RepoCardData & { style?: React.CSSProperties }) {
+}: RepoCardData) {
   const gainedColor =
     stars_gained > 0
-      ? "text-electric"
+      ? "text-terminal"
       : stars_gained < 0
         ? "text-red-400"
-        : "text-bone/30";
+        : "text-dim";
 
   return (
-    <div className="double-bezel group">
-      <div className="double-bezel-inner p-4 md:p-5">
-        <div className="flex items-center gap-4">
-          <div className="w-8 text-right text-bone/20 tabular-nums text-xs font-mono">
-            {String(rank).padStart(2, "0")}
-          </div>
+    <div className="row py-3 group">
+      <div className="w-8 text-right text-dim tabular-nums text-xs shrink-0">
+        {String(rank).padStart(2, "0")}
+      </div>
 
-          <div className="flex-1 min-w-0">
-            <Link
-              href={`/repo/${slug}`}
-              className="text-bone group-hover:text-electric transition-colors duration-500 truncate block font-bold text-sm"
-              style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
-            >
-              {full_name}
-            </Link>
-            <p className="text-bone/30 text-xs truncate mt-1">
-              {description ?? "-"}
-            </p>
-          </div>
+      <div className="flex-1 min-w-0">
+        <Link
+          href={`/repo/${slug}`}
+          className="text-bone group-hover:text-terminal transition-colors truncate block text-sm"
+        >
+          <span className="text-terminal opacity-0 group-hover:opacity-100 transition-opacity mr-1">
+            &gt;
+          </span>
+          {full_name}
+        </Link>
+        <p className="text-dim text-[10px] truncate mt-0.5">
+          {description ?? "-"}
+        </p>
+      </div>
 
-          <div className="hidden sm:block">
-            <StarChart data={sparkline} />
-          </div>
+      <div className="hidden sm:block shrink-0">
+        <StarChart data={sparkline} />
+      </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            {language && (
-              <span className="hidden md:inline-block pill-badge glass-panel text-bone/40 text-[9px]">
-                {language}
-              </span>
-            )}
-            <div className="text-right min-w-[70px] flex items-center gap-1">
-              <Star weight="fill" size={10} className="text-bone/30" />
-              <span className={`text-sm tabular-nums font-bold font-mono ${gainedColor}`}>
-                {stars_gained > 0 ? "+" : ""}
-                {stars_gained.toLocaleString()}
-              </span>
-            </div>
-          </div>
+      <div className="flex items-center gap-3 shrink-0">
+        {language && (
+          <span className="hidden md:inline-block text-dim text-[10px] border border-[#333] px-2 py-0.5">
+            {language}
+          </span>
+        )}
+        <div className="text-right min-w-[80px]">
+          <span className={`text-xs tabular-nums font-bold ${gainedColor}`}>
+            {stars_gained > 0 ? "+" : ""}
+            {stars_gained.toLocaleString()} ★
+          </span>
         </div>
       </div>
     </div>

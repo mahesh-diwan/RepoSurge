@@ -18,26 +18,26 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-6">
         {trending.length > 0 && (
           <ScrollReveal>
-            <section className="mb-20">
-                      <div className="flex items-center gap-4 mb-8">
-                <div className="h-px flex-1 bg-white/5" />
-              </div>
+            <section className="mb-12">
+              <p className="text-terminal text-xs tracking-wider mb-4">
+                <span className="text-terminal">$</span> trending --top 3
+              </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {trending.map((repo, i) => (
-                  <ScrollReveal key={repo.full_name} delay={i * 0.1} className={i === 0 ? "md:col-span-2" : ""}>
+                  <ScrollReveal key={repo.full_name} delay={i * 0.1}>
                     <a
                       href={`/repo/${repo.slug}`}
-                      className="glass-card block p-6 group"
+                      className="block border border-[#1a1a1a] p-4 hover:border-terminal/30 transition-colors group"
                     >
-                      <p className="font-bold text-sm truncate group-hover:text-electric transition-colors duration-500">
+                      <p className="text-dim text-[10px] tracking-wider mb-2">
+                        #{i + 1} <span className="text-terminal">trending</span>
+                      </p>
+                      <p className="text-sm truncate group-hover:text-terminal transition-colors">
                         {repo.full_name}
                       </p>
-                      <p className="text-electric text-2xl font-bold tabular-nums mt-4 font-mono">
-                        +{repo.stars_gained.toLocaleString()}
-                      </p>
-                      <p className="text-bone/30 text-xs mt-2 font-mono">
-                        {repo.velocity} velocity
+                      <p className="text-terminal text-lg tabular-nums mt-3">
+                        +{repo.stars_gained.toLocaleString()} ★
                       </p>
                     </a>
                   </ScrollReveal>
@@ -49,24 +49,23 @@ export default function Home() {
 
         <ScrollReveal>
           <section>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="pill-badge glass-panel text-bone/60">
-                WEEKLY RANKINGS
-              </div>
-              <div className="h-px flex-1 bg-white/5" />
-              <div className="flex gap-2 text-[10px] tracking-widest">
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-terminal text-xs tracking-wider">
+                <span className="text-terminal">$</span> ls ./rankings/weekly
+              </p>
+              <div className="flex gap-2 text-[10px] tracking-wider">
                 <a
                   href="/daily"
-                  className="px-3 py-1.5 rounded-full text-bone/40 hover:text-bone hover:bg-white/5 transition-all duration-500"
+                  className="text-dim hover:text-terminal transition-colors"
                 >
                   DAILY
                 </a>
-                <span className="px-3 py-1.5 rounded-full bg-white/10 text-bone">
-                  WEEKLY
-                </span>
+                <span className="text-terminal">/</span>
+                <span className="text-bone">WEEKLY</span>
+                <span className="text-terminal">/</span>
                 <a
                   href="/monthly"
-                  className="px-3 py-1.5 rounded-full text-bone/40 hover:text-bone hover:bg-white/5 transition-all duration-500"
+                  className="text-dim hover:text-terminal transition-colors"
                 >
                   MONTHLY
                 </a>
@@ -74,15 +73,13 @@ export default function Home() {
             </div>
 
             {repos.length === 0 ? (
-              <div className="glass-card p-12 text-center">
-                <p className="text-bone/30 text-sm">
-                  no repos data yet. run npm run fetch first.
-                </p>
-              </div>
+              <p className="text-dim text-xs mt-8">
+                <span className="text-terminal">$</span> no data. run: npm run fetch
+              </p>
             ) : (
-              <div className="space-y-3">
+              <div>
                 {repos.map((repo, i) => (
-                  <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.05, 0.5)}>
+                  <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.03, 0.5)}>
                     <RepoCard
                       rank={repo.rank}
                       full_name={repo.full_name}

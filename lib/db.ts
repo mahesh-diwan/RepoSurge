@@ -1,10 +1,9 @@
-import path from "path";
-import fs from "fs";
+interface HistoryEntry {
+  stars: number;
+  recorded_at: string;
+}
 
-const DATA_PATH = path.join(process.cwd(), "src", "content", "repos.json");
-
-type HistoryRow = { stars: number; recorded_at: string };
-type RepoRecord = {
+interface RepoRecord {
   full_name: string;
   name: string;
   owner: string;
@@ -14,10 +13,33 @@ type RepoRecord = {
   stars: number;
   created_at: string;
   fetched_at: string;
-  history: HistoryRow[];
-};
+  history: HistoryEntry[];
+}
 
-type Store = { repos: RepoRecord[] };
+interface RepoWithVelocity extends RepoRecord {
+  rank: number;
+  stars_gained: number;
+  sparkline: number[];
+  velocity: number;
+  slug: string;
+}
+
+let cache: RepoRecord[] | null = null;
+
+function loadRepos(): RepoRecord[] {
+  if (cache) return cache;
+  try {
+    const raw = require("@/src/content/repos.json");
+    const list = raw.repos ?? raw;
+    cache = (Array.isArray(list) ? list : []).map((r: any) => ({
+      ...r,
+      created_at: r.created_at ?? r.fetched_at ?? "",
+    }));
+  } catch {
+    cache = [];
+  }
+  return cache;
+}
 
 const PERIOD_TO_DAYS: Record<string, number> = {
   day: 1,
@@ -25,78 +47,68 @@ const PERIOD_TO_DAYS: Record<string, number> = {
   month: 30,
 };
 
-function readStore(): Store {
-  try {
-    return JSON.parse(fs.readFileSync(DATA_PATH, "utf8")) as Store;
-  } catch {
-    return { repos: [] };
-  }
-}
-
-export type RepoWithVelocity = {
-  full_name: string;
-  name: string;
-  owner: string;
-  description: string | null;
-  language: string | null;
-  url: string;
-  stars: number;
-  created_at: string;
-  fetched_at: string;
-  rank: number;
-  stars_gained: number;
-  sparkline: number[];
-  velocity: number;
-  slug: string;
+const SPARKLINE_LENGTH: Record<string, number> = {
+  day: 3,
+  week: 7,
+  month: 14,
 };
 
-export function getRepos(period: string): RepoWithVelocity[] {
+export function getRepos(period: string = "week"): RepoWithVelocity[] {
+  const repos = loadRepos();
   const days = PERIOD_TO_DAYS[period] ?? 7;
-  const cutoff = Date.now() - days * 86400000;
-  const store = readStore();
+  const cutoff = new Date(Date.now() - days * 86400000);
+  const sparkCount = SPARKLINE_LENGTH[period] ?? 7;
 
-  return store.repos
-    .map((r) => {
-      const inWindow = r.history.filter(
-        (h) => new Date(h.recorded_at).getTime() >= cutoff,
-      );
-      const baseline = inWindow.length ? inWindow[0].stars : r.stars;
-      const stars_gained = r.stars - baseline;
-      const sparkline = (inWindow.length ? inWindow : r.history)
-        .slice(-7)
-        .map((h) => h.stars);
-      const velocity =
-        baseline > 0
-          ? Math.round((stars_gained / baseline) * 1000)
-          : stars_gained;
-      return {
-        full_name: r.full_name,
-        name: r.name,
-        owner: r.owner,
-        description: r.description,
-        language: r.language,
-        url: r.url,
-        stars: r.stars,
-        created_at: r.created_at,
-        fetched_at: r.fetched_at,
-        stars_gained,
-        sparkline,
-        velocity,
-        slug: r.full_name.replace("/", "-"),
-      };
-    })
-    .sort((a, b) => b.stars_gained - a.stars_gained)
-    .map((r, i) => ({ ...r, rank: i + 1 }));
-}
+  const withVelocity = repos.map((repo) => {
+    const windowed = repo.history.filter(
+      (h) => new Date(h.recorded_at) >= cutoff
+    );
+    const baseline = windowed.length > 0 ? windowed[0].stars : repo.stars;
+    const stars_gained = repo.stars - baseline;
 
-export function getRepoBySlug(slug: string): RepoWithVelocity | undefined {
-  return getRepos("week").find((r) => r.slug === slug);
+    const sparkHistory = windowed.length > 0 ? windowed : repo.history;
+    const sparkline = sparkHistory
+      .slice(-sparkCount)
+      .map((h) => h.stars);
+
+    const velocity =
+      baseline > 0
+        ? Math.round((stars_gained / baseline) * 1000)
+        : stars_gained;
+
+    return {
+      ...repo,
+      stars_gained,
+      sparkline,
+      velocity,
+      rank: 0,
+      slug: repo.full_name.replace("/", "-"),
+    };
+  });
+
+  withVelocity.sort((a, b) => b.stars_gained - a.stars_gained);
+  return withVelocity.map((repo, i) => ({ ...repo, rank: i + 1 }));
 }
 
 export function getStats() {
-  const store = readStore();
-  const totalRepos = store.repos.length;
-  const totalStars = store.repos.reduce((sum, r) => sum + r.stars, 0);
-  const languages = new Set(store.repos.map((r) => r.language).filter(Boolean));
+  const repos = loadRepos();
+  const totalRepos = repos.length;
+  const totalStars = repos.reduce((sum, r) => sum + r.stars, 0);
+  const languages = new Set(repos.map((r) => r.language).filter(Boolean));
   return { totalRepos, totalStars, languages: languages.size };
+}
+
+export function getRepoDetails(
+  slug: string,
+  period: string = "week"
+): (RepoWithVelocity & { created_at: string }) | null {
+  const repos = getRepos(period);
+  const repo = repos.find((r) => r.slug === slug);
+  if (!repo) return null;
+
+  const fullRepo = loadRepos().find((r) => r.full_name === repo.full_name);
+  return {
+    ...repo,
+    created_at: fullRepo?.created_at ?? "",
+  };
 }

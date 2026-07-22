@@ -5,42 +5,40 @@ export default function Header() {
   const stats = getStats();
 
   return (
-    <section className="pb-24 px-6">
+    <section className="px-6 pt-12 pb-16">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <div className="pill-badge glass-panel inline-block mb-6 text-electric">
-            STAR VELOCITY TRACKER
-          </div>
+          <p className="text-terminal text-xs tracking-wider mb-4">
+            <span className="text-terminal">$</span> ./tracker --scan
+          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9]">
-            REP<span className="text-electric">Ø</span>SURGE
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none">
+            REP<span className="text-bone">Ø</span>SURGE
           </h1>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="text-bone/40 text-lg mt-6 max-w-md font-light">
-            repos rising. fast.
+          <p className="text-dim text-sm mt-4">
+            repos rising. fast. <span className="animate-blink text-terminal">_</span>
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
-          <div className="flex gap-16 mt-16">
-            {[
-              { value: stats.totalRepos.toLocaleString(), label: "REPOS TRACKED" },
-              { value: stats.totalStars.toLocaleString(), label: "STARS MONITORED" },
-              { value: stats.languages.toString(), label: "LANGUAGES" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl md:text-4xl font-bold tabular-nums font-mono">
-                  {stat.value}
-                </p>
-                <p className="text-bone/30 text-[10px] tracking-[0.2em] mt-2 font-medium">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="mt-12 space-y-1 text-xs tracking-wider">
+            <p>
+              <span className="text-terminal">$</span> cat ./stats
+            </p>
+            <p className="text-dim">
+              repos tracked: <span className="text-bone">{stats.totalRepos}</span>
+            </p>
+            <p className="text-dim">
+              stars monitored: <span className="text-bone">{stats.totalStars.toLocaleString()}</span>
+            </p>
+            <p className="text-dim">
+              languages: <span className="text-bone">{stats.languages}</span>
+            </p>
           </div>
         </ScrollReveal>
       </div>

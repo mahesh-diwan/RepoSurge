@@ -1,33 +1,11 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 import MobileNav from "@/components/MobileNav";
-import FilmGrain from "@/components/FilmGrain";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RepoSurge - repos rising. fast.",
-  description: "GitHub repositories ranked by star velocity.",
+  title: "REPOSURGE - repos rising. fast.",
+  description: "terminal velocity tracker for github repos",
 };
-
-function MeshBackground() {
-  return (
-    <div className="mesh-gradient" aria-hidden="true">
-      <div
-        className="mesh-orb w-[600px] h-[600px] bg-purple-600/20 top-[-200px] left-[-100px]"
-        style={{ animationDelay: "0s" }}
-      />
-      <div
-        className="mesh-orb w-[500px] h-[500px] bg-emerald-500/15 top-[40%] right-[-150px]"
-        style={{ animationDelay: "-7s" }}
-      />
-      <div
-        className="mesh-orb w-[400px] h-[400px] bg-electric/10 bottom-[-100px] left-[30%]"
-        style={{ animationDelay: "-14s" }}
-      />
-    </div>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -35,21 +13,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>
-        <MeshBackground />
-        <FilmGrain />
-
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-max">
-          <div className="glass-panel rounded-full px-2 py-2 flex items-center gap-1">
-            <a
-              href="/"
-              className="px-4 py-2 text-sm font-bold tracking-tight text-bone hover:text-electric transition-colors duration-500"
-              style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
-            >
-              REP<span className="text-electric">Ø</span>SURGE
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-mono">
+        <nav className="fixed top-0 left-0 right-0 z-40 bg-midnight/90 border-b border-[#1a1a1a]">
+          <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between text-xs tracking-wider">
+            <a href="/" className="text-terminal font-bold">
+              REP<span className="text-bone">Ø</span>SURGE
+              <span className="animate-blink text-terminal ml-1">_</span>
             </a>
-            <div className="hidden md:flex items-center gap-1 text-[11px] tracking-widest font-medium">
+            <div className="hidden md:flex items-center gap-6">
               {[
                 { href: "/", label: "HOME" },
                 { href: "/daily", label: "DAILY" },
@@ -60,8 +44,7 @@ export default function RootLayout({
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-2 rounded-full text-bone/60 hover:text-bone hover:bg-white/5 transition-all duration-500"
-                  style={{ transitionTimingFunction: "cubic-bezier(0.32, 0.72, 0, 1)" }}
+                  className="text-dim hover:text-terminal transition-colors duration-300"
                 >
                   {link.label}
                 </a>
@@ -71,12 +54,12 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <div className="pt-24">{children}</div>
+        <div className="pt-16">{children}</div>
 
-        <footer className="mt-20 py-12 border-t border-white/5">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <p className="text-bone/20 text-xs tracking-widest">
-              data: github api | refreshed daily
+        <footer className="border-t border-[#1a1a1a] py-4 mt-20">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="text-dim text-[10px] tracking-wider">
+              <span className="text-terminal">$</span> data: github api | refreshed daily
             </p>
           </div>
         </footer>
