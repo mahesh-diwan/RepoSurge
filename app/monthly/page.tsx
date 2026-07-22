@@ -1,5 +1,5 @@
 import { getRepos } from "@/lib/db";
-import RepoCard from "@/components/RepoCard";
+import RepoList from "@/components/RepoList";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function MonthlyPage() {
@@ -16,23 +16,7 @@ export default function MonthlyPage() {
         </div>
       </ScrollReveal>
 
-      {repos.length === 0 ? (
-        <p className="text-dim text-xs mt-8">no data. run: npm run fetch</p>
-      ) : (
-        <div>
-          {repos.map((repo, i) => (
-            <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.02, 0.3)}>
-              <RepoCard
-                rank={repo.rank}
-                full_name={repo.full_name}
-                stars_gained={repo.stars_gained}
-                sparkline={repo.sparkline}
-                slug={repo.slug}
-              />
-            </ScrollReveal>
-          ))}
-        </div>
-      )}
+      <RepoList repos={repos} />
     </main>
   );
 }

@@ -13,7 +13,7 @@ export default function Header() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none text-balance">
             REP<span className="text-bone">Ø</span>SURGE
           </h1>
         </ScrollReveal>

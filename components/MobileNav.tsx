@@ -13,25 +13,28 @@ export default function MobileNav() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden text-dim hover:text-terminal transition-colors text-xs"
+        className="md:hidden text-dim hover:text-terminal transition-colors text-sm"
         aria-label="Toggle menu"
       >
-        [{open ? "X" : "="}]
+        {open ? "✕" : "☰"}
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-50 bg-midnight flex items-center justify-center md:hidden"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-midnight/95 flex items-center justify-center md:hidden"
             onClick={() => setOpen(false)}
+            style={{ WebkitBackdropFilter: "blur(4px)" }}
           >
             <motion.nav
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="flex flex-col items-center gap-6"
               onClick={(e) => e.stopPropagation()}
             >

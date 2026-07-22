@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import MobileNav from "@/components/MobileNav";
+import LastUpdated from "@/components/LastUpdated";
+import { getLastUpdated } from "@/lib/db";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,6 +9,8 @@ export const metadata: Metadata = {
   description: "terminal velocity tracker for github repos",
   icons: { icon: "/favicon.svg" },
 };
+
+const lastUpdated = getLastUpdated();
 
 export default function RootLayout({
   children,
@@ -57,10 +61,11 @@ export default function RootLayout({
         <div className="pt-16">{children}</div>
 
         <footer className="border-t border-[#1a1a1a] py-6 mt-24">
-          <div className="max-w-7xl mx-auto px-6">
-            <p className="text-dim text-[10px]">
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <p className="text-dim text-[10px] sm:text-xs">
               data: github api &middot; refreshed daily
             </p>
+            {lastUpdated && <LastUpdated dateStr={lastUpdated} />}
           </div>
         </footer>
       </body>

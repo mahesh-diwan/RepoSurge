@@ -98,6 +98,15 @@ export function getStats() {
   return { totalRepos, totalStars, languages: languages.size };
 }
 
+export function getLastUpdated(): string {
+  const repos = loadRepos();
+  const dates = repos
+    .flatMap(r => [r.fetched_at, ...r.history.map(h => h.recorded_at)])
+    .filter(Boolean);
+  if (dates.length === 0) return "";
+  return dates.sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0];
+}
+
 export function getRepoDetails(
   slug: string,
   period: string = "week"
