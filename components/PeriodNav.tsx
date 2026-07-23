@@ -16,7 +16,7 @@ export default function PeriodNav({
       {PERIODS.map((label) => {
         const slug = TO_SLUG[label];
         return slug === current ? (
-          <span key={label} className="text-terminal font-bold" aria-current="page" title="Current view">{label}</span>
+          <span key={label} className="text-terminal font-bold border border-terminal/30 px-2 py-1" aria-current="page" title="Current view">{label}</span>
         ) : (
           <Link key={label} href={`/${label}`} className="text-dim hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors py-2" title={`View ${label} leaderboard`}>{label}</Link>
         );

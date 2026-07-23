@@ -19,9 +19,9 @@ export default function Header() {
 
         <ScrollReveal delay={0.15}>
           <p className="text-bone/60 text-xs mt-8">
-            <span className="tabular-nums">{stats.totalRepos.toLocaleString("en-US")}</span> repos &middot;{" "}
-            <span className="tabular-nums">{stats.totalStars.toLocaleString("en-US")}</span> stars &middot;{" "}
-            <span className="tabular-nums">{stats.languages.toLocaleString("en-US")}</span> languages
+            <span title="Total repositories" className="tabular-nums">{stats.totalRepos.toLocaleString("en-US")}</span> ⊞ repos &middot;{" "}
+            <span title="Total stars" className="tabular-nums">{stats.totalStars.toLocaleString("en-US")}</span> ★ stars &middot;{" "}
+            <span title="Programming languages" className="tabular-nums">{stats.languages.toLocaleString("en-US")}</span> ⊞ languages
           </p>
         </ScrollReveal>
       </div>
