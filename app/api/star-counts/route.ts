@@ -2,16 +2,20 @@ import { NextResponse } from "next/server";
 
 const REPOS = [
   { owner: "anomalyco", name: "opencode" },
-  { owner: "Graphify-Labs", name: "graphify" },
-  { owner: "koala73", name: "worldmonitor" },
-  { owner: "tirth8205", name: "code-review-graph" },
-  { owner: "DiegoSouzaPW", name: "omniroute" },
+  { owner: "graphify-labs", name: "graphify" },
   { owner: "n8n-io", name: "n8n" },
-  { owner: "1jehuang", name: "jcode" },
   { owner: "shubhamsaboo", name: "awesome-llm-apps" },
-  { owner: "all-ai", name: "obsidian-tbirth" },
-  { owner: "tony-istahockey", name: "pianolab" },
-  { owner: "peter-kish", name: "glacier" },
+  { owner: "koala73", name: "worldmonitor" },
+  { owner: "diegosouzapw", name: "omniroute" },
+  { owner: "tirth8205", name: "code-review-graph" },
+  { owner: "trycua", name: "cua" },
+  { owner: "1jehuang", name: "jcode" },
+  { owner: "ibelick", name: "ui-skills" },
+  { owner: "codecrafters-io", name: "build-your-own-x" },
+  { owner: "vercel", name: "next.js" },
+  { owner: "shadcn-ui", name: "ui" },
+  { owner: "langgenius", name: "dify" },
+  { owner: "astral-sh", name: "ruff" },
 ];
 
 const cache = new Map<string, { data: any; ts: number }>();
