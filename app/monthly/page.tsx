@@ -1,6 +1,13 @@
+import { type Metadata } from "next";
 import { getRepos } from "@/lib/db";
 import RepoList from "@/components/RepoList";
 import ScrollReveal from "@/components/ScrollReveal";
+import PeriodNav from "@/components/PeriodNav";
+
+export const metadata: Metadata = {
+  title: "monthly - reposurge",
+  description: "fastest-rising repos last 30 days",
+};
 
 export default function MonthlyPage() {
   const repos = getRepos("month");
@@ -9,11 +16,7 @@ export default function MonthlyPage() {
     <main className="max-w-7xl mx-auto px-6 pt-8">
       <ScrollReveal>
         <p className="text-dim text-xs mb-2">last 30 days</p>
-        <div className="flex items-center gap-4 mb-8 text-xs">
-          <a href="/daily" className="text-dim hover:text-terminal transition-colors">daily</a>
-          <a href="/weekly" className="text-dim hover:text-terminal transition-colors">weekly</a>
-          <span className="text-terminal font-bold">monthly</span>
-        </div>
+        <PeriodNav current="month" />
       </ScrollReveal>
 
       <RepoList repos={repos} />

@@ -15,7 +15,7 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
     for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
   }
 
-  type SortKey = "rank" | "name" | "gained" | "velocity";
+  type SortKey = "rank" | "name" | "gained";
   type SortDir = "asc" | "desc";
 
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
@@ -38,8 +38,6 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
           return a.full_name.localeCompare(b.full_name) * dir;
         case "gained":
           return (a.stars_gained - b.stars_gained) * dir;
-        case "velocity":
-          return ((a.velocity ?? 0) - (b.velocity ?? 0)) * dir;
         default:
           return 0;
       }
@@ -76,30 +74,33 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
         </span>
       </div>
 
-      <div className="flex items-center gap-4 py-1.5 text-[10px] sm:text-xs text-dim border-b border-terminal/10 mb-1">
+      <div className="flex items-center gap-4 py-2.5 text-[10px] sm:text-xs text-dim border-b border-terminal/20 mb-1">
         <button
           onClick={() => handleSort("rank")}
-          className="w-8 text-right shrink-0 hover:text-terminal transition-colors cursor-pointer"
+          className="w-8 text-right shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer"
         >
           #{arrow("rank")}
         </button>
         <button
           onClick={() => handleSort("name")}
-          className="flex-1 min-w-0 shrink-0 hover:text-terminal transition-colors cursor-pointer text-left"
+          className="flex-1 min-w-0 shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer text-left"
         >
           repo{arrow("name")}
         </button>
         <div className="hidden sm:block shrink-0 w-[52px]" />
         <button
           onClick={() => handleSort("gained")}
-          className="w-[80px] text-right shrink-0 hover:text-terminal transition-colors cursor-pointer"
+          className="w-[80px] text-right shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer"
         >
           gained{arrow("gained")}
         </button>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-dim text-xs mt-4">no repos match &ldquo;{search}&rdquo;</p>
+        <div className="mt-4">
+          <p className="text-dim text-xs">no repos match &ldquo;{search}&rdquo;</p>
+          <p className="text-dim text-xs mt-1">try a different name or clear the filter</p>
+        </div>
       ) : (
         <div>
           {sorted.map((repo, i) => (
@@ -110,7 +111,6 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
                 stars_gained={repo.stars_gained}
                 sparkline={repo.sparkline}
                 slug={repo.slug}
-                stars={repo.stars}
                 liveDelta={(() => {
                   const liveStars = starsMap[repo.full_name];
                   const initial = initStars.current[repo.full_name];

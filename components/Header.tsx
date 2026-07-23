@@ -1,15 +1,14 @@
 import { getStats } from "@/lib/db";
-import AnimatedStat from "./AnimatedStat";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Header() {
   const stats = getStats();
 
   return (
-    <section className="px-6 pt-16 pb-12">
+    <section className="px-6 pt-20 pb-16">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <p className="text-terminal text-xs mb-4">repos rising. fast.</p>
+          <p className="text-terminal text-xs mb-4 drop-shadow-[0_0_6px_#00FF41]">repos rising. fast.</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
@@ -19,10 +18,10 @@ export default function Header() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <p className="text-dim text-xs mt-6">
-            <AnimatedStat value={stats.totalRepos} /> repos &middot;{" "}
-            <AnimatedStat value={stats.totalStars} duration={2000} /> stars &middot;{" "}
-            <AnimatedStat value={stats.languages} /> languages
+          <p className="text-bone/60 text-xs mt-8">
+            <span className="tabular-nums">{stats.totalRepos.toLocaleString("en-US")}</span> repos &middot;{" "}
+            <span className="tabular-nums">{stats.totalStars.toLocaleString("en-US")}</span> stars &middot;{" "}
+            <span className="tabular-nums">{stats.languages.toLocaleString("en-US")}</span> languages
           </p>
         </ScrollReveal>
       </div>

@@ -5,24 +5,21 @@ export default function StarChart({ data }: { data: number[] }) {
   const min = Math.min(...data);
   const range = max - min || 1;
 
-  const gap = data.length > 10 ? "1px" : data.length > 5 ? "2px" : "3px";
-
   return (
     <div
-      className="flex items-end h-6"
-      style={{ gap }}
-      aria-label="star history"
+      className="flex items-end h-full w-full gap-[1px]"
       role="img"
       aria-roledescription="sparkline chart"
+      aria-label={`Star count history: ${data.length} data points from ${data[0].toLocaleString("en-US")} to ${data[data.length - 1].toLocaleString("en-US")}`}
     >
       {data.map((value, i) => {
-        const height = `${Math.max(8, ((value - min) / range) * 100)}%`;
+        const height = `${Math.max(4, ((value - min) / range) * 100)}%`;
         return (
           <div
             key={i}
-            className="w-[3px] bg-terminal/70 rounded-[1px]"
-            style={{ height }}
-            title={String(value)}
+            className="bg-gradient-to-t from-terminal/20 to-terminal/70 rounded-[1px] group-hover:bg-terminal transition-all duration-200"
+            style={{ height, width: `${100 / data.length}%` }}
+            aria-label={`${value.toLocaleString("en-US")} stars`}
           />
         );
       })}

@@ -1,6 +1,13 @@
+import { type Metadata } from "next";
 import { getRepos } from "@/lib/db";
 import RepoList from "@/components/RepoList";
 import ScrollReveal from "@/components/ScrollReveal";
+import PeriodNav from "@/components/PeriodNav";
+
+export const metadata: Metadata = {
+  title: "daily - reposurge",
+  description: "fastest-rising repos last 24 hours",
+};
 
 export default function DailyPage() {
   const repos = getRepos("day");
@@ -9,11 +16,7 @@ export default function DailyPage() {
     <main className="max-w-7xl mx-auto px-6 pt-8">
       <ScrollReveal>
         <p className="text-dim text-xs mb-2">last 24 hours</p>
-        <div className="flex items-center gap-4 mb-8 text-xs">
-          <span className="text-terminal font-bold">daily</span>
-          <a href="/weekly" className="text-dim hover:text-terminal transition-colors">weekly</a>
-          <a href="/monthly" className="text-dim hover:text-terminal transition-colors">monthly</a>
-        </div>
+        <PeriodNav current="day" />
       </ScrollReveal>
 
       <RepoList repos={repos} />

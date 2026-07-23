@@ -1,33 +1,56 @@
 "use client";
 
-import { motion, MotionProps } from "motion/react";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useRef, ReactNode } from "react";
 
-type Props = {
+export default function ScrollReveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
   children: ReactNode;
   delay?: number;
   className?: string;
-};
-
-export default function ScrollReveal({ children, delay = 0, className }: Props) {
-  const [reduced, setReduced] = useState(false);
+}) {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
+    const el = ref.current;
+    if (!el) return;
 
-  const motionProps: MotionProps = reduced
-    ? {}
-    : {
-        initial: { opacity: 0, y: 8 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0.4, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-      };
+    const rect = el.getBoundingClientRect();
+    const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+
+    if (isInViewport) return;
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(1rem)";
+    el.style.transitionDelay = `${delay}s`;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            (entry.target as HTMLElement).style.opacity = "";
+            (entry.target as HTMLElement).style.transform = "";
+            (entry.target as HTMLElement).style.transitionDelay = "";
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(el);
+    return () => observer.unobserve(el);
+  }, [delay]);
 
   return (
-    <motion.div {...motionProps} className={className}>
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${className}`}
+    >
       {children}
-    </motion.div>
+    </div>
   );
 }

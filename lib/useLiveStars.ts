@@ -12,13 +12,10 @@ export function useLiveStars() {
 
   useEffect(() => {
     let mounted = true;
-    let aborter: AbortController | null = null;
 
     async function poll() {
-      aborter?.abort();
-      aborter = new AbortController();
       try {
-        const res = await fetch("/api/star-counts", { signal: aborter.signal });
+        const res = await fetch("/api/star-counts");
         if (!res.ok) { setLive(false); return; }
         const data: LiveData = await res.json();
         if (!mounted) return;
@@ -36,7 +33,6 @@ export function useLiveStars() {
     return () => {
       mounted = false;
       clearInterval(id);
-      aborter?.abort();
     };
   }, []);
 

@@ -28,6 +28,7 @@ export async function GET() {
       REPOS.map(({ owner, name }) =>
         fetch(`https://api.github.com/repos/${owner}/${name}`, {
           headers: { Accept: "application/vnd.github.v3+json" },
+          signal: AbortSignal.timeout(10000),
         }).then((r) => (r.ok ? r.json() : Promise.reject(r.status))),
       ),
     );
@@ -41,13 +42,13 @@ export async function GET() {
         });
     }
 
-    const payload = { repos, timestamp: new Date().toISOString() };
+    const payload = { ok: true, data: { repos, timestamp: new Date().toISOString() } };
     cache.set("stars", { data: payload, ts: Date.now() });
     return NextResponse.json(payload);
   } catch {
     if (cached) return NextResponse.json(cached.data);
     return NextResponse.json(
-      { repos: [], timestamp: new Date().toISOString() },
+      { ok: false, error: { code: "fetch_failed", message: "Unable to fetch star counts" } },
       { status: 503 },
     );
   }

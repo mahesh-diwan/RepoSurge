@@ -1,3 +1,5 @@
+import rawRepos from "@/src/content/repos.json";
+
 interface HistoryEntry {
   stars: number;
   recorded_at: string;
@@ -24,21 +26,16 @@ interface RepoWithVelocity extends RepoRecord {
   slug: string;
 }
 
-let cache: RepoRecord[] | null = null;
+const reposData: RepoRecord[] = (() => {
+  const list = (rawRepos as Record<string, unknown>).repos ?? rawRepos;
+  return (Array.isArray(list) ? list : []).map((r: Record<string, unknown>) => ({
+    ...r,
+    created_at: r.created_at ?? r.fetched_at ?? ((r.history as HistoryEntry[])?.[0]?.recorded_at ?? ""),
+  })) as RepoRecord[];
+})();
 
 function loadRepos(): RepoRecord[] {
-  if (cache) return cache;
-  try {
-    const raw = require("@/src/content/repos.json");
-    const list = raw.repos ?? raw;
-    cache = (Array.isArray(list) ? list : []).map((r: any) => ({
-      ...r,
-      created_at: r.created_at ?? r.fetched_at ?? (r.history?.[0]?.recorded_at ?? ""),
-    }));
-  } catch {
-    cache = [];
-  }
-  return cache;
+  return reposData;
 }
 
 const PERIOD_TO_DAYS: Record<string, number> = {

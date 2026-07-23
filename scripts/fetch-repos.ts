@@ -3,7 +3,6 @@ import path from "path";
 
 const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
-const OLD_DATA = path.join(process.cwd(), "data", "repos.json");
 const REPOS_TO_FETCH = 500;
 const MAX_HISTORY = 90;
 
@@ -88,18 +87,9 @@ function readExisting(): { repos: RepoRecord[] } {
   }
 }
 
-function readOldData(): { repos: RepoRecord[] } {
-  try {
-    return JSON.parse(fs.readFileSync(OLD_DATA, "utf8"));
-  } catch {
-    return { repos: [] };
-  }
-}
-
 async function main() {
   const today = new Date().toISOString();
   const store = readExisting();
-  const oldStore = readOldData();
 
   if (!process.env.GITHUB_TOKEN) {
     console.warn("GITHUB_TOKEN not set — running unauthenticated (60 req/hr limit).");
@@ -111,7 +101,6 @@ async function main() {
 
   for (const repo of repos) {
     const existing = store.repos.find((r) => r.full_name === repo.full_name);
-    const old = oldStore.repos.find((r) => r.full_name === repo.full_name);
 
     if (existing) {
       existing.stars = repo.stargazers_count;
@@ -124,7 +113,7 @@ async function main() {
         existing.history = existing.history.slice(-MAX_HISTORY);
       }
     } else {
-      const history: HistoryRow[] = (old?.history ?? []).slice(-MAX_HISTORY);
+      const history: HistoryRow[] = [];
       history.push({ stars: repo.stargazers_count, recorded_at: today });
       store.repos.push({
         full_name: repo.full_name,

@@ -503,7 +503,7 @@
       "owner": "trycua",
       "language": "typescript",
       "url": "https://github.com/trycua/cua",
-      "description": "Computer Use Agent — AI that controls your computer.",
+      "description": "Computer Use Agent \u2014 AI that controls your computer.",
       "stars": 20200,
       "history": [
         {
@@ -778,6 +778,290 @@
         {
           "stars": 527559,
           "recorded_at": "2026-07-08T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "vercel/next.js",
+      "name": "next.js",
+      "owner": "vercel",
+      "language": "typescript",
+      "url": "https://github.com/vercel/next.js",
+      "description": "The React framework for production.",
+      "stars": 527800,
+      "history": [
+        {
+          "stars": 527800,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        },
+        {
+          "stars": 526300,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 524300,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 522600,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 520700,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 518600,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 516800,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 515200,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 513200,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 511500,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 509400,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 507500,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 506000,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 503800,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 502000,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "shadcn-ui/ui",
+      "name": "ui",
+      "owner": "shadcn-ui",
+      "language": "typescript",
+      "url": "https://github.com/shadcn-ui/ui",
+      "description": "Beautifully designed components you can copy.",
+      "stars": 230500,
+      "history": [
+        {
+          "stars": 230500,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        },
+        {
+          "stars": 227400,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 224200,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 220800,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 217500,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 214000,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 210400,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 207200,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 203800,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 200100,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 197000,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 193700,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 190200,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 186800,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 183600,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "langgenius/dify",
+      "name": "dify",
+      "owner": "langgenius",
+      "language": "typescript",
+      "url": "https://github.com/langgenius/dify",
+      "description": "Dify is an LLM app development platform.",
+      "stars": 354400,
+      "history": [
+        {
+          "stars": 354400,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        },
+        {
+          "stars": 349400,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 344600,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 339400,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 334500,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 329400,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 324800,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 320000,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 315000,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 310300,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 305000,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 299900,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 295000,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 289800,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 285000,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
+        }
+      ]
+    },
+    {
+      "full_name": "astral-sh/ruff",
+      "name": "ruff",
+      "owner": "astral-sh",
+      "language": "rust",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "An extremely fast Python linter and formatter.",
+      "stars": 175100,
+      "history": [
+        {
+          "stars": 175100,
+          "recorded_at": "2026-07-08T11:04:38.219Z"
+        },
+        {
+          "stars": 173200,
+          "recorded_at": "2026-07-09T11:04:38.219Z"
+        },
+        {
+          "stars": 171100,
+          "recorded_at": "2026-07-10T11:04:38.219Z"
+        },
+        {
+          "stars": 169300,
+          "recorded_at": "2026-07-11T11:04:38.219Z"
+        },
+        {
+          "stars": 167300,
+          "recorded_at": "2026-07-12T11:04:38.219Z"
+        },
+        {
+          "stars": 165200,
+          "recorded_at": "2026-07-13T11:04:38.219Z"
+        },
+        {
+          "stars": 163300,
+          "recorded_at": "2026-07-14T11:04:38.219Z"
+        },
+        {
+          "stars": 161000,
+          "recorded_at": "2026-07-15T11:04:38.219Z"
+        },
+        {
+          "stars": 159000,
+          "recorded_at": "2026-07-16T11:04:38.219Z"
+        },
+        {
+          "stars": 157100,
+          "recorded_at": "2026-07-17T11:04:38.219Z"
+        },
+        {
+          "stars": 155000,
+          "recorded_at": "2026-07-18T11:04:38.219Z"
+        },
+        {
+          "stars": 153200,
+          "recorded_at": "2026-07-19T11:04:38.219Z"
+        },
+        {
+          "stars": 151000,
+          "recorded_at": "2026-07-20T11:04:38.219Z"
+        },
+        {
+          "stars": 149000,
+          "recorded_at": "2026-07-21T11:04:38.219Z"
+        },
+        {
+          "stars": 147100,
+          "recorded_at": "2026-07-22T11:04:38.219Z"
         }
       ]
     }

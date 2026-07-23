@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-23T13:30:00Z",
+  "title": "Design System: RepoSurge",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Terminal Green",
+        "canonical": "oklch(80% 0.2 140)",
+        "tonalRamp": [
+          "oklch(15% 0.2 140)",
+          "oklch(26% 0.2 140)",
+          "oklch(38% 0.2 140)",
+          "oklch(50% 0.2 140)",
+          "oklch(62% 0.2 140)",
+          "oklch(74% 0.2 140)",
+          "oklch(86% 0.2 140)",
+          "oklch(98% 0.2 140)"
+        ]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Midnight",
+        "canonical": "oklch(5% 0 0)",
+        "tonalRamp": [
+          "oklch(2% 0 0)",
+          "oklch(5% 0 0)",
+          "oklch(10% 0 0)",
+          "oklch(18% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(75% 0 0)"
+        ]
+      },
+      "neutral-text": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(96% 0.005 80)",
+        "tonalRamp": []
+      },
+      "neutral-muted": {
+        "role": "neutral",
+        "displayName": "Dim",
+        "canonical": "oklch(65% 0 0)",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles and logo only."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Repo names, descriptions, prose."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nav links, period labels, stat labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Smallest tier — stat headers, footer, live delta badges."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-glow",
+        "value": "0 0 4px #00FF41",
+        "purpose": "Hover glow on gained numbers and buttons."
+      },
+      {
+        "name": "focus-glow",
+        "value": "0 0 8px rgba(0, 255, 65, 0.4)",
+        "purpose": "Focus-visible ring on all interactive elements."
+      },
+      {
+        "name": "active-pill-glow",
+        "value": "0 0 8px #00FF41/30",
+        "purpose": "Active nav pill glow."
+      },
+      {
+        "name": "logo-glow",
+        "value": "0 0 8px rgba(0, 255, 65, 0.3)",
+        "purpose": "Always-on logo text-shadow."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "purpose": "Default easing for state transitions."
+      },
+      {
+        "name": "duration-fade",
+        "value": "200ms",
+        "purpose": "Fade-in and color transitions."
+      },
+      {
+        "name": "duration-scroll",
+        "value": "700ms",
+        "purpose": "ScrollReveal intersection animation."
+      },
+      {
+        "name": "glow-pulse",
+        "value": "3s ease-in-out infinite",
+        "purpose": "Logo glow pulse animation."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Nav Pill (Active)",
+      "kind": "nav",
+      "refersTo": "nav-pill-active",
+      "description": "Active navigation pill. Solid green background, dark text, green glow.",
+      "html": "<a class=\"ds-nav-pill-active\" aria-current=\"page\">REPOS</a>",
+      "css": ".ds-nav-pill-active { display: inline-block; background: #00FF41; color: #0A0A0A; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 700; padding: 6px 12px; box-shadow: 0 0 8px rgba(0, 255, 65, 0.3); transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-nav-pill-active:hover { background: #00FF41; }"
+    },
+    {
+      "name": "Nav Pill (Inactive)",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Inactive navigation pill. Dim text, transparent background.",
+      "html": "<a class=\"ds-nav-pill-inactive\" href=\"/about\">ABOUT</a>",
+      "css": ".ds-nav-pill-inactive { display: inline-block; background: transparent; color: #999; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; font-weight: 400; padding: 6px 12px; transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-nav-pill-inactive:hover { background: rgba(0, 255, 65, 0.1); color: #F5F5F0; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Terminal-styled search input with > prompt glyph.",
+      "html": "<div style=\"position: relative;\"><span style=\"position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #999; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; pointer-events: none;\">&gt;</span><input type=\"text\" placeholder=\"filter repos...\" style=\"width: 100%; background: transparent; border: 1px solid #1a1a1a; padding: 8px 12px 8px 28px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #F5F5F0; outline: none; transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);\" /></div>",
+      "css": "input:focus { border-color: #00FF41; background: rgba(0, 255, 65, 0.05); } ::placeholder { color: #999; }"
+    },
+    {
+      "name": "Repo Row",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Single leaderboard row: rank, repo name, sparkline, gained value, live delta.",
+      "html": "<div class=\"ds-repo-row\" style=\"display: flex; align-items: center; gap: 16px; padding: 16px 0;\"><span class=\"ds-rank\">1</span><span class=\"ds-name\">vercel/next.js</span><div class=\"ds-sparkline-group\" style=\"display: flex; align-items: flex-end; height: 24px; gap: 1px; width: 80px;\"><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 80%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 55%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 40%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 90%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 65%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 30%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 72%; border-radius: 1px;\"></div><div style=\"background: linear-gradient(to top, rgba(0,255,65,0.2), rgba(0,255,65,0.7)); width: 12.5%; height: 100%; border-radius: 1px;\"></div></div><span style=\"color: #00FF41; font-weight: 700; font-size: 12px; min-width: 80px; text-align: right;\">+3,482</span><span style=\"color: #00FF41; font-size: 10px; vertical-align: super;\">+159</span></div>",
+      "css": ".ds-repo-row:hover { background: rgba(0, 255, 65, 0.03); } .ds-rank { color: #999; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; text-align: right; width: 32px; } .ds-repo-row:hover .ds-rank { color: #00FF41; } .ds-name { flex: 1; min-width: 0; color: #F5F5F0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-repo-row:hover .ds-name { color: #00FF41; } .ds-repo-row:hover [style*=\"color: #00FF41; font-weight: 700\"] { filter: drop-shadow(0 0 4px #00FF41); }"
+    },
+    {
+      "name": "View on GitHub Button",
+      "kind": "button",
+      "refersTo": "view-on-github",
+      "description": "Border-only outlined button linking to GitHub.",
+      "html": "<a class=\"ds-btn-gh\">view on github</a>",
+      "css": ".ds-btn-gh { display: inline-block; color: #00FF41; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; border: 1px solid rgba(0, 255, 65, 0.5); padding: 6px 12px; transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); } .ds-btn-gh:hover { background: rgba(0, 255, 65, 0.1); box-shadow: 0 0 8px rgba(0, 255, 65, 0.3); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Leaderboard Terminal",
+    "overview": "RepoSurge is a competitive leaderboard rendered through a terminal lens — green phosphor on deep black, flat rows, and glow rewards for action. The system rejects all SaaS dashboard conventions: no cards, no sidebars, no rounded corners, no decorative illustrations. Every interface decision serves a single goal: let a developer scan the rising-repo ranking at a glance and immediately see who is winning.",
+    "keyCharacteristics": [
+      "Monospaced throughout. One font, one weight range (400–700).",
+      "Flat surfaces with green glow as the only elevation signal.",
+      "Rows, not cards. Leaderboard logic, not dashboard logic.",
+      "High contrast: #00FF41 on #0A0A0A is 15.4:1. Dim #999 on #0A0A0A is 5.3:1.",
+      "Green selection highlight — select any text to see the phosphor glow inverted."
+    ],
+    "rules": [
+      {
+        "name": "The Single Accent Rule",
+        "body": "Terminal green is the only accent color. Used on ≤10% of any screen. Its rarity is the point.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Surface Rule",
+        "body": "No surface uses a different background than midnight. Containers are implied by spacing and borders, never by a separate fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Font Rule",
+        "body": "Every visible character is JetBrains Mono. No serif, no sans-serif, no second mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Glow appears only as a response to state (hover, focus, active).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Use terminal green (#00FF41) sparingly — the single accent rules.",
+      "Keep surfaces flat at rest. Glow only on interaction.",
+      "Use JetBrains Mono for every visible character.",
+      "Use generous vertical spacing (py-4 on rows, mt-32 on footer) to let the black background breathe.",
+      "Use gradient sparklines (from-terminal/20 to-terminal/70) — the gradient makes them feel alive.",
+      "Use tabular-nums for all numeric data so numbers don't shift during updates.",
+      "Add title attributes on truncated text for overflow tooltips."
+    ],
+    "donts": [
+      "Don't use cards, sidebars, rounded corners, or container shadows.",
+      "Don't use gradient text, glassmorphism, or decorative illustrations.",
+      "Don't use a second font family — no serif, no sans-serif alternative.",
+      "Don't use generic SaaS dashboard patterns: no sidebar nav, no stat cards, no header metrics.",
+      "Don't use border-left stripes, numbered section markers (01/02/03), or uppercase tracked eyebrows.",
+      "Don't use shadows on containers — only green glow on interactive elements.",
+      "Don't stretch nav pills — they must be content-sized (px-3 py-1.5 with no explicit width).",
+      "Don't show the same sparkline size on detail page as list — detail sparkline gets h-32 (128px)."
+    ]
+  }
+}
