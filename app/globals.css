@@ -9,7 +9,7 @@
 
 @layer base {
   html {
-    background: #0a0a0a;
+    background: #1a1200;
     color: #f5f5f0;
     font-family: "JetBrains Mono", ui-monospace, monospace;
     -webkit-font-smoothing: antialiased;
@@ -22,21 +22,21 @@
   }
 
   ::selection {
-    background: #00ff41;
-    color: #0a0a0a;
+    background: #ffb000;
+    color: #1a1200;
   }
 
   ::-moz-selection {
-    background: #00ff41;
-    color: #0a0a0a;
+    background: #ffb000;
+    color: #1a1200;
   }
 
   :focus-visible {
-    outline: 2px solid #00ff41;
+    outline: 2px solid #ffb000;
     outline-offset: 2px;
     box-shadow:
-      0 0 0 2px #0a0a0a,
-      0 0 8px rgba(0, 255, 65, 0.4);
+      0 0 0 2px #1a1200,
+      0 0 8px rgba(255, 176, 0, 0.4);
   }
 
   a {
@@ -59,9 +59,94 @@
 @keyframes glow-pulse {
   0%,
   100% {
-    text-shadow: 0 0 4px rgba(0, 255, 65, 0);
+    text-shadow: 0 0 4px rgba(255, 176, 0, 0);
   }
   50% {
-    text-shadow: 0 0 14px rgba(0, 255, 65, 0.45);
+    text-shadow: 0 0 14px rgba(255, 176, 0, 0.45);
+  }
+}
+
+/* ── CRT Monitor Frame ── */
+.crt-frame {
+  position: relative;
+  border: 2px solid #8b6914;
+  border-radius: 16px;
+  background: #1a1200;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(255, 176, 0, 0.1);
+}
+
+/* Scanlines */
+.crt-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1.5px,
+    rgba(0, 0, 0, 0.15) 1.5px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Vignette */
+.crt-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* CRT boot sweep */
+.crt-sweep::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 176, 0, 0.3),
+    #ffb000,
+    rgba(255, 176, 0, 0.3),
+    transparent
+  );
+  z-index: 12;
+  animation: crt-sweep 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Amber glow utility */
+.amber-glow {
+  text-shadow:
+    0 0 4px rgba(255, 176, 0, 0.4),
+    0 0 8px rgba(255, 176, 0, 0.2),
+    0 0 16px rgba(255, 176, 0, 0.1);
+}
+
+.amber-glow-sm {
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.3);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .crt-sweep::before {
+    animation: none !important;
+    display: none;
+  }
+  .amber-glow,
+  .amber-glow-sm {
+    text-shadow: none;
   }
 }
