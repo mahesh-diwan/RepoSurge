@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 
-type LiveData = {
-  repos: { full_name: string; stars: number }[];
-  timestamp: string;
-};
+type StarCountsResponse =
+  | { ok: true; data: { repos: { full_name: string; stars: number }[] } }
+  | { ok: false; error?: { message: string } };
 
 export function useLiveStars() {
   const [starsMap, setStarsMap] = useState<Record<string, number>>({});
@@ -24,7 +23,7 @@ export function useLiveStars() {
           }
           return;
         }
-        const body = await res.json();
+        const body: StarCountsResponse = await res.json();
         if (!mounted) return;
         if (!body.ok) {
           setLive(false);

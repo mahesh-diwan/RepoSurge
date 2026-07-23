@@ -64,7 +64,7 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
     <>
       <div className="flex items-center gap-2 mb-4">
         <SearchInput value={search} onChange={setSearch} />
-        <span className="flex items-center gap-1.5 text-[10px] text-dim shrink-0">
+        <span className="flex items-center gap-1.5 text-[10px] text-dim shrink-0" title="Live data polling status">
           <span
             className={`inline-block w-1.5 h-1.5 rounded-full ${
               live ? "bg-terminal shadow-[0_0_4px_#00FF41]" : "bg-dim"
@@ -90,12 +90,14 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
         <button
           onClick={() => handleSort("rank")}
           className="w-8 text-right shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer"
+          title="Sort by rank"
         >
           #{arrow("rank")}
         </button>
         <button
           onClick={() => handleSort("name")}
           className="flex-1 min-w-0 shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer text-left"
+          title="Sort alphabetically"
         >
           repo{arrow("name")}
         </button>
@@ -103,6 +105,7 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
         <button
           onClick={() => handleSort("gained")}
           className="w-[80px] text-right shrink-0 hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-colors cursor-pointer"
+          title="Sort by stars gained"
         >
           gained{arrow("gained")}
         </button>
