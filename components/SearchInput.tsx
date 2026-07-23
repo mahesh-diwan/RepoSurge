@@ -23,6 +23,7 @@ export default function SearchInput({
           }
         }}
         placeholder="filter repos..."
+        title="Type to filter repos"
         className="w-full bg-transparent border border-[#1a1a1a] pl-7 pr-3 py-3.5 text-xs text-bone placeholder-dim focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:border-terminal focus-visible:bg-terminal/5 transition-all"
       />
     </form>

@@ -24,7 +24,7 @@ export default function RepoCard({
   return (
     <div className="flex items-center gap-4 py-4 group hover:bg-terminal/[0.03] transition-all duration-200">
       <div className="w-8 text-right text-dim tabular-nums text-xs shrink-0 group-hover:text-terminal transition-colors">
-        {rank}
+        <span title="Rank">{rank}</span>
       </div>
 
       <Link
@@ -42,6 +42,7 @@ export default function RepoCard({
       <div className="text-right min-w-[80px] shrink-0">
         <span
           className={`group-hover:drop-shadow-[0_0_4px_#00FF41] transition-all duration-200 text-xs tabular-nums font-bold ${gainedColor(stars_gained)}`}
+          title={stars_gained > 0 ? "Stars gained this period" : stars_gained < 0 ? "Stars lost this period" : "No change this period"}
           aria-label={
             stars_gained > 0
               ? `gained ${stars_gained.toLocaleString("en-US")} stars`
@@ -54,7 +55,7 @@ export default function RepoCard({
           {stars_gained < 0 ? Math.abs(stars_gained).toLocaleString("en-US") : stars_gained.toLocaleString("en-US")}
         </span>
         {liveDelta !== undefined && liveDelta !== 0 && (
-          <span className="text-terminal text-[10px] ml-1 align-super">
+          <span className="text-terminal text-[10px] ml-1 align-super" title="Live star gain since page load">
             +{liveDelta}
           </span>
         )}

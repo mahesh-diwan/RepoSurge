@@ -11,6 +11,7 @@ export default function StarChart({ data }: { data: number[] }) {
       role="img"
       aria-roledescription="sparkline chart"
       aria-label={`Star count history: ${data.length} data points from ${data[0].toLocaleString("en-US")} to ${data[data.length - 1].toLocaleString("en-US")}`}
+      title={`Star history: ${data.length} data points across this period`}
     >
       {data.map((value, i) => {
         const height = `${Math.max(4, ((value - min) / range) * 100)}%`;
