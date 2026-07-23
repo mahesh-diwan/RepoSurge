@@ -9,7 +9,7 @@ import SearchInput from "./SearchInput";
 
 export default function RepoList({ repos }: { repos: RepoCardData[] }) {
   const [search, setSearch] = useState("");
-  const { starsMap, live } = useLiveStars();
+  const { starsMap, live, error } = useLiveStars();
   const initStars = useRef<Record<string, number>>({});
   if (repos.length > 0 && Object.keys(initStars.current).length === 0) {
     for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
@@ -73,6 +73,18 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
           {live ? "live" : "polling"}
         </span>
       </div>
+
+      {error && !live && (
+        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-terminal/20 rounded-none text-dim text-[10px]">
+          <span>live data unavailable — showing cached data</span>
+          <button
+            onClick={() => window.location.reload()}
+            className="ml-auto text-terminal hover:text-terminal/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal transition-colors underline underline-offset-4"
+          >
+            retry
+          </button>
+        </div>
+      )}
 
       <div className="flex items-center gap-4 py-2.5 text-[10px] sm:text-xs text-dim border-b border-terminal/20 mb-1">
         <button

@@ -9,6 +9,7 @@ type LiveData = {
 export function useLiveStars() {
   const [starsMap, setStarsMap] = useState<Record<string, number>>({});
   const [live, setLive] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -16,15 +17,30 @@ export function useLiveStars() {
     async function poll() {
       try {
         const res = await fetch("/api/star-counts");
-        if (!res.ok) { setLive(false); return; }
-        const data: LiveData = await res.json();
+        if (!res.ok) {
+          if (mounted) {
+            setLive(false);
+            setError("API returned " + res.status);
+          }
+          return;
+        }
+        const body = await res.json();
         if (!mounted) return;
+        if (!body.ok) {
+          setLive(false);
+          setError(body.error?.message ?? "Unknown error");
+          return;
+        }
         const map: Record<string, number> = {};
-        for (const r of data.repos) map[r.full_name] = r.stars;
+        for (const r of body.data.repos) map[r.full_name] = r.stars;
         setStarsMap(map);
         setLive(true);
+        setError(null);
       } catch {
-        if (mounted) setLive(false);
+        if (mounted) {
+          setLive(false);
+          setError("Connection failed");
+        }
       }
     }
 
@@ -36,5 +52,5 @@ export function useLiveStars() {
     };
   }, []);
 
-  return { starsMap, live };
+  return { starsMap, live, error };
 }
