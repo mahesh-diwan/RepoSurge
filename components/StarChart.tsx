@@ -1,4 +1,14 @@
-export default function StarChart({ data }: { data: number[] }) {
+type StarChartProps = {
+  data?: number[];
+  history?: { stars: number; recorded_at?: string }[];
+  period?: string;
+};
+
+export default function StarChart(props: StarChartProps) {
+  const data = props.history
+    ? props.history.map((h) => h.stars)
+    : (props.data ?? []);
+
   if (!data || data.length === 0) return null;
 
   const max = Math.max(...data);
@@ -18,7 +28,7 @@ export default function StarChart({ data }: { data: number[] }) {
         return (
           <div
             key={i}
-            className="bg-gradient-to-t from-terminal/20 to-terminal/70 rounded-[1px] group-hover:bg-terminal transition-all duration-200"
+            className="bg-gradient-to-t from-amber-primary/20 to-amber-primary/70 rounded-[1px] group-hover:bg-amber-primary transition-all duration-200"
             style={{ height, width: `${100 / data.length}%` }}
             aria-label={`${value.toLocaleString("en-US")} stars`}
           />

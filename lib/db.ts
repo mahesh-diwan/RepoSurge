@@ -18,7 +18,7 @@ interface RepoRecord {
   history: HistoryEntry[];
 }
 
-interface RepoWithVelocity extends RepoRecord {
+export interface RepoWithVelocity extends RepoRecord {
   rank: number;
   stars_gained: number;
   sparkline: number[];
@@ -107,14 +107,20 @@ export function getLastUpdated(): string {
 export function getRepoDetails(
   slug: string,
   period: string = "week"
-): (RepoWithVelocity & { created_at: string }) | null {
+): (RepoWithVelocity & { created_at: string; gained7d: number }) | null {
   const repos = getRepos(period);
   const repo = repos.find((r) => r.slug === slug);
   if (!repo) return null;
 
   const fullRepo = loadRepos().find((r) => r.full_name === repo.full_name);
+  const gained7d =
+    fullRepo && fullRepo.history.length >= 8
+      ? fullRepo.history[fullRepo.history.length - 1].stars -
+        fullRepo.history[fullRepo.history.length - 8].stars
+      : 0;
   return {
     ...repo,
     created_at: fullRepo?.created_at ?? "",
+    gained7d,
   };
 }

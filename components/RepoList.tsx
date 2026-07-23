@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useMemo, useRef } from "react";
-import type { RepoCardData } from "./RepoCard";
+import type { RepoWithVelocity } from "@/lib/db";
+import { gainedColor } from "@/lib/gained-color";
 import { useLiveStars } from "@/lib/useLiveStars";
 import RepoCard from "./RepoCard";
 import ScrollReveal from "./ScrollReveal";
 import SearchInput from "./SearchInput";
 
-export default function RepoList({ repos }: { repos: RepoCardData[] }) {
+export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
   const [search, setSearch] = useState("");
   const { starsMap, live, error } = useLiveStars();
   const initStars = useRef<Record<string, number>>({});
@@ -118,24 +119,36 @@ export default function RepoList({ repos }: { repos: RepoCardData[] }) {
         </div>
       ) : (
         <div>
-          {sorted.map((repo, i) => (
-            <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.02, 0.3)}>
-              <RepoCard
-                rank={repo.rank}
-                full_name={repo.full_name}
-                stars_gained={repo.stars_gained}
-                sparkline={repo.sparkline}
-                slug={repo.slug}
-                liveDelta={(() => {
-                  const liveStars = starsMap[repo.full_name];
-                  const initial = initStars.current[repo.full_name];
-                  if (!liveStars || !initial) return undefined;
-                  const delta = liveStars - initial;
-                  return delta > 0 ? delta : undefined;
-                })()}
-              />
-            </ScrollReveal>
-          ))}
+          {sorted.map((repo, i) => {
+            const gainedColorStr = gainedColor(repo.stars_gained);
+            const gained7d =
+              repo.history.length >= 8
+                ? repo.history[repo.history.length - 1].stars -
+                  repo.history[repo.history.length - 8].stars
+                : 0;
+            return (
+              <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.02, 0.3)}>
+                <RepoCard
+                  rank={repo.rank}
+                  name={repo.name}
+                  slug={repo.slug}
+                  stars={repo.stars}
+                  gained={repo.stars_gained}
+                  gained7d={gained7d}
+                  language={repo.language ?? ""}
+                  gainedColor={gainedColorStr}
+                  liveDelta={(() => {
+                    const liveStars = starsMap[repo.full_name];
+                    const initial = initStars.current[repo.full_name];
+                    if (!liveStars || !initial) return null;
+                    const delta = liveStars - initial;
+                    return delta > 0 ? delta : null;
+                  })()}
+                  history={repo.history}
+                />
+              </ScrollReveal>
+            );
+          })}
         </div>
       )}
     </>

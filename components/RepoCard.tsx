@@ -1,65 +1,86 @@
 import Link from "next/link";
 import StarChart from "./StarChart";
-import { gainedColor } from "@/lib/gained-color";
-
-export type RepoCardData = {
-  rank: number;
-  full_name: string;
-  stars_gained: number;
-  velocity?: number;
-  sparkline: number[];
-  slug: string;
-  stars?: number;
-  liveDelta?: number;
-};
 
 export default function RepoCard({
   rank,
-  full_name,
-  stars_gained,
-  sparkline,
+  name,
   slug,
+  stars,
+  gained,
+  gained7d,
+  language,
+  gainedColor,
   liveDelta,
-}: RepoCardData) {
+  history,
+  period = "week",
+}: {
+  rank: number;
+  name: string;
+  slug: string;
+  stars: number;
+  gained: number;
+  gained7d: number;
+  language: string;
+  gainedColor: string;
+  liveDelta: number | null;
+  history: { recorded_at: string; stars: number }[];
+  period?: string;
+}) {
+  const gainedPrefix = gained > 0 ? "+" : gained < 0 ? "" : "";
+  const gainedAbs = Math.abs(gained);
+  const liveLabel =
+    liveDelta !== null ? `${liveDelta > 0 ? "+" : ""}${liveDelta}` : null;
+
   return (
-    <div className="flex items-center gap-4 py-4 group hover:bg-terminal/[0.03] transition-all duration-200">
-      <div className="w-8 text-right text-dim tabular-nums text-xs shrink-0 group-hover:text-terminal transition-colors">
-        <span title="Rank">{rank}</span>
-      </div>
-
-      <Link
-        href={`/repo/${slug}`}
-        className="flex-1 min-w-0 max-w-[55vw] sm:max-w-none text-sm text-bone group-hover:text-terminal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-terminal/70 transition-all duration-200 truncate py-2.5"
-        title={full_name}
-      >
-        {full_name}
-      </Link>
-
-      <div className="hidden sm:block shrink-0">
-        <StarChart data={sparkline} />
-      </div>
-
-      <div className="text-right min-w-[80px] shrink-0">
-        <span
-          className={`group-hover:drop-shadow-[0_0_4px_#00FF41] transition-all duration-200 text-xs tabular-nums font-bold ${gainedColor(stars_gained)}`}
-          title={stars_gained > 0 ? "Stars gained this period" : stars_gained < 0 ? "Stars lost this period" : "No change this period"}
-          aria-label={
-            stars_gained > 0
-              ? `gained ${stars_gained.toLocaleString("en-US")} stars`
-              : stars_gained < 0
-              ? `lost ${Math.abs(stars_gained).toLocaleString("en-US")} stars`
-              : "no stars gained"
-          }
-        >
-          {stars_gained > 0 ? "+" : stars_gained < 0 ? "↓" : ""}
-          {stars_gained < 0 ? Math.abs(stars_gained).toLocaleString("en-US") : stars_gained.toLocaleString("en-US")}
-        </span>
-        {liveDelta !== undefined && liveDelta !== 0 && (
-          <span className="text-terminal text-[10px] ml-1 align-super" title="Live star gain since page load">
-            +{liveDelta}
+    <Link
+      href={`/repo/${slug}`}
+      className="block bg-amber-bg/30 border border-amber-muted/30 px-3 py-2.5
+        hover:bg-amber-bg/60 hover:border-amber-muted/50
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary
+        focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg
+        active:bg-amber-bg/80 transition-all duration-200"
+    >
+      {/* Row 1: rank + name + language + gained */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="text-amber-muted tabular-nums text-xs w-5 shrink-0">
+            #{rank}
           </span>
-        )}
+          <span
+            className="text-amber-primary amber-glow-sm truncate text-sm"
+            title={name}
+          >
+            {name}
+          </span>
+          <span className="text-amber-muted/60 text-[10px] hidden sm:inline shrink-0">
+            {language}
+          </span>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          {liveLabel && (
+            <span className="text-amber-bright/60 text-[10px] tabular-nums">
+              {liveLabel}
+            </span>
+          )}
+          <span className={`${gainedColor} tabular-nums text-sm`}>
+            {gainedPrefix}
+            {gainedAbs.toLocaleString("en-US")}
+          </span>
+        </div>
       </div>
-    </div>
+
+      {/* Row 2: Amber glow sparkline (StarChart) */}
+      <div className="mt-1 mb-1.5">
+        <div style={{ height: "24px" }}>
+          <StarChart history={history} period={period} />
+        </div>
+      </div>
+
+      {/* Row 3: stats */}
+      <div className="flex items-center gap-4 text-amber-muted text-[10px] tabular-nums">
+        <span>{stars.toLocaleString("en-US")} ★</span>
+        {gained7d > 0 && <span>+{gained7d.toLocaleString("en-US")} / 7d</span>}
+      </div>
+    </Link>
   );
 }
