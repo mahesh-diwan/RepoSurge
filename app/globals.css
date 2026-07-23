@@ -108,6 +108,15 @@
   z-index: 11;
 }
 
+/* CRT sweep container */
+.crt-sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 12;
+}
+
 /* CRT boot sweep */
 .crt-sweep::before {
   content: "";

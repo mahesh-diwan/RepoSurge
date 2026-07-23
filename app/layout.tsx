@@ -42,7 +42,10 @@ export default function RootLayout({
         </nav>
         </header>
 
-        <div id="main-content" className="pt-16 crt-frame mx-4 md:mx-8 lg:mx-auto max-w-7xl p-4 md:p-6 mb-8 crt-sweep">{children}</div>
+        <div id="main-content" className="pt-16 crt-frame mx-4 md:mx-8 lg:mx-auto max-w-7xl p-4 md:p-6 mb-8">
+          <div className="crt-sweep" aria-hidden="true" />
+          {children}
+        </div>
 
         <footer aria-label="site footer" className="border-t border-amber-muted/20 py-8 mt-16">
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
