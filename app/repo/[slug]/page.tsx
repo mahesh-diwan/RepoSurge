@@ -83,18 +83,22 @@ export default function RepoDetailPage({
           <div className="flex gap-8 mb-8">
             <div>
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums">{repo.stars.toLocaleString("en-US")}</p>
+              <p className="text-lg font-bold tabular-nums text-amber-primary amber-glow">{repo.stars.toLocaleString("en-US")}</p>
             </div>
             <div>
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">gained</p>
-                <p className={`text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained)}`}>
-                  {repo.stars_gained > 0 ? "+" : ""}
-                  {repo.stars_gained.toLocaleString("en-US")}
-                </p>
+              <p className={`text-lg font-bold tabular-nums amber-glow ${gainedColor(repo.stars_gained)}`}>
+                {repo.stars_gained > 0 ? "+" : ""}
+                {repo.stars_gained.toLocaleString("en-US")}
+              </p>
             </div>
             <div>
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">velocity</p>
-              <p className={`text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
+              <p className={`text-lg font-bold tabular-nums amber-glow ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
+            </div>
+            <div>
+              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">7d gain</p>
+              <p className="text-lg font-bold tabular-nums amber-glow text-amber-primary">{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
             </div>
             <div>
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">created</p>
