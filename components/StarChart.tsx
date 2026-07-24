@@ -85,7 +85,7 @@ export default function StarChart(props: StarChartProps) {
           y1={yPos(v)}
           x2={W - pad.right}
           y2={yPos(v)}
-          stroke="rgba(34,211,238,0.1)"
+          stroke="rgba(91,127,255,0.1)"
           strokeWidth="0.5"
         />
       ))}
@@ -95,7 +95,7 @@ export default function StarChart(props: StarChartProps) {
           x={pad.left - 2}
           y={yPos(v) + 1.5}
           textAnchor="end"
-          fill="rgba(34,211,238,0.4)"
+          fill="rgba(91,127,255,0.4)"
           fontSize="6"
         >
           {abbreviateNumber(Math.round(v))}
@@ -107,19 +107,19 @@ export default function StarChart(props: StarChartProps) {
           x={xPos(idx)}
           y={H - 1}
           textAnchor="middle"
-          fill="rgba(34,211,238,0.3)"
+          fill="rgba(91,127,255,0.3)"
           fontSize="5"
         >
           {getXLabel(idx)}
         </text>
       ))}
       {values.map((v, i) => (
-        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(34,211,238,0.9)">
+        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(91,127,255,0.9)">
           <title>{v.toLocaleString("en-US")} stars</title>
         </circle>
       ))}
-      <path d={fillD} fill="rgba(34,211,238,0.1)" />
-      <path d={lineD} fill="none" stroke="rgba(34,211,238,0.9)" strokeWidth="1" />
+      <path d={fillD} fill="rgba(91,127,255,0.1)" />
+      <path d={lineD} fill="none" stroke="rgba(91,127,255,0.9)" strokeWidth="1" />
     </svg>
   );
 }

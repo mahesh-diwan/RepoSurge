@@ -36,7 +36,7 @@ export default function RepoCard({
     <div
       role="button"
       tabIndex={0}
-      className="flex items-center gap-3 py-2.5 px-2 hover:bg-amber-primary/[0.03] transition-colors cursor-pointer border-b border-amber-primary/[0.06] last:border-b-0"
+      className="flex items-center gap-3 py-2.5 px-2 hover:bg-positive/[0.03] transition-colors cursor-pointer border-b border-border last:border-b-0"
       onClick={() => onSelect?.(slug)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -45,16 +45,16 @@ export default function RepoCard({
         }
       }}
     >
-      <span className="w-6 text-right text-amber-muted tabular-nums text-xs shrink-0">
+      <span className="w-6 text-right text-text-muted tabular-nums text-xs shrink-0">
         #{rank}
       </span>
       <span
-        className="flex-1 min-w-0 truncate text-[#F5F5F0] text-sm"
+        className="flex-1 min-w-0 truncate text-text-body text-sm"
         title={name}
       >
         {name}
       </span>
-      <span className="text-amber-muted/50 text-[10px] w-16 shrink-0 hidden sm:inline truncate">
+      <span className="text-text-muted/50 text-[10px] w-16 shrink-0 hidden sm:inline truncate">
         {language}
       </span>
       <div className="w-20 shrink-0 hidden md:block" style={{ height: "20px" }}>
@@ -63,7 +63,7 @@ export default function RepoCard({
       {(() => {
         const trend = history[history.length - 1].stars - history[0].stars;
         if (trend > 0) return (
-          <svg className="w-3 h-3 text-cyan-400 shrink-0" viewBox="0 0 12 12" fill="currentColor">
+          <svg className="w-3 h-3 text-positive shrink-0" viewBox="0 0 12 12" fill="currentColor">
             <polygon points="6,1 11,10 1,10" />
           </svg>
         );
@@ -76,7 +76,7 @@ export default function RepoCard({
       })()}
       <div className="flex items-center gap-2 shrink-0 w-20 justify-end">
         {liveLabel && (
-          <span className="text-cyan-400/70 text-[10px] tabular-nums">
+          <span className="text-positive/70 text-[10px] tabular-nums">
             {liveLabel}
           </span>
         )}
@@ -85,7 +85,7 @@ export default function RepoCard({
           {gainedAbs.toLocaleString("en-US")}
         </span>
       </div>
-      <span className="text-amber-muted/40 text-xs tabular-nums w-16 text-right shrink-0 hidden sm:block">
+      <span className="text-text-muted/40 text-xs tabular-nums w-16 text-right shrink-0 hidden sm:block">
         {(stars / 1000).toFixed(1)}K
       </span>
     </div>

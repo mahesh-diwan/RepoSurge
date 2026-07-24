@@ -71,10 +71,10 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
       <div className="flex justify-center mb-6">
         <div className="flex items-center gap-3">
           <SearchInput value={search} onChange={setSearch} />
-          <span className="flex items-center gap-1.5 text-[10px] text-amber-muted-light shrink-0" title="Live data polling status">
+          <span className="flex items-center gap-1.5 text-[10px] text-text-muted shrink-0" title="Live data polling status">
             <span
               className={`inline-block w-1.5 h-1.5 rounded-full ${
-                live ? "bg-cyan-400 shadow-[0_0_4px_rgba(34,211,238,0.5)]" : "bg-amber-muted"
+                live ? "bg-positive shadow-[0_0_4px_rgba(52,211,153,0.5)]" : "bg-text-muted"
               }`}
             />
             {live ? "live" : "polling"}
@@ -83,28 +83,28 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
       </div>
 
       {error && !live && (
-        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-amber-primary/20 rounded-none text-amber-muted-light text-[10px]">
+        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-border rounded-none text-text-muted text-[10px]">
           <span>live data unavailable — showing cached data</span>
           <button
             onClick={() => window.location.reload()}
-            className="ml-auto text-amber-primary hover:text-cyan-400/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 transition-colors underline underline-offset-4"
+            className="ml-auto text-text-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors underline underline-offset-4"
           >
             retry
           </button>
         </div>
       )}
 
-      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-amber-muted-light border-b border-amber-primary/20 mb-1">
+      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-text-muted border-b border-border mb-1">
         <button
           onClick={() => handleSort("rank")}
-          className="w-6 text-right shrink-0 hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
+          className="w-6 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
           title="Sort by rank"
         >
           #{arrow("rank")}
         </button>
         <button
           onClick={() => handleSort("name")}
-          className="flex-1 min-w-0 shrink-0 hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer text-left"
+          className="flex-1 min-w-0 shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer text-left"
           title="Sort alphabetically"
         >
           repo{arrow("name")}
@@ -113,18 +113,18 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         <div className="hidden md:block shrink-0 w-20" />
         <button
           onClick={() => handleSort("gained")}
-          className="w-20 text-right shrink-0 hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
+          className="w-20 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
           title="Sort by stars gained"
         >
           gained{arrow("gained")}
         </button>
-        <div className="hidden sm:block shrink-0 w-16 text-right text-amber-muted-light/50">stars</div>
+        <div className="hidden sm:block shrink-0 w-16 text-right text-text-muted/50">stars</div>
       </div>
 
       {filtered.length === 0 ? (
         <div className="mt-4">
-          <p className="text-amber-muted-light text-xs">no repos match &ldquo;{search}&rdquo;</p>
-          <p className="text-amber-muted-light text-xs mt-1">try a different name or clear the filter</p>
+          <p className="text-text-muted text-xs">no repos match &ldquo;{search}&rdquo;</p>
+          <p className="text-text-muted text-xs mt-1">try a different name or clear the filter</p>
         </div>
       ) : (
         <div>
