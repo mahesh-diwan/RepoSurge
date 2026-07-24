@@ -5,15 +5,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'amber-bg': '#1A1200',
-        'amber-primary': '#FFB000',
-        'amber-dim': '#CC8800',
-        'amber-muted': '#8B6914',
-        'amber-muted-light': '#CCA060',
-        'amber-bright': '#FFD040',
-        'amber-bezel': '#0D0900',
-        'accent': '#22D3EE',
-        'glow-cyan': 'rgba(34,211,238,0.3)',
+        midnight: '#0A0A0A',
+        surface: '#111111',
+        border: '#222222',
+        'text-body': '#E5E5E5',
+        'text-muted': '#888888',
+        accent: '#5B7FFF',
+        positive: '#34D399',
+        negative: '#F87171',
       },
       fontFamily: {
         mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
