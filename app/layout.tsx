@@ -11,7 +11,7 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], display: "swap", variable
 
 export const metadata: Metadata = {
   title: "reposurge - repos rising. fast.",
-  description: "terminal velocity tracker for github repos",
+  description: "star velocity tracker for github repos",
   icons: { icon: "/favicon.svg" },
 };
 

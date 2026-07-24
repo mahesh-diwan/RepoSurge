@@ -43,10 +43,10 @@ export default function RepoDetailPage({
   if (!repo) {
     return (
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <Link href="/" className="text-amber-muted-light text-xs hover:text-cyan-400 transition-colors mb-8 inline-block">
+        <Link href="/" className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block">
           &larr; back
         </Link>
-        <p className="text-amber-muted-light text-xs mt-8">repo not found</p>
+        <p className="text-text-muted text-xs mt-8">repo not found</p>
       </main>
     );
   }
@@ -61,58 +61,58 @@ export default function RepoDetailPage({
     <main className="max-w-7xl mx-auto px-6 py-16">
       <Link
         href="/"
-        className="text-amber-muted-light text-xs hover:text-cyan-400 transition-colors mb-8 inline-block"
+        className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block"
       >
         &larr; back
       </Link>
 
       <ScrollReveal>
         <div className="max-w-2xl">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-[#F5F5F0]">{repo.full_name}</h1>
-          <p className="text-amber-muted-light text-sm mb-6">{repo.description ?? "-"}</p>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-text-body">{repo.full_name}</h1>
+          <p className="text-text-muted text-sm mb-6">{repo.description ?? "-"}</p>
 
           <a
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-block text-xs bg-amber-primary/10 text-[#1A1A1A] px-3 py-1.5 rounded-lg hover:bg-amber-primary/20 transition-colors mb-10"
+            className="inline-block text-xs bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 transition-colors mb-10"
           >
             view on github
           </a>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
-            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{repo.stars.toLocaleString("en-US")}</p>
+            <div className="bg-surface rounded-lg p-3">
+              <p className="text-text-muted text-[10px] sm:text-xs mb-1">stars</p>
+              <p className="text-lg font-bold tabular-nums text-text-body">{repo.stars.toLocaleString("en-US")}</p>
             </div>
-            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">gained</p>
-              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>
+            <div className="bg-surface rounded-lg p-3">
+              <p className="text-text-muted text-[10px] sm:text-xs mb-1">gained</p>
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>
                 {repo.stars_gained > 0 ? "+" : ""}
                 {repo.stars_gained.toLocaleString("en-US")}
               </p>
             </div>
-            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">velocity</p>
-              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
+            <div className="bg-surface rounded-lg p-3">
+              <p className="text-text-muted text-[10px] sm:text-xs mb-1">velocity</p>
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
             </div>
-            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">7d gain</p>
-              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
+            <div className="bg-surface rounded-lg p-3">
+              <p className="text-text-muted text-[10px] sm:text-xs mb-1">7d gain</p>
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
             </div>
-            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">created</p>
-              <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{createdDate}</p>
+            <div className="bg-surface rounded-lg p-3">
+              <p className="text-text-muted text-[10px] sm:text-xs mb-1">created</p>
+              <p className="text-lg font-bold tabular-nums text-text-body">{createdDate}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 mb-6 text-xs">
-            <span className="text-amber-muted-light">period:</span>
+            <span className="text-text-muted">period:</span>
             {periods.map((p) =>
               period === p ? (
-                <span key={p} className="text-amber-primary font-bold">{periodLabels[p]}</span>
+                <span key={p} className="text-accent font-bold">{periodLabels[p]}</span>
               ) : (
-                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted-light hover:text-cyan-400 transition-colors">
+                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-text-muted hover:text-accent transition-colors">
                   {periodLabels[p]}
                 </Link>
               )
@@ -120,7 +120,7 @@ export default function RepoDetailPage({
           </div>
 
           <div>
-            <p className="text-amber-muted-light text-[10px] sm:text-xs mb-3">star history</p>
+            <p className="text-text-muted text-[10px] sm:text-xs mb-3">star history</p>
             <div className="h-32 w-full">
               <StarChart history={repo.history} period={period} />
             </div>

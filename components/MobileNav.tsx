@@ -45,7 +45,7 @@ export default function MobileNav() {
       <div className="relative z-[51]">
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-amber-muted hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 active:text-amber-primary/70 transition-colors text-sm p-3 -m-3 min-w-[44px] text-center cursor-pointer"
+          className="md:hidden text-text-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:text-accent/70 transition-colors text-sm p-3 -m-3 min-w-[44px] text-center cursor-pointer"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -60,7 +60,7 @@ export default function MobileNav() {
           aria-modal="true"
           aria-label="navigation"
           aria-hidden={!open}
-          className="fixed inset-0 z-50 bg-amber-bg/95 backdrop-blur-sm flex items-center justify-center md:hidden animate-fade-in"
+          className="fixed inset-0 z-50 bg-midnight/95 flex items-center justify-center md:hidden animate-fade-in"
           onClick={close}
           onKeyDown={(e) => { if (e.key === "Escape") close(); }}
         >
