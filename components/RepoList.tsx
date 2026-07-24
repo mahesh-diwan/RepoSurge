@@ -69,7 +69,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
       <div className="flex justify-center mb-6">
         <div className="flex items-center gap-3">
           <SearchInput value={search} onChange={setSearch} />
-          <span className="flex items-center gap-1.5 text-[10px] text-amber-muted shrink-0" title="Live data polling status">
+          <span className="flex items-center gap-1.5 text-[10px] text-amber-muted-light shrink-0" title="Live data polling status">
             <span
               className={`inline-block w-1.5 h-1.5 rounded-full ${
                 live ? "bg-amber-primary shadow-[0_0_4px_#FFB000]" : "bg-amber-muted"
@@ -81,7 +81,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
       </div>
 
       {error && !live && (
-        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-amber-primary/20 rounded-none text-amber-muted text-[10px]">
+        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-amber-primary/20 rounded-none text-amber-muted-light text-[10px]">
           <span>live data unavailable — showing cached data</span>
           <button
             onClick={() => window.location.reload()}
@@ -92,7 +92,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         </div>
       )}
 
-      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-amber-muted border-b border-amber-primary/20 mb-1">
+      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-amber-muted-light border-b border-amber-primary/20 mb-1">
         <button
           onClick={() => handleSort("rank")}
           className="w-6 text-right shrink-0 hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
@@ -116,13 +116,13 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         >
           gained{arrow("gained")}
         </button>
-        <div className="hidden sm:block shrink-0 w-16 text-right text-amber-muted/50">stars</div>
+        <div className="hidden sm:block shrink-0 w-16 text-right text-amber-muted-light/50">stars</div>
       </div>
 
       {filtered.length === 0 ? (
         <div className="mt-4">
-          <p className="text-amber-muted text-xs">no repos match &ldquo;{search}&rdquo;</p>
-          <p className="text-amber-muted text-xs mt-1">try a different name or clear the filter</p>
+          <p className="text-amber-muted-light text-xs">no repos match &ldquo;{search}&rdquo;</p>
+          <p className="text-amber-muted-light text-xs mt-1">try a different name or clear the filter</p>
         </div>
       ) : (
         <div>

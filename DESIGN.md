@@ -30,6 +30,8 @@ typography:
 rounded:
   none: "0px"
   sparkline-bar: "1px"
+  nav: "xl"
+  input-card: "lg"
 spacing:
   xs: "4px"
   sm: "8px"
@@ -61,7 +63,9 @@ components:
 
 **Creative North Star: "The Leaderboard Terminal"**
 
-RepoSurge is a competitive leaderboard rendered through a terminal lens — green phosphor on deep black, flat rows, and glow rewards for action. The system rejects all SaaS dashboard conventions: no cards, no sidebars, no rounded corners, no decorative illustrations. Every interface decision serves a single goal: let a developer scan the rising-repo ranking at a glance and immediately see who is winning.
+RepoSurge is a competitive leaderboard rendered through a terminal lens — green phosphor on deep black, flat rows, and glow rewards for action. The system rejects most SaaS dashboard conventions: no cards, no sidebars, no decorative illustrations. Every interface decision serves a single goal: let a developer scan the rising-repo ranking at a glance and immediately see who is winning.
+
+Rounded corners are used sparingly and deliberately — rounded-xl on the floating nav pill, rounded-lg on inputs and stat cards. The curved shapes soften the terminal edge for a modern minimal feel, while the list rows remain flat to preserve the leaderboard scanning speed.
 
 Spacing is generous (the black background breathes), but the data density is high. The glow is earned — appearing only on interactive elements (hover, focus, active state) and on the live delta badges. Resting state is flat and dark.
 
@@ -128,7 +132,7 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 ### NavLinks
 
-- **Shape:** Square pills — `rounded-none`, `px-3`, `py-1.5`.
+- **Shape:** Rounded pills — `rounded-xl`, `px-3`, `py-1.5`.
 - **Default:** `text-dim` on transparent background.
 - **Active:** `bg-terminal text-midnight font-bold` with a `8px` green glow (`shadow-[0_0_8px_#00FF41/30]`).
 - **Hover:** `bg-terminal/10 text-bone`.
@@ -154,7 +158,7 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 ### SearchInput
 
-- **Shape:** Full-width input with `>` prompt character (decorative, `aria-hidden="true"`).
+- **Shape:** Full-width input with `>` prompt character (decorative, `aria-hidden="true"`), rounded corners with `rounded-lg`.
 - **Default:** `bg-transparent`, `border border-[#1a1a1a]`, `text-bone`, `placeholder-dim`.
 - **Focus:** `border-terminal` and `bg-terminal/5` background tint.
 - **Spacing:** `pl-7 pr-3 py-2 text-xs`. The `>` sits at `left-3` inside the input.
@@ -193,7 +197,8 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 ### Don't:
 
-- **Don't** use cards, sidebars, rounded corners, or container shadows.
+- **Don't** use cards with full rounded corners (cards use `rounded-lg` sparingly), sidebars, or container shadows.
+- **Don't** use `rounded-none` on the nav pill or inputs — these deliberately use `rounded-xl` and `rounded-lg` respectively.
 - **Don't** use gradient text, glassmorphism, or decorative illustrations.
 - **Don't** use a second font family — no serif, no sans-serif alternative.
 - **Don't** use generic SaaS dashboard patterns: no sidebar nav, no stat cards, no header metrics.

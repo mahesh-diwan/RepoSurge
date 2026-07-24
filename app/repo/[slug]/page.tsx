@@ -43,10 +43,10 @@ export default function RepoDetailPage({
   if (!repo) {
     return (
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <Link href="/" className="text-amber-muted text-xs hover:text-amber-primary transition-colors mb-8 inline-block">
+        <Link href="/" className="text-amber-muted-light text-xs hover:text-amber-primary transition-colors mb-8 inline-block">
           &larr; back
         </Link>
-        <p className="text-amber-muted text-xs mt-8">repo not found</p>
+        <p className="text-amber-muted-light text-xs mt-8">repo not found</p>
       </main>
     );
   }
@@ -61,7 +61,7 @@ export default function RepoDetailPage({
     <main className="max-w-7xl mx-auto px-6 py-16">
       <Link
         href="/"
-        className="text-amber-muted text-xs hover:text-amber-primary transition-colors mb-8 inline-block"
+        className="text-amber-muted-light text-xs hover:text-amber-primary transition-colors mb-8 inline-block"
       >
         &larr; back
       </Link>
@@ -69,7 +69,7 @@ export default function RepoDetailPage({
       <ScrollReveal>
         <div className="max-w-2xl">
           <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-[#F5F5F0]">{repo.full_name}</h1>
-          <p className="text-amber-muted text-sm mb-6">{repo.description ?? "-"}</p>
+          <p className="text-amber-muted-light text-sm mb-6">{repo.description ?? "-"}</p>
 
           <a
             href={repo.url}
@@ -82,37 +82,37 @@ export default function RepoDetailPage({
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
             <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">stars</p>
+              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">stars</p>
               <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{repo.stars.toLocaleString("en-US")}</p>
             </div>
             <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">gained</p>
+              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">gained</p>
               <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>
                 {repo.stars_gained > 0 ? "+" : ""}
                 {repo.stars_gained.toLocaleString("en-US")}
               </p>
             </div>
             <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">velocity</p>
+              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">velocity</p>
               <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
             </div>
             <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">7d gain</p>
+              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">7d gain</p>
               <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
             </div>
             <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">created</p>
+              <p className="text-amber-muted-light text-[10px] sm:text-xs mb-1">created</p>
               <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{createdDate}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 mb-6 text-xs">
-            <span className="text-amber-muted">period:</span>
+            <span className="text-amber-muted-light">period:</span>
             {periods.map((p) =>
               period === p ? (
                 <span key={p} className="text-amber-primary font-bold">{periodLabels[p]}</span>
               ) : (
-                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted hover:text-amber-primary transition-colors">
+                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted-light hover:text-amber-primary transition-colors">
                   {periodLabels[p]}
                 </Link>
               )
@@ -120,7 +120,7 @@ export default function RepoDetailPage({
           </div>
 
           <div>
-            <p className="text-amber-muted text-[10px] sm:text-xs mb-3">star history</p>
+            <p className="text-amber-muted-light text-[10px] sm:text-xs mb-3">star history</p>
             <div className="h-32 w-full">
               <StarChart history={repo.history} period={period} />
             </div>

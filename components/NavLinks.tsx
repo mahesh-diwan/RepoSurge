@@ -24,7 +24,7 @@ export default function NavLinks({
         className={`text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary ${
           isActive
             ? "text-amber-primary font-bold"
-            : "text-amber-muted hover:text-amber-primary"
+            : "text-amber-muted-light hover:text-amber-primary"
         }`}
         aria-current={isActive ? "page" : undefined}
       >

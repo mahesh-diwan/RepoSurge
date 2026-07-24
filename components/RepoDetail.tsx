@@ -5,7 +5,7 @@ import StarChart from "./StarChart";
 export default function RepoDetail({ slug }: { slug: string }) {
   const repo = getRepoDetails(slug);
   if (!repo)
-    return <p className="text-amber-muted text-xs">Repo not found</p>;
+    return <p className="text-amber-muted-light text-xs">Repo not found</p>;
 
   return (
     <div className="space-y-6">
@@ -13,7 +13,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
         <h3 className="text-lg font-bold text-[#F5F5F0] tracking-tight">
           {repo.name}
         </h3>
-        <p className="text-amber-muted text-xs mt-1 leading-relaxed">
+        <p className="text-amber-muted-light text-xs mt-1 leading-relaxed">
           {repo.description}
         </p>
         <a
@@ -28,7 +28,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
 
       <div className="grid grid-cols-3 gap-3">
         <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted/50 text-[10px] uppercase tracking-wider">
+          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
             Stars
           </div>
           <div className="text-[#F5F5F0] text-lg font-bold tabular-nums">
@@ -36,7 +36,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
           </div>
         </div>
         <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted/50 text-[10px] uppercase tracking-wider">
+          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
             7d Gain
           </div>
           <div
@@ -47,7 +47,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
           </div>
         </div>
         <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted/50 text-[10px] uppercase tracking-wider">
+          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
             Created
           </div>
           <div className="text-[#F5F5F0] text-xs font-bold tabular-nums leading-tight mt-1">
@@ -67,7 +67,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
       )}
 
       <div>
-        <div className="text-amber-muted/50 text-[10px] uppercase tracking-wider mb-2">
+        <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider mb-2">
           Star Velocity
         </div>
         <div className="h-24">

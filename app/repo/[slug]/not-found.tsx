@@ -5,7 +5,7 @@ export default function RepoNotFound() {
     <main className="max-w-7xl mx-auto px-6 pt-16">
       <div className="max-w-xl space-y-4">
         <h1 className="text-xl font-bold text-amber-primary amber-glow">repo not found</h1>
-        <p className="text-amber-muted text-sm">no repository matches that name.</p>
+        <p className="text-amber-muted-light text-sm">no repository matches that name.</p>
         <Link
           href="/"
           className="text-amber-primary text-xs hover:underline hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors inline-block"

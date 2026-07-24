@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetbrains.variable} font-mono bg-amber-bg`}>
+      <body className={`${jetbrains.variable} font-['JetBrains_Mono',monospace] bg-amber-bg`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-amber-bezel focus:text-amber-primary focus:outline-1 focus:outline-amber-primary">
           skip to content
         </a>

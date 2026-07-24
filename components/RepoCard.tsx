@@ -34,8 +34,16 @@ export default function RepoCard({
 
   return (
     <div
+      role="button"
+      tabIndex={0}
       className="flex items-center gap-3 py-2.5 px-2 hover:bg-amber-primary/[0.03] transition-colors cursor-pointer border-b border-amber-primary/[0.06] last:border-b-0"
       onClick={() => onSelect?.(slug)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect?.(slug);
+        }
+      }}
     >
       <span className="w-6 text-right text-amber-muted tabular-nums text-xs shrink-0">
         #{rank}

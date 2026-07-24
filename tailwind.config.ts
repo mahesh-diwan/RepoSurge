@@ -9,6 +9,7 @@ const config: Config = {
         'amber-primary': '#FFB000',
         'amber-dim': '#CC8800',
         'amber-muted': '#8B6914',
+        'amber-muted-light': '#CCA060',
         'amber-bright': '#FFD040',
         'amber-bezel': '#0D0900',
       },

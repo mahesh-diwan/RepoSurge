@@ -71,7 +71,7 @@ export default function StarChart(props: StarChartProps) {
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="none"
+      preserveAspectRatio="xMidYMid meet"
       className="w-full h-full"
       role="img"
       aria-roledescription="sparkline chart"
