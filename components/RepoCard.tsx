@@ -34,7 +34,7 @@ export default function RepoCard({
   return (
     <Link
       href={`/repo/${slug}`}
-      className="block bg-amber-bg/30 border border-amber-muted/30 px-3 py-2.5
+        className="group block bg-amber-bg/30 border border-amber-muted/30 px-3 py-2.5
         hover:bg-amber-bg/60 hover:border-amber-muted/50
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary
         focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg
