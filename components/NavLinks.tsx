@@ -13,7 +13,7 @@ export default function NavLinks({
   const pathname = usePathname();
 
   return (
-    <nav role="navigation" aria-label="main">
+    <nav role="navigation" aria-label="main" className="flex items-center gap-6">
       {links.map((link) => {
     const isActive = pathname === link.href;
     return (
@@ -21,10 +21,10 @@ export default function NavLinks({
         key={link.href}
         href={link.href}
         onClick={onItemClick}
-        className={`px-3 py-1.5 rounded-none text-xs transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:bg-amber-primary/20 ${
+        className={`text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary ${
           isActive
-            ? "bg-amber-primary text-amber-bg font-bold shadow-[0_0_8px_#FFB000/30]"
-            : "text-amber-muted hover:bg-amber-primary/10 hover:text-amber-primary"
+            ? "text-amber-primary font-bold"
+            : "text-amber-muted hover:text-amber-primary"
         }`}
         aria-current={isActive ? "page" : undefined}
       >

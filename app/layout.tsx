@@ -28,19 +28,15 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-amber-bezel focus:text-amber-primary focus:outline-1 focus:outline-amber-primary">
           skip to content
         </a>
-        <header role="banner">
-        <nav className="fixed top-0 left-0 right-0 z-40 bg-amber-bg/90 border-b border-amber-muted/20">
-          <div className="max-w-7xl mx-auto px-6 h-12 flex items-center text-xs tracking-wider">
-            <a href="/" className="text-amber-primary font-bold hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-all duration-200 cursor-pointer">
-              REP<span className="text-amber-dim">Ø</span>SURGE
+        <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
+          <div className="flex items-center gap-6 px-5 py-2 bg-amber-bg/80 backdrop-blur-lg border border-amber-primary/20 rounded-xl shadow-lg shadow-black/40">
+            <a href="/" className="text-amber-primary font-bold tracking-wider text-sm">
+              RS
             </a>
-            <div className="hidden md:flex items-center gap-1 ml-auto">
-              <NavLinks links={NAV_LINKS} />
-            </div>
+            <NavLinks links={NAV_LINKS} />
             <MobileNav />
           </div>
         </nav>
-        </header>
 
         <div id="main-content" className="pt-16 mx-4 md:mx-8 lg:mx-auto max-w-7xl p-4 md:p-6 mb-8">
           {children}
