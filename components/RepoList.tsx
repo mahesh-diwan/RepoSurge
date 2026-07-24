@@ -72,7 +72,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
           <span className="flex items-center gap-1.5 text-[10px] text-amber-muted-light shrink-0" title="Live data polling status">
             <span
               className={`inline-block w-1.5 h-1.5 rounded-full ${
-                live ? "bg-amber-primary shadow-[0_0_4px_#FFB000]" : "bg-amber-muted"
+                live ? "bg-cyan-400 shadow-[0_0_4px_rgba(34,211,238,0.5)]" : "bg-amber-muted"
               }`}
             />
             {live ? "live" : "polling"}

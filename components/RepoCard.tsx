@@ -63,7 +63,7 @@ export default function RepoCard({
       {(() => {
         const trend = history[history.length - 1].stars - history[0].stars;
         if (trend > 0) return (
-          <svg className="w-3 h-3 text-green-500 shrink-0" viewBox="0 0 12 12" fill="currentColor">
+          <svg className="w-3 h-3 text-cyan-400 shrink-0" viewBox="0 0 12 12" fill="currentColor">
             <polygon points="6,1 11,10 1,10" />
           </svg>
         );
@@ -76,7 +76,7 @@ export default function RepoCard({
       })()}
       <div className="flex items-center gap-2 shrink-0 w-20 justify-end">
         {liveLabel && (
-          <span className="text-amber-bright/50 text-[10px] tabular-nums">
+          <span className="text-cyan-400/70 text-[10px] tabular-nums">
             {liveLabel}
           </span>
         )}

@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { gainedColor } from "@/lib/gained-color";
 
 describe("gainedColor", () => {
-  it("returns amber-primary for positive values", () => {
-    expect(gainedColor(100)).toBe("text-amber-primary");
-    expect(gainedColor(1)).toBe("text-amber-primary");
+  it("returns cyan-400 for positive values", () => {
+    expect(gainedColor(100)).toBe("text-cyan-400");
+    expect(gainedColor(1)).toBe("text-cyan-400");
   });
 
   it("returns amber-muted for negative values", () => {
