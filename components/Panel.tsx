@@ -45,7 +45,7 @@ export default function Panel({ open, onClose, children }: PanelProps) {
         aria-label="Repo details"
       >
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="text-sm font-semibold text-body tracking-wider">
+          <h2 className="text-sm font-semibold text-body">
             REPO DETAILS
           </h2>
           <button
