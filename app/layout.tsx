@@ -24,13 +24,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetbrains.variable} font-['JetBrains_Mono',monospace] bg-amber-bg`}>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-amber-bezel focus:text-amber-primary focus:outline-1 focus:outline-amber-primary">
+      <body className={`${jetbrains.variable} font-['JetBrains_Mono',monospace] bg-midnight`}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-surface focus:text-accent focus:outline-1 focus:outline-accent">
           skip to content
         </a>
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-          <div className="flex items-center gap-6 px-5 py-2 bg-amber-bg/80 border border-amber-primary/20 rounded-xl">
-            <a href="/" className="text-amber-primary font-bold tracking-wider text-sm">
+          <div className="flex items-center gap-6 px-5 py-2 bg-midnight/80 border border-border rounded-xl">
+            <a href="/" className="text-accent font-bold tracking-wider text-sm">
               RS
             </a>
             <NavLinks links={NAV_LINKS} />
@@ -42,9 +42,9 @@ export default function RootLayout({
           {children}
         </div>
 
-        <footer aria-label="site footer" className="border-t border-amber-muted/20 py-8 mt-16">
+        <footer aria-label="site footer" className="border-t border-border py-8 mt-16">
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <p className="text-amber-muted text-[10px] sm:text-xs">
+            <p className="text-muted text-[10px] sm:text-xs">
               data: github api &middot; refreshed daily
             </p>
             {lastUpdated && <LastUpdated dateStr={lastUpdated} />}

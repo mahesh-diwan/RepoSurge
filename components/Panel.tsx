@@ -37,20 +37,20 @@ export default function Panel({ open, onClose, children }: PanelProps) {
         aria-hidden="true"
       />
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md bg-amber-bg transform transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md bg-surface transform transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
         aria-label="Repo details"
       >
-        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-amber-primary/10">
-          <h2 className="text-sm font-semibold text-[#F5F5F0] tracking-wider">
+        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
+          <h2 className="text-sm font-semibold text-body tracking-wider">
             REPO DETAILS
           </h2>
           <button
             onClick={onClose}
-            className="text-amber-muted/50 hover:text-cyan-400 transition-colors"
+            className="text-muted/50 hover:text-accent transition-colors"
             aria-label="Close panel"
           >
             <svg
