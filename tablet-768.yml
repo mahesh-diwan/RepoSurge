@@ -1,0 +1,251 @@
+- generic [active] [ref=f7e1]:
+  - link "skip to content" [ref=f7e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner:
+    - navigation [ref=f7e3]:
+      - generic [ref=f7e4]:
+        - link "REPØSURGE" [ref=f7e5] [cursor=pointer]:
+          - /url: /
+        - navigation "main" [ref=f7e128]:
+          - link "HOME" [ref=f7e129] [cursor=pointer]:
+            - /url: /
+          - link "ABOUT" [ref=f7e130] [cursor=pointer]:
+            - /url: /about
+  - generic [ref=f7e8]:
+    - generic [ref=f7e10]:
+      - paragraph [ref=f7e12]: repos rising. fast.
+      - heading "REPØSURGE" [level=1] [ref=f7e14]
+      - paragraph [ref=f7e16]: 15 repos · 2,559,800 stars · 4 languages
+    - main [ref=f7e17]:
+      - generic [ref=f7e19]:
+        - generic [ref=f7e20]: "period:"
+        - link "daily" [ref=f7e21] [cursor=pointer]:
+          - /url: /daily
+        - generic [ref=f7e22]: weekly
+        - link "monthly" [ref=f7e23] [cursor=pointer]:
+          - /url: /monthly
+      - generic [ref=f7e24]:
+        - search [ref=f7e25]:
+          - generic: ">"
+          - textbox "filter repos..." [ref=f7e26]
+        - generic [ref=f7e27]: polling
+      - generic [ref=f7e29]:
+        - button "#" [ref=f7e30] [cursor=pointer]
+        - button "repo" [ref=f7e31] [cursor=pointer]
+        - button "gained" [ref=f7e32] [cursor=pointer]
+      - generic [ref=f7e33]:
+        - generic [ref=f7e35]:
+          - generic [ref=f7e36]: "1"
+          - link "langgenius/dify" [ref=f7e37] [cursor=pointer]:
+            - /url: /repo/langgenius-dify
+          - generic:
+            - 'img "Star count history: 7 data points from 315,000 to 285,000"':
+              - generic "315,000 stars"
+              - generic "310,300 stars"
+              - generic "305,000 stars"
+              - generic "299,900 stars"
+              - generic "295,000 stars"
+              - generic "289,800 stars"
+              - generic "285,000 stars"
+          - generic "gained 39,400 stars" [ref=f7e39]: +39,400
+        - generic [ref=f7e41]:
+          - generic [ref=f7e42]: "2"
+          - link "shadcn-ui/ui" [ref=f7e43] [cursor=pointer]:
+            - /url: /repo/shadcn-ui-ui
+          - generic:
+            - 'img "Star count history: 7 data points from 203,800 to 183,600"':
+              - generic "203,800 stars"
+              - generic "200,100 stars"
+              - generic "197,000 stars"
+              - generic "193,700 stars"
+              - generic "190,200 stars"
+              - generic "186,800 stars"
+              - generic "183,600 stars"
+          - generic "gained 26,700 stars" [ref=f7e45]: +26,700
+        - generic [ref=f7e47]:
+          - generic [ref=f7e48]: "3"
+          - link "graphify-labs/graphify" [ref=f7e49] [cursor=pointer]:
+            - /url: /repo/graphify-labs-graphify
+          - generic:
+            - 'img "Star count history: 7 data points from 73,460 to 77,560"':
+              - generic "73,460 stars"
+              - generic "73,860 stars"
+              - generic "74,360 stars"
+              - generic "74,960 stars"
+              - generic "75,660 stars"
+              - generic "76,560 stars"
+              - generic "77,560 stars"
+          - generic "gained 16,900 stars" [ref=f7e51]: +16,900
+        - generic [ref=f7e53]:
+          - generic [ref=f7e54]: "4"
+          - link "astral-sh/ruff" [ref=f7e55] [cursor=pointer]:
+            - /url: /repo/astral-sh-ruff
+          - generic:
+            - 'img "Star count history: 7 data points from 159,000 to 147,100"':
+              - generic "159,000 stars"
+              - generic "157,100 stars"
+              - generic "155,000 stars"
+              - generic "153,200 stars"
+              - generic "151,000 stars"
+              - generic "149,000 stars"
+              - generic "147,100 stars"
+          - generic "gained 16,100 stars" [ref=f7e57]: +16,100
+        - generic [ref=f7e59]:
+          - generic [ref=f7e60]: "5"
+          - link "vercel/next.js" [ref=f7e61] [cursor=pointer]:
+            - /url: /repo/vercel-next.js
+          - generic:
+            - 'img "Star count history: 7 data points from 513,200 to 502,000"':
+              - generic "513,200 stars"
+              - generic "511,500 stars"
+              - generic "509,400 stars"
+              - generic "507,500 stars"
+              - generic "506,000 stars"
+              - generic "503,800 stars"
+              - generic "502,000 stars"
+          - generic "gained 14,600 stars" [ref=f7e63]: +14,600
+        - generic [ref=f7e65]:
+          - generic [ref=f7e66]: "6"
+          - link "anomalyco/opencode" [ref=f7e67] [cursor=pointer]:
+            - /url: /repo/anomalyco-opencode
+          - generic:
+            - 'img "Star count history: 7 data points from 178,098 to 181,898"':
+              - generic "178,098 stars"
+              - generic "178,298 stars"
+              - generic "178,598 stars"
+              - generic "178,998 stars"
+              - generic "179,598 stars"
+              - generic "180,398 stars"
+              - generic "181,898 stars"
+          - generic "gained 8,900 stars" [ref=f7e69]: +8,900
+        - generic [ref=f7e71]:
+          - generic [ref=f7e72]: "7"
+          - link "koala73/worldmonitor" [ref=f7e73] [cursor=pointer]:
+            - /url: /repo/koala73-worldmonitor
+          - generic:
+            - 'img "Star count history: 7 data points from 58,620 to 62,015"':
+              - generic "58,620 stars"
+              - generic "58,720 stars"
+              - generic "58,920 stars"
+              - generic "59,320 stars"
+              - generic "59,920 stars"
+              - generic "60,720 stars"
+              - generic "62,015 stars"
+          - generic "gained 8,495 stars" [ref=f7e75]: +8,495
+        - generic [ref=f7e77]:
+          - generic [ref=f7e78]: "8"
+          - link "diegosouzapw/omniroute" [ref=f7e79] [cursor=pointer]:
+            - /url: /repo/diegosouzapw-omniroute
+          - generic:
+            - 'img "Star count history: 7 data points from 18,021 to 19,921"':
+              - generic "18,021 stars"
+              - generic "18,421 stars"
+              - generic "18,621 stars"
+              - generic "18,921 stars"
+              - generic "19,521 stars"
+              - generic "19,621 stars"
+              - generic "19,921 stars"
+          - generic "gained 6,184 stars" [ref=f7e81]: +6,184
+        - generic [ref=f7e83]:
+          - generic [ref=f7e84]: "9"
+          - link "tirth8205/code-review-graph" [ref=f7e85] [cursor=pointer]:
+            - /url: /repo/tirth8205-code-review-graph
+          - generic:
+            - 'img "Star count history: 7 data points from 14,555 to 16,305"':
+              - generic "14,555 stars"
+              - generic "14,855 stars"
+              - generic "15,005 stars"
+              - generic "15,255 stars"
+              - generic "15,755 stars"
+              - generic "16,105 stars"
+              - generic "16,305 stars"
+          - generic "gained 5,275 stars" [ref=f7e87]: +5,275
+        - generic [ref=f7e89]:
+          - generic [ref=f7e90]: "10"
+          - link "n8n-io/n8n" [ref=f7e91] [cursor=pointer]:
+            - /url: /repo/n8n-io-n8n
+          - generic:
+            - 'img "Star count history: 7 data points from 193,716 to 194,966"':
+              - generic "193,716 stars"
+              - generic "193,916 stars"
+              - generic "194,016 stars"
+              - generic "194,266 stars"
+              - generic "194,416 stars"
+              - generic "194,616 stars"
+              - generic "194,966 stars"
+          - generic "gained 3,150 stars" [ref=f7e93]: +3,150
+        - generic [ref=f7e95]:
+          - generic [ref=f7e96]: "11"
+          - link "trycua/cua" [ref=f7e97] [cursor=pointer]:
+            - /url: /repo/trycua-cua
+          - generic:
+            - 'img "Star count history: 7 data points from 17,270 to 18,670"':
+              - generic "17,270 stars"
+              - generic "17,490 stars"
+              - generic "17,670 stars"
+              - generic "17,920 stars"
+              - generic "18,320 stars"
+              - generic "18,470 stars"
+              - generic "18,670 stars"
+          - generic "gained 2,930 stars" [ref=f7e99]: +2,930
+        - generic [ref=f7e101]:
+          - generic [ref=f7e102]: "12"
+          - link "1jehuang/jcode" [ref=f7e103] [cursor=pointer]:
+            - /url: /repo/1jehuang-jcode
+          - generic:
+            - 'img "Star count history: 7 data points from 7,928 to 8,618"':
+              - generic "7,928 stars"
+              - generic "8,028 stars"
+              - generic "8,178 stars"
+              - generic "8,378 stars"
+              - generic "8,438 stars"
+              - generic "8,518 stars"
+              - generic "8,618 stars"
+          - generic "gained 2,633 stars" [ref=f7e105]: +2,633
+        - generic [ref=f7e107]:
+          - generic [ref=f7e108]: "13"
+          - link "shubhamsaboo/awesome-llm-apps" [ref=f7e109] [cursor=pointer]:
+            - /url: /repo/shubhamsaboo-awesome-llm-apps
+          - generic:
+            - 'img "Star count history: 7 data points from 121,379 to 122,059"':
+              - generic "121,379 stars"
+              - generic "121,479 stars"
+              - generic "121,529 stars"
+              - generic "121,609 stars"
+              - generic "121,709 stars"
+              - generic "121,859 stars"
+              - generic "122,059 stars"
+          - generic "gained 2,280 stars" [ref=f7e111]: +2,280
+        - generic [ref=f7e113]:
+          - generic [ref=f7e114]: "14"
+          - link "codecrafters-io/build-your-own-x" [ref=f7e115] [cursor=pointer]:
+            - /url: /repo/codecrafters-io-build-your-own-x
+          - generic:
+            - 'img "Star count history: 7 data points from 526,299 to 526,799"':
+              - generic "526,299 stars"
+              - generic "526,389 stars"
+              - generic "526,449 stars"
+              - generic "526,569 stars"
+              - generic "526,649 stars"
+              - generic "526,749 stars"
+              - generic "526,799 stars"
+          - generic "gained 1,260 stars" [ref=f7e117]: +1,260
+        - generic [ref=f7e119]:
+          - generic [ref=f7e120]: "15"
+          - link "ibelick/ui-skills" [ref=f7e121] [cursor=pointer]:
+            - /url: /repo/ibelick-ui-skills
+          - generic:
+            - 'img "Star count history: 7 data points from 4,057 to 4,312"':
+              - generic "4,057 stars"
+              - generic "4,117 stars"
+              - generic "4,142 stars"
+              - generic "4,182 stars"
+              - generic "4,262 stars"
+              - generic "4,282 stars"
+              - generic "4,312 stars"
+          - generic "gained 590 stars" [ref=f7e123]: "+590"
+  - contentinfo "site footer" [ref=f7e124]:
+    - generic [ref=f7e125]:
+      - paragraph [ref=f7e126]: "data: github api · refreshed daily"
+      - generic [ref=f7e131]: updated 23h ago
+  - alert [ref=f7e132]

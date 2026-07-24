@@ -1,0 +1,87 @@
+<h2>Layout Features — What to Add?</h2>
+<p class="subtitle">Current: leaderboard + search + sort + period nav. What's next?</p>
+
+<div class="cards">
+  <div class="card" data-choice="cards" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>📊 Dashboard Cards</h3>
+      <p>Repo rows become CRT-styled cards with:</p>
+      <ul style="font-size:14px;color:#999;margin-top:8px;">
+        <li>Language badge</li>
+        <li>Description snippet</li>
+        <li>Star history sparkline (bigger)</li>
+        <li>24h / 7d gain columns</li>
+        <li>Trend indicator (hot/cold)</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Richer per-repo data, less scanning.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="filters" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>🔍 Advanced Filters</h3>
+      <p>CRT-style filter bar:</p>
+      <ul style="font-size:14px;color:#999;margin-top:8px;">
+        <li>By language (auto-detected from 15 repos)</li>
+        <li>By min stars (e.g., &gt;5000)</li>
+        <li>By date range (period selector enhanced)</li>
+        <li>Combine with search</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Narrow the field without scrolling.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="chart" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>📈 Star History Chart</h3>
+      <p>Replace text sparklines with a CRT-glow chart:</p>
+      <ul style="font-size:14px;color:#999;margin-top:8px;">
+        <li>Interactive SVG line chart</li>
+        <li>Hover shows exact date + star count</li>
+        <li>Amber glow line on dark background</li>
+        <li>Multi-repo overlay (compare)</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Actual charting, not just numbers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cards" style="margin-top:12px;">
+  <div class="card" data-choice="compare" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>⚖️ Compare Mode</h3>
+      <p>Select 2-3 repos, see them side by side:</p>
+      <ul style="font-size:14px;color:#999;margin-top:8px;">
+        <li>Parallel star histories</li>
+        <li>Growth rate comparison</li>
+        <li>Language + description</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Pick winners at a glance.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="minimal" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>✓ Refined Current</h3>
+      <p>Keep existing layout, just elevate:</p>
+      <ul style="font-size:14px;color:#999;margin-top:8px;">
+        <li>CRT frame/monitor border around content</li>
+        <li>Better sparklines (amber-glow bars)</li>
+        <li>Amber-on-sepia color palette</li>
+        <li>Scanlines + vignette</li>
+        <li>No new features</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Minimal path — visual only, no new features.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="custom" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>✏️ Something Else</h3>
+      <p style="font-size:14px;color:#999;margin-top:8px;">Describe your idea in the terminal — I'll mock it up.</p>
+      <p style="margin-top:12px;font-size:13px;color:#FFB000;">Your call.</p>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px;">Pick as many as you want (multi-select), or just one. Then respond in terminal.</p>

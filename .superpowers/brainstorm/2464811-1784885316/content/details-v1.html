@@ -1,0 +1,131 @@
+<h2>Nav, sparklines & slide-out panel</h2>
+<p class="subtitle">three refined details</p>
+
+<!-- 1. NAV -->
+<div class="section">
+  <h3>1. Floating nav pill</h3>
+  <div style="display:flex;justify-content:center;margin-top:8px">
+    <div style="background:#1A1200;border:1px solid #FFB000/30;border-radius:12px;padding:8px 24px;display:flex;gap:28px;font-size:13px;box-shadow:0 4px 32px rgba(0,0,0,0.5),0 0 12px rgba(255,176,0,0.06);backdrop-filter:blur(16px)">
+      <span style="color:#FFB000;font-weight:bold;letter-spacing:1px">RS</span>
+      <span style="color:#f5f5f0">home</span>
+      <span style="color:#8B6914">about</span>
+      <span style="color:#8B6914">/</span>
+    </div>
+  </div>
+  <p class="subtitle" style="margin-top:6px">Squared (<code>rounded-xl</code>) with subtle amber glow. Logo collapsed to "RS" for cleaner look.</p>
+</div>
+
+<!-- 2. SPARKLINES -->
+<div class="section">
+  <h3>2. Better star sparklines</h3>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header">Current (weak)</div>
+      <div class="mockup-body" style="padding:12px;font-size:12px;text-align:left">
+        <div style="display:flex;flex-direction:column;gap:2px;height:40px;align-items:flex-end">
+          <div style="display:flex;gap:2px;height:24px;align-items:flex-end">
+            <div style="width:10px;height:60%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:80%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:100%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:90%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+            <div style="width:10px;height:65%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:1px"></div>
+          </div>
+          <span style="color:#8B6914;font-size:9px">just bars, no meaning</span>
+        </div>
+      </div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-header">Proposed (robust)</div>
+      <div class="mockup-body" style="padding:12px;font-size:12px;text-align:left">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:#8B6914">
+            <span>star growth (7d)</span>
+            <span style="color:#FFB000">+2,340</span>
+          </div>
+          <div style="display:flex;gap:1px;height:32px;align-items:flex-end;padding:0 2px">
+            <div style="flex:1;height:30%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Mon: 157,660"></div>
+            <div style="flex:1;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Tue: 158,120"></div>
+            <div style="flex:1;height:65%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Wed: 158,540"></div>
+            <div style="flex:1;height:80%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Thu: 159,100"></div>
+            <div style="flex:1;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Fri: 159,480"></div>
+            <div style="flex:1;height:90%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Sat: 159,890"></div>
+            <div style="flex:1;height:100%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px" title="Sun: 160,000"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:#8B6914/60">
+            <span>157.7K</span>
+            <span>160K</span>
+          </div>
+          <div style="color:#FFB000/60;font-size:9px">↑ trending up · hover for daily values</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. SLIDE-OUT PANEL -->
+<div class="section">
+  <h3>3. Slide-out panel</h3>
+  <div class="mockup" style="max-width:400px;margin-left:auto">
+    <div class="mockup-header">Click repo → panel opens from right</div>
+    <div class="mockup-body" style="padding:16px;text-align:left;font-size:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="color:#8B6914;font-size:10px">#1</div>
+          <div style="color:#f5f5f0;font-size:16px;margin:2px 0">anomalyco/opencode</div>
+          <span style="background:#FFB000/15;color:#FFB000;padding:2px 8px;border-radius:4px;font-size:10px">TypeScript</span>
+        </div>
+        <div style="color:#FFB000;font-size:14px">✕</div>
+      </div>
+
+      <p style="color:#8B6914;font-size:12px;line-height:1.5;margin-bottom:12px">Open source AI coding agent for the terminal. 160K+ GitHub stars, 7.5M monthly users.</p>
+
+      <div style="display:flex;gap:16px;margin-bottom:14px">
+        <div><div style="color:#8B6914;font-size:10px">stars</div><div style="color:#f5f5f0;font-size:14px">160,000</div></div>
+        <div><div style="color:#8B6914;font-size:10px">gained</div><div style="color:#FFB000;font-size:14px">+2,340</div></div>
+        <div><div style="color:#8B6914;font-size:10px">7d gain</div><div style="color:#FFB000;font-size:14px">+567</div></div>
+        <div><div style="color:#8B6914;font-size:10px">created</div><div style="color:#f5f5f0;font-size:14px">Jan 2025</div></div>
+      </div>
+
+      <!-- Inline sparkline for panel -->
+      <div style="background:#2A1F0A;border-radius:8px;padding:10px;margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:#8B6914;margin-bottom:4px">
+          <span>star growth (7d)</span>
+          <span style="color:#FFB000">+2,340</span>
+        </div>
+        <div style="display:flex;gap:1px;height:28px;align-items:flex-end">
+          <div style="flex:1;height:30%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:65%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:80%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:90%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+          <div style="flex:1;height:100%;background:linear-gradient(0deg,#FFB000/20,#FFB000/70);border-radius:1px"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;background:#FFB000;border:none;padding:8px;text-align:center;border-radius:8px;color:#1A1200;font-size:12px;font-weight:bold">view on github →</div>
+        <div style="flex:0;background:transparent;border:1px solid #FFB000/30;padding:8px;text-align:center;border-radius:8px;color:#8B6914;font-size:12px">close</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options" style="margin-top:12px">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Proceed to spec</h3>
+      <p>Lock these details and I'll write the design doc</p>
+    </div>
+  </div>
+  <div class="option" data-choice="adjust" onclick="toggleSelect(this)">
+    <div class="letter">✎</div>
+    <div class="content">
+      <h3>Needs adjustments</h3>
+      <p>Tell me what to change in terminal</p>
+    </div>
+  </div>
+</div>

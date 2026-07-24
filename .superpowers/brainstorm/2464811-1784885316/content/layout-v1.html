@@ -1,0 +1,128 @@
+<h2>Full page layout concept</h2>
+<p class="subtitle">Floating nav + hero description + new search placement</p>
+
+<div class="mockup">
+  <div class="mockup-header">Proposed layout</div>
+  <div class="mockup-body" style="padding:20px;text-align:left">
+    <!-- Floating nav pill -->
+    <div style="display:flex;justify-content:center;margin-bottom:32px">
+      <div style="background:#1A1200;border:1px solid #FFB000/40;border-radius:9999px;padding:6px 20px;display:flex;gap:24px;font-size:13px;box-shadow:0 4px 24px rgba(0,0,0,0.5),0 0 12px rgba(255,176,0,0.08);backdrop-filter:blur(12px)">
+        <span style="color:#FFB000;font-weight:bold">reposurge</span>
+        <span style="color:#8B6914">home</span>
+        <span style="color:#8B6914">about</span>
+        <span style="color:#8B6914">/</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div style="margin-bottom:24px;text-align:center">
+      <div style="color:#f5f5f0;font-size:28px;font-weight:bold;margin-bottom:8px">REPOSURGE</div>
+      <div style="color:#8B6914;font-size:12px;max-width:400px;margin:0 auto;line-height:1.6">
+        Track GitHub repo velocity in real-time. See which projects are rising fastest, compare star growth, and discover trending repos at a glance.
+      </div>
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:12px;color:#FFB000/60">
+        <span>15 repos</span>
+        <span>2.5M stars</span>
+        <span>4 languages</span>
+        <span style="color:#FFB000">updated 20m ago</span>
+      </div>
+    </div>
+
+    <!-- Search bar centered between hero and list -->
+    <div style="display:flex;justify-content:center;margin-bottom:16px">
+      <div style="background:#2A1F0A;border:1px solid #FFB000/20;border-radius:9999px;padding:8px 16px;width:320px;display:flex;gap:8px">
+        <span style="color:#8B6914">/</span>
+        <span style="color:#8B6914">search repos...</span>
+        <span style="color:#FFB000/60;margin-left:auto;font-size:11px">⌘K</span>
+      </div>
+    </div>
+
+    <!-- List header + legend line -->
+    <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:11px;color:#8B6914;border-bottom:1px solid #FFB000/15;padding-bottom:8px">
+      <div style="display:flex;gap:12px">
+        <span>#</span>
+        <span>repo</span>
+        <span>language</span>
+      </div>
+      <div style="display:flex;gap:16px">
+        <span>trend</span>
+        <span>gained</span>
+        <span>stars</span>
+      </div>
+    </div>
+
+    <!-- Repo rows -->
+    <div style="font-size:13px">
+      <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #FFB000/8">
+        <div style="width:24px;color:#FFB000;font-weight:bold">1</div>
+        <div style="flex:1;color:#f5f5f0">anomalyco/opencode</div>
+        <div style="width:60px;color:#8B6914;font-size:11px">TypeScript</div>
+        <div style="width:80px;height:20px;display:flex;align-items:flex-end;gap:2px">
+          <div style="flex:1;height:60%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:80%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:100%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+        </div>
+        <div style="width:60px;text-align:right;color:#FFB000">+2,340</div>
+        <div style="width:60px;text-align:right;color:#8B6914">160K</div>
+      </div>
+      <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #FFB000/8">
+        <div style="width:24px;color:#FFB000;font-weight:bold">2</div>
+        <div style="flex:1;color:#f5f5f0">vercel/next.js</div>
+        <div style="width:60px;color:#8B6914;font-size:11px">TypeScript</div>
+        <div style="width:80px;height:20px;display:flex;align-items:flex-end;gap:2px">
+          <div style="flex:1;height:40%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:60%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:30%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+        </div>
+        <div style="width:60px;text-align:right;color:#FFB000">+567</div>
+        <div style="width:60px;text-align:right;color:#8B6914">125K</div>
+      </div>
+      <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #FFB000/8">
+        <div style="width:24px;color:#FFB000;font-weight:bold">3</div>
+        <div style="flex:1;color:#f5f5f0">langgenius/dify</div>
+        <div style="width:60px;color:#8B6914;font-size:11px">Python</div>
+        <div style="width:80px;height:20px;display:flex;align-items:flex-end;gap:2px">
+          <div style="flex:1;height:50%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:70%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:90%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:60%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+          <div style="flex:1;height:80%;background:linear-gradient(0deg,#FFB000/20,#FFB000/60);border-radius:2px"></div>
+        </div>
+        <div style="width:60px;text-align:right;color:#FFB000">+891</div>
+        <div style="width:60px;text-align:right;color:#8B6914">67K</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Changes from current</h3>
+  <ul style="color:#8B6914;font-size:13px;line-height:1.8">
+    <li><strong style="color:#f5f5f0">Nav:</strong> full-width bar → centered floating pill with <code>rounded-full</code>, backdrop blur, subtle shadow</li>
+    <li><strong style="color:#f5f5f0">Hero:</strong> big heading + 2-line description + stats row (replaces tagline + Ø gimmick)</li>
+    <li><strong style="color:#f5f5f0">Search:</strong> moved above list, centered, styled as pill with <code>⌘K</code> hint</li>
+    <li><strong style="color:#f5f5f0">Table:</strong> horizontal layout (no stacked cards), sparkline inline, scannable</li>
+    <li><strong style="color:#f5f5f0">CRT:</strong> removed frame/scanlines/vignette — cleaner dark theme</li>
+  </ul>
+</div>
+
+<div class="options" style="margin-top:16px">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content">
+      <h3>Looks good — proceed to details</h3>
+      <p>I'll refine nav, sparklines, and slide-out panel next</p>
+    </div>
+  </div>
+  <div class="option" data-choice="tweak" onclick="toggleSelect(this)">
+    <div class="letter">✎</div>
+    <div class="content">
+      <h3>Need changes</h3>
+      <p>Tell me what to adjust in terminal</p>
+    </div>
+  </div>
+</div>

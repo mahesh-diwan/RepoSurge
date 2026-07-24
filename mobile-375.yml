@@ -1,0 +1,112 @@
+- generic [active] [ref=e1]:
+  - link "skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "REPØSURGE" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - button "Toggle menu" [ref=e134] [cursor=pointer]: ☰
+  - generic [ref=e10]:
+    - generic [ref=e12]:
+      - paragraph [ref=e14]: repos rising. fast.
+      - heading "REPØSURGE" [level=1] [ref=e16]
+      - paragraph [ref=e18]: 15 repos · 2,559,800 stars · 4 languages
+    - main [ref=e19]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: "period:"
+        - link "daily" [ref=e23] [cursor=pointer]:
+          - /url: /daily
+        - generic [ref=e24]: weekly
+        - link "monthly" [ref=e25] [cursor=pointer]:
+          - /url: /monthly
+      - generic [ref=e26]:
+        - search [ref=e27]:
+          - generic: ">"
+          - textbox "filter repos..." [ref=e28]
+        - generic [ref=e29]: polling
+      - generic [ref=e31]:
+        - button "#" [ref=e32] [cursor=pointer]
+        - button "repo" [ref=e33] [cursor=pointer]
+        - button "gained" [ref=e34] [cursor=pointer]
+      - generic [ref=e35]:
+        - generic [ref=e37]:
+          - generic [ref=e38]: "1"
+          - link "langgenius/dify" [ref=e39] [cursor=pointer]:
+            - /url: /repo/langgenius-dify
+          - generic "gained 39,400 stars" [ref=e41]: +39,400
+        - generic [ref=e43]:
+          - generic [ref=e44]: "2"
+          - link "shadcn-ui/ui" [ref=e45] [cursor=pointer]:
+            - /url: /repo/shadcn-ui-ui
+          - generic "gained 26,700 stars" [ref=e47]: +26,700
+        - generic [ref=e49]:
+          - generic [ref=e50]: "3"
+          - link "graphify-labs/graphify" [ref=e51] [cursor=pointer]:
+            - /url: /repo/graphify-labs-graphify
+          - generic "gained 16,900 stars" [ref=e53]: +16,900
+        - generic [ref=e55]:
+          - generic [ref=e56]: "4"
+          - link "astral-sh/ruff" [ref=e57] [cursor=pointer]:
+            - /url: /repo/astral-sh-ruff
+          - generic "gained 16,100 stars" [ref=e59]: +16,100
+        - generic [ref=e61]:
+          - generic [ref=e62]: "5"
+          - link "vercel/next.js" [ref=e63] [cursor=pointer]:
+            - /url: /repo/vercel-next.js
+          - generic "gained 14,600 stars" [ref=e65]: +14,600
+        - generic [ref=e67]:
+          - generic [ref=e68]: "6"
+          - link "anomalyco/opencode" [ref=e69] [cursor=pointer]:
+            - /url: /repo/anomalyco-opencode
+          - generic "gained 8,900 stars" [ref=e71]: +8,900
+        - generic [ref=e73]:
+          - generic [ref=e74]: "7"
+          - link "koala73/worldmonitor" [ref=e75] [cursor=pointer]:
+            - /url: /repo/koala73-worldmonitor
+          - generic "gained 8,495 stars" [ref=e77]: +8,495
+        - generic [ref=e79]:
+          - generic [ref=e80]: "8"
+          - link "diegosouzapw/omniroute" [ref=e81] [cursor=pointer]:
+            - /url: /repo/diegosouzapw-omniroute
+          - generic "gained 6,184 stars" [ref=e83]: +6,184
+        - generic [ref=e85]:
+          - generic [ref=e86]: "9"
+          - link "tirth8205/code-review-graph" [ref=e87] [cursor=pointer]:
+            - /url: /repo/tirth8205-code-review-graph
+          - generic "gained 5,275 stars" [ref=e89]: +5,275
+        - generic [ref=e91]:
+          - generic [ref=e92]: "10"
+          - link "n8n-io/n8n" [ref=e93] [cursor=pointer]:
+            - /url: /repo/n8n-io-n8n
+          - generic "gained 3,150 stars" [ref=e95]: +3,150
+        - generic [ref=e97]:
+          - generic [ref=e98]: "11"
+          - link "trycua/cua" [ref=e99] [cursor=pointer]:
+            - /url: /repo/trycua-cua
+          - generic "gained 2,930 stars" [ref=e101]: +2,930
+        - generic [ref=e103]:
+          - generic [ref=e104]: "12"
+          - link "1jehuang/jcode" [ref=e105] [cursor=pointer]:
+            - /url: /repo/1jehuang-jcode
+          - generic "gained 2,633 stars" [ref=e107]: +2,633
+        - generic [ref=e109]:
+          - generic [ref=e110]: "13"
+          - link "shubhamsaboo/awesome-llm-apps" [ref=e111] [cursor=pointer]:
+            - /url: /repo/shubhamsaboo-awesome-llm-apps
+          - generic "gained 2,280 stars" [ref=e113]: +2,280
+        - generic [ref=e115]:
+          - generic [ref=e116]: "14"
+          - link "codecrafters-io/build-your-own-x" [ref=e117] [cursor=pointer]:
+            - /url: /repo/codecrafters-io-build-your-own-x
+          - generic "gained 1,260 stars" [ref=e119]: +1,260
+        - generic [ref=e121]:
+          - generic [ref=e122]: "15"
+          - link "ibelick/ui-skills" [ref=e123] [cursor=pointer]:
+            - /url: /repo/ibelick-ui-skills
+          - generic "gained 590 stars" [ref=e125]: "+590"
+  - contentinfo "site footer" [ref=e126]:
+    - generic [ref=e127]:
+      - paragraph [ref=e128]: "data: github api · refreshed daily"
+      - generic [ref=e131]: updated 22h ago
+  - alert [ref=e132]
