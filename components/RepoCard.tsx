@@ -12,6 +12,7 @@ export default function RepoCard({
   liveDelta,
   history,
   period = "week",
+  onSelect,
 }: {
   rank: number;
   name: string;
@@ -24,6 +25,7 @@ export default function RepoCard({
   liveDelta: number | null;
   history: { recorded_at: string; stars: number }[];
   period?: string;
+  onSelect?: (slug: string) => void;
 }) {
   const gainedPrefix = gained > 0 ? "+" : gained < 0 ? "" : "";
   const gainedAbs = Math.abs(gained);
@@ -31,7 +33,10 @@ export default function RepoCard({
     liveDelta !== null ? `${liveDelta > 0 ? "+" : ""}${liveDelta}` : null;
 
   return (
-    <div className="flex items-center gap-3 py-2.5 px-2 hover:bg-amber-primary/[0.03] transition-colors cursor-pointer border-b border-amber-primary/[0.06] last:border-b-0">
+    <div
+      className="flex items-center gap-3 py-2.5 px-2 hover:bg-amber-primary/[0.03] transition-colors cursor-pointer border-b border-amber-primary/[0.06] last:border-b-0"
+      onClick={() => onSelect?.(slug)}
+    >
       <span className="w-6 text-right text-amber-muted tabular-nums text-xs shrink-0">
         #{rank}
       </span>

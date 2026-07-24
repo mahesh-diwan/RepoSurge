@@ -7,9 +7,12 @@ import { useLiveStars } from "@/lib/useLiveStars";
 import RepoCard from "./RepoCard";
 import ScrollReveal from "./ScrollReveal";
 import SearchInput from "./SearchInput";
+import Panel from "./Panel";
+import RepoDetail from "./RepoDetail";
 
 export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
   const [search, setSearch] = useState("");
+  const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
   const { starsMap, live, error } = useLiveStars();
   const initStars = useRef<Record<string, number>>({});
   if (repos.length > 0 && Object.keys(initStars.current).length === 0) {
@@ -149,12 +152,17 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
                     return delta > 0 ? delta : null;
                   })()}
                   history={repo.history}
+                  onSelect={setSelectedRepo}
                 />
               </ScrollReveal>
             );
           })}
         </div>
       )}
+
+      <Panel open={!!selectedRepo} onClose={() => setSelectedRepo(null)}>
+        {selectedRepo && <RepoDetail slug={selectedRepo} />}
+      </Panel>
     </>
   );
 }
