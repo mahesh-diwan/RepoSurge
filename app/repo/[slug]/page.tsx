@@ -68,41 +68,41 @@ export default function RepoDetailPage({
 
       <ScrollReveal>
         <div className="max-w-2xl">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance">{repo.full_name}</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-[#F5F5F0]">{repo.full_name}</h1>
           <p className="text-amber-muted text-sm mb-6">{repo.description ?? "-"}</p>
 
           <a
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-block text-xs text-amber-primary border border-amber-primary/50 px-3 py-1.5 hover:bg-amber-primary/10 hover:shadow-[0_0_8px_#FFB000/30] transition-all mb-10"
+            className="inline-block text-xs bg-amber-primary/10 text-[#1A1A1A] px-3 py-1.5 rounded-lg hover:bg-amber-primary/20 transition-colors mb-10"
           >
             view on github
           </a>
 
-          <div className="flex gap-8 mb-8">
-            <div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
+            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums text-amber-primary amber-glow">{repo.stars.toLocaleString("en-US")}</p>
+              <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{repo.stars.toLocaleString("en-US")}</p>
             </div>
-            <div>
+            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">gained</p>
-              <p className={`text-lg font-bold tabular-nums amber-glow ${gainedColor(repo.stars_gained)}`}>
+              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>
                 {repo.stars_gained > 0 ? "+" : ""}
                 {repo.stars_gained.toLocaleString("en-US")}
               </p>
             </div>
-            <div>
+            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">velocity</p>
-              <p className={`text-lg font-bold tabular-nums amber-glow ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
+              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
             </div>
-            <div>
+            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">7d gain</p>
-              <p className="text-lg font-bold tabular-nums amber-glow text-amber-primary">{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
+              <p className={`text-lg font-bold tabular-nums text-[#F5F5F0] ${gainedColor(repo.stars_gained)}`}>{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
             </div>
-            <div>
+            <div className="bg-amber-primary/[0.03] rounded-lg p-3">
               <p className="text-amber-muted text-[10px] sm:text-xs mb-1">created</p>
-              <p className="text-lg font-bold tabular-nums">{createdDate}</p>
+              <p className="text-lg font-bold tabular-nums text-[#F5F5F0]">{createdDate}</p>
             </div>
           </div>
 
@@ -122,7 +122,7 @@ export default function RepoDetailPage({
           <div>
             <p className="text-amber-muted text-[10px] sm:text-xs mb-3">star history</p>
             <div className="h-32 w-full">
-              <StarChart data={repo.sparkline} />
+              <StarChart history={repo.history} period={period} />
             </div>
           </div>
         </div>
