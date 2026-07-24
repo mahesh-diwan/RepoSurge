@@ -43,6 +43,10 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .amber-glow {
+    text-shadow: 0 0 8px rgba(255, 176, 0, 0.5);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

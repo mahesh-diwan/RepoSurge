@@ -26,48 +26,39 @@ export default function RepoDetail({ slug }: { slug: string }) {
         </a>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
-            Stars
-          </div>
-          <div className="text-[#F5F5F0] text-lg font-bold tabular-nums">
+      <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex items-center gap-2">
+          <span className="text-amber-muted-light/60 text-[10px]">Stars</span>
+          <span className="text-[#F5F5F0] text-sm font-bold tabular-nums">
             {repo.stars.toLocaleString("en-US")}
-          </div>
+          </span>
         </div>
-        <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
-            7d Gain
-          </div>
-          <div
-            className={`text-lg font-bold tabular-nums ${gainedColor(repo.gained7d)}`}
+        <div className="flex items-center gap-2">
+          <span className="text-amber-muted-light/60 text-[10px]">7d Gain</span>
+          <span
+            className={`text-sm font-bold tabular-nums ${gainedColor(repo.gained7d)}`}
           >
             {repo.gained7d > 0 ? "+" : ""}
             {repo.gained7d.toLocaleString("en-US")}
-          </div>
+          </span>
         </div>
-        <div className="bg-amber-primary/[0.03] rounded-lg p-3">
-          <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider">
-            Created
-          </div>
-          <div className="text-[#F5F5F0] text-xs font-bold tabular-nums leading-tight mt-1">
+        <div className="flex items-center gap-2">
+          <span className="text-amber-muted-light/60 text-[10px]">Created</span>
+          <span className="text-[#F5F5F0] text-xs font-bold tabular-nums leading-tight">
             {repo.created_at ? new Date(repo.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—"}
-          </div>
+          </span>
         </div>
       </div>
 
       {repo.language && (
         <div className="flex items-center gap-2">
-          <span
-            className="w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#8B6914" }}
-          />
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-muted" />
           <span className="text-[#F5F5F0] text-xs">{repo.language}</span>
         </div>
       )}
 
       <div>
-        <div className="text-amber-muted-light/50 text-[10px] uppercase tracking-wider mb-2">
+        <div className="text-amber-muted-light/60 text-[10px] mb-2">
           Star Velocity
         </div>
         <div className="h-24">

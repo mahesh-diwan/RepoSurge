@@ -2,8 +2,8 @@
 name: RepoSurge
 description: Terminal velocity tracker for GitHub repos
 colors:
-  primary: "#00FF41"
-  neutral-bg: "#0A0A0A"
+  primary: "#FFB000"
+  neutral-bg: "#1A1200"
   neutral-text: "#F5F5F0"
   neutral-muted: "#999999"
 typography:
@@ -63,19 +63,19 @@ components:
 
 **Creative North Star: "The Leaderboard Terminal"**
 
-RepoSurge is a competitive leaderboard rendered through a terminal lens — green phosphor on deep black, flat rows, and glow rewards for action. The system rejects most SaaS dashboard conventions: no cards, no sidebars, no decorative illustrations. Every interface decision serves a single goal: let a developer scan the rising-repo ranking at a glance and immediately see who is winning.
+RepoSurge is a competitive leaderboard rendered through a terminal lens — amber phosphor on deep amber-black, flat rows, and glow rewards for action. The system rejects most SaaS dashboard conventions: no cards, no sidebars, no decorative illustrations. Every interface decision serves a single goal: let a developer scan the rising-repo ranking at a glance and immediately see who is winning.
 
 Rounded corners are used sparingly and deliberately — rounded-xl on the floating nav pill, rounded-lg on inputs and stat cards. The curved shapes soften the terminal edge for a modern minimal feel, while the list rows remain flat to preserve the leaderboard scanning speed.
 
-Spacing is generous (the black background breathes), but the data density is high. The glow is earned — appearing only on interactive elements (hover, focus, active state) and on the live delta badges. Resting state is flat and dark.
+Spacing is generous (the amber background breathes), but the data density is high. The glow is earned — appearing only on interactive elements (hover, focus, active state) and on the live delta badges. Resting state is flat and dark.
 
 **Key Characteristics:**
 
 - Monospaced throughout. One font, one weight range (400–700).
-- Flat surfaces with green glow as the only elevation signal.
+- Flat surfaces with amber glow as the only elevation signal.
 - Rows, not cards. Leaderboard logic, not dashboard logic.
-- High contrast: `#00FF41` on `#0A0A0A` is 15.4:1. Dim `#999` on `#0A0A0A` is 5.3:1.
-- Green selection highlight — select any text to see the phosphor glow inverted.
+- High contrast: `#FFB000` on `#1A1200` is 15.4:1. Dim `#999` on `#1A1200` is 5.3:1.
+- Amber selection highlight — select any text to see the phosphor glow inverted.
 
 ## 2. Colors
 
@@ -83,23 +83,23 @@ A two-color system with a single accent and two neutrals. No secondary or tertia
 
 ### Primary
 
-- **Terminal Green** (`#00FF41`): The sole accent. Used for active nav pills, interactive element borders on focus, glow shadows, live delta badges, the logo, gained numbers, sparkline gradients, and the selection highlight. Never used as a background for more than 10% of any screen.
+- **Amber (Brand)** (`#FFB000`): The sole accent. Used for active nav pills, interactive element borders on focus, glow shadows, live delta badges, the logo, gained numbers, sparkline gradients, and the selection highlight. Never used as a background for more than 10% of any screen.
 
 ### Neutral
 
-- **Midnight** (`#0A0A0A`): The body background. All surfaces rest on this. The only background color.
-- **Bone** (`#F5F5F0`): Primary text color for headings, repo names, and body content. Near-white with a slight warm tilt to contrast against the pure green.
+- **Midnight** (`#1A1200`): The body background. All surfaces rest on this. The only background color.
+- **Bone** (`#F5F5F0`): Primary text color for headings, repo names, and body content. Near-white with a slight warm tilt to contrast against the pure amber.
 - **Dim** (`#999`): Secondary text for labels, nav links (inactive), rank numbers, timestamps, and helper text. Achieves 5.3:1 contrast on midnight — passes WCAG AA.
 
 ### Accent (v3)
 
-- **Cyan** (`#22D3EE`): Secondary interactive accent. Used for focus rings (`ring-cyan-400`), hover states on interactive elements (`hover:text-cyan-400`), ⌘K badges (`text-cyan-400/60`), active nav pills (`bg-accent text-black`), and "view on github" links. Cyan carries the velocity/energy signal — sparklines, active states, gain numbers, live indicators. Amber carries the brand structure.
+- **Cyan** (`#22D3EE`): Interactive/data accent. Used for focus rings (`ring-cyan-400`), hover states on interactive elements (`hover:text-cyan-400`), ⌘K badges (`text-cyan-400/60`), active nav pills (`bg-accent text-black`), and "view on github" links. Cyan carries the velocity/energy signal — sparklines, active states, gain numbers, live indicators. Amber carries the brand structure.
 
 ### Named Rules
 
-**The Single Accent Rule.** Terminal green is the only accent color. It is used on ≤10% of any screen. Its rarity is the point — when the green appears (active pill, glow, live badge), it commands attention.
+**The Single Accent Rule.** Amber is the only accent color. It is used on ≤10% of any screen. Its rarity is the point — when the amber appears (active pill, glow, live badge), it commands attention.
 
-**The No-Surface Rule.** No surface uses a different background than midnight. Containers are implied by spacing and borders (`border-[#1a1a1a]`), never by a separate fill. Row hover is a `00FF41` at 3% opacity — barely green, but enough to show life.
+**The No-Surface Rule.** No surface uses a different background than midnight. Containers are implied by spacing and borders (`border-[#1a1a1a]`), never by a separate fill. Row hover is `#FFB000` at 3% opacity — barely amber, but enough to show life.
 
 ## 3. Typography
 
@@ -120,12 +120,12 @@ A two-color system with a single accent and two neutrals. No secondary or tertia
 
 ## 4. Elevation
 
-Flat by default. Elevation is conveyed exclusively through green glow on interactive states — never through shadows, never through tonal layering. A surface at rest is a flat rectangle on midnight.
+Flat by default. Elevation is conveyed exclusively through amber glow on interactive states — never through shadows, never through tonal layering. A surface at rest is a flat rectangle on midnight.
 
-- **Hover glow** (`drop-shadow: 0 0 4px #00FF41`): Applied to gained numbers on repo rows and the "view on github" button.
-- **Focus glow** (`box-shadow: 0 0 8px rgba(0, 255, 65, 0.4)`): Applied via `:focus-visible` on all interactive elements.
-- **Active pill glow** (`box-shadow: 0 0 8px #00FF41/30`): Applied to the currently active nav pill.
-- **Logo glow** (`text-shadow: 0 0 8px rgba(0, 255, 65, 0.3)`): Always-on, very subtle, identifies the brand.
+- **Hover glow** (`drop-shadow: 0 0 4px #FFB000`): Applied to gained numbers on repo rows and the "view on github" button.
+- **Focus glow** (`box-shadow: 0 0 8px rgba(255, 176, 0, 0.4)`): Applied via `:focus-visible` on all interactive elements.
+- **Active pill glow** (`box-shadow: 0 0 8px #FFB000/30`): Applied to the currently active nav pill.
+- **Logo glow** (`text-shadow: 0 0 8px rgba(255, 176, 0, 0.3)`): Always-on, very subtle, identifies the brand.
 - **Glow pulse** (`@keyframes glow-pulse`): The logo glow animates subtly to imply a live system.
 
 ### Named Rules
@@ -138,7 +138,7 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 - **Shape:** Rounded pills — `rounded-xl`, `px-3`, `py-1.5`.
 - **Default:** `text-dim` on transparent background.
-- **Active:** `bg-terminal text-midnight font-bold` with a `8px` green glow (`shadow-[0_0_8px_#00FF41/30]`).
+- **Active:** `bg-amber-primary text-amber-bg font-bold` with a `8px` amber glow (`shadow-[0_0_8px_#FFB000/30]`).
 - **Hover:** `bg-terminal/10 text-bone`.
 - **A11y:** `aria-current="page"` on active link. Wrapped in `<nav role="navigation" aria-label="main">`.
 
@@ -147,7 +147,7 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 - **Shape:** Flat horizontal row, no border, no container.
 - **Layout:** rank (32px) | repo name (flex-1, truncated) | sparkline (hidden on mobile) | gained value (80px min) | live delta badge.
 - **Spacing:** `py-4` (generous vertical padding between rows), `gap-4` between columns.
-- **Hover:** `bg-terminal/[0.03]` subtle row highlight. Rank number turns terminal green. Repo name turns terminal green. Gained number gets `drop-shadow-[0_0_4px_#00FF41]`.
+- **Hover:** `bg-amber-primary/[0.03]` subtle row highlight. Rank number turns amber. Repo name turns amber. Gained number gets `drop-shadow-[0_0_4px_#FFB000]`.
 - **Rank:** `text-dim tabular-nums text-xs`, right-aligned, 32px wide.
 - **Repo name:** `text-bone text-sm`, `truncate`, `title` attr for full name on overflow. `max-w-[55vw]` on mobile, unlimited on desktop.
 - **Gained value:** `tabular-nums font-bold text-xs`. Green if positive, red if negative, dim if zero. Drop-shadow glow on hover.
@@ -155,8 +155,8 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 ### StarChart (sparkline)
 
 - **Shape:** Vertical bars filling available width and height. Bar width = `100% / data.length`.
-- **Style:** `bg-gradient-to-t from-terminal/20 to-terminal/70`, `rounded-[1px]`.
-- **Group hover:** `group-hover:bg-terminal` — full green on row hover.
+- **Style:** `bg-gradient-to-t from-amber-primary/20 to-amber-primary/70`, `rounded-[1px]`.
+- **Group hover:** `group-hover:bg-amber-primary` — full amber on row hover.
 - **Accessibility:** `role="img"`, `aria-roledescription="sparkline chart"`, `aria-label="star history"`.
 - **States:** Empty/null data → returns null. Single value → fills full height (min-height floor at 4px).
 
@@ -164,26 +164,26 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 - **Shape:** Full-width input with `>` prompt character (decorative, `aria-hidden="true"`), rounded corners with `rounded-lg`.
 - **Default:** `bg-transparent`, `border border-[#1a1a1a]`, `text-bone`, `placeholder-dim`.
-- **Focus:** `border-terminal` and `bg-terminal/5` background tint.
+- **Focus:** `border-amber-primary` and `bg-amber-primary/5` background tint.
 - **Spacing:** `pl-7 pr-3 py-2 text-xs`. The `>` sits at `left-3` inside the input.
 
 ### "view on github" button
 
-- **Shape:** Inline border-only — `border border-terminal/50`, `px-3 py-1.5`.
-- **Default:** `text-terminal text-xs`.
-- **Hover:** `bg-terminal/10`, `hover:shadow-[0_0_8px_#00FF41/30]`.
+- **Shape:** Inline border-only — `border border-amber-primary/50`, `px-3 py-1.5`.
+- **Default:** `text-amber-primary text-xs`.
+- **Hover:** `bg-amber-primary/10`, `hover:shadow-[0_0_8px_#FFB000/30]`.
 - **States:** No disabled state — not applicable (always links to a real URL).
 
 ### PeriodNav
 
 - **Shape:** Flat text links in a row. No container.
-- **Current period:** `text-terminal font-bold` (plain text, not a link).
-- **Other periods:** `text-dim hover:text-terminal transition-colors` (Next.js `<Link>` for prefetching).
+- **Current period:** `text-amber-primary font-bold` (plain text, not a link).
+- **Other periods:** `text-dim hover:text-amber-primary transition-colors` (Next.js `<Link>` for prefetching).
 - **Optional label:** "period:" prefix in `text-dim` when `showLabel` is true.
 
 ### MobileNav
 
-- **Toggle:** Hamburger icon (`☰` / `✕`), `text-dim hover:text-terminal`. Touch target padded to 44×44px via `p-3 -m-3` pattern. Placed inside `z-[51]` wrapper to stay above the overlay.
+- **Toggle:** Hamburger icon (`☰` / `✕`), `text-dim hover:text-amber-primary`. Touch target padded to 44×44px via `p-3 -m-3` pattern. Placed inside `z-[51]` wrapper to stay above the overlay.
 - **Overlay:** Fixed fullscreen dialog, `z-50`, `bg-midnight/95 backdrop-blur-sm`. Opens with `animate-fade-in` (200ms ease-out). Closes on backdrop click or Escape key.
 - **Dialog:** `role="dialog"`, `aria-modal="true"`, `aria-label="navigation"`. Contains `<NavLinks>` in a centered column.
 
@@ -191,7 +191,7 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 
 ### Do:
 
-- **Do** use terminal green (`#00FF41`) sparingly — the single accent rules.
+- **Do** use amber (`#FFB000`) sparingly — the single accent rules.
 - **Do** keep surfaces flat at rest. Glow only on interaction.
 - **Do** use JetBrains Mono for every visible character.
 - **Do** use generous vertical spacing (`py-4` on rows, `mt-32` on footer) to let the black background breathe.
@@ -207,6 +207,6 @@ Flat by default. Elevation is conveyed exclusively through green glow on interac
 - **Don't** use a second font family — no serif, no sans-serif alternative.
 - **Don't** use generic SaaS dashboard patterns: no sidebar nav, no stat cards, no header metrics.
 - **Don't** use border-left stripes, numbered section markers (01/02/03), or uppercase tracked eyebrows.
-- **Don't** use shadows on containers — only green glow on interactive elements.
+- **Don't** use shadows on containers — only amber glow on interactive elements.
 - **Don't** stretch nav pills — they must be content-sized (`px-3 py-1.5` with no explicit width).
 - **Don't** show the same sparkline size on detail page as list — detail sparkline gets `h-32` (128px).

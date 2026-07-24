@@ -29,7 +29,7 @@ export default function RootLayout({
           skip to content
         </a>
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50">
-          <div className="flex items-center gap-6 px-5 py-2 bg-amber-bg/80 backdrop-blur-lg border border-amber-primary/20 rounded-xl shadow-lg shadow-black/40">
+          <div className="flex items-center gap-6 px-5 py-2 bg-amber-bg/80 border border-amber-primary/20 rounded-xl">
             <a href="/" className="text-amber-primary font-bold tracking-wider text-sm">
               RS
             </a>

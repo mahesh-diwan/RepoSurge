@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
 import { gainedColor } from "@/lib/gained-color";
 import { useLiveStars } from "@/lib/useLiveStars";
@@ -15,9 +15,11 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
   const { starsMap, live, error } = useLiveStars();
   const initStars = useRef<Record<string, number>>({});
-  if (repos.length > 0 && Object.keys(initStars.current).length === 0) {
-    for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
-  }
+  useEffect(() => {
+    if (Object.keys(initStars.current).length === 0) {
+      for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
+    }
+  }, [repos]);
 
   type SortKey = "rank" | "name" | "gained";
   type SortDir = "asc" | "desc";
