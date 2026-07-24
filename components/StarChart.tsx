@@ -28,7 +28,7 @@ export default function StarChart(props: StarChartProps) {
         return (
           <div
             key={i}
-            className="bg-gradient-to-t from-amber-primary/20 to-amber-primary/70 rounded-[1px] group-hover:bg-amber-primary transition-all duration-200"
+            className="bg-gradient-to-t from-amber-primary/20 to-amber-primary/70 rounded-[1px] group-hover:bg-amber-primary group-hover:drop-shadow-[0_0_4px_#FFB000] transition-all duration-200"
             style={{ height, width: `${100 / data.length}%` }}
             aria-label={`${value.toLocaleString("en-US")} stars`}
           />
