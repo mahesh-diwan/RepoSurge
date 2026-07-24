@@ -48,10 +48,10 @@ export default function RepoDetail({ slug }: { slug: string }) {
         </div>
         <div className="bg-amber-primary/[0.03] rounded-lg p-3">
           <div className="text-amber-muted/50 text-[10px] uppercase tracking-wider">
-            Rank
+            Created
           </div>
-          <div className="text-[#F5F5F0] text-lg font-bold tabular-nums">
-            #{repo.rank}
+          <div className="text-[#F5F5F0] text-xs font-bold tabular-nums leading-tight mt-1">
+            {repo.created_at ? new Date(repo.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—"}
           </div>
         </div>
       </div>
