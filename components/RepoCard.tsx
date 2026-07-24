@@ -47,6 +47,20 @@ export default function RepoCard({
       <div className="w-20 shrink-0 hidden md:block" style={{ height: "20px" }}>
         <StarChart history={history} period={period} />
       </div>
+      {(() => {
+        const trend = history[history.length - 1].stars - history[0].stars;
+        if (trend > 0) return (
+          <svg className="w-3 h-3 text-green-500 shrink-0" viewBox="0 0 12 12" fill="currentColor">
+            <polygon points="6,1 11,10 1,10" />
+          </svg>
+        );
+        if (trend < 0) return (
+          <svg className="w-3 h-3 text-red-500 shrink-0" viewBox="0 0 12 12" fill="currentColor">
+            <polygon points="6,11 1,2 11,2" />
+          </svg>
+        );
+        return null;
+      })()}
       <div className="flex items-center gap-2 shrink-0 w-20 justify-end">
         {liveLabel && (
           <span className="text-amber-bright/50 text-[10px] tabular-nums">
