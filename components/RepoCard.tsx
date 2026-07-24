@@ -52,7 +52,7 @@ export default function RepoCard({
           >
             {name}
           </span>
-          <span className="text-amber-muted/60 text-[10px] hidden sm:inline shrink-0">
+          <span className="text-amber-muted/60 text-[10px] hidden md:inline shrink-0">
             {language}
           </span>
         </div>
@@ -70,7 +70,7 @@ export default function RepoCard({
       </div>
 
       {/* Row 2: Amber glow sparkline (StarChart) */}
-      <div className="mt-1 mb-1.5">
+      <div className="mt-1 mb-1.5 hidden md:block">
         <div style={{ height: "24px" }}>
           <StarChart history={history} period={period} />
         </div>
@@ -79,7 +79,7 @@ export default function RepoCard({
       {/* Row 3: stats */}
       <div className="flex items-center gap-4 text-amber-muted text-[10px] tabular-nums">
         <span>{stars.toLocaleString("en-US")} ★</span>
-        {gained7d > 0 && <span>+{gained7d.toLocaleString("en-US")} / 7d</span>}
+        {gained7d > 0 && <span className="hidden sm:inline">+{gained7d.toLocaleString("en-US")} / 7d</span>}
       </div>
     </Link>
   );
