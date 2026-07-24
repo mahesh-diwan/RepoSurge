@@ -36,7 +36,7 @@ export default function StarChart(props: StarChartProps) {
   const drawH = H - pad.top - pad.bottom;
 
   const yPos = (v: number) => pad.top + (1 - (v - min) / range) * drawH;
-  const xPos = (i: number) => pad.left + values.length > 1 ? pad.left + (i / (values.length - 1)) * drawW : pad.left;
+  const xPos = (i: number) => values.length > 1 ? pad.left + (i / (values.length - 1)) * drawW : pad.left;
 
   const points = values.map((v, i) => `${xPos(i).toFixed(1)},${yPos(v).toFixed(1)}`);
   const lineD = `M${points.join(" L")}`;
@@ -74,8 +74,10 @@ export default function StarChart(props: StarChartProps) {
       preserveAspectRatio="none"
       className="w-full h-full"
       role="img"
-      aria-label={`Star history for the past ${period}`}
+      aria-roledescription="sparkline chart"
+      aria-label={`Star history: ${values.length} data points from ${values[0].toLocaleString("en-US")} to ${values[values.length - 1].toLocaleString("en-US")}`}
     >
+      <title>{`Star history for the past ${period}`}</title>
       {yLabels.map((v) => (
         <line
           key={v}
@@ -110,6 +112,11 @@ export default function StarChart(props: StarChartProps) {
         >
           {getXLabel(idx)}
         </text>
+      ))}
+      {values.map((v, i) => (
+        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(255,176,0,0.9)">
+          <title>{v.toLocaleString("en-US")} stars</title>
+        </circle>
       ))}
       <path d={fillD} fill="rgba(255,176,0,0.1)" />
       <path d={lineD} fill="none" stroke="rgba(255,176,0,0.9)" strokeWidth="1" />
