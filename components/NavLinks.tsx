@@ -21,10 +21,10 @@ export default function NavLinks({
         key={link.href}
         href={link.href}
         onClick={onItemClick}
-        className={`px-3 py-1.5 rounded-none text-xs transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:bg-terminal/20 ${
+        className={`px-3 py-1.5 rounded-none text-xs transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:bg-amber-primary/20 ${
           isActive
-            ? "bg-terminal text-midnight font-bold shadow-[0_0_8px_#00FF41/30]"
-            : "text-dim hover:bg-terminal/10 hover:text-bone"
+            ? "bg-amber-primary text-amber-bg font-bold shadow-[0_0_8px_#FFB000/30]"
+            : "text-amber-muted hover:bg-amber-primary/10 hover:text-amber-primary"
         }`}
         aria-current={isActive ? "page" : undefined}
       >

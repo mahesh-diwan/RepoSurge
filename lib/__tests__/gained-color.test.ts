@@ -2,17 +2,17 @@ import { describe, expect, it } from "vitest";
 import { gainedColor } from "@/lib/gained-color";
 
 describe("gainedColor", () => {
-  it("returns terminal green for positive values", () => {
-    expect(gainedColor(100)).toBe("text-terminal");
-    expect(gainedColor(1)).toBe("text-terminal");
+  it("returns amber-primary for positive values", () => {
+    expect(gainedColor(100)).toBe("text-amber-primary");
+    expect(gainedColor(1)).toBe("text-amber-primary");
   });
 
-  it("returns dim for negative values", () => {
-    expect(gainedColor(-100)).toBe("text-dim");
-    expect(gainedColor(-1)).toBe("text-dim");
+  it("returns amber-muted for negative values", () => {
+    expect(gainedColor(-100)).toBe("text-amber-muted");
+    expect(gainedColor(-1)).toBe("text-amber-muted");
   });
 
-  it("returns dim for zero", () => {
-    expect(gainedColor(0)).toBe("text-dim");
+  it("returns amber-muted for zero", () => {
+    expect(gainedColor(0)).toBe("text-amber-muted");
   });
 });

@@ -43,10 +43,10 @@ export default function RepoDetailPage({
   if (!repo) {
     return (
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <Link href="/" className="text-dim text-xs hover:text-terminal transition-colors mb-8 inline-block">
+        <Link href="/" className="text-amber-muted text-xs hover:text-amber-primary transition-colors mb-8 inline-block">
           &larr; back
         </Link>
-        <p className="text-dim text-xs mt-8">repo not found</p>
+        <p className="text-amber-muted text-xs mt-8">repo not found</p>
       </main>
     );
   }
@@ -61,7 +61,7 @@ export default function RepoDetailPage({
     <main className="max-w-7xl mx-auto px-6 py-16">
       <Link
         href="/"
-        className="text-dim text-xs hover:text-terminal transition-colors mb-8 inline-block"
+        className="text-amber-muted text-xs hover:text-amber-primary transition-colors mb-8 inline-block"
       >
         &larr; back
       </Link>
@@ -69,46 +69,46 @@ export default function RepoDetailPage({
       <ScrollReveal>
         <div className="max-w-2xl">
           <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance">{repo.full_name}</h1>
-          <p className="text-dim text-sm mb-6">{repo.description ?? "-"}</p>
+          <p className="text-amber-muted text-sm mb-6">{repo.description ?? "-"}</p>
 
           <a
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-block text-xs text-terminal border border-terminal/50 px-3 py-1.5 hover:bg-terminal/10 hover:shadow-[0_0_8px_#00FF41/30] transition-all mb-10"
+            className="inline-block text-xs text-amber-primary border border-amber-primary/50 px-3 py-1.5 hover:bg-amber-primary/10 hover:shadow-[0_0_8px_#FFB000/30] transition-all mb-10"
           >
             view on github
           </a>
 
           <div className="flex gap-8 mb-8">
             <div>
-              <p className="text-dim text-[10px] sm:text-xs mb-1">stars</p>
+              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">stars</p>
               <p className="text-lg font-bold tabular-nums">{repo.stars.toLocaleString("en-US")}</p>
             </div>
             <div>
-              <p className="text-dim text-[10px] sm:text-xs mb-1">gained</p>
+              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">gained</p>
                 <p className={`text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained)}`}>
                   {repo.stars_gained > 0 ? "+" : ""}
                   {repo.stars_gained.toLocaleString("en-US")}
                 </p>
             </div>
             <div>
-              <p className="text-dim text-[10px] sm:text-xs mb-1">velocity</p>
+              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">velocity</p>
               <p className={`text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
             </div>
             <div>
-              <p className="text-dim text-[10px] sm:text-xs mb-1">created</p>
+              <p className="text-amber-muted text-[10px] sm:text-xs mb-1">created</p>
               <p className="text-lg font-bold tabular-nums">{createdDate}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 mb-6 text-xs">
-            <span className="text-dim">period:</span>
+            <span className="text-amber-muted">period:</span>
             {periods.map((p) =>
               period === p ? (
-                <span key={p} className="text-terminal font-bold">{periodLabels[p]}</span>
+                <span key={p} className="text-amber-primary font-bold">{periodLabels[p]}</span>
               ) : (
-                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-dim hover:text-terminal transition-colors">
+                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted hover:text-amber-primary transition-colors">
                   {periodLabels[p]}
                 </Link>
               )
@@ -116,7 +116,7 @@ export default function RepoDetailPage({
           </div>
 
           <div>
-            <p className="text-dim text-[10px] sm:text-xs mb-3">star history</p>
+            <p className="text-amber-muted text-[10px] sm:text-xs mb-3">star history</p>
             <div className="h-32 w-full">
               <StarChart data={repo.sparkline} />
             </div>
