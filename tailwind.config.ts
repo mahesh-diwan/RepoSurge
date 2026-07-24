@@ -12,6 +12,8 @@ const config: Config = {
         'amber-muted-light': '#CCA060',
         'amber-bright': '#FFD040',
         'amber-bezel': '#0D0900',
+        'accent': '#22D3EE',
+        'glow-cyan': 'rgba(34,211,238,0.3)',
       },
       fontFamily: {
         mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],

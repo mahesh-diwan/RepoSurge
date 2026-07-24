@@ -91,6 +91,10 @@ A two-color system with a single accent and two neutrals. No secondary or tertia
 - **Bone** (`#F5F5F0`): Primary text color for headings, repo names, and body content. Near-white with a slight warm tilt to contrast against the pure green.
 - **Dim** (`#999`): Secondary text for labels, nav links (inactive), rank numbers, timestamps, and helper text. Achieves 5.3:1 contrast on midnight — passes WCAG AA.
 
+### Accent (v3)
+
+- **Cyan** (`#22D3EE`): Secondary interactive accent. Used for focus rings (`ring-cyan-400`), hover states on interactive elements (`hover:text-cyan-400`), ⌘K badges (`text-cyan-400/60`), active nav pills (`bg-accent text-black`), and "view on github" links. Cyan carries the velocity/energy signal — sparklines, active states, gain numbers, live indicators. Amber carries the brand structure.
+
 ### Named Rules
 
 **The Single Accent Rule.** Terminal green is the only accent color. It is used on ≤10% of any screen. Its rarity is the point — when the green appears (active pill, glow, live badge), it commands attention.

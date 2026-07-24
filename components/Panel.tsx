@@ -50,7 +50,7 @@ export default function Panel({ open, onClose, children }: PanelProps) {
           </h2>
           <button
             onClick={onClose}
-            className="text-amber-muted/50 hover:text-amber-primary transition-colors"
+            className="text-amber-muted/50 hover:text-cyan-400 transition-colors"
             aria-label="Close panel"
           >
             <svg

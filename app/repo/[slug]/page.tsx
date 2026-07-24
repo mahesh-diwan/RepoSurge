@@ -43,7 +43,7 @@ export default function RepoDetailPage({
   if (!repo) {
     return (
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <Link href="/" className="text-amber-muted-light text-xs hover:text-amber-primary transition-colors mb-8 inline-block">
+        <Link href="/" className="text-amber-muted-light text-xs hover:text-cyan-400 transition-colors mb-8 inline-block">
           &larr; back
         </Link>
         <p className="text-amber-muted-light text-xs mt-8">repo not found</p>
@@ -61,7 +61,7 @@ export default function RepoDetailPage({
     <main className="max-w-7xl mx-auto px-6 py-16">
       <Link
         href="/"
-        className="text-amber-muted-light text-xs hover:text-amber-primary transition-colors mb-8 inline-block"
+        className="text-amber-muted-light text-xs hover:text-cyan-400 transition-colors mb-8 inline-block"
       >
         &larr; back
       </Link>
@@ -112,7 +112,7 @@ export default function RepoDetailPage({
               period === p ? (
                 <span key={p} className="text-amber-primary font-bold">{periodLabels[p]}</span>
               ) : (
-                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted-light hover:text-amber-primary transition-colors">
+                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-amber-muted-light hover:text-cyan-400 transition-colors">
                   {periodLabels[p]}
                 </Link>
               )

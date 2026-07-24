@@ -20,7 +20,7 @@ export default function RepoDetail({ slug }: { slug: string }) {
           href={repo.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-3 text-amber-primary/70 hover:text-amber-primary text-xs underline underline-offset-2 transition-colors"
+          className="inline-block mt-3 text-cyan-400/70 hover:text-cyan-400 hover:shadow-[0_0_8px_rgba(34,211,238,0.3)] text-xs underline underline-offset-2 transition-colors"
         >
           View on GitHub &rarr;
         </a>

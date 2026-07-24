@@ -14,7 +14,7 @@ export default function ErrorPage({
         <p className="text-amber-muted-light text-sm">{error.message || "an unexpected error occurred"}</p>
         <button
           onClick={reset}
-          className="text-amber-primary text-xs hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer underline underline-offset-4"
+          className="text-amber-primary text-xs hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer underline underline-offset-4"
         >
           try again
         </button>
