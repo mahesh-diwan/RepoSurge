@@ -1,3 +1,5 @@
-export function gainedColor(value: number): string {
-  return value > 0 ? "text-amber-primary" : value < 0 ? "text-amber-muted" : "text-amber-muted";
+export function gainedColor(val: number): string {
+  if (val > 0) return "text-amber-primary";
+  if (val < 0) return "text-amber-muted";
+  return "text-amber-muted/50";
 }

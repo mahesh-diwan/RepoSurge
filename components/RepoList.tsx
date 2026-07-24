@@ -63,16 +63,18 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
 
   return (
     <>
-      <div className="flex items-center gap-2 mb-4">
-        <SearchInput value={search} onChange={setSearch} />
-        <span className="flex items-center gap-1.5 text-[10px] text-amber-muted shrink-0" title="Live data polling status">
-          <span
-            className={`inline-block w-1.5 h-1.5 rounded-full ${
-              live ? "bg-amber-primary shadow-[0_0_4px_#FFB000]" : "bg-amber-muted"
-            }`}
-          />
-          {live ? "live" : "polling"}
-        </span>
+      <div className="flex justify-center mb-6">
+        <div className="flex items-center gap-3">
+          <SearchInput value={search} onChange={setSearch} />
+          <span className="flex items-center gap-1.5 text-[10px] text-amber-muted shrink-0" title="Live data polling status">
+            <span
+              className={`inline-block w-1.5 h-1.5 rounded-full ${
+                live ? "bg-amber-primary shadow-[0_0_4px_#FFB000]" : "bg-amber-muted"
+              }`}
+            />
+            {live ? "live" : "polling"}
+          </span>
+        </div>
       </div>
 
       {error && !live && (
@@ -87,10 +89,10 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         </div>
       )}
 
-      <div className="flex items-center gap-4 py-2.5 text-[10px] sm:text-xs text-amber-muted border-b border-amber-primary/20 mb-1">
+      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-amber-muted border-b border-amber-primary/20 mb-1">
         <button
           onClick={() => handleSort("rank")}
-          className="w-8 text-right shrink-0 hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
+          className="w-6 text-right shrink-0 hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
           title="Sort by rank"
         >
           #{arrow("rank")}
@@ -102,14 +104,16 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         >
           repo{arrow("name")}
         </button>
-        <div className="hidden sm:block shrink-0 w-[52px]" />
+        <div className="hidden sm:block shrink-0 w-16" />
+        <div className="hidden md:block shrink-0 w-20" />
         <button
           onClick={() => handleSort("gained")}
-          className="w-[80px] text-right shrink-0 hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
+          className="w-20 text-right shrink-0 hover:text-amber-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg active:text-amber-primary/70 transition-colors cursor-pointer"
           title="Sort by stars gained"
         >
           gained{arrow("gained")}
         </button>
+        <div className="hidden sm:block shrink-0 w-16 text-right text-amber-muted/50">stars</div>
       </div>
 
       {filtered.length === 0 ? (

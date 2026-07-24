@@ -13,6 +13,6 @@ describe("gainedColor", () => {
   });
 
   it("returns amber-muted for zero", () => {
-    expect(gainedColor(0)).toBe("text-amber-muted");
+    expect(gainedColor(0)).toBe("text-amber-muted/50");
   });
 });

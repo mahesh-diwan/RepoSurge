@@ -1,4 +1,3 @@
-import Link from "next/link";
 import StarChart from "./StarChart";
 
 export default function RepoCard({
@@ -32,55 +31,36 @@ export default function RepoCard({
     liveDelta !== null ? `${liveDelta > 0 ? "+" : ""}${liveDelta}` : null;
 
   return (
-    <Link
-      href={`/repo/${slug}`}
-        className="group block bg-amber-bg/30 border border-amber-muted/30 px-3 py-2.5
-        hover:bg-amber-bg/60 hover:border-amber-muted/50
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-primary
-        focus-visible:ring-offset-2 focus-visible:ring-offset-amber-bg
-        active:bg-amber-bg/80 transition-all duration-200"
-    >
-      {/* Row 1: rank + name + language + gained */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3 min-w-0">
-          <span className="text-amber-muted tabular-nums text-xs w-5 shrink-0">
-            #{rank}
-          </span>
-          <span
-            className="text-amber-primary amber-glow-sm truncate text-sm"
-            title={name}
-          >
-            {name}
-          </span>
-          <span className="text-amber-muted/60 text-[10px] hidden md:inline shrink-0">
-            {language}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          {liveLabel && (
-            <span className="text-amber-bright/60 text-[10px] tabular-nums">
-              {liveLabel}
-            </span>
-          )}
-          <span className={`${gainedColor} tabular-nums text-sm`}>
-            {gainedPrefix}
-            {gainedAbs.toLocaleString("en-US")}
-          </span>
-        </div>
+    <div className="flex items-center gap-3 py-2.5 px-2 hover:bg-amber-primary/[0.03] transition-colors cursor-pointer border-b border-amber-primary/[0.06] last:border-b-0">
+      <span className="w-6 text-right text-amber-muted tabular-nums text-xs shrink-0">
+        #{rank}
+      </span>
+      <span
+        className="flex-1 min-w-0 truncate text-[#F5F5F0] text-sm"
+        title={name}
+      >
+        {name}
+      </span>
+      <span className="text-amber-muted/50 text-[10px] w-16 shrink-0 hidden sm:inline truncate">
+        {language}
+      </span>
+      <div className="w-20 shrink-0 hidden md:block" style={{ height: "20px" }}>
+        <StarChart history={history} period={period} />
       </div>
-
-      {/* Row 2: Amber glow sparkline (StarChart) */}
-      <div className="mt-1 mb-1.5 hidden md:block">
-        <div style={{ height: "24px" }}>
-          <StarChart history={history} period={period} />
-        </div>
+      <div className="flex items-center gap-2 shrink-0 w-20 justify-end">
+        {liveLabel && (
+          <span className="text-amber-bright/50 text-[10px] tabular-nums">
+            {liveLabel}
+          </span>
+        )}
+        <span className={`${gainedColor} tabular-nums text-sm`}>
+          {gainedPrefix}
+          {gainedAbs.toLocaleString("en-US")}
+        </span>
       </div>
-
-      {/* Row 3: stats */}
-      <div className="flex items-center gap-4 text-amber-muted text-[10px] tabular-nums">
-        <span>{stars.toLocaleString("en-US")} ★</span>
-        {gained7d > 0 && <span className="hidden sm:inline">+{gained7d.toLocaleString("en-US")} / 7d</span>}
-      </div>
-    </Link>
+      <span className="text-amber-muted/40 text-xs tabular-nums w-16 text-right shrink-0 hidden sm:block">
+        {(stars / 1000).toFixed(1)}K
+      </span>
+    </div>
   );
 }
