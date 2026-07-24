@@ -68,7 +68,7 @@ export default function RepoCard({
           </svg>
         );
         if (trend < 0) return (
-          <svg className="w-3 h-3 text-red-500 shrink-0" viewBox="0 0 12 12" fill="currentColor">
+          <svg className="w-3 h-3 text-negative shrink-0" viewBox="0 0 12 12" fill="currentColor">
             <polygon points="6,11 1,2 11,2" />
           </svg>
         );
