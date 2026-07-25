@@ -6,7 +6,9 @@ describe("getRepos", () => {
     const repos = getRepos("week");
     expect(repos.length).toBeGreaterThan(0);
     for (let i = 1; i < repos.length; i++) {
-      expect(repos[i - 1].stars_gained).toBeGreaterThanOrEqual(repos[i].stars_gained);
+      const a = repos[i - 1].stars_gained ?? 0;
+      const b = repos[i].stars_gained ?? 0;
+      expect(a).toBeGreaterThanOrEqual(b);
     }
   });
 
