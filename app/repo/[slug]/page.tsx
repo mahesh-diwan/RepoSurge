@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
 import Link from "next/link";
-import { getRepoDetails } from "@/lib/db";
+import { getRepoDetails, formatVelocity } from "@/lib/db";
 import StarChart from "@/components/StarChart";
 import ScrollReveal from "@/components/ScrollReveal";
 import { gainedColor } from "@/lib/gained-color";
@@ -87,18 +87,25 @@ export default function RepoDetailPage({
             </div>
             <div className="bg-surface rounded-lg p-3">
               <p className="text-text-muted text-[10px] sm:text-xs mb-1">gained</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>
-                {repo.stars_gained > 0 ? "+" : ""}
-                {repo.stars_gained.toLocaleString("en-US")}
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
+                {repo.stars_gained !== null
+                  ? (repo.stars_gained > 0 ? "+" : "") + repo.stars_gained.toLocaleString("en-US")
+                  : "\u2014"}
               </p>
             </div>
             <div className="bg-surface rounded-lg p-3">
               <p className="text-text-muted text-[10px] sm:text-xs mb-1">velocity</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>{repo.velocity}</p>
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
+                {formatVelocity(repo.velocity)}
+              </p>
             </div>
             <div className="bg-surface rounded-lg p-3">
               <p className="text-text-muted text-[10px] sm:text-xs mb-1">7d gain</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained)}`}>{repo.gained7d > 0 ? "+" : ""}{repo.gained7d.toLocaleString("en-US")}</p>
+              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
+                {repo.gained7d !== null
+                  ? (repo.gained7d > 0 ? "+" : "") + repo.gained7d.toLocaleString("en-US")
+                  : "\u2014"}
+              </p>
             </div>
             <div className="bg-surface rounded-lg p-3">
               <p className="text-text-muted text-[10px] sm:text-xs mb-1">created</p>

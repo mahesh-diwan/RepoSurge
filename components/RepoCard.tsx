@@ -18,8 +18,8 @@ export default function RepoCard({
   name: string;
   slug: string;
   stars: number;
-  gained: number;
-  gained7d: number;
+  gained: number | null;
+  gained7d: number | null;
   language: string;
   gainedColor: string;
   liveDelta: number | null;
@@ -27,8 +27,8 @@ export default function RepoCard({
   period?: string;
   onSelect?: (slug: string) => void;
 }) {
-  const gainedPrefix = gained > 0 ? "+" : gained < 0 ? "" : "";
-  const gainedAbs = Math.abs(gained);
+  const gainedPrefix = gained !== null && gained > 0 ? "+" : gained !== null && gained < 0 ? "" : "";
+  const gainedAbs = gained !== null ? Math.abs(gained) : 0;
   const liveLabel =
     liveDelta !== null ? `${liveDelta > 0 ? "+" : ""}${liveDelta}` : null;
 
@@ -80,7 +80,9 @@ export default function RepoCard({
             {liveLabel}
           </span>
         )}
-        {gained === 0 ? (
+        {gained === null ? (
+          <span className="text-text-muted/30 tabular-nums text-sm">&mdash;</span>
+        ) : gained === 0 ? (
           <span className="text-text-muted/30 tabular-nums text-sm">&mdash;</span>
         ) : (
           <span className={`${gainedColor} tabular-nums text-sm`}>

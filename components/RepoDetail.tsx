@@ -36,10 +36,11 @@ export default function RepoDetail({ slug }: { slug: string }) {
         <div className="flex items-center gap-2">
           <span className="text-text-muted/60 text-[10px]">7d Gain</span>
           <span
-            className={`text-sm font-bold tabular-nums ${gainedColor(repo.gained7d)}`}
+            className={`text-sm font-bold tabular-nums ${gainedColor(repo.stars_gained ?? 0)}`}
           >
-            {repo.gained7d > 0 ? "+" : ""}
-            {repo.gained7d.toLocaleString("en-US")}
+            {repo.gained7d === null
+              ? "\u2014"
+              : (repo.gained7d > 0 ? "+" : "") + repo.gained7d.toLocaleString("en-US")}
           </span>
         </div>
         <div className="flex items-center gap-2">

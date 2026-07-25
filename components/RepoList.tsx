@@ -43,7 +43,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         case "name":
           return a.full_name.localeCompare(b.full_name) * dir;
         case "gained":
-          return (a.stars_gained - b.stars_gained) * dir;
+          return ((a.stars_gained ?? 0) - (b.stars_gained ?? 0)) * dir;
         default:
           return 0;
       }

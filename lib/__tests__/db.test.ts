@@ -15,7 +15,7 @@ describe("getRepos", () => {
     for (const r of repos) {
       expect(r.rank).toBeGreaterThan(0);
       expect(r.full_name).toBeTruthy();
-      expect(typeof r.stars_gained).toBe("number");
+      expect(r.stars_gained === null || typeof r.stars_gained === "number").toBe(true);
       expect(Array.isArray(r.sparkline)).toBe(true);
     }
   });
@@ -36,7 +36,7 @@ describe("getRepos", () => {
   it("includes velocity for all repos", () => {
     const repos = getRepos("week");
     for (const r of repos) {
-      expect(typeof r.velocity).toBe("number");
+      expect(r.velocity === null || typeof r.velocity === "number").toBe(true);
     }
   });
 });

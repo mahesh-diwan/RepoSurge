@@ -1,5 +1,11 @@
 import rawRepos from "@/src/content/repos.json";
 
+export function formatVelocity(v: number | null): string {
+  if (v === null) return "\u2014";
+  if (v < 10) return v.toFixed(1);
+  return Math.round(v).toString();
+}
+
 interface HistoryEntry {
   stars: number;
   recorded_at: string;
@@ -20,9 +26,9 @@ interface RepoRecord {
 
 export interface RepoWithVelocity extends RepoRecord {
   rank: number;
-  stars_gained: number;
+  stars_gained: number | null;
   sparkline: number[];
-  velocity: number;
+  velocity: number | null;
   slug: string;
 }
 
@@ -60,8 +66,20 @@ export function getRepos(period: string = "week"): RepoWithVelocity[] {
     const windowed = repo.history.filter(
       (h) => new Date(h.recorded_at) >= cutoff
     );
+
+    const hasGap =
+      windowed.length >= 2 &&
+      (() => {
+        for (let i = 1; i < windowed.length; i++) {
+          const prev = new Date(windowed[i - 1].recorded_at).getTime();
+          const curr = new Date(windowed[i].recorded_at).getTime();
+          if (curr - prev > 48 * 3600000) return true;
+        }
+        return false;
+      })();
+
     const baseline = windowed.length > 0 ? windowed[0].stars : repo.stars;
-    const stars_gained = repo.stars - baseline;
+    const stars_gained = hasGap ? null : repo.stars - baseline;
 
     const sparkHistory = windowed.length > 0 ? windowed : repo.history;
     const sparkline = sparkHistory
@@ -69,9 +87,11 @@ export function getRepos(period: string = "week"): RepoWithVelocity[] {
       .map((h) => h.stars);
 
     const velocity =
-      baseline > 0
-        ? Math.round((stars_gained / baseline) * 1000)
-        : stars_gained;
+      stars_gained === null
+        ? null
+        : baseline > 0
+          ? Math.round((stars_gained / baseline) * 1000)
+          : stars_gained;
 
     return {
       ...repo,
@@ -83,7 +103,7 @@ export function getRepos(period: string = "week"): RepoWithVelocity[] {
     };
   });
 
-  withVelocity.sort((a, b) => b.stars_gained - a.stars_gained);
+  withVelocity.sort((a, b) => (b.stars_gained ?? 0) - (a.stars_gained ?? 0));
   return withVelocity.map((repo, i) => ({ ...repo, rank: i + 1 }));
 }
 
@@ -107,7 +127,7 @@ export function getLastUpdated(): string {
 export function getRepoDetails(
   slug: string,
   period: string = "week"
-): (RepoWithVelocity & { created_at: string; gained7d: number }) | null {
+): (RepoWithVelocity & { created_at: string; gained7d: number | null }) | null {
   const repos = getRepos(period);
 
   const matchSlug = slug.replace("/", "-");
@@ -116,10 +136,10 @@ export function getRepoDetails(
 
   const fullRepo = loadRepos().find((r) => r.full_name === repo.full_name);
   const gained7d =
-    fullRepo && fullRepo.history.length >= 8
+    repo.stars_gained !== null && fullRepo && fullRepo.history.length >= 8
       ? fullRepo.history[fullRepo.history.length - 1].stars -
         fullRepo.history[fullRepo.history.length - 8].stars
-      : 0;
+      : null;
   return {
     ...repo,
     created_at: fullRepo?.created_at ?? "",
