@@ -45,12 +45,12 @@ export default function Panel({ open, onClose, children }: PanelProps) {
         aria-label="Repo details"
       >
         <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="text-sm font-semibold text-body">
+          <h2 className="text-sm font-semibold text-text-body">
             REPO DETAILS
           </h2>
           <button
             onClick={onClose}
-            className="text-muted/50 hover:text-accent transition-colors"
+            className="text-text-muted/50 hover:text-accent transition-colors"
             aria-label="Close panel"
           >
             <svg

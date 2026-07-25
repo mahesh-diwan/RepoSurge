@@ -109,7 +109,9 @@ export function getRepoDetails(
   period: string = "week"
 ): (RepoWithVelocity & { created_at: string; gained7d: number }) | null {
   const repos = getRepos(period);
-  const repo = repos.find((r) => r.slug === slug);
+
+  const matchSlug = slug.replace("/", "-");
+  const repo = repos.find((r) => r.slug === matchSlug || r.full_name === slug);
   if (!repo) return null;
 
   const fullRepo = loadRepos().find((r) => r.full_name === repo.full_name);

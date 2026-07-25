@@ -24,7 +24,7 @@ export default function NavLinks({
         className={`text-xs transition-colors px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
           isActive
             ? "text-accent border-b-2 border-accent font-medium"
-            : "text-muted hover:text-body"
+            : "text-text-muted hover:text-text-body"
         }`}
         aria-current={isActive ? "page" : undefined}
       >

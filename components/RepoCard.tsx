@@ -80,10 +80,14 @@ export default function RepoCard({
             {liveLabel}
           </span>
         )}
-        <span className={`${gainedColor} tabular-nums text-sm`}>
-          {gainedPrefix}
-          {gainedAbs.toLocaleString("en-US")}
-        </span>
+        {gained === 0 ? (
+          <span className="text-text-muted/30 tabular-nums text-sm">&mdash;</span>
+        ) : (
+          <span className={`${gainedColor} tabular-nums text-sm`}>
+            {gainedPrefix}
+            {gainedAbs.toLocaleString("en-US")}
+          </span>
+        )}
       </div>
       <span className="text-text-muted/40 text-xs tabular-nums w-16 text-right shrink-0 hidden sm:block">
         {(stars / 1000).toFixed(1)}K

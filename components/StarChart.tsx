@@ -114,9 +114,7 @@ export default function StarChart(props: StarChartProps) {
         </text>
       ))}
       {values.map((v, i) => (
-        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(91,127,255,0.9)">
-          <title>{v.toLocaleString("en-US")} stars</title>
-        </circle>
+        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(91,127,255,0.9)" />
       ))}
       <path d={fillD} fill="rgba(91,127,255,0.1)" />
       <path d={lineD} fill="none" stroke="rgba(91,127,255,0.9)" strokeWidth="1" />
