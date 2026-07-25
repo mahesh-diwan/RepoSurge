@@ -1,25 +1,21 @@
 import { NextResponse } from "next/server";
-
-const REPOS = [
-  { owner: "anomalyco", name: "opencode" },
-  { owner: "graphify-labs", name: "graphify" },
-  { owner: "n8n-io", name: "n8n" },
-  { owner: "shubhamsaboo", name: "awesome-llm-apps" },
-  { owner: "koala73", name: "worldmonitor" },
-  { owner: "diegosouzapw", name: "omniroute" },
-  { owner: "tirth8205", name: "code-review-graph" },
-  { owner: "trycua", name: "cua" },
-  { owner: "1jehuang", name: "jcode" },
-  { owner: "ibelick", name: "ui-skills" },
-  { owner: "codecrafters-io", name: "build-your-own-x" },
-  { owner: "vercel", name: "next.js" },
-  { owner: "shadcn-ui", name: "ui" },
-  { owner: "langgenius", name: "dify" },
-  { owner: "astral-sh", name: "ruff" },
-];
+import fs from "fs";
+import path from "path";
 
 const cache = new Map<string, { data: any; ts: number }>();
-const CACHE_TTL = 30_000;
+const CACHE_TTL = 120_000;
+
+function getRepoNames(): { owner: string; name: string }[] {
+  const file = path.join(process.cwd(), "src", "content", "repos.json");
+  const raw = JSON.parse(fs.readFileSync(file, "utf8"));
+  const list = raw.repos ?? raw;
+  return (Array.isArray(list) ? list : [])
+    .filter((r: any) => r.full_name)
+    .map((r: any) => {
+      const [owner, name] = r.full_name.split("/");
+      return { owner, name };
+    });
+}
 
 export async function GET() {
   const now = Date.now();
@@ -27,11 +23,17 @@ export async function GET() {
   if (cached && now - cached.ts < CACHE_TTL)
     return NextResponse.json(cached.data);
 
+  const repoNames = getRepoNames();
+
+  const token = process.env.GITHUB_TOKEN;
+  const headers: Record<string, string> = { Accept: "application/vnd.github.v3+json", "User-Agent": "RepoSurge" };
+  if (token) headers.Authorization = `Bearer ${token}`;
+
   try {
     const results = await Promise.allSettled(
-      REPOS.map(({ owner, name }) =>
+      repoNames.map(({ owner, name }) =>
         fetch(`https://api.github.com/repos/${owner}/${name}`, {
-          headers: { Accept: "application/vnd.github.v3+json" },
+          headers,
           signal: AbortSignal.timeout(10000),
         }).then((r) => (r.ok ? r.json() : Promise.reject(r.status))),
       ),
