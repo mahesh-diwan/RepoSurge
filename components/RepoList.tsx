@@ -21,11 +21,21 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
     }
   }, [repos]);
 
-  type SortKey = "rank" | "name" | "gained";
+  type SortKey = "rank" | "name" | "gained" | "stars";
   type SortDir = "asc" | "desc";
 
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("asc");
+  const [visibleCount, setVisibleCount] = useState(50);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  useEffect(() => {
+    setVisibleCount(50);
+  }, [search]);
+
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [search, visibleCount]);
 
   const filtered = search
     ? repos.filter((r) =>
@@ -44,6 +54,8 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
           return a.full_name.localeCompare(b.full_name) * dir;
         case "gained":
           return ((a.stars_gained ?? 0) - (b.stars_gained ?? 0)) * dir;
+        case "stars":
+          return (a.stars - b.stars) * dir;
         default:
           return 0;
       }
@@ -65,6 +77,34 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
 
   const arrow = (key: SortKey) =>
     sortKey === key ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
+
+  const visibleRepos = sorted.slice(0, visibleCount);
+
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (selectedRepo) return;
+    switch (e.key) {
+      case "ArrowDown":
+      case "j":
+        e.preventDefault();
+        setSelectedIndex((i) => Math.min(i + 1, visibleRepos.length - 1));
+        break;
+      case "ArrowUp":
+      case "k":
+        e.preventDefault();
+        setSelectedIndex((i) => Math.max(i - 1, 0));
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (selectedIndex >= 0 && selectedIndex < visibleRepos.length) {
+          setSelectedRepo(visibleRepos[selectedIndex].slug);
+        }
+        break;
+      case "Escape":
+        e.preventDefault();
+        setSelectedIndex(-1);
+        break;
+    }
+  }
 
   return (
     <>
@@ -118,7 +158,13 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         >
           gained{arrow("gained")}
         </button>
-        <div className="hidden sm:block shrink-0 w-16 text-right text-text-muted/50">stars</div>
+        <button
+          onClick={() => handleSort("stars")}
+          className="hidden sm:block shrink-0 w-16 text-right hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
+          title="Sort by stars"
+        >
+          stars{arrow("stars")}
+        </button>
       </div>
 
       {filtered.length === 0 ? (
@@ -127,38 +173,58 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
           <p className="text-text-muted text-xs mt-1">try a different name or clear the filter</p>
         </div>
       ) : (
-        <div>
-          {sorted.map((repo, i) => {
+        <div onKeyDown={handleKeyDown}>
+          {visibleRepos.map((repo, i) => {
             const gainedColorStr = gainedColor(repo.stars_gained);
             const gained7d =
-              repo.history.length >= 8
+              repo.stars_gained !== null && repo.history.length >= 8
                 ? repo.history[repo.history.length - 1].stars -
                   repo.history[repo.history.length - 8].stars
-                : 0;
+                : null;
             return (
               <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.02, 0.3)}>
-                <RepoCard
-                  rank={repo.rank}
-                  name={repo.name}
-                  slug={repo.slug}
-                  stars={repo.stars}
-                  gained={repo.stars_gained}
-                  gained7d={gained7d}
-                  language={repo.language ?? ""}
-                  gainedColor={gainedColorStr}
-                  liveDelta={(() => {
-                    const liveStars = starsMap[repo.full_name];
-                    const initial = initStars.current[repo.full_name];
-                    if (!liveStars || !initial) return null;
-                    const delta = liveStars - initial;
-                    return delta > 0 ? delta : null;
-                  })()}
-                  history={repo.history}
-                  onSelect={setSelectedRepo}
-                />
+                <div
+                  className={
+                    i === selectedIndex
+                      ? "bg-accent/[0.04] border-l-2 border-l-accent pl-[6px]"
+                      : ""
+                  }
+                  onClick={() => setSelectedIndex(i)}
+                >
+                  <RepoCard
+                    rank={repo.rank}
+                    name={repo.name}
+                    slug={repo.slug}
+                    stars={repo.stars}
+                    gained={repo.stars_gained}
+                    gained7d={gained7d}
+                    language={repo.language ?? ""}
+                    gainedColor={gainedColorStr}
+                    liveDelta={(() => {
+                      const liveStars = starsMap[repo.full_name];
+                      const initial = initStars.current[repo.full_name];
+                      if (!liveStars || !initial) return null;
+                      const delta = liveStars - initial;
+                      return delta > 0 ? delta : null;
+                    })()}
+                    history={repo.history}
+                    onSelect={setSelectedRepo}
+                  />
+                </div>
               </ScrollReveal>
             );
           })}
+        </div>
+      )}
+
+      {visibleCount < sorted.length && (
+        <div className="flex justify-center pt-4 pb-6">
+          <button
+            onClick={() => setVisibleCount((c) => c + 50)}
+            className="px-4 py-2 border border-border text-text-muted text-xs hover:text-accent hover:border-accent/30 transition-colors cursor-pointer"
+          >
+            show 50 more ({sorted.length - visibleCount} remaining)
+          </button>
         </div>
       )}
 
