@@ -4,6 +4,8 @@ import RepoList from "@/components/RepoList";
 import ScrollReveal from "@/components/ScrollReveal";
 import PeriodNav from "@/components/PeriodNav";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "weekly - reposurge",
   description: "fastest-rising repos last 7 days",

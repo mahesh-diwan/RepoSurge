@@ -1,5 +1,7 @@
 # RepoSurge
 
+[![fetch status](https://github.com/OWNER/REPO/actions/workflows/fetch.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/fetch.yml)
+
 GitHub repositories ranked by star velocity. Brutalist. Fast.
 
 ## Stack

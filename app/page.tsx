@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import RepoList from "@/components/RepoList";
 import ScrollReveal from "@/components/ScrollReveal";
 
+export const revalidate = 3600;
+
 export default function Home() {
   const repos = getRepos("week");
 

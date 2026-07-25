@@ -1,22 +1,29 @@
 import fs from "fs";
 import path from "path";
+import { z } from "zod";
 
 const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
 const REPOS_TO_FETCH = 500;
 const MAX_HISTORY = 90;
 
-type GitHubRepo = {
-  id: number;
-  full_name: string;
-  name: string;
-  owner: { login: string };
-  description: string | null;
-  language: string | null;
-  html_url: string;
-  stargazers_count: number;
-  created_at: string;
-};
+const GitHubRepoResponse = z.object({
+  id: z.number(),
+  full_name: z.string(),
+  name: z.string(),
+  owner: z.object({ login: z.string() }),
+  description: z.string().nullable(),
+  language: z.string().nullable(),
+  html_url: z.string(),
+  stargazers_count: z.number(),
+  created_at: z.string(),
+});
+
+const GitHubSearchResponse = z.object({
+  items: z.array(GitHubRepoResponse),
+});
+
+type GitHubRepo = z.infer<typeof GitHubRepoResponse>;
 
 type HistoryRow = { stars: number; recorded_at: string };
 type RepoRecord = {
@@ -71,9 +78,14 @@ async function fetchTopRepos(count: number): Promise<GitHubRepo[]> {
     const data = await githubFetch(
       `/search/repositories?q=stars:>1&sort=stars&order=desc&per_page=${perPage}&page=${page}`,
     );
-    repos.push(...data.items);
-    console.log(`  Got ${data.items.length} repos (total: ${repos.length})`);
-    if (data.items.length < perPage) break;
+    const parsed = GitHubSearchResponse.safeParse(data);
+    if (!parsed.success) {
+      console.error("GitHub API response validation failed:", parsed.error.format());
+      throw new Error("Invalid GitHub API response shape");
+    }
+    repos.push(...parsed.data.items);
+    console.log(`  Got ${parsed.data.items.length} repos (total: ${repos.length})`);
+    if (parsed.data.items.length < perPage) break;
     await sleep(1200);
   }
   return repos.slice(0, count);

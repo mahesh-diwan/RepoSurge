@@ -8,7 +8,7 @@ import { gainedColor } from "@/lib/gained-color";
 const periods = ["day", "week", "month"];
 const periodLabels: Record<string, string> = { day: "daily", week: "weekly", month: "monthly" };
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
