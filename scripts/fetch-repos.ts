@@ -104,6 +104,7 @@ async function main() {
 
     if (existing) {
       existing.stars = repo.stargazers_count;
+      existing.language = repo.language;
       existing.fetched_at = today;
       existing.history.push({
         stars: repo.stargazers_count,

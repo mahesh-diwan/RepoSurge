@@ -55,7 +55,7 @@ export default function RepoCard({
         {name}
       </span>
       <span className="text-text-muted/50 text-[10px] w-16 shrink-0 hidden sm:inline truncate">
-        {language}
+        {language || <span className="text-text-muted/20">&mdash;</span>}
       </span>
       <div className="w-20 shrink-0 hidden md:block" style={{ height: "20px" }}>
         <StarChart history={history} period={period} />
