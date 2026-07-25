@@ -4,7 +4,7 @@ import { z } from "zod";
 
 const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
-const REPOS_TO_FETCH = 500;
+const REPOS_TO_FETCH = 50;
 const MAX_HISTORY = 90;
 
 const GitHubRepoResponse = z.object({

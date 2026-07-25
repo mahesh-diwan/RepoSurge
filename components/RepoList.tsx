@@ -26,16 +26,11 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
 
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [visibleCount, setVisibleCount] = useState(50);
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   useEffect(() => {
-    setVisibleCount(50);
-  }, [search]);
-
-  useEffect(() => {
     setSelectedIndex(-1);
-  }, [search, visibleCount]);
+  }, [search]);
 
   const filtered = search
     ? repos.filter((r) =>
@@ -78,15 +73,13 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
   const arrow = (key: SortKey) =>
     sortKey === key ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
 
-  const visibleRepos = sorted.slice(0, visibleCount);
-
   function handleKeyDown(e: React.KeyboardEvent) {
     if (selectedRepo) return;
     switch (e.key) {
       case "ArrowDown":
       case "j":
         e.preventDefault();
-        setSelectedIndex((i) => Math.min(i + 1, visibleRepos.length - 1));
+        setSelectedIndex((i) => Math.min(i + 1, sorted.length - 1));
         break;
       case "ArrowUp":
       case "k":
@@ -95,8 +88,8 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         break;
       case "Enter":
         e.preventDefault();
-        if (selectedIndex >= 0 && selectedIndex < visibleRepos.length) {
-          setSelectedRepo(visibleRepos[selectedIndex].slug);
+        if (selectedIndex >= 0 && selectedIndex < sorted.length) {
+          setSelectedRepo(sorted[selectedIndex].slug);
         }
         break;
       case "Escape":
@@ -174,7 +167,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         </div>
       ) : (
         <div onKeyDown={handleKeyDown}>
-          {visibleRepos.map((repo, i) => {
+          {sorted.map((repo, i) => {
             const gainedColorStr = gainedColor(repo.stars_gained);
             const gained7d =
               repo.stars_gained !== null && repo.history.length >= 8
@@ -214,17 +207,6 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
               </ScrollReveal>
             );
           })}
-        </div>
-      )}
-
-      {visibleCount < sorted.length && (
-        <div className="flex justify-center pt-4 pb-6">
-          <button
-            onClick={() => setVisibleCount((c) => c + 50)}
-            className="px-4 py-2 border border-border text-text-muted text-xs hover:text-accent hover:border-accent/30 transition-colors cursor-pointer"
-          >
-            show 50 more ({sorted.length - visibleCount} remaining)
-          </button>
         </div>
       )}
 

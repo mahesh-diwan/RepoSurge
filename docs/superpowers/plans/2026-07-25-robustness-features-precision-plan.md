@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add pagination, keyboard nav, stars sort, decimal velocity, missed-day detection, Zod validation, ISR tuning, and data pipeline hardening.
+**Goal:** Fetch/show only top 50 repos, keyboard nav, stars sort, decimal velocity, missed-day detection, Zod validation, ISR tuning, and data pipeline hardening.
 
 **Architecture:** Tasks ordered by dependency chain: Task 1 (data types) → Task 2 (RepoList features) → Task 3 (infra). Each builds on the previous.
 

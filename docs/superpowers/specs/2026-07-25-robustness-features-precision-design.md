@@ -11,28 +11,12 @@ Three parallel workstreams:
 2. **Features** — pagination, keyboard navigation, sortable stars column
 3. **Data Precision** — decimal velocity, missed-day detection, better zero-state
 
-## 1. Pagination
+## 1. Scope: Top 50 Only
 
-### Behavior
-
-- Initial render: first 50 repos
-- "Show 50 more" button at bottom of list
-- Button disappears when all repos loaded
-- No URL query param — purely client-side state
-- Resets to 50 when search filter changes
-- State: `visibleCount` in `RepoList`, incremented by 50 on click
-- Works with all sort modes (default, name, gained)
-
-### Components
-
-- `RepoList.tsx` — add `visibleCount` state + load-more button
-- No new components
-
-### Edge Cases
-
-- Filtered result < visible count → no button shown
-- Search + pagination: filter runs on full list, then slice to `visibleCount`
-- Sort + pagination: sorted list is sliced, not the other way around
+- Only the top 50 repos by star count are fetched and displayed
+- No pagination — all 50 render on initial load
+- `REPOS_TO_FETCH = 50` in fetch script
+- Search + sort works across all 50 repos
 
 ## 2. Keyboard Navigation
 
@@ -189,19 +173,19 @@ Stale data from July 8 had fabricated star counts (e.g. `vercel/next.js` at 527K
 
 ## Files Changed
 
-| File                          | Change                                     |
-| ----------------------------- | ------------------------------------------ |
-| `components/RepoList.tsx`     | Pagination, keyboard nav, stars sort       |
-| `components/RepoCard.tsx`     | Null-handling for velocity/gained          |
-| `components/RepoDetail.tsx`   | Decimal velocity display                   |
-| `components/Panel.tsx`        | Decimal velocity display                   |
-| `lib/db.ts`                   | Nullable velocity/gained, missed-day check |
-| `scripts/fetch-repos.ts`      | Zod validation, PAT token, language update |
-| `components/RepoCard.tsx`     | Null language `—`, null gained/velocity    |
-| `.github/workflows/fetch.yml` | Token secret name                          |
-| `app/repo/[slug]/page.tsx`    | ISR revalidate → 3600                      |
-| `package.json`                | Add `zod`                                  |
-| `README.md`                   | Badge for manual workflow trigger          |
+| File                          | Change                                        |
+| ----------------------------- | --------------------------------------------- |
+| `components/RepoList.tsx`     | Keyboard nav, stars sort (pagination removed) |
+| `components/RepoCard.tsx`     | Null-handling for velocity/gained             |
+| `components/RepoDetail.tsx`   | Decimal velocity display                      |
+| `components/Panel.tsx`        | Decimal velocity display                      |
+| `lib/db.ts`                   | Nullable velocity/gained, missed-day check    |
+| `scripts/fetch-repos.ts`      | Zod validation, PAT token, language update    |
+| `components/RepoCard.tsx`     | Null language `—`, null gained/velocity       |
+| `.github/workflows/fetch.yml` | Token secret name                             |
+| `app/repo/[slug]/page.tsx`    | ISR revalidate → 3600                         |
+| `package.json`                | Add `zod`                                     |
+| `README.md`                   | Badge for manual workflow trigger             |
 
 ## Risk
 
