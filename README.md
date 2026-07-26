@@ -1,8 +1,8 @@
 # RepoSurge
 
-[![fetch status](https://github.com/OWNER/REPO/actions/workflows/fetch.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/fetch.yml)
+[![fetch status](https://github.com/mahesh-diwan/RepoSurge/actions/workflows/fetch.yml/badge.svg)](https://github.com/mahesh-diwan/RepoSurge/actions/workflows/fetch.yml)
 
-GitHub repositories ranked by star velocity. Brutalist. Fast.
+Top 50 GitHub repos ranked by star velocity. Dark, clean design. Live tracking.
 
 ## Stack
 
@@ -10,7 +10,8 @@ GitHub repositories ranked by star velocity. Brutalist. Fast.
 - React 18
 - Tailwind CSS
 - TypeScript (strict)
-- ISR (Incremental Static Regeneration)
+- Zod (fetch validation)
+- ISR (hourly revalidation)
 
 ## Quick Start
 
@@ -19,105 +20,108 @@ npm install
 npm run dev
 ```
 
-Dev server: `http://localhost:3000`
-
-## Production
-
-```bash
-npm run build   # builds to .next/
-npm start       # serves production build on port 3000
-```
-
-The production server serves pre-built static pages. No runtime compilation.
+Open `http://localhost:3000`.
 
 ## Scripts
 
-| Command         | Description                           |
-| --------------- | ------------------------------------- |
-| `npm run dev`   | Start dev server (port 3000)          |
-| `npm run build` | Build production bundle (`.next/`)    |
-| `npm start`     | Serve production build (port 3000)    |
-| `npm run fetch` | Fetch fresh repo data from GitHub API |
+| Command         | Description                        |
+| --------------- | ---------------------------------- |
+| `npm run dev`   | Dev server                         |
+| `npm run build` | Production build                   |
+| `npm start`     | Serve production build             |
+| `npm test`      | Run tests                          |
+| `npm run fetch` | Fetch top 50 repos from GitHub API |
 
-## Data Fetching
+## Data
 
-`npm run fetch` pulls top 100 repos across 6 languages (JS, Python, Rust, Go, TypeScript, Java) from GitHub Search API and computes star velocity.
+A daily GitHub Action (`fetch.yml`) pulls the top 50 repos by stars from the GitHub Search API. Star counts are tracked over time to calculate velocity and gains per day/week/month.
+
+Data lives in `src/content/repos.json`. The fetch script uses Zod to validate the API response shape.
 
 ```bash
-# Optional: higher rate limit with token
+# Run with a personal token for higher rate limit (5K req/hr)
 GITHUB_TOKEN=ghp_... npm run fetch
 ```
 
-Data is written to `src/content/repos.json` (gitignored). Seed data exists for offline dev.
+Add the token as `PAT_TOKEN` in repo secrets for the cron job.
+
+## Features
+
+- **Top 50 leaderboard** — sorted by star velocity, sortable by rank/name/gained/stars
+- **Keyboard navigation** — j/k or arrow keys to move, Enter to open detail panel, Escape to close
+- **Live polling** — `/api/star-counts` polls GitHub every 60s for live star deltas
+- **Sparkline charts** — per-repo star history over day/week/month periods
+- **Search** — instant client-side filter by repo name
+- **ISR** — pages revalidate every hour for fresh data
+- **Dark design** — midnight/indigo palette, system-ui font, JetBrains Mono for numeric data
 
 ## Pages
 
 | Route          | Type        | Description                                    |
 | -------------- | ----------- | ---------------------------------------------- |
-| `/`            | ISR (3600s) | Home: hero, filters, search, sort, ranked list |
-| `/repo/[slug]` | SSG         | Detail page: stats + star history sparkline    |
-| `/about`       | Static      | Methodology, data source, stack                |
-
-## Features
-
-- **Gradient mesh hero** — animated radial gradients via CSS keyframes
-- **Scroll reveal** — IntersectionObserver fades content on scroll
-- **Staggered list reveal** — 60ms cascade per repo card
-- **Card hover glow** — translateY(-2px) + blue box-shadow
-- **StarChart animation** — bars grow bottom-up with 40ms stagger
-- **Glassmorphism filter bar** — backdrop-blur + semi-transparent bg
-- **Client search** — instant filter by name/description/language
-- **Client sort** — DOM reorder by gained/velocity/total/name
-- **localStorage prefs** — remembers period/language selection
-- **Reduced motion** — `@media (prefers-reduced-motion)` disables all animation
+| `/`            | ISR (3600s) | Leaderboard with 50 repos                      |
+| `/repo/[slug]` | ISR (3600s) | Detail page: stats, sparkline, period selector |
+| `/daily`       | ISR (3600s) | Same as `/` with daily period                  |
+| `/weekly`      | ISR (3600s) | Same as `/` with weekly period                 |
+| `/monthly`     | ISR (3600s) | Same as `/` with monthly period                |
+| `/about`       | Static      | Methodology and stack                          |
 
 ## Project Structure
 
 ```
-/
 ├── app/
-│   ├── globals.css      # Design tokens + animations
-│   ├── layout.tsx       # Root layout, nav, footer, scripts
-│   ├── page.tsx         # Home (ISR)
-│   ├── about/page.tsx   # About page (static)
-│   └── repo/[slug]/page.tsx # Repo detail (SSG)
+│   ├── api/star-counts/route.ts   # Live star polling endpoint
+│   ├── globals.css                # Design tokens + data-mono utility
+│   ├── layout.tsx                 # Root layout
+│   ├── page.tsx                   # Home (ISR)
+│   ├── daily/page.tsx             # Daily period
+│   ├── weekly/page.tsx            # Weekly period
+│   ├── monthly/page.tsx           # Monthly period
+│   ├── about/page.tsx             # About page
+│   └── repo/[slug]/page.tsx       # Repo detail (ISR)
 ├── components/
-│   ├── Header.tsx           # Hero with mesh gradient
-│   ├── RepoCard.tsx         # Row card with sparkline
-│   ├── StarChart.tsx        # CSS bar chart
-│   ├── FilterBar.tsx        # Period tabs + language filter
-│   ├── TrustLogos.tsx       # Logo strip (Simple Icons CDN)
-│   ├── SearchBar.tsx        # Client search
-│   └── SortSelect.tsx       # Client sort
+│   ├── RepoList.tsx               # Leaderboard + keyboard nav + sort
+│   ├── RepoCard.tsx               # Row with sparkline + gains
+│   ├── StarChart.tsx              # Sparkline chart
+│   ├── Panel.tsx                  # Slide-out detail panel
+│   ├── RepoDetail.tsx             # Panel content
+│   ├── Header.tsx                 # Site header + nav
+│   ├── NavLinks.tsx               # Period navigation
+│   └── SearchInput.tsx            # Instant search
 ├── lib/
-│   ├── db.ts          # Reads src/content/repos.json
-│   └── github.ts      # GitHub API client
+│   ├── db.ts                      # Reads repos.json, computes velocity/gains
+│   ├── gained-color.ts            # Color helper for gain values
+│   └── useLiveStars.ts            # Live polling hook
 ├── scripts/
-│   └── fetch-repos.ts   # Daily fetch job
+│   └── fetch-repos.ts             # Daily fetch job with Zod validation
+├── middleware.ts                  # 308 redirect /repo/owner/repo → /repo/owner-repo
 └── src/content/
-    └── repos.json       # Repo data (gitignored)
+    └── repos.json                 # Repo data
 ```
 
-## Design System
+## Design
 
-| Token         | Value            | Use                            |
-| ------------- | ---------------- | ------------------------------ |
-| `electric`    | `#0066FF`        | Primary actions, active states |
-| `midnight`    | `#0A0A0A`        | Backgrounds                    |
-| `bone`        | `#F5F5F0`        | Text, borders                  |
-| Font          | `JetBrains Mono` | Everything                     |
-| Border-radius | `0`              | Global                         |
-
-All animations respect `prefers-reduced-motion: reduce`.
+| Token      | Value          | Use                      |
+| ---------- | -------------- | ------------------------ |
+| midnight   | `#0A0A0A`      | Background               |
+| surface    | `#111111`      | Cards, panels            |
+| border     | `#222222`      | Dividers                 |
+| text-body  | `#E5E5E5`      | Body text                |
+| text-muted | `#888888`      | Secondary text           |
+| accent     | `#5B7FFF`      | Interactive elements     |
+| positive   | `#34D399`      | Gains, up                |
+| negative   | `#F87171`      | Losses, down             |
+| Font UI    | system-ui      | Interface                |
+| Font data  | JetBrains Mono | Numbers via `.data-mono` |
 
 ## Deployment
 
-Any Node.js host (Vercel, Railway, Fly.io, Docker). The build outputs a self-contained `.next/` directory.
-
 ```bash
-docker build -t reposurge .
-docker run -p 3000:3000 reposurge
+npm run build
+npm start
 ```
+
+Deploy anywhere that runs Node.js. Vercel recommended.
 
 ## License
 
