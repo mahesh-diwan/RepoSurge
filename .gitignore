@@ -27,3 +27,4 @@ weekly-fullpage.png
 *.png
 *.txt
 .vercel
+tsconfig.tsbuildinfo
