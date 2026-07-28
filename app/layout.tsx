@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jetbrains.variable}`}>
+    <html lang="en" className={`${jetbrains.variable}`} style={{ "--font-geist": '"Geist Sans", "Geist"' } as React.CSSProperties}>
       <body className="font-sans bg-midnight relative z-[2]">
         <a
           href="#main-content"
