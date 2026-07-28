@@ -15,7 +15,7 @@ export default function MobileNav() {
     if (!dialog) return;
 
     const focusable = dialog.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
     );
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -42,14 +42,25 @@ export default function MobileNav() {
 
   return (
     <>
-      <div className="relative z-[51]">
+      <div className="relative z-[51] md:hidden">
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-text-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:text-accent/70 transition-colors text-sm p-3 -m-3 min-w-[44px] text-center cursor-pointer"
+          className="relative w-6 h-6 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? "✕" : "☰"}
+          <span
+            className={`absolute block w-4 h-[1.5px] bg-current transition-all duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+              open ? "rotate-45" : "-translate-y-[3.5px]"
+            }`}
+            style={{ color: open ? "#5B7FFF" : "#888888" }}
+          />
+          <span
+            className={`absolute block w-4 h-[1.5px] bg-current transition-all duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+              open ? "-rotate-45" : "translate-y-[3.5px]"
+            }`}
+            style={{ color: open ? "#5B7FFF" : "#888888" }}
+          />
         </button>
       </div>
 
@@ -60,15 +71,19 @@ export default function MobileNav() {
           aria-modal="true"
           aria-label="navigation"
           aria-hidden={!open}
-          className="fixed inset-0 z-50 bg-midnight/95 flex items-center justify-center md:hidden animate-fade-in"
+          className="fixed inset-0 z-40 glass-strong flex items-center justify-center md:hidden animate-fade-in"
           onClick={close}
-          onKeyDown={(e) => { if (e.key === "Escape") close(); }}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") close();
+          }}
         >
           <nav
-            className="flex flex-col items-center gap-3"
+            className="flex flex-col items-center gap-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <NavLinks links={NAV_LINKS} onItemClick={close} />
+            <div className="opacity-0 animate-stagger-1">
+              <NavLinks links={NAV_LINKS} onItemClick={close} />
+            </div>
           </nav>
         </div>
       )}
