@@ -17,13 +17,11 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    const rect = el.getBoundingClientRect();
-    const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
-
-    if (isInViewport) return;
+    if (el.classList.contains("is-visible")) return;
 
     el.style.opacity = "0";
-    el.style.transform = "translateY(1rem)";
+    el.style.transform = "translateY(4rem)";
+    el.style.filter = "blur(8px)";
     el.style.transitionDelay = `${delay}s`;
 
     const observer = new IntersectionObserver(
@@ -33,6 +31,7 @@ export default function ScrollReveal({
             entry.target.classList.add("is-visible");
             (entry.target as HTMLElement).style.opacity = "";
             (entry.target as HTMLElement).style.transform = "";
+            (entry.target as HTMLElement).style.filter = "";
             (entry.target as HTMLElement).style.transitionDelay = "";
             observer.unobserve(entry.target);
           }
@@ -48,7 +47,7 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${className}`}
+      className={`transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${className}`}
     >
       {children}
     </div>
