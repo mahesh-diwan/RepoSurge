@@ -166,7 +166,10 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
           <p className="text-text-muted text-xs mt-1">try a different name or clear the filter</p>
         </div>
       ) : (
-        <div onKeyDown={handleKeyDown}>
+        <div
+          className="grid grid-cols-1 md:grid-cols-12 gap-4"
+          onKeyDown={handleKeyDown}
+        >
           {sorted.map((repo, i) => {
             const gainedColorStr = gainedColor(repo.stars_gained);
             const gained7d =
@@ -174,37 +177,43 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
                 ? repo.history[repo.history.length - 1].stars -
                   repo.history[repo.history.length - 8].stars
                 : null;
+            const hero = i < 3;
             return (
-              <ScrollReveal key={repo.full_name} delay={Math.min(i * 0.02, 0.3)}>
-                <div
-                  className={
-                    i === selectedIndex
-                      ? "bg-accent/[0.04] border-l-2 border-l-accent pl-[6px]"
-                      : ""
-                  }
-                  onClick={() => setSelectedIndex(i)}
-                >
-                  <RepoCard
-                    rank={repo.rank}
-                    name={repo.name}
-                    slug={repo.slug}
-                    stars={repo.stars}
-                    gained={repo.stars_gained}
-                    gained7d={gained7d}
-                    language={repo.language ?? ""}
-                    gainedColor={gainedColorStr}
-                    liveDelta={(() => {
-                      const liveStars = starsMap[repo.full_name];
-                      const initial = initStars.current[repo.full_name];
-                      if (!liveStars || !initial) return null;
-                      const delta = liveStars - initial;
-                      return delta > 0 ? delta : null;
-                    })()}
-                    history={repo.history}
-                    onSelect={setSelectedRepo}
-                  />
-                </div>
-              </ScrollReveal>
+              <div
+                key={repo.full_name}
+                className={`${hero ? "md:col-span-6" : "md:col-span-4"} ${
+                  i === selectedIndex ? "relative" : ""
+                }`}
+                onClick={() => setSelectedIndex(i)}
+              >
+                {i === selectedIndex && (
+                  <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-0.5 h-8 bg-accent rounded-full z-10" />
+                )}
+                <ScrollReveal delay={Math.min(i * 0.02, 0.3)}>
+                  <div className={i === selectedIndex ? "pl-2" : ""}>
+                    <RepoCard
+                      rank={repo.rank}
+                      name={repo.name}
+                      slug={repo.slug}
+                      stars={repo.stars}
+                      gained={repo.stars_gained}
+                      gained7d={gained7d}
+                      language={repo.language ?? ""}
+                      gainedColor={gainedColorStr}
+                      liveDelta={(() => {
+                        const liveStars = starsMap[repo.full_name];
+                        const initial = initStars.current[repo.full_name];
+                        if (!liveStars || !initial) return null;
+                        const delta = liveStars - initial;
+                        return delta > 0 ? delta : null;
+                      })()}
+                      history={repo.history}
+                      onSelect={setSelectedRepo}
+                      hero={hero}
+                    />
+                  </div>
+                </ScrollReveal>
+              </div>
             );
           })}
         </div>
