@@ -13,7 +13,7 @@ export default function Panel({ open, onClose, children }: PanelProps) {
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     },
-    [onClose]
+    [onClose],
   );
 
   useEffect(() => {
@@ -30,31 +30,29 @@ export default function Panel({ open, onClose, children }: PanelProps) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 bg-black/60 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
         aria-hidden="true"
       />
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md bg-surface transform transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md glass-strong transform transition-transform duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
         aria-label="Repo details"
       >
-        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-border">
-          <h2 className="text-sm font-semibold text-text-body">
-            REPO DETAILS
-          </h2>
+        <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-white/[0.06]">
+          <h2 className="text-sm font-semibold text-text-body">REPO DETAILS</h2>
           <button
             onClick={onClose}
-            className="text-text-muted/50 hover:text-accent transition-colors"
+            className="w-7 h-7 rounded-full glass flex items-center justify-center text-text-muted/60 hover:text-accent transition-colors cursor-pointer"
             aria-label="Close panel"
           >
             <svg
-              className="w-5 h-5"
+              className="w-3.5 h-3.5"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

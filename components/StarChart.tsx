@@ -77,6 +77,12 @@ export default function StarChart(props: StarChartProps) {
       aria-roledescription="sparkline chart"
       aria-label={`Star history: ${values.length} data points from ${values[0].toLocaleString("en-US")} to ${values[values.length - 1].toLocaleString("en-US")}`}
     >
+      <defs>
+        <linearGradient id={`grad-${period}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(91,127,255,0.3)" />
+          <stop offset="100%" stopColor="rgba(91,127,255,0)" />
+        </linearGradient>
+      </defs>
       <title>{`Star history for the past ${period}`}</title>
       {yLabels.map((v) => (
         <line
@@ -85,7 +91,7 @@ export default function StarChart(props: StarChartProps) {
           y1={yPos(v)}
           x2={W - pad.right}
           y2={yPos(v)}
-          stroke="rgba(91,127,255,0.1)"
+          stroke="rgba(91,127,255,0.06)"
           strokeWidth="0.5"
         />
       ))}
@@ -95,7 +101,7 @@ export default function StarChart(props: StarChartProps) {
           x={pad.left - 2}
           y={yPos(v) + 1.5}
           textAnchor="end"
-          fill="rgba(91,127,255,0.4)"
+          fill="rgba(91,127,255,0.3)"
           fontSize="6"
         >
           {abbreviateNumber(Math.round(v))}
@@ -107,17 +113,23 @@ export default function StarChart(props: StarChartProps) {
           x={xPos(idx)}
           y={H - 1}
           textAnchor="middle"
-          fill="rgba(91,127,255,0.3)"
+          fill="rgba(91,127,255,0.2)"
           fontSize="5"
         >
           {getXLabel(idx)}
         </text>
       ))}
       {values.map((v, i) => (
-        <circle key={i} cx={xPos(i)} cy={yPos(v)} r="1.5" fill="rgba(91,127,255,0.9)" />
+        <circle
+          key={i}
+          cx={xPos(i)}
+          cy={yPos(v)}
+          r="1.2"
+          fill="rgba(91,127,255,0.8)"
+        />
       ))}
-      <path d={fillD} fill="rgba(91,127,255,0.1)" />
-      <path d={lineD} fill="none" stroke="rgba(91,127,255,0.9)" strokeWidth="1" />
+      <path d={fillD} fill={`url(#grad-${period})`} />
+      <path d={lineD} fill="none" stroke="rgba(91,127,255,0.8)" strokeWidth="1" />
     </svg>
   );
 }

@@ -81,55 +81,90 @@ export default function RepoDetailPage({
           </a>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
-            <div className="bg-surface rounded-lg p-3">
-              <p className="text-text-muted text-[10px] sm:text-xs mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums text-text-body">{repo.stars.toLocaleString("en-US")}</p>
+            <div className="card-outer">
+              <div className="card-inner p-3">
+                <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">stars</p>
+                <p className="text-lg font-bold tabular-nums data-mono text-text-body">
+                  {repo.stars.toLocaleString("en-US")}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface rounded-lg p-3">
-              <p className="text-text-muted text-[10px] sm:text-xs mb-1">gained</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
-                {repo.stars_gained !== null
-                  ? (repo.stars_gained > 0 ? "+" : "") + repo.stars_gained.toLocaleString("en-US")
-                  : "\u2014"}
-              </p>
+            <div className="card-outer">
+              <div className="card-inner p-3">
+                <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">gained</p>
+                <p
+                  className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
+                >
+                  {repo.stars_gained !== null
+                    ? (repo.stars_gained > 0 ? "+" : "") +
+                      repo.stars_gained.toLocaleString("en-US")
+                    : "\u2014"}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface rounded-lg p-3">
-              <p className="text-text-muted text-[10px] sm:text-xs mb-1">velocity</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
-                {formatVelocity(repo.velocity)}
-              </p>
+            <div className="card-outer">
+              <div className="card-inner p-3">
+                <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">velocity</p>
+                <p
+                  className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
+                >
+                  {formatVelocity(repo.velocity)}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface rounded-lg p-3">
-              <p className="text-text-muted text-[10px] sm:text-xs mb-1">7d gain</p>
-              <p className={`text-lg font-bold tabular-nums text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}>
-                {repo.gained7d !== null
-                  ? (repo.gained7d > 0 ? "+" : "") + repo.gained7d.toLocaleString("en-US")
-                  : "\u2014"}
-              </p>
+            <div className="card-outer">
+              <div className="card-inner p-3">
+                <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">7d gain</p>
+                <p
+                  className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
+                >
+                  {repo.gained7d !== null
+                    ? (repo.gained7d > 0 ? "+" : "") +
+                      repo.gained7d.toLocaleString("en-US")
+                    : "\u2014"}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface rounded-lg p-3">
-              <p className="text-text-muted text-[10px] sm:text-xs mb-1">created</p>
-              <p className="text-lg font-bold tabular-nums text-text-body">{createdDate}</p>
+            <div className="card-outer">
+              <div className="card-inner p-3">
+                <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">created</p>
+                <p className="text-lg font-bold tabular-nums data-mono text-text-body">
+                  {createdDate}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 mb-6 text-xs">
-            <span className="text-text-muted">period:</span>
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-text-muted/60 text-[10px] mr-1">period:</span>
             {periods.map((p) =>
               period === p ? (
-                <span key={p} className="text-accent font-bold">{periodLabels[p]}</span>
+                <span
+                  key={p}
+                  className="rounded-full px-3 py-1 text-xs bg-accent text-white font-medium"
+                >
+                  {periodLabels[p]}
+                </span>
               ) : (
-                <Link key={p} href={`/repo/${slug}?period=${p}`} className="text-text-muted hover:text-accent transition-colors">
+                <Link
+                  key={p}
+                  href={`/repo/${slug}?period=${p}`}
+                  className="rounded-full px-3 py-1 text-xs glass text-text-muted hover:text-text-body transition-colors duration-300"
+                >
                   {periodLabels[p]}
                 </Link>
-              )
+              ),
             )}
           </div>
 
           <div>
-            <p className="text-text-muted text-[10px] sm:text-xs mb-3">star history</p>
-            <div className="h-32 w-full">
-              <StarChart history={repo.history} period={period} />
+            <p className="text-text-muted/60 text-[10px] mb-3">star history</p>
+            <div className="card-outer">
+              <div className="card-inner p-4">
+                <div className="h-40 w-full">
+                  <StarChart history={repo.history} period={period} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
