@@ -1,5 +1,6 @@
 import { getRepos } from "@/lib/db";
 import Header from "@/components/Header";
+import StatsBar from "@/components/StatsBar";
 import RepoList from "@/components/RepoList";
 
 export const revalidate = 3600;
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <StatsBar />
       <main className="max-w-7xl mx-auto px-6">
         {empty ? (
           <div className="py-16 text-center">

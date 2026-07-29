@@ -147,7 +147,12 @@ export function getStats() {
   const totalRepos = repos.length;
   const totalStars = repos.reduce((sum, r) => sum + r.stars, 0);
   const languages = new Set(repos.map((r) => r.language).filter(Boolean));
-  return { totalRepos, totalStars, languages: languages.size };
+  const totalGained = repos.reduce((sum, r) => {
+    const n =
+      (r.history.at(-1)?.stars ?? r.stars) - (r.history.at(0)?.stars ?? r.stars);
+    return sum + Math.max(0, n);
+  }, 0);
+  return { totalRepos, totalStars, languages: languages.size, totalGained };
 }
 
 export function getLastUpdated(): string {

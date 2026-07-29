@@ -49,6 +49,7 @@ describe("getStats", () => {
     expect(stats.totalRepos).toBeGreaterThan(0);
     expect(stats.totalStars).toBeGreaterThan(0);
     expect(stats.languages).toBeGreaterThan(0);
+    expect(stats.totalGained).toBeGreaterThanOrEqual(0);
   });
 });
 
