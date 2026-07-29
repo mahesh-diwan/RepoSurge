@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getRepos, getStats, getLastUpdated } from "@/lib/db";
+import { getRepos, getStats, getLastUpdated, type RepoWithVelocity } from "@/lib/db";
 
 describe("getRepos", () => {
   it("returns repos sorted by stars_gained descending", () => {
@@ -40,6 +40,31 @@ describe("getRepos", () => {
     for (const r of repos) {
       expect(r.velocity === null || typeof r.velocity === "number").toBe(true);
     }
+  });
+
+  it("includes gainedPrev, accel, forecast on each repo", () => {
+    const repos = getRepos("week");
+    for (const r of repos) {
+      expect(r.gainedPrev === null || typeof r.gainedPrev === "number").toBe(true);
+      expect(r.accel === null || typeof r.accel === "number").toBe(true);
+      expect(r.forecast === null || typeof r.forecast === "string").toBe(true);
+    }
+  });
+
+  it("has isNew as boolean and category as string|null", () => {
+    const repos = getRepos("week");
+    for (const r of repos) {
+      expect(typeof r.isNew).toBe("boolean");
+      expect(r.category === null || typeof r.category === "string").toBe(true);
+    }
+  });
+
+  it("returns all repos without 25-cap", () => {
+    const day = getRepos("day");
+    const week = getRepos("week");
+    const month = getRepos("month");
+    expect(day.length).toBe(week.length);
+    expect(month.length).toBe(week.length);
   });
 });
 
