@@ -74,12 +74,6 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
 
   const currentRepos = repos[period];
 
-  const [minStars, setMinStars] = useState(0);
-  const [focusedIndex, setFocusedIndex] = useState(-1);
-  const listRef = useRef<HTMLDivElement>(null);
-
-  const [shortcutsOpen, setShortcutsOpen] = useState(false);
-
   const allLanguages = useMemo(() => {
     const langs = new Set(currentRepos.map(r => r.language).filter(Boolean));
     return Array.from(langs).sort();
@@ -87,11 +81,15 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
 
   const [langFilter, setLangFilter] = useState<string | null>(null);
   const [catFilter, setCatFilter] = useState<string | null>(null);
+
+  const allCategories = useMemo(() => [...new Set(currentRepos.map(r => r.category).filter(Boolean) as string[])], [currentRepos]);
+
+  const [focusedIndex, setFocusedIndex] = useState(-1);
   const [showAll, setShowAll] = useState(false);
   const [compareMode, setCompareMode] = useState(false);
   const [compareSet, setCompareSet] = useState<RepoWithVelocity[]>([]);
-
-  const allCategories = useMemo(() => [...new Set(currentRepos.map(r => r.category).filter(Boolean) as string[])], [currentRepos]);
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const categoryFiltered = catFilter
     ? currentRepos.filter(r => r.category === catFilter)
@@ -101,13 +99,9 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
     ? categoryFiltered.filter(r => r.language === langFilter)
     : categoryFiltered;
 
-  const starFiltered = minStars > 0
-    ? languageFiltered.filter(r => r.stars >= minStars)
-    : languageFiltered;
-
   const searchFiltered = search
-    ? starFiltered.filter(r => r.full_name.toLowerCase().includes(search.toLowerCase()))
-    : starFiltered;
+    ? languageFiltered.filter(r => r.full_name.toLowerCase().includes(search.toLowerCase()))
+    : languageFiltered;
 
   const sorted = useMemo(() => {
     if (!sortKey) return searchFiltered;
@@ -238,71 +232,62 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           })()
       }
 
-      {allCategories.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-1 mb-2">
-          <button
-            onClick={() => setCatFilter(null)}
-            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-              catFilter === null
-                ? "bg-accent/10 border-accent/30 text-accent"
-                : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-            }`}
-          >
-            all
-          </button>
-          {allCategories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setCatFilter(cat === catFilter ? null : cat)}
-              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                catFilter === cat
-                  ? "bg-accent/10 border-accent/30 text-accent"
-                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-              }`}
-            >
-              #{cat}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {allLanguages.length > 0 && (
+      {(allCategories.length > 0 || allLanguages.length > 0) && (
         <div className="flex flex-wrap justify-center gap-1 mb-6">
-          <button
-            onClick={() => setLangFilter(null)}
-            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-              langFilter === null
-                ? "bg-accent/10 border-accent/30 text-accent"
-                : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-            }`}
-          >
-            all
-          </button>
-          {allLanguages.map(lang => (
-            <button
-              key={lang}
-              onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                langFilter === lang
-                  ? "bg-accent/10 border-accent/30 text-accent"
-                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-              }`}
-            >
-              {lang}
-            </button>
-          ))}
-          <input
-            type="number"
-            min={0}
-            value={minStars}
-            onChange={e => setMinStars(Math.max(0, parseInt(e.target.value) || 0))}
-            placeholder="min stars"
-            aria-label="Minimum stars filter"
-            aria-invalid={minStars < 0}
-            aria-describedby={minStars < 0 ? "min-stars-error" : undefined}
-            className={`w-20 px-2 py-0.5 text-[11px] bg-surface border rounded-full text-text-muted placeholder-text-muted/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 ${minStars < 0 ? "border-red-500" : "border-white/[0.06]"}`}
-          />
-          {minStars < 0 && <span id="min-stars-error" className="text-negative text-[10px]">must be 0 or more</span>}
+          {allCategories.length > 0 && (
+            <>
+              <button
+                onClick={() => setCatFilter(null)}
+                className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                  catFilter === null
+                    ? "bg-accent/10 border-accent/30 text-accent"
+                    : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+                }`}
+              >
+                all
+              </button>
+              {allCategories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setCatFilter(cat === catFilter ? null : cat)}
+                  className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                    catFilter === cat
+                      ? "bg-accent/10 border-accent/30 text-accent"
+                      : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+                  }`}
+                >
+                  #{cat}
+                </button>
+              ))}
+            </>
+          )}
+          {allLanguages.length > 0 && (
+            <>
+              <button
+                onClick={() => setLangFilter(null)}
+                className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                  langFilter === null
+                    ? "bg-accent/10 border-accent/30 text-accent"
+                    : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+                }`}
+              >
+                all
+              </button>
+              {allLanguages.map(lang => (
+                <button
+                  key={lang}
+                  onClick={() => setLangFilter(lang === langFilter ? null : lang)}
+                  className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                    langFilter === lang
+                      ? "bg-accent/10 border-accent/30 text-accent"
+                      : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+                  }`}
+                >
+                  {lang}
+                </button>
+              ))}
+            </>
+          )}
         </div>
       )}
 
