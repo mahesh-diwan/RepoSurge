@@ -80,13 +80,13 @@ export default function RepoDetailPage({
           </a>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-3">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
               <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">stars</p>
               <p className="text-lg font-bold tabular-nums data-mono text-text-body">
                 {repo.stars.toLocaleString("en-US")}
               </p>
             </div>
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-3">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
               <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">gained</p>
               <p
                 className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
@@ -97,7 +97,7 @@ export default function RepoDetailPage({
                   : "\u2014"}
               </p>
             </div>
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-3">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
               <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">velocity</p>
               <p
                 className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
@@ -105,7 +105,7 @@ export default function RepoDetailPage({
                 {formatVelocity(repo.velocity)}
               </p>
             </div>
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-3">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
               <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">7d gain</p>
               <p
                 className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
@@ -116,7 +116,7 @@ export default function RepoDetailPage({
                   : "\u2014"}
               </p>
             </div>
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-3">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
               <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">created</p>
               <p className="text-lg font-bold tabular-nums data-mono text-text-body">
                 {createdDate}
@@ -138,7 +138,7 @@ export default function RepoDetailPage({
                 <Link
                   key={p}
                   href={`/repo/${slug}?period=${p}`}
-                  className="rounded-full px-3 py-1 text-xs bg-[#111111] border border-white/[0.06] text-text-muted hover:text-text-body transition-colors duration-300"
+                  className="rounded-full px-3 py-1 text-xs bg-surface border border-white/[0.06] text-text-muted hover:text-text-body transition-colors duration-300"
                 >
                   {periodLabels[p]}
                 </Link>
@@ -148,7 +148,7 @@ export default function RepoDetailPage({
 
           <div>
             <p className="text-text-muted/60 text-[10px] mb-3">star history</p>
-            <div className="bg-[#111111] border border-white/[0.06] rounded-xl p-4">
+            <div className="bg-surface border border-white/[0.06] rounded-xl p-4">
               <div className="h-40 w-full">
                 <StarChart history={repo.history} period={period} />
               </div>

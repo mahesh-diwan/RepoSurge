@@ -1,0 +1,89 @@
+<h2>🍱 The Digest — Page Layout</h2>
+<p class="subtitle">Curated daily scan with categories and highlights</p>
+
+<div class="mockup">
+  <div class="mockup-body" style="padding:0;background:#0A0A0A;color:#E5E5E5;font-family:system-ui;font-size:12px">
+
+    <!-- Floating pill nav -->
+    <div style="display:flex;justify-content:center;padding:16px 0 8px">
+      <div style="display:flex;align-items:center;gap:20px;background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:8px 24px">
+        <span style="color:#D97706;font-weight:700;font-size:14px;letter-spacing:1px">REPOSURGE</span>
+        <span style="color:#888;font-size:11px;cursor:pointer">home</span>
+        <span style="color:#888;font-size:11px;cursor:pointer">about</span>
+        <span style="color:#D97706;font-size:11px;cursor:pointer">categories</span>
+        <span style="color:#888;font-size:11px;cursor:pointer">weekly</span>
+      </div>
+    </div>
+
+    <!-- Hero: Hot this week -->
+    <div style="padding:24px 32px 16px">
+      <div style="font-size:9px;color:#888;letter-spacing:2px;margin-bottom:4px">CATEGORY</div>
+      <div style="display:flex;gap:6px;margin-bottom:16px">
+        <span style="background:rgba(217,119,6,0.1);padding:3px 10px;border-radius:999px;color:#D97706;font-size:10px;cursor:pointer">#AI</span>
+        <span style="background:rgba(217,119,6,0.1);padding:3px 10px;border-radius:999px;color:#D97706;font-size:10px;cursor:pointer">#infra</span>
+        <span style="background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:999px;color:#888;font-size:10px;cursor:pointer">#tooling</span>
+        <span style="background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:999px;color:#888;font-size:10px;cursor:pointer">#data</span>
+        <span style="background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:999px;color:#888;font-size:10px;cursor:pointer">#devtools</span>
+      </div>
+
+      <!-- Featured hero repo -->
+      <div style="background:linear-gradient(135deg,rgba(217,119,6,0.06),rgba(217,119,6,0.01));border:1px solid rgba(217,119,6,0.15);border-radius:12px;padding:20px;margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div>
+            <div style="font-size:9px;color:#888;letter-spacing:1px;margin-bottom:4px">🔥 HOT THIS WEEK</div>
+            <div style="font-size:22px;font-weight:700;color:#E5E5E5">openclaw</div>
+            <div style="color:#888;font-size:11px;margin-top:4px">Your own personal AI assistant. The lobster way. 🦞</div>
+            <div style="display:flex;gap:12px;margin-top:10px">
+              <div><span style="color:#34D399;font-weight:600">+5,867</span> <span style="color:#888;font-size:10px">stars</span></div>
+              <div><span style="color:#E5E5E5;font-weight:600">31</span> <span style="color:#888;font-size:10px">velocity</span></div>
+              <div><span style="color:#888">#TypeScript</span></div>
+            </div>
+          </div>
+          <div style="width:60px;height:30px;background:rgba(255,255,255,0.03);border-radius:4px;display:flex;align-items:flex-end;padding:4px">
+            <svg viewBox="0 0 10 20" width="100%" height="100%"><polyline points="0,18 2,14 4,15 6,8 8,4 10,2" fill="none" stroke="rgba(217,119,6,0.4)" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category sections -->
+      <div style="margin-bottom:20px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <div><span style="font-weight:600;font-size:13px">AI & ML</span> <span style="color:#888;font-size:10px">8 repos</span></div>
+          <span style="color:#888;font-size:10px;cursor:pointer">view all →</span>
+        </div>
+        <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:8px">
+          <div style="min-width:200px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+            <div style="font-weight:600;font-size:12px">openclaw</div>
+            <div style="color:#888;font-size:10px;margin-top:2px">▲28 · +5,867</div>
+          </div>
+          <div style="min-width:200px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+            <div style="font-weight:600;font-size:12px">superpowers</div>
+            <div style="color:#888;font-size:10px;margin-top:2px">▲14 · +2,058</div>
+          </div>
+          <div style="min-width:200px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+            <div style="font-weight:600;font-size:12px">skills</div>
+            <div style="color:#888;font-size:10px;margin-top:2px">▲28 · +5,867</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rest of list (compact) -->
+      <div style="font-size:10px;color:#888;border-top:1px solid rgba(255,255,255,0.04);padding-top:12px">
+        <div style="display:flex;justify-content:space-between;padding:4px 0"><span>#1 skills</span><span style="color:#34D399">+5,867</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0"><span>#2 superpowers</span><span style="color:#34D399">+2,058</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0"><span>#3 ECC</span><span style="color:#34D399">+1,887</span></div>
+        <div style="color:#888;font-size:10px;text-align:center;margin-top:8px;cursor:pointer">show all 25 →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 style="margin-top:16px">Key changes</h3>
+<ul style="font-size:12px;color:#888;line-height:1.8">
+  <li>Floating pill nav with categories tab</li>
+  <li>Hero "hot this week" curated spotlight</li>
+  <li>Category tag filters (AI, infra, tooling, etc.)</li>
+  <li>Horizontally scrollable category sections</li>
+  <li>About redesigned with stats + mission story</li>
+  <li>Outfit typography with bold heading scale</li>
+</ul>

@@ -1,0 +1,84 @@
+<h2>Pick a design direction</h2>
+<p class="subtitle">Three approaches for RepoSurge. Click to select your preferred direction.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>🍱 The Digest <span style="font-size:0.7rem;background:rgba(217,119,6,0.15);color:#D97706;padding:2px 8px;border-radius:4px;margin-left:8px">Recommended</span></h3>
+      <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin:8px 0;font-size:12px;line-height:1.6">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;padding:8px;background:rgba(217,119,6,0.08);border-radius:6px">
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:4px 16px;font-size:11px;color:#D97706">RS · HOME · ABOUT · CATEGORIES</div>
+        </div>
+        <div style="margin-bottom:8px">
+          <div style="font-size:24px;font-weight:700;color:#E5E5E5;margin-bottom:4px">🔥 Hot this week</div>
+          <div style="display:flex;gap:4px;margin-bottom:8px">
+            <span style="background:rgba(217,119,6,0.1);padding:2px 8px;border-radius:999px;color:#D97706;font-size:10px">#AI</span>
+            <span style="background:rgba(217,119,6,0.1);padding:2px 8px;border-radius:999px;color:#D97706;font-size:10px">#infra</span>
+            <span style="background:rgba(217,119,6,0.1);padding:2px 8px;border-radius:999px;color:#D97706;font-size:10px">#tooling</span>
+          </div>
+        </div>
+        <div>Category tag filters · Hero curated pick · Repo list below · Digest feel</div>
+      </div>
+      <div class="pros-cons" style="margin-top:6px">
+        <div class="pros"><h4>Pros</h4><ul><li>Daily-visit habit</li><li>Category browsing</li><li>Balanced scope</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More content to maintain</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>📊 The Terminal</h3>
+      <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin:8px 0;font-size:12px;line-height:1.6">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px">
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:4px 16px;font-size:11px;color:#888">RS · HOME · ABOUT</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+          <div style="background:rgba(255,255,255,0.03);padding:6px;border-radius:4px">
+            <div style="font-size:9px;color:#888">TOTAL STARS</div>
+            <div style="font-size:16px;font-weight:700;color:#E5E5E5;font-family:monospace">4.2M</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);padding:6px;border-radius:4px">
+            <div style="font-size:9px;color:#888">REPOS</div>
+            <div style="font-size:16px;font-weight:700;color:#E5E5E5;font-family:monospace">50</div>
+          </div>
+        </div>
+        <div>Data-dense · Stats dashboard · Comparison tools · Monospaced-heavy</div>
+      </div>
+      <div class="pros-cons" style="margin-top:6px">
+        <div class="pros"><h4>Pros</h4><ul><li>Power-user magnet</li><li>Low content burden</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Less approachable</li><li>Narrower audience</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>📰 The Magazine</h3>
+      <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin:8px 0;font-size:12px;line-height:1.6">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px">
+          <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:4px 16px;font-size:11px;color:#888">REPOSURGE · HOME · ABOUT</div>
+        </div>
+        <div style="margin-bottom:8px">
+          <div style="display:flex;gap:8px;margin-bottom:4px">
+            <div style="background:rgba(255,255,255,0.05);border-radius:6px;flex:1;padding:10px">
+              <div style="font-size:9px;color:#888">REPO OF THE DAY</div>
+              <div style="font-size:13px;font-weight:600;color:#E5E5E5;margin-top:2px">openclaw</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:6px;flex:1;padding:10px">
+              <div style="font-size:9px;color:#888">EDITOR'S PICK</div>
+              <div style="font-size:13px;font-weight:600;color:#E5E5E5;margin-top:2px">skills</div>
+            </div>
+          </div>
+        </div>
+        <div>Story-driven · Featured content · Slower pace · Editorial curation</div>
+      </div>
+      <div class="pros-cons" style="margin-top:6px">
+        <div class="pros"><h4>Pros</h4><ul><li>High engagement</li><li>Differentiates</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Heavy content work</li><li>Drifts from utility</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:16px;font-size:11px;color:#888">Click a card to select it. Then respond in the terminal.</p>

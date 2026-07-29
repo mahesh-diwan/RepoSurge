@@ -233,8 +233,10 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
             placeholder="min stars"
             aria-label="Minimum stars filter"
             aria-invalid={minStars < 0}
+            aria-describedby={minStars < 0 ? "min-stars-error" : undefined}
             className={`w-20 px-2 py-0.5 text-[11px] bg-surface border rounded-full text-text-muted placeholder-text-muted/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 ${minStars < 0 ? "border-red-500" : "border-white/[0.06]"}`}
           />
+          {minStars < 0 && <span id="min-stars-error" className="text-negative text-[10px]">must be 0 or more</span>}
         </div>
       )}
 

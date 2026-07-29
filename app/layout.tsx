@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import "@fontsource/geist-sans/400.css";
-import "@fontsource/geist-sans/500.css";
-import "@fontsource/geist-sans/600.css";
-import "@fontsource/geist-sans/700.css";
-import { JetBrains_Mono } from "next/font/google";
+import "@fontsource/chivo/400.css";
+import "@fontsource/chivo/500.css";
+import "@fontsource/chivo/700.css";
+import "@fontsource/fragment-mono/400.css";
 import MobileNav from "@/components/MobileNav";
 import LastUpdated from "@/components/LastUpdated";
 import NavLinks from "@/components/NavLinks";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { getLastUpdated } from "@/lib/db";
 import "./globals.css";
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jetbrains",
-});
 
 export const metadata: Metadata = {
   title: "reposurge - repos rising. fast.",
@@ -31,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jetbrains.variable}`} style={{ "--font-geist": '"Geist Sans", "Geist"' } as React.CSSProperties}>
+    <html lang="en">
       <body className="font-sans bg-midnight relative z-[2]">
         <a
           href="#main-content"

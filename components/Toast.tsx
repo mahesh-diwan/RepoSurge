@@ -60,7 +60,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {items.map((item) => (
           <div
             key={item.id}
-            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl shadow-lg text-sm cursor-pointer
+            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl shadow-accent text-sm cursor-pointer
                         transition-all duration-200 animate-in slide-in-from-right-2
                         ${item.type === "error" ? "bg-red-900/80 text-white" : "bg-zinc-800/90 text-text-body"}`}
             onClick={() => dismiss(item.id)}

@@ -20,12 +20,16 @@ const config: Config = {
         negative: "#F87171",
       },
       fontFamily: {
-        sans: ["Geist Sans", "system-ui", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        sans: ["Chivo", "system-ui", "sans-serif"],
+        mono: ["'Fragment Mono'", "ui-monospace", "monospace"],
       },
       borderRadius: {
         "2xl": "1.25rem",
         "3xl": "1.5rem",
+      },
+      boxShadow: {
+        accent: "0 4px 24px -8px rgba(217,119,6,0.15)",
+        "accent-lg": "0 8px 40px -12px rgba(217,119,6,0.2)",
       },
       animation: {
         "surge-pulse": "surge-pulse 2s ease-in-out infinite",

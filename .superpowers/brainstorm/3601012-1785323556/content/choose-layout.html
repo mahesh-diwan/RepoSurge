@@ -1,0 +1,210 @@
+<h2>Compare 3 layout directions</h2>
+<p class="subtitle">Click a tab to see the detailed mockup. Then respond in the terminal with your pick.</p>
+
+<style>
+.tab-bar { display:flex; gap:0; margin-bottom:0; border-bottom:1px solid rgba(255,255,255,0.06); }
+.tab-btn { padding:8px 18px; font-size:12px; cursor:pointer; border:none; background:transparent; color:#888; border-bottom:2px solid transparent; transition:all 0.2s; }
+.tab-btn:hover { color:#E5E5E5; }
+.tab-btn.active { color:#D97706; border-bottom-color:#D97706; background:rgba(217,119,6,0.04); }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+.option-tag { display:inline-block; font-size:10px; padding:2px 8px; border-radius:4px; margin-left:8px; }
+.tag-rec { background:rgba(217,119,6,0.12); color:#D97706; }
+.tag-alt { background:rgba(255,255,255,0.04); color:#888; }
+</style>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('digest')">🍱 The Digest <span class="option-tag tag-rec">Recommended</span></button>
+  <button class="tab-btn" onclick="switchTab('terminal')">📊 The Terminal <span class="option-tag tag-alt">Alt</span></button>
+  <button class="tab-btn" onclick="switchTab('magazine')">📰 The Magazine <span class="option-tag tag-alt">Alt</span></button>
+</div>
+
+<div id="tab-digest" class="tab-content active">
+  <div class="mockup">
+    <div class="mockup-body" style="padding:0;background:#0A0A0A;color:#E5E5E5;font-family:system-ui;font-size:12px">
+      <!-- Floating pill nav -->
+      <div style="display:flex;justify-content:center;padding:16px 0 8px">
+        <div style="display:flex;align-items:center;gap:20px;background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:8px 24px">
+          <span style="color:#D97706;font-weight:700;font-size:14px;letter-spacing:1px">REPOSURGE</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">home</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">about</span>
+          <span style="color:#D97706;font-size:11px;cursor:pointer">categories</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">weekly</span>
+        </div>
+      </div>
+      <div style="padding:24px 32px 16px">
+        <div style="font-size:9px;color:#888;letter-spacing:2px;margin-bottom:4px">CATEGORY</div>
+        <div style="display:flex;gap:6px;margin-bottom:16px">
+          <span style="background:rgba(217,119,6,0.1);padding:3px 10px;border-radius:999px;color:#D97706;font-size:10px">#AI</span>
+          <span style="background:rgba(217,119,6,0.1);padding:3px 10px;border-radius:999px;color:#D97706;font-size:10px">#infra</span>
+          <span style="background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:999px;color:#888;font-size:10px">#tooling</span>
+          <span style="background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:999px;color:#888;font-size:10px">#data</span>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(217,119,6,0.06),rgba(217,119,6,0.01));border:1px solid rgba(217,119,6,0.15);border-radius:12px;padding:20px;margin-bottom:24px">
+          <div style="font-size:9px;color:#888;letter-spacing:1px;margin-bottom:4px">🔥 HOT THIS WEEK</div>
+          <div style="font-size:22px;font-weight:700;color:#E5E5E5">openclaw</div>
+          <div style="color:#888;font-size:11px;margin-top:4px">Your own personal AI assistant. The lobster way. 🦞</div>
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div><span style="color:#34D399;font-weight:600">+5,867</span> <span style="color:#888;font-size:10px">stars</span></div>
+            <div><span style="color:#E5E5E5;font-weight:600">31</span> <span style="color:#888;font-size:10px">velocity</span></div>
+          </div>
+        </div>
+        <div style="margin-bottom:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+            <div><span style="font-weight:600;font-size:13px">AI & ML</span> <span style="color:#888;font-size:10px">8 repos</span></div>
+            <span style="color:#888;font-size:10px">view all →</span>
+          </div>
+          <div style="display:flex;gap:8px;overflow-x:auto">
+            <div style="min-width:180px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+              <div style="font-weight:600;font-size:12px">openclaw</div>
+              <div style="color:#888;font-size:10px">▲28 · +5,867</div>
+            </div>
+            <div style="min-width:180px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+              <div style="font-weight:600;font-size:12px">superpowers</div>
+              <div style="color:#888;font-size:10px">▲14 · +2,058</div>
+            </div>
+            <div style="min-width:180px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:10px">
+              <div style="font-weight:600;font-size:12px">skills</div>
+              <div style="color:#888;font-size:10px">▲28 · +5,867</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>Summary</h3>
+    <p>Curated daily scan. Category tags, hero spotlight, horizontally scrollable category sections. Feels like a newsletter you visit.</p>
+    <div class="pros-cons">
+      <div class="pros"><h4>Pros</h4><ul><li>Daily-visit habit</li><li>Category browsing</li><li>Balanced scope</li></ul></div>
+      <div class="cons"><h4>Cons</h4><ul><li>Requires category tagging</li><li>More layout complexity</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-terminal" class="tab-content">
+  <div class="mockup">
+    <div class="mockup-body" style="padding:0;background:#0A0A0A;color:#E5E5E5;font-family:system-ui;font-size:12px">
+      <div style="display:flex;justify-content:center;padding:16px 0 8px">
+        <div style="display:flex;align-items:center;gap:20px;background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:8px 24px">
+          <span style="color:#888;font-weight:600;font-size:13px;font-family:monospace">[RS]</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">home</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">about</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">compare</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px 24px 8px">
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:6px;padding:8px">
+          <div style="color:#888;font-size:9px;font-family:monospace">TOTAL REPOS</div>
+          <div style="color:#E5E5E5;font-size:18px;font-weight:700;font-family:monospace">50</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:6px;padding:8px">
+          <div style="color:#888;font-size:9px;font-family:monospace">TOTAL STARS</div>
+          <div style="color:#E5E5E5;font-size:18px;font-weight:700;font-family:monospace">12.4M</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:6px;padding:8px">
+          <div style="color:#888;font-size:9px;font-family:monospace">LANGUAGES</div>
+          <div style="color:#E5E5E5;font-size:18px;font-weight:700;font-family:monospace">8</div>
+        </div>
+        <div style="background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.1);border-radius:6px;padding:8px">
+          <div style="color:#888;font-size:9px;font-family:monospace">TOTAL GAINED</div>
+          <div style="color:#34D399;font-size:18px;font-weight:700;font-family:monospace">+24.7K</div>
+        </div>
+      </div>
+      <div style="padding:8px 24px 16px">
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+            <span style="color:#888;font-size:10px;font-family:monospace">// compare repos</span>
+            <span style="color:#888;font-size:10px">export data ↓</span>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:4px;font-size:10px;font-family:monospace">
+            <div style="color:#888;border-bottom:1px solid rgba(255,255,255,0.06);padding:4px">REPO</div>
+            <div style="color:#888;border-bottom:1px solid rgba(255,255,255,0.06);padding:4px;text-align:right">STARS</div>
+            <div style="color:#888;border-bottom:1px solid rgba(255,255,255,0.06);padding:4px;text-align:right">GAINED</div>
+            <div style="color:#888;border-bottom:1px solid rgba(255,255,255,0.06);padding:4px;text-align:right">VELOCITY</div>
+            <div style="color:#888;border-bottom:1px solid rgba(255,255,255,0.06);padding:4px;text-align:right">Δ RANK</div>
+            <div style="padding:4px;color:#E5E5E5">skills</div>
+            <div style="padding:4px;text-align:right;color:#E5E5E5">193.1K</div>
+            <div style="padding:4px;text-align:right;color:#34D399">+5,867</div>
+            <div style="padding:4px;text-align:right;color:#E5E5E5">31</div>
+            <div style="padding:4px;text-align:right;color:#34D399">▲28</div>
+            <div style="padding:4px;color:#E5E5E5">superpowers</div>
+            <div style="padding:4px;text-align:right;color:#E5E5E5">262.8K</div>
+            <div style="padding:4px;text-align:right;color:#34D399">+2,058</div>
+            <div style="padding:4px;text-align:right;color:#E5E5E5">8</div>
+            <div style="padding:4px;text-align:right;color:#34D399">▲14</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>Summary</h3>
+    <p>Data-dense power dashboard. Live stats bar, comparison table, export, 30-day trend charts. Monospaced-heavy.</p>
+    <div class="pros-cons">
+      <div class="pros"><h4>Pros</h4><ul><li>Power-user magnet</li><li>Low content burden</li><li>Natural for data nerds</li></ul></div>
+      <div class="cons"><h4>Cons</h4><ul><li>Less approachable</li><li>Narrower audience</li><li>Feels like a tool not a destination</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-magazine" class="tab-content">
+  <div class="mockup">
+    <div class="mockup-body" style="padding:0;background:#0A0A0A;color:#E5E5E5;font-family:system-ui;font-size:12px">
+      <div style="display:flex;justify-content:center;padding:16px 0 8px">
+        <div style="display:flex;align-items:center;gap:20px;background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:999px;padding:8px 24px">
+          <span style="color:#E5E5E5;font-weight:700;font-size:14px;letter-spacing:2px">REPOSURGE</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">home</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">about</span>
+          <span style="color:#888;font-size:11px;cursor:pointer">archive</span>
+        </div>
+      </div>
+      <div style="padding:24px 32px 16px">
+        <div style="margin-bottom:24px">
+          <div style="font-size:9px;color:#D97706;letter-spacing:2px;margin-bottom:8px">REPO OF THE DAY</div>
+          <div style="font-size:28px;font-weight:700;color:#E5E5E5;margin-bottom:4px;letter-spacing:-0.5px">openclaw</div>
+          <div style="color:#888;font-size:13px;max-width:500px;line-height:1.5">Your own personal AI assistant. Any OS. Any platform. The lobster way. 🦞</div>
+          <div style="display:flex;gap:16px;margin-top:10px;font-size:11px">
+            <span style="color:#34D399;font-weight:600">+5,867 stars</span>
+            <span style="color:#888">velocity 31</span>
+            <span style="color:#888">TypeScript</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+          <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:14px">
+            <div style="font-size:9px;color:#888;letter-spacing:1px;margin-bottom:6px">EDITOR'S PICK</div>
+            <div style="font-weight:600;font-size:15px;color:#E5E5E5">skills</div>
+            <div style="color:#888;font-size:11px;margin-top:4px">Skills for Real Engineers.</div>
+            <div style="margin-top:6px"><span style="color:#34D399;font-size:10px">+5,867</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:8px;padding:14px">
+            <div style="font-size:9px;color:#888;letter-spacing:1px;margin-bottom:6px">BIGGEST MOVER</div>
+            <div style="font-weight:600;font-size:15px;color:#E5E5E5">markitdown</div>
+            <div style="color:#888;font-size:11px;margin-top:4px">Python tool for files → Markdown.</div>
+            <div style="margin-top:6px"><span style="color:#34D399;font-size:10px">+943 · ▲37</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>Summary</h3>
+    <p>Editorial, story-driven. Repo of the day, editor's picks, weekly recap, featured articles. Large display typography.</p>
+    <div class="pros-cons">
+      <div class="pros"><h4>Pros</h4><ul><li>High engagement</li><li>Differentiates from other dashboards</li></ul></div>
+      <div class="cons"><h4>Cons</h4><ul><li>Heavy content work</li><li>Drifts from utility toward publishing</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelector(`.tab-btn[onclick*="'${name}'"]`).classList.add('active');
+}
+</script>
+
+<p style="margin-top:20px;font-size:11px;color:#888">Click tabs to compare. Then respond in the terminal with your pick.</p>

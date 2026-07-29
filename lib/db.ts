@@ -58,6 +58,10 @@ const SPARKLINE_LENGTH: Record<string, number> = {
 };
 
 export function getRepos(period: string = "week"): RepoWithVelocity[] {
+  return computeAllRepos(period).slice(0, 25).map((repo, i) => ({ ...repo, rank: i + 1 }));
+}
+
+function computeAllRepos(period: string): RepoWithVelocity[] {
   const repos = loadRepos();
   const days = PERIOD_TO_DAYS[period] ?? 7;
   const cutoff = new Date(Date.now() - days * 86400000);
@@ -135,7 +139,7 @@ export function getRepos(period: string = "week"): RepoWithVelocity[] {
   });
 
   const result = withVelocity as RepoWithVelocity[];
-  return result.slice(0, 25).map((repo, i) => ({ ...repo, rank: i + 1 }));
+  return result;
 }
 
 export function getStats() {
@@ -159,7 +163,7 @@ export function getRepoDetails(
   slug: string,
   period: string = "week"
 ): (RepoWithVelocity & { created_at: string; gained7d: number | null; rankChange: number | null }) | null {
-  const repos = getRepos(period);
+  const repos = computeAllRepos(period);
 
   const matchSlug = slug.replace("/", "-");
   const repo = repos.find((r) => r.slug === matchSlug || r.full_name === slug);

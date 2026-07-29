@@ -1,16 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "page not found - reposurge",
+};
 
 export default function NotFoundPage() {
   return (
-    <main className="max-w-7xl mx-auto px-6 pt-16">
-      <div className="max-w-xl space-y-4">
-        <h1 className="text-xl font-bold text-accent">404 &mdash; page not found </h1>
+    <main className="max-w-7xl mx-auto px-6 pt-24">
+      <div className="max-w-xl text-center mx-auto space-y-4">
+        <p className="text-accent font-bold text-5xl tabular-nums data-mono">404</p>
         <p className="text-text-muted text-sm">this route doesn&apos;t exist.</p>
         <Link
           href="/"
-          className="text-accent text-xs hover:underline hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-midnight active:text-accent/70 transition-colors inline-block"
+          className="inline-block mt-4 text-xs bg-accent text-midnight px-4 py-2 rounded hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-midnight transition-colors"
         >
-          back home
+          back to reposurge
         </Link>
       </div>
     </main>
