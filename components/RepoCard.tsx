@@ -1,138 +1,108 @@
-import StarChart from "./StarChart";
+import Tooltip from "./Tooltip";
 
 export default function RepoCard({
   rank,
   name,
-  slug,
   stars,
   gained,
-  gained7d,
   language,
-  gainedColor,
-  liveDelta,
-  history,
-  period = "week",
   onSelect,
-  hero = false,
+  slug,
+  hero,
+  description,
+  rankChange,
+  sparkline,
+  compact,
 }: {
   rank: number;
   name: string;
-  slug: string;
   stars: number;
   gained: number | null;
-  gained7d: number | null;
   language: string;
-  gainedColor: string;
-  liveDelta: number | null;
-  history: { recorded_at: string; stars: number }[];
-  period?: string;
   onSelect?: (slug: string) => void;
+  slug: string;
   hero?: boolean;
+  description: string | null;
+  rankChange: number | null;
+  sparkline: number[];
+  compact?: boolean;
 }) {
-  const gainedPrefix =
-    gained !== null && gained > 0
-      ? "+"
-      : gained !== null && gained < 0
-        ? ""
-        : "";
-  const gainedAbs = gained !== null ? Math.abs(gained) : 0;
-  const liveLabel =
-    liveDelta !== null ? `${liveDelta > 0 ? "+" : ""}${liveDelta}` : null;
-  const isTop3 = rank <= 3;
+  if (compact) {
+    return (
+      <button
+        onClick={() => onSelect?.(slug)}
+        className="w-full text-left px-3 py-2 rounded hover:bg-surface/50 transition-colors"
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-text-body text-sm truncate">{name}</span>
+          <span className="text-text-muted text-xs ml-2">{/* velocity */}</span>
+        </div>
+      </button>
+    );
+  }
+  const isSurging = (gained ?? 0) > 0;
 
   return (
     <div
-      className="card-outer cursor-pointer group"
+      className={`flex items-center justify-between gap-4 py-2.5 px-2 cursor-pointer transition-all duration-300 border-b border-white/[0.03] hover:bg-white/[0.01] ${isSurging ? "animate-surge-glow bg-amber-500/[0.015]" : ""}`}
       onClick={() => onSelect?.(slug)}
     >
-      <div className="card-inner p-3">
-        <div className="flex items-center gap-3">
-          {isTop3 && (
-            <span
-              className={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold tabular-nums ${
-                rank === 1
-                  ? "text-accent shadow-[0_0_12px_rgba(91,127,255,0.3)]"
-                  : "text-text-muted"
-              }`}
-              style={{
-                background:
-                  rank === 1 ? "rgba(91,127,255,0.1)" : "rgba(136,136,136,0.1)",
-              }}
-            >
-              #{rank}
-            </span>
-          )}
-          {!isTop3 && (
-            <span className="w-6 text-right text-text-muted tabular-nums text-xs shrink-0">
-              #{rank}
-            </span>
-          )}
-          <span
-            className="flex-1 min-w-0 truncate text-text-body text-sm font-medium"
-            title={name}
-          >
-            {name}
-          </span>
-          <span className="text-text-muted/50 text-[10px] w-16 shrink-0 hidden sm:inline truncate">
-            {language || <span className="text-text-muted/20">&mdash;</span>}
-          </span>
-          {hero && (
-            <div
-              className="w-20 shrink-0 hidden md:block"
-              style={{ height: "20px" }}
-            >
-              <StarChart history={history} period={period} />
-            </div>
-          )}
-          {(() => {
-            const trend = history[history.length - 1].stars - history[0].stars;
-            if (trend > 0 && !hero)
-              return (
-                <svg
-                  className="w-3 h-3 text-positive shrink-0"
-                  viewBox="0 0 12 12"
-                  fill="currentColor"
+      <div className="flex items-center gap-3 min-w-0 flex-1">
+        <div className="flex items-center gap-1.5 w-6 shrink-0">
+          <span role="text" className="tabular-nums text-xs text-text-muted">#{rank}</span>
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <span className="truncate text-text-body text-sm font-medium">{name}</span>
+            {rankChange !== null && rankChange !== 0 && (
+              <Tooltip
+                label={`Rank moved ${rankChange > 0 ? "↑" : "↓"}${Math.abs(rankChange)} position${Math.abs(rankChange) === 1 ? "" : "s"} this period.`}
+              >
+                <span
+                  aria-label={rankChange > 0 ? `moved up ${rankChange} positions` : `moved down ${Math.abs(rankChange)} positions`}
+                  className={`tabular-nums text-[11px] shrink-0 ${rankChange > 0 ? "text-positive" : "text-negative"}`}
                 >
-                  <polygon points="6,1 11,10 1,10" />
-                </svg>
-              );
-            if (trend < 0 && !hero)
-              return (
-                <svg
-                  className="w-3 h-3 text-negative shrink-0"
-                  viewBox="0 0 12 12"
-                  fill="currentColor"
-                >
-                  <polygon points="6,11 1,2 11,2" />
-                </svg>
-              );
-            return null;
-          })()}
-          <div className="flex items-center gap-2 shrink-0 w-20 justify-end">
-            {liveLabel && (
-              <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-positive/10 text-positive">
-                +{liveLabel}
-              </span>
-            )}
-            {gained === null ? (
-              <span className="text-text-muted/30 tabular-nums text-sm">
-                &mdash;
-              </span>
-            ) : gained === 0 ? (
-              <span className="text-text-muted/30 tabular-nums text-sm">
-                &mdash;
-              </span>
-            ) : (
-              <span className={`${gainedColor} tabular-nums text-sm`}>
-                {gainedPrefix}
-                {gainedAbs.toLocaleString("en-US")}
-              </span>
+                  {rankChange > 0 ? "↑" : "↓"}{Math.abs(rankChange)}
+                </span>
+              </Tooltip>
             )}
           </div>
-          <span className="text-text-muted/40 text-xs tabular-nums w-16 text-right shrink-0 hidden sm:block">
-            {(stars / 1000).toFixed(1)}K
-          </span>
+          {description && (
+            <p className="text-text-muted/40 text-xs mt-0.5 leading-snug line-clamp-1">{description}</p>
+          )}
         </div>
+      </div>
+      <div className="flex items-center gap-3 shrink-0">
+        <div className="w-12 h-5 shrink-0 hidden sm:block">
+          {sparkline.length > 1 && (
+            <svg role="img" aria-label="star velocity trend" viewBox={`0 0 ${sparkline.length - 1} 20`} className="w-full h-full" preserveAspectRatio="none">
+              <path
+                d={sparkline.map((s, i) => `${i === 0 ? "M" : "L"}${i},${20 - ((s - Math.min(...sparkline)) / (Math.max(...sparkline) - Math.min(...sparkline) || 1)) * 18}`).join(" ")}
+                fill="none"
+                stroke="rgba(217,119,6,0.3)"
+                strokeWidth="2"
+              />
+            </svg>
+          )}
+        </div>
+        <span className="text-text-muted/30 text-[11px] hidden sm:block">{language || "—"}</span>
+        {gained === null || gained === 0 ? (
+          <span className="text-text-muted/20 tabular-nums text-xs w-16 text-right">—</span>
+        ) : (
+          <span className={`tabular-nums text-xs font-medium w-16 text-right ${gained > 0 ? "text-positive" : "text-negative"}`}>
+            {gained > 0 ? "+" : ""}{gained.toLocaleString("en-US")}
+          </span>
+        )}
+        <span className="text-text-muted/20 text-[11px] tabular-nums w-14 text-right hidden sm:block">{(stars / 1000).toFixed(1)}K</span>
+        <Tooltip label="Total GitHub stars. Stars gained shows delta this period.">
+          <svg
+            className="w-3 h-3 text-text-muted/50 inline-block ml-0.5 cursor-help"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+          >
+            <path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1Zm0 1.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm-.5 4h1v4.5h-1V6.5ZM8 5.25a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+          </svg>
+        </Tooltip>
       </div>
     </div>
   );

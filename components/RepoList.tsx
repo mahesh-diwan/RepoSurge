@@ -1,46 +1,75 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
-import { gainedColor } from "@/lib/gained-color";
-import { useLiveStars } from "@/lib/useLiveStars";
 import RepoCard from "./RepoCard";
-import ScrollReveal from "./ScrollReveal";
 import SearchInput from "./SearchInput";
 import Panel from "./Panel";
 import RepoDetail from "./RepoDetail";
 
-export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
+class RepoListBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="text-center py-12">
+          <p className="text-text-muted text-sm mb-4">Something went wrong</p>
+          <button
+            onClick={() => this.setState({ hasError: false })}
+            className="px-4 py-2 bg-zinc-800 text-text-body text-sm rounded hover:bg-zinc-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export default function RepoList({ repos }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] } }) {
   const [search, setSearch] = useState("");
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const { starsMap, live, error } = useLiveStars();
-  const initStars = useRef<Record<string, number>>({});
-  useEffect(() => {
-    if (Object.keys(initStars.current).length === 0) {
-      for (const r of repos) initStars.current[r.full_name] = r.stars ?? 0;
-    }
-  }, [repos]);
+  const [period, setPeriod] = useState<"day" | "week" | "month">("week");
 
   type SortKey = "rank" | "name" | "gained" | "stars";
   type SortDir = "asc" | "desc";
 
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  useEffect(() => {
-    setSelectedIndex(-1);
-  }, [search]);
+  const currentRepos = repos[period];
 
-  const filtered = search
-    ? repos.filter((r) =>
-        r.full_name.toLowerCase().includes(search.toLowerCase())
-      )
-    : repos;
+  const [minStars, setMinStars] = useState(0);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const allLanguages = useMemo(() => {
+    const langs = new Set(currentRepos.map(r => r.language).filter(Boolean));
+    return Array.from(langs).sort();
+  }, [currentRepos]);
+
+  const [langFilter, setLangFilter] = useState<string | null>(null);
+
+  const languageFiltered = langFilter
+    ? currentRepos.filter(r => r.language === langFilter)
+    : currentRepos;
+
+  const starFiltered = minStars > 0
+    ? languageFiltered.filter(r => r.stars >= minStars)
+    : languageFiltered;
+
+  const searchFiltered = search
+    ? starFiltered.filter(r => r.full_name.toLowerCase().includes(search.toLowerCase()))
+    : starFiltered;
 
   const sorted = useMemo(() => {
-    if (!sortKey) return filtered;
-    return [...filtered].sort((a, b) => {
+    if (!sortKey) return searchFiltered;
+    return [...searchFiltered].sort((a, b) => {
       const dir = sortDir === "asc" ? 1 : -1;
       switch (sortKey) {
         case "rank":
@@ -55,7 +84,7 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
           return 0;
       }
     });
-  }, [filtered, sortKey, sortDir]);
+  }, [searchFiltered, sortKey, sortDir]);
 
   function handleSort(key: SortKey) {
     if (sortKey === key) {
@@ -70,64 +99,91 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
     }
   }
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedRepo(null);
+        return;
+      }
+      if (selectedRepo) return;
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setFocusedIndex(i => Math.min(i + 1, sorted.length - 1));
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setFocusedIndex(i => Math.max(i - 1, 0));
+      }
+      if (e.key === "Enter" && focusedIndex >= 0) {
+        setSelectedRepo(sorted[focusedIndex].slug);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [selectedRepo, sorted, focusedIndex]);
+
   const arrow = (key: SortKey) =>
     sortKey === key ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
 
-  function handleKeyDown(e: React.KeyboardEvent) {
-    if (selectedRepo) return;
-    switch (e.key) {
-      case "ArrowDown":
-      case "j":
-        e.preventDefault();
-        setSelectedIndex((i) => Math.min(i + 1, sorted.length - 1));
-        break;
-      case "ArrowUp":
-      case "k":
-        e.preventDefault();
-        setSelectedIndex((i) => Math.max(i - 1, 0));
-        break;
-      case "Enter":
-        e.preventDefault();
-        if (selectedIndex >= 0 && selectedIndex < sorted.length) {
-          setSelectedRepo(sorted[selectedIndex].slug);
-        }
-        break;
-      case "Escape":
-        e.preventDefault();
-        setSelectedIndex(-1);
-        break;
-    }
-  }
-
   return (
     <>
-      <div className="flex justify-center mb-6">
-        <div className="flex items-center gap-3">
-          <SearchInput value={search} onChange={setSearch} />
-          <span className="flex items-center gap-1.5 text-[10px] text-text-muted shrink-0" title="Live data polling status">
-            <span
-              className={`inline-block w-1.5 h-1.5 rounded-full ${
-                live ? "bg-positive shadow-[0_0_4px_rgba(52,211,153,0.5)]" : "bg-text-muted"
-              }`}
-            />
-            {live ? "live" : "polling"}
-          </span>
-        </div>
+      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-lg p-0.5 border border-white/[0.06]">
+        {(["day", "week", "month"] as const).map((p) => (
+          <button
+            key={p}
+            onClick={() => setPeriod(p)}
+            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
+              period === p ? "bg-accent text-midnight" : "text-text-muted hover:text-text-body"
+            }`}
+          >
+            {p === "day" ? "daily" : p === "week" ? "weekly" : "monthly"}
+          </button>
+        ))}
       </div>
 
-      {error && !live && (
-        <div className="flex items-center gap-2 mb-3 px-3 py-2 border border-border rounded-none text-text-muted text-[10px]">
-          <span>live data unavailable — showing cached data</span>
+      {allLanguages.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-1 mb-6">
           <button
-            onClick={() => window.location.reload()}
-            className="ml-auto text-text-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors underline underline-offset-4"
+            onClick={() => setLangFilter(null)}
+            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer ${
+              langFilter === null
+                ? "bg-accent/10 border-accent/30 text-accent"
+                : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+            }`}
           >
-            retry
+            all
           </button>
+          {allLanguages.map(lang => (
+            <button
+              key={lang}
+              onClick={() => setLangFilter(lang === langFilter ? null : lang)}
+              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer ${
+                langFilter === lang
+                  ? "bg-accent/10 border-accent/30 text-accent"
+                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+              }`}
+            >
+              {lang}
+            </button>
+          ))}
+          <input
+            type="number"
+            min={0}
+            value={minStars}
+            onChange={e => setMinStars(Math.max(0, parseInt(e.target.value) || 0))}
+            placeholder="min stars"
+            aria-label="Minimum stars filter"
+            aria-invalid={minStars < 0}
+            className={`w-20 px-2 py-0.5 text-[11px] bg-surface border rounded-full text-text-muted placeholder-text-muted/40 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 ${minStars < 0 ? "border-red-500" : "border-white/[0.06]"}`}
+          />
         </div>
       )}
 
-      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-text-muted border-b border-border mb-1">
+      <div className="flex justify-center mb-6">
+        <SearchInput value={search} onChange={setSearch} autoFocus />
+      </div>
+
+      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-text-muted border-b border-border mb-1 sticky top-0 bg-midnight z-10">
         <button
           onClick={() => handleSort("rank")}
           className="w-6 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
@@ -142,8 +198,6 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         >
           repo{arrow("name")}
         </button>
-        <div className="hidden sm:block shrink-0 w-16" />
-        <div className="hidden md:block shrink-0 w-20" />
         <button
           onClick={() => handleSort("gained")}
           className="w-20 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
@@ -160,63 +214,39 @@ export default function RepoList({ repos }: { repos: RepoWithVelocity[] }) {
         </button>
       </div>
 
-      {filtered.length === 0 ? (
-        <div className="mt-4">
-          <p className="text-text-muted text-xs">no repos match &ldquo;{search}&rdquo;</p>
-          <p className="text-text-muted text-xs mt-1">try a different name or clear the filter</p>
+      {searchFiltered.length === 0 ? (
+        <div className="mt-8 text-center">
+          <p className="text-text-muted text-xs">no repos match &ldquo;{search}&rdquo;{langFilter ? ` in ${langFilter}` : ""}</p>
+          <button
+            onClick={() => { setSearch(""); setLangFilter(null); }}
+            className="text-accent text-xs mt-2 hover:underline cursor-pointer"
+          >
+            clear filters
+          </button>
         </div>
       ) : (
-        <div
-          className="grid grid-cols-1 md:grid-cols-12 gap-4"
-          onKeyDown={handleKeyDown}
-        >
-          {sorted.map((repo, i) => {
-            const gainedColorStr = gainedColor(repo.stars_gained);
-            const gained7d =
-              repo.stars_gained !== null && repo.history.length >= 8
-                ? repo.history[repo.history.length - 1].stars -
-                  repo.history[repo.history.length - 8].stars
-                : null;
-            const hero = i < 3;
+        <RepoListBoundary>
+        <div ref={listRef} className="flex flex-col pb-8">
+          {sorted.slice(0, 25).map((repo, i) => {
             return (
-              <div
+              <RepoCard
                 key={repo.full_name}
-                className={`${hero ? "md:col-span-6" : "md:col-span-4"} ${
-                  i === selectedIndex ? "relative" : ""
-                }`}
-                onClick={() => setSelectedIndex(i)}
-              >
-                {i === selectedIndex && (
-                  <span className="absolute -left-1 top-1/2 -translate-y-1/2 w-0.5 h-8 bg-accent rounded-full z-10" />
-                )}
-                <ScrollReveal delay={Math.min(i * 0.02, 0.3)}>
-                  <div className={i === selectedIndex ? "pl-2" : ""}>
-                    <RepoCard
-                      rank={repo.rank}
-                      name={repo.name}
-                      slug={repo.slug}
-                      stars={repo.stars}
-                      gained={repo.stars_gained}
-                      gained7d={gained7d}
-                      language={repo.language ?? ""}
-                      gainedColor={gainedColorStr}
-                      liveDelta={(() => {
-                        const liveStars = starsMap[repo.full_name];
-                        const initial = initStars.current[repo.full_name];
-                        if (!liveStars || !initial) return null;
-                        const delta = liveStars - initial;
-                        return delta > 0 ? delta : null;
-                      })()}
-                      history={repo.history}
-                      onSelect={setSelectedRepo}
-                      hero={hero}
-                    />
-                  </div>
-                </ScrollReveal>
-              </div>
+                rank={repo.rank}
+                name={repo.name}
+                slug={repo.slug}
+                stars={repo.stars}
+                gained={repo.stars_gained}
+                language={repo.language ?? ""}
+                onSelect={setSelectedRepo}
+                hero={i < 3}
+                description={repo.description}
+                rankChange={repo.rankChange}
+                sparkline={repo.sparkline}
+              />
             );
           })}
         </div>
+        </RepoListBoundary>
       )}
 
       <Panel open={!!selectedRepo} onClose={() => setSelectedRepo(null)}>
