@@ -353,8 +353,8 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
             return (
                <div
                  key={repo.full_name}
-                 className={`flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 py-2 px-2 border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors ${isHot ? "bg-amber-500/[0.015]" : ""}`}
-              >
+                 className="flex flex-col gap-2 py-3 px-3 sm:py-2 sm:px-2 sm:flex-row sm:items-center border-b border-white/[0.03] hover:bg-white/[0.06] sm:hover:bg-white/[0.01] transition-colors rounded-lg sm:rounded-none"
+               >
                 {compareMode && (
                   <input
                     type="checkbox"
@@ -363,12 +363,12 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                     className="accent-accent w-4 h-4"
                   />
                 )}
-                <span className="font-mono tabular-nums text-text-muted text-xs w-8 shrink-0">
+                  <span className="font-mono tabular-nums text-text-muted text-xs w-5 shrink-0">
                   {repo.rank}
                 </span>
                 <button
                   onClick={() => setSelectedRepo(repo.slug)}
-                  className="flex-1 min-w-0 font-sans text-text-body text-sm truncate text-left cursor-pointer"
+                  className="flex-1 min-w-0 font-sans text-text-body text-sm font-medium truncate text-left cursor-pointer"
                 >
                   {isHot && <span className="text-amber-500 mr-1">🔥</span>}
                   {repo.name}
@@ -391,13 +391,15 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                     ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}`
                     : "—"}
                 </span>
-                <div className="sm:hidden flex items-center gap-3 text-[11px] font-mono mt-0.5">
-                  <span className={`${(repo.stars_gained ?? 0) > 0 ? "text-positive" : "text-text-muted/40"}`}>
-                    {repo.stars_gained != null ? `+${repo.stars_gained.toLocaleString("en-US")}` : "—"} gained
+                <div className="sm:hidden flex items-center gap-4 text-[11px] font-mono text-text-muted mt-1">
+                  <span className={(repo.stars_gained ?? 0) > 0 ? "text-positive font-semibold" : ""}>
+                    {repo.stars_gained != null ? `+${repo.stars_gained.toLocaleString("en-US")}` : "—"}
                   </span>
-                  <span className="text-text-muted">
-                    {repo.gainedPrev != null ? `vs last: ${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}` : "—"}
+                  <span className="text-text-muted/50">vs last</span>
+                  <span className={(repo.gainedPrev ?? 0) > 0 ? "text-positive" : (repo.gainedPrev ?? 0) < 0 ? "text-negative" : "text-text-muted/50"}>
+                    {repo.gainedPrev != null ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}` : "—"}
                   </span>
+                  {repo.velocity != null && <span className="text-text-muted/40">{repo.velocity} vel</span>}
                 </div>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-16 text-right hidden sm:block">
                   {repo.velocity != null ? repo.velocity : "—"}
