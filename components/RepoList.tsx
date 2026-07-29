@@ -234,60 +234,42 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
 
       {(allCategories.length > 0 || allLanguages.length > 0) && (
         <div className="flex flex-wrap justify-center gap-1 mb-6">
-          {allCategories.length > 0 && (
-            <>
-              <button
-                onClick={() => setCatFilter(null)}
-                className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                  catFilter === null
-                    ? "bg-accent/10 border-accent/30 text-accent"
-                    : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-                }`}
-              >
-                all
-              </button>
-              {allCategories.map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setCatFilter(cat === catFilter ? null : cat)}
-                  className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                    catFilter === cat
-                      ? "bg-accent/10 border-accent/30 text-accent"
-                      : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-                  }`}
-                >
-                  #{cat}
-                </button>
-              ))}
-            </>
-          )}
-          {allLanguages.length > 0 && (
-            <>
-              <button
-                onClick={() => setLangFilter(null)}
-                className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                  langFilter === null
-                    ? "bg-accent/10 border-accent/30 text-accent"
-                    : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-                }`}
-              >
-                all
-              </button>
-              {allLanguages.map(lang => (
-                <button
-                  key={lang}
-                  onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-                  className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                    langFilter === lang
-                      ? "bg-accent/10 border-accent/30 text-accent"
-                      : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-                  }`}
-                >
-                  {lang}
-                </button>
-              ))}
-            </>
-          )}
+          <button
+            onClick={() => { setCatFilter(null); setLangFilter(null); }}
+            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+              catFilter === null && langFilter === null
+                ? "bg-accent/10 border-accent/30 text-accent"
+                : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+            }`}
+          >
+            all
+          </button>
+          {allCategories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setCatFilter(cat === catFilter ? null : cat)}
+              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                catFilter === cat
+                  ? "bg-accent/10 border-accent/30 text-accent"
+                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+              }`}
+            >
+              #{cat}
+            </button>
+          ))}
+          {allLanguages.map(lang => (
+            <button
+              key={lang}
+              onClick={() => setLangFilter(lang === langFilter ? null : lang)}
+              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+                langFilter === lang
+                  ? "bg-accent/10 border-accent/30 text-accent"
+                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
+              }`}
+            >
+              {lang}
+            </button>
+          ))}
         </div>
       )}
 
