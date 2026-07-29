@@ -33,9 +33,14 @@ class RepoListBoundary extends React.Component<{ children: React.ReactNode }, { 
 }
 
 function exportCSV(repos: RepoWithVelocity[]) {
+  function csvEscape(v: string) {
+    return v.includes(",") || v.includes('"') || v.includes("\n")
+      ? `"${v.replace(/"/g, '""')}"`
+      : v;
+  }
   const headers = ["repo", "stars", "gained", "velocity", "rank_change"];
   const rows = repos.map((r) => [
-    r.full_name,
+    csvEscape(r.full_name),
     r.stars.toString(),
     (r.stars_gained ?? 0).toString(),
     (r.velocity ?? 0).toString(),
