@@ -1,17 +1,10 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { getRepoDetails } from "@/lib/db";
 import { gainedColor } from "@/lib/gained-color";
 import LoadingSkeleton from "./LoadingSkeleton";
 import StarChart from "./StarChart";
 
 export default function RepoDetail({ slug }: { slug: string }) {
-  const [detail, setDetail] = useState<ReturnType<typeof getRepoDetails>>(null);
-
-  useEffect(() => {
-    setDetail(getRepoDetails(slug));
-  }, [slug]);
+  const detail = getRepoDetails(slug);
 
   if (!detail) return <LoadingSkeleton />;
 

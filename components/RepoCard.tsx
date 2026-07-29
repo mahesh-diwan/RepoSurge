@@ -35,7 +35,7 @@ export default function RepoCard({
       >
         <div className="flex items-center justify-between">
           <span className="text-text-body text-sm truncate">{name}</span>
-          <span className="text-text-muted text-xs ml-2">{/* velocity */}</span>
+          <span className="text-text-muted text-xs ml-2">{gained != null ? (gained > 0 ? "+" : "") + gained.toLocaleString("en-US") : "—"}</span>
         </div>
       </button>
     );
