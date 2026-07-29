@@ -241,7 +241,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
         <div className="flex flex-wrap justify-center gap-1 mb-6">
           <button
             onClick={() => { setCatFilter(null); setLangFilter(null); }}
-            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+            className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
               catFilter === null && langFilter === null
                 ? "bg-accent/10 border-accent/30 text-accent"
                 : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
@@ -253,7 +253,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
             <button
               key={cat}
               onClick={() => setCatFilter(cat === catFilter ? null : cat)}
-              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+              className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
                 catFilter === cat
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
@@ -266,7 +266,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
             <button
               key={lang}
               onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
+              className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
                 langFilter === lang
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
@@ -360,7 +360,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
                     type="checkbox"
                     checked={!!compareSet.find(c => c.full_name === repo.full_name)}
                     onChange={() => toggleCompare(repo)}
-                    className="accent-accent w-3 h-3"
+                    className="accent-accent w-4 h-4"
                   />
                 )}
                 <span className="font-mono tabular-nums text-text-muted text-xs w-8">
