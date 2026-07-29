@@ -16,7 +16,7 @@ export default function NavLinks({
     <nav
       role="navigation"
       aria-label="main"
-      className="hidden md:flex items-center gap-1"
+      className="hidden md:flex items-center gap-2"
     >
       {links.map((link) => {
         const isActive = pathname === link.href;

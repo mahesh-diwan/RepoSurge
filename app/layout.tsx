@@ -3,10 +3,8 @@ import "@fontsource/chivo/400.css";
 import "@fontsource/chivo/500.css";
 import "@fontsource/chivo/700.css";
 import "@fontsource/fragment-mono/400.css";
-import MobileNav from "@/components/MobileNav";
+import FloatingPill from "@/components/FloatingPill";
 import LastUpdated from "@/components/LastUpdated";
-import NavLinks from "@/components/NavLinks";
-import { NAV_LINKS } from "@/lib/nav-links";
 import { getLastUpdated } from "@/lib/db";
 import "./globals.css";
 
@@ -32,21 +30,11 @@ export default function RootLayout({
         >
           skip to content
         </a>
-        <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-midnight">
-          <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-            <a href="/" className="text-accent font-bold tracking-wider" title="RepoSurge">
-              RS
-            </a>
-            <div className="flex items-center gap-6">
-              <NavLinks links={NAV_LINKS} />
-              <MobileNav />
-            </div>
-          </div>
-        </header>
+        <FloatingPill />
 
         <div
           id="main-content"
-          className="relative z-[2] max-w-7xl mx-auto px-6 pt-24 pb-16"
+          className="relative z-[2] max-w-7xl mx-auto px-6 pt-20 pb-16"
         >
           {children}
         </div>
