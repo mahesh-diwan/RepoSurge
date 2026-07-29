@@ -29,12 +29,6 @@
     );
   }
 
-  h1,
-  h2,
-  h3 {
-    text-wrap: pretty;
-  }
-
   ::selection {
     background: rgba(217, 119, 6, 0.25);
     color: #e5e5e5;
@@ -61,7 +55,7 @@
 
 @layer utilities {
   .data-mono {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-family: "Fragment Mono", ui-monospace, monospace;
   }
 }
 

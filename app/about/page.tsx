@@ -16,7 +16,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="max-w-2xl mx-auto px-6 pt-20">
+    <main className="max-w-7xl mx-auto px-6 pt-20">
       <h1 className="font-sans text-text-body text-xl font-semibold tracking-tight mb-1">
         ABOUT REPOSURGE
       </h1>
