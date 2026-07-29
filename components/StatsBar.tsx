@@ -20,7 +20,7 @@ export default function StatsBar() {
           <p className="font-sans text-text-muted text-[10px] tracking-widest mb-1">
             {card.label}
           </p>
-          <p className="font-mono text-text-body font-bold text-lg tabular-nums">
+          <p className="font-mono text-text-body font-bold text-sm md:text-lg tabular-nums">
             {card.value}
           </p>
         </div>

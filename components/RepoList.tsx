@@ -337,9 +337,9 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
             clear filters
           </button>
         </div>
-      ) : (
-        <div ref={listRef}>
-          {sorted.slice(0, showAll ? sorted.length : 25).map((repo, i) => {
+) : (
+         <div className="overflow-x-auto -mx-2 px-2" ref={listRef}>
+           {sorted.slice(0, showAll ? sorted.length : 25).map((repo, i) => {
             const isHot = (repo.stars_gained ?? 0) > 1000;
             function toggleCompare(r: RepoWithVelocity) {
               if (compareSet.find(c => c.full_name === r.full_name)) {
