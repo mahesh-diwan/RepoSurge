@@ -2,11 +2,9 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
-import RepoCard from "./RepoCard";
 import SearchInput from "./SearchInput";
 import Panel from "./Panel";
 import RepoDetail from "./RepoDetail";
-import Tooltip from "./Tooltip";
 import { ToastProvider, useToast } from "./Toast";
 import ShortcutsModal from "./ShortcutsModal";
 
@@ -34,6 +32,25 @@ class RepoListBoundary extends React.Component<{ children: React.ReactNode }, { 
   }
 }
 
+function exportCSV(repos: RepoWithVelocity[]) {
+  const headers = ["repo", "stars", "gained", "velocity", "rank_change"];
+  const rows = repos.map((r) => [
+    r.full_name,
+    r.stars.toString(),
+    (r.stars_gained ?? 0).toString(),
+    (r.velocity ?? 0).toString(),
+    (r.rankChange ?? 0).toString(),
+  ]);
+  const csv = [headers, ...rows].map((row) => row.join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `reposurge-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export default function RepoList({ repos }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] } }) {
   return (
     <ToastProvider>
@@ -49,7 +66,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
   const [period, setPeriod] = useState<"day" | "week" | "month">("week");
 
-  type SortKey = "rank" | "name" | "gained" | "stars";
+  type SortKey = "rank" | "name" | "gained" | "stars" | "velocity";
   type SortDir = "asc" | "desc";
 
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
@@ -61,28 +78,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
-  const [visibleColumns, setVisibleColumns] = useState({ rank: true, name: true, gained: true, stars: true });
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
-  const [showHelp, setShowHelp] = useState(true);
-  const [columnMenuOpen, setColumnMenuOpen] = useState(false);
-  const columnMenuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShowHelp(false), 5000);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    if (!columnMenuOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (columnMenuRef.current && !columnMenuRef.current.contains(e.target as Node)) {
-        setColumnMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [columnMenuOpen]);
 
   const allLanguages = useMemo(() => {
     const langs = new Set(currentRepos.map(r => r.language).filter(Boolean));
@@ -116,6 +112,8 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           return ((a.stars_gained ?? 0) - (b.stars_gained ?? 0)) * dir;
         case "stars":
           return (a.stars - b.stars) * dir;
+        case "velocity":
+          return ((a.velocity ?? 0) - (b.velocity ?? 0)) * dir;
         default:
           return 0;
       }
@@ -180,11 +178,6 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
 
   return (
     <>
-      {showHelp && (
-        <div className="text-center mb-4">
-          <p className="text-text-muted/50 text-xs">Tip: Press <kbd className="px-1 py-0.5 bg-zinc-800 rounded text-[10px] font-mono border border-zinc-600/50">?</kbd> for keyboard shortcuts</p>
-        </div>
-      )}
 
       <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06]">
         {(["day", "week", "month"] as const).map((p) => (
@@ -199,6 +192,35 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           </button>
         ))}
       </div>
+
+      {
+        period === "week" &&
+          sorted.length > 0 &&
+          (() => {
+            const top = sorted[0];
+            return (
+              <div className="flex items-center gap-2 mb-4 px-3 py-2 rounded-xl bg-amber-500/[0.04] border border-amber-500/10">
+                <span className="text-amber-500 text-xs font-mono">
+                  this week's top gainer:
+                </span>
+                <button
+                  onClick={() => setSelectedRepo(top.slug)}
+                  className="font-mono text-accent text-xs hover:underline cursor-pointer"
+                >
+                  {top.name}
+                </button>
+                <span className="font-mono text-positive text-xs">
+                  +{(top.stars_gained ?? 0).toLocaleString("en-US")} stars
+                </span>
+                {top.rankChange != null && top.rankChange > 0 && (
+                  <span className="font-mono text-text-muted text-xs">
+                    ▲{top.rankChange} positions
+                  </span>
+                )}
+              </div>
+            );
+          })()
+      }
 
       {allLanguages.length > 0 && (
         <div className="flex flex-wrap justify-center gap-1 mb-6">
@@ -244,95 +266,33 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
         <SearchInput value={search} onChange={setSearch} autoFocus />
       </div>
 
-      <div className="flex items-center justify-between px-2 mb-2">
+      <div className="flex items-center justify-between mb-3">
+        <span className="font-mono text-text-muted text-[10px]">{sorted.length} repos</span>
         <button
-          onClick={() => setViewMode(v => v === "list" ? "grid" : "list")}
-          className="text-text-muted text-xs hover:text-accent px-2 py-0.5 rounded border border-white/[0.06] hover:border-accent/30 transition-colors cursor-pointer"
-          aria-label={viewMode === "list" ? "Switch to grid view" : "Switch to list view"}
+          onClick={() => exportCSV(sorted)}
+          className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer"
         >
-          {viewMode === "list" ? "grid" : "list"} view
+          export data ↓
         </button>
-        <div className="relative" ref={columnMenuRef}>
-          <button
-            onClick={() => setColumnMenuOpen(!columnMenuOpen)}
-            className="text-text-muted text-xs hover:text-accent px-2 py-0.5 rounded border border-white/[0.06] hover:border-accent/30 transition-colors cursor-pointer"
-            aria-label="Toggle column visibility"
-          >
-            columns
-          </button>
-          {columnMenuOpen && (
-            <div className="absolute right-0 top-full mt-1 bg-surface border border-zinc-700/50 rounded shadow-lg p-2 z-20 min-w-[120px]">
-              <label className="flex items-center gap-2 text-xs text-text-muted py-1 cursor-pointer hover:text-text-body">
-                <input type="checkbox" checked={visibleColumns.rank} onChange={e => setVisibleColumns(prev => ({ ...prev, rank: e.target.checked }))} /> #
-              </label>
-              <label className="flex items-center gap-2 text-xs text-text-muted py-1 cursor-pointer hover:text-text-body">
-                <input type="checkbox" checked={visibleColumns.name} onChange={e => setVisibleColumns(prev => ({ ...prev, name: e.target.checked }))} /> Name
-              </label>
-              <label className="flex items-center gap-2 text-xs text-text-muted py-1 cursor-pointer hover:text-text-body">
-                <input type="checkbox" checked={visibleColumns.gained} onChange={e => setVisibleColumns(prev => ({ ...prev, gained: e.target.checked }))} /> Gained
-              </label>
-              <label className="flex items-center gap-2 text-xs text-text-muted py-1 cursor-pointer hover:text-text-body">
-                <input type="checkbox" checked={visibleColumns.stars} onChange={e => setVisibleColumns(prev => ({ ...prev, stars: e.target.checked }))} /> Stars
-              </label>
-            </div>
-          )}
-        </div>
       </div>
 
-      <div className="flex items-center gap-3 py-2.5 px-2 text-[10px] sm:text-xs text-text-muted border-b border-border mb-1 sticky top-0 bg-midnight z-10">
-        {visibleColumns.rank && (
-          <Tooltip label="Sort by rank">
-            <button
-              onClick={() => handleSort("rank")}
-              className="w-6 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
-              aria-label="Sort by rank"
-            >
-              #{arrow("rank")}
-            </button>
-          </Tooltip>
-        )}
-        {visibleColumns.name && (
-          <Tooltip label="Sort alphabetically">
-            <button
-              onClick={() => handleSort("name")}
-              className="flex-1 min-w-0 shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98] text-left"
-              aria-label="Sort alphabetically"
-            >
-              repo{arrow("name")}
-            </button>
-          </Tooltip>
-        )}
-        {visibleColumns.gained && (
-          <Tooltip label="Sort by stars gained">
-            <button
-              onClick={() => handleSort("gained")}
-              className="w-20 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
-              aria-label="Sort by stars gained"
-            >
-              gained{arrow("gained")}
-            </button>
-          </Tooltip>
-        )}
-        {visibleColumns.gained && (
-          <Tooltip label="Stars gained over the current period. Calculated as (current stars) - (stars at start of period).">
-            <svg className="w-3 h-3 text-text-muted/50 shrink-0 cursor-help" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1Zm0 1.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm-.5 4h1v4.5h-1V6.5ZM8 5.25a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-            </svg>
-          </Tooltip>
-        )}
-        {visibleColumns.stars && (
-          <div className="hidden sm:block shrink-0 w-16">
-            <Tooltip label="Sort by stars">
-              <button
-                onClick={() => handleSort("stars")}
-                className="w-full text-right hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
-                aria-label="Sort by stars"
-              >
-                stars{arrow("stars")}
-              </button>
-            </Tooltip>
-          </div>
-        )}
+      <div className="flex items-center gap-3 py-2 px-2 text-[10px] font-sans text-text-muted border-b border-border mb-1 sticky top-0 bg-midnight z-10">
+        <button onClick={() => handleSort("rank")} className="w-8 text-left hover:text-accent transition-colors cursor-pointer">
+          #{arrow("rank")}
+        </button>
+        <button onClick={() => handleSort("name")} className="flex-1 min-w-0 text-left hover:text-accent transition-colors cursor-pointer">
+          repo{arrow("name")}
+        </button>
+        <button onClick={() => handleSort("stars")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+          stars{arrow("stars")}
+        </button>
+        <button onClick={() => handleSort("gained")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer">
+          gained{arrow("gained")}
+        </button>
+        <button onClick={() => handleSort("velocity")} className="w-16 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+          velocity{arrow("velocity")}
+        </button>
+        <div className="w-12 text-right hidden sm:block">Δ rank</div>
       </div>
 
       {searchFiltered.length === 0 ? (
@@ -346,48 +306,48 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           </button>
         </div>
       ) : (
-        <RepoListBoundary>
-          {viewMode === "grid" ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-4">
-              {sorted.slice(0, 25).map((repo, i) => (
-                <RepoCard
-                  key={repo.full_name}
-                  rank={repo.rank}
-                  name={repo.name}
-                  slug={repo.slug}
-                  stars={repo.stars}
-                  gained={repo.stars_gained}
-                  language={repo.language ?? ""}
-                  onSelect={setSelectedRepo}
-                  hero={i < 3}
-                  description={repo.description}
-                  rankChange={repo.rankChange}
-                  sparkline={repo.sparkline}
-                  compact
-                />
-              ))}
-            </div>
-          ) : (
-            <div ref={listRef} className="flex flex-col pb-8">
-              {sorted.slice(0, 25).map((repo, i) => (
-                <RepoCard
-                  key={repo.full_name}
-                  rank={repo.rank}
-                  name={repo.name}
-                  slug={repo.slug}
-                  stars={repo.stars}
-                  gained={repo.stars_gained}
-                  language={repo.language ?? ""}
-                  onSelect={setSelectedRepo}
-                  hero={i < 3}
-                  description={repo.description}
-                  rankChange={repo.rankChange}
-                  sparkline={repo.sparkline}
-                />
-              ))}
-            </div>
-          )}
-        </RepoListBoundary>
+        <div ref={listRef}>
+          {sorted.slice(0, 25).map((repo, i) => {
+            const isHot = (repo.stars_gained ?? 0) > 1000;
+            return (
+              <button
+                key={repo.full_name}
+                onClick={() => setSelectedRepo(repo.slug)}
+                className={`w-full flex items-center gap-3 py-2.5 px-2 text-left border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors cursor-pointer ${
+                  isHot ? "bg-amber-500/[0.015]" : ""
+                }`}
+              >
+                <span className="font-mono tabular-nums text-text-muted text-xs w-8">
+                  {repo.rank}
+                </span>
+                <span className="flex-1 min-w-0 font-sans text-text-body text-xs truncate">
+                  {isHot && <span className="text-amber-500 mr-1">🔥</span>}
+                  {repo.name}
+                </span>
+                <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
+                  {(repo.stars / 1000).toFixed(1)}K
+                </span>
+                <span
+                  className={`font-mono tabular-nums text-xs w-20 text-right ${(repo.stars_gained ?? 0) > 0 ? "text-positive" : "text-text-muted/40"}`}
+                >
+                  {repo.stars_gained != null
+                    ? `${repo.stars_gained > 0 ? "+" : ""}${repo.stars_gained.toLocaleString("en-US")}`
+                    : "—"}
+                </span>
+                <span className="font-mono tabular-nums text-text-muted text-xs w-16 text-right hidden sm:block">
+                  {repo.velocity != null ? repo.velocity : "—"}
+                </span>
+                <span
+                  className={`font-mono tabular-nums text-xs w-12 text-right hidden sm:block ${(repo.rankChange ?? 0) > 0 ? "text-positive" : (repo.rankChange ?? 0) < 0 ? "text-negative" : "text-text-muted/40"}`}
+                >
+                  {repo.rankChange != null && repo.rankChange !== 0
+                    ? `${repo.rankChange > 0 ? "▲" : "▼"}${Math.abs(repo.rankChange)}`
+                    : "—"}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       )}
 
       <Panel open={!!selectedRepo} onClose={() => setSelectedRepo(null)}>
