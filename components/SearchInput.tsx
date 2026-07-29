@@ -14,7 +14,7 @@ export default function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (autoFocus) inputRef.current?.focus();
+    if (autoFocus && window.matchMedia("(pointer: fine)").matches) inputRef.current?.focus();
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
@@ -49,7 +49,7 @@ export default function SearchInput({
         placeholder="search repos..."
         className="w-full max-w-xs pl-7 pr-10 py-2 bg-surface border border-white/[0.06] rounded-xl text-sm text-text-body placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
       />
-      <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-accent/60 px-1.5 py-0.5 border border-white/[0.06] rounded-md">
+      <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-accent/60 px-1.5 py-0.5 border border-white/[0.06] rounded-md hidden sm:block">
         ⌘K
       </kbd>
     </div>

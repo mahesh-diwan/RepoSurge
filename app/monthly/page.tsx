@@ -20,7 +20,7 @@ export default function MonthlyPage() {
   return (
     <>
       <Header />
-      <main className="max-w-7xl mx-auto px-6">
+      <main className="max-w-7xl mx-auto">
         {empty ? (
           <div className="py-16 text-center">
             <p className="text-text-muted text-sm">no data for the last 30 days</p>

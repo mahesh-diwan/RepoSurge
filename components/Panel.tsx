@@ -48,11 +48,11 @@ export default function Panel({ open, onClose, children }: PanelProps) {
           <h2 className="text-sm font-semibold text-text-body">REPO DETAILS</h2>
           <button
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-surface border border-white/[0.06] flex items-center justify-center text-text-muted/60 hover:text-accent transition-colors cursor-pointer"
+            className="w-11 h-11 rounded-full bg-surface border border-white/[0.06] flex items-center justify-center text-text-muted/60 hover:text-accent transition-colors cursor-pointer"
             aria-label="Close panel"
           >
             <svg
-              className="w-3.5 h-3.5"
+              className="w-4 h-4"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

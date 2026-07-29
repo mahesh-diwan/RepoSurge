@@ -82,7 +82,7 @@ export default function ShortcutsModal({
         aria-modal="true"
         tabIndex={-1}
         aria-labelledby="shortcuts-title"
-        className="bg-surface rounded-xl shadow-accent-lg border border-zinc-700/50 p-6 min-w-[320px]"
+        className="bg-surface rounded-xl shadow-accent-lg border border-zinc-700/50 p-6 w-[min(320px,calc(100vw-2rem))]"
         onClick={(e) => e.stopPropagation()}
       >
         <h2

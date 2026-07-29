@@ -283,44 +283,44 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
       </div>
 
       <div className="flex items-center justify-between mb-3">
-        <button
-          onClick={() => { setCompareMode(prev => { if (!prev) setCompareSet([]); return !prev; }); }}
-          className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer"
-        >
-          {compareMode ? "done comparing" : "compare"}
-        </button>
-        <span className="text-text-muted/20">·</span>
-        <button
-          onClick={() => exportCSV(sorted)}
-          className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer"
-        >
+          <button
+            onClick={() => { setCompareMode(prev => { if (!prev) setCompareSet([]); return !prev; }); }}
+            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer px-2 py-2 -m-2"
+          >
+            {compareMode ? "done comparing" : "compare"}
+          </button>
+          <span className="text-text-muted/20">·</span>
+          <button
+            onClick={() => exportCSV(sorted)}
+            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer px-2 py-2 -m-2"
+          >
           export data ↓
         </button>
       </div>
 
       <div className="flex items-center gap-3 py-2 px-2 text-[10px] font-sans text-text-muted border-b border-border mb-1 sticky top-0 bg-midnight z-10">
-        <button onClick={() => handleSort("rank")} className="w-8 text-left hover:text-accent transition-colors cursor-pointer">
+        <button onClick={() => handleSort("rank")} className="w-8 text-left hover:text-accent transition-colors cursor-pointer py-2">
           #{arrow("rank")}
         </button>
-        <button onClick={() => handleSort("name")} className="flex-1 min-w-0 text-left hover:text-accent transition-colors cursor-pointer sticky left-0 z-[2] bg-midnight">
+        <button onClick={() => handleSort("name")} className="flex-1 min-w-0 text-left hover:text-accent transition-colors cursor-pointer sticky left-0 z-[2] bg-midnight py-2">
           repo{arrow("name")}
         </button>
-        <button onClick={() => handleSort("stars")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+        <button onClick={() => handleSort("stars")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
           stars{arrow("stars")}
         </button>
-        <button onClick={() => handleSort("gained")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer">
+        <button onClick={() => handleSort("gained")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer py-2">
           gained{arrow("gained")}
         </button>
-        <button onClick={() => handleSort("gainedPrev")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer">
+        <button onClick={() => handleSort("gainedPrev")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer py-2">
           vs LAST{arrow("gainedPrev")}
         </button>
-        <button onClick={() => handleSort("velocity")} className="w-16 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+        <button onClick={() => handleSort("velocity")} className="w-16 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
           velocity{arrow("velocity")}
         </button>
-        <button onClick={() => handleSort("accel")} className="w-14 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+        <button onClick={() => handleSort("accel")} className="w-14 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
           accel{arrow("accel")}
         </button>
-        <button onClick={() => handleSort("forecast")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block">
+        <button onClick={() => handleSort("forecast")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
           forecast{arrow("forecast")}
         </button>
         <div className="w-12 text-right hidden sm:block">Δ rank</div>
@@ -356,12 +356,14 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                  className="flex flex-col gap-2 py-3 px-3 sm:py-2 sm:px-2 sm:flex-row sm:items-center border-b border-white/[0.03] hover:bg-white/[0.06] sm:hover:bg-white/[0.01] transition-colors rounded-lg sm:rounded-none"
                >
                 {compareMode && (
-                  <input
-                    type="checkbox"
-                    checked={!!compareSet.find(c => c.full_name === repo.full_name)}
-                    onChange={() => toggleCompare(repo)}
-                    className="accent-accent w-4 h-4"
-                  />
+                  <label className="flex items-center justify-center w-11 h-11 -m-2.5 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!compareSet.find(c => c.full_name === repo.full_name)}
+                      onChange={() => toggleCompare(repo)}
+                      className="accent-accent w-4 h-4"
+                    />
+                  </label>
                 )}
                   <span className="font-mono tabular-nums text-text-muted text-xs w-5 shrink-0">
                   {repo.rank}
