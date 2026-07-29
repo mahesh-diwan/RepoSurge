@@ -194,7 +194,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
   return (
     <>
 
-      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06] overflow-x-auto">
+      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06]">
         {(["day", "week", "month"] as const).map((p) => (
           <button
             key={p}
@@ -338,7 +338,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
           </button>
         </div>
 ) : (
-         <div className="overflow-x-auto -mx-2 px-2" ref={listRef}>
+         <div ref={listRef}>
            {sorted.slice(0, showAll ? sorted.length : 25).map((repo, i) => {
             const isHot = (repo.stars_gained ?? 0) > 1000;
             function toggleCompare(r: RepoWithVelocity) {
@@ -351,9 +351,9 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
               }
             }
             return (
-              <div
-                key={repo.full_name}
-                className={`w-full flex items-center gap-2 py-2 px-2 border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors ${isHot ? "bg-amber-500/[0.015]" : ""}`}
+               <div
+                 key={repo.full_name}
+                 className={`flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 py-2 px-2 border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors ${isHot ? "bg-amber-500/[0.015]" : ""}`}
               >
                 {compareMode && (
                   <input
@@ -363,16 +363,16 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                     className="accent-accent w-4 h-4"
                   />
                 )}
-                <span className="font-mono tabular-nums text-text-muted text-xs w-8">
+                <span className="font-mono tabular-nums text-text-muted text-xs w-8 shrink-0">
                   {repo.rank}
                 </span>
                 <button
                   onClick={() => setSelectedRepo(repo.slug)}
-                  className="flex-1 min-w-0 font-sans text-text-body text-xs truncate text-left cursor-pointer sticky left-0 z-[2] bg-midnight"
+                  className="flex-1 min-w-0 font-sans text-text-body text-sm truncate text-left cursor-pointer"
                 >
                   {isHot && <span className="text-amber-500 mr-1">🔥</span>}
                   {repo.name}
-                  {repo.isNew && <span className="text-amber-500 text-[9px] ml-1 font-mono">● NEW</span>}
+                  {repo.isNew && <span className="text-amber-500 text-[10px] ml-1 font-mono">NEW</span>}
                 </button>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
                   {(repo.stars / 1000).toFixed(1)}K
@@ -391,13 +391,19 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                     ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}`
                     : "—"}
                 </span>
+                <div className="sm:hidden flex items-center gap-3 text-[11px] font-mono mt-0.5">
+                  <span className={`${(repo.stars_gained ?? 0) > 0 ? "text-positive" : "text-text-muted/40"}`}>
+                    {repo.stars_gained != null ? `+${repo.stars_gained.toLocaleString("en-US")}` : "—"} gained
+                  </span>
+                  <span className="text-text-muted">
+                    {repo.gainedPrev != null ? `vs last: ${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}` : "—"}
+                  </span>
+                </div>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-16 text-right hidden sm:block">
                   {repo.velocity != null ? repo.velocity : "—"}
                 </span>
                 <span className="font-mono tabular-nums text-xs w-14 text-right hidden sm:block text-text-muted/40">
-{repo.accel != null
-                     ? `${repo.accel > 1 ? "▲" : repo.accel < 1 ? "▼" : "="}${repo.accel.toFixed(1)}x`
-                     : "—"}
+                  {repo.accel != null ? `${repo.accel > 1 ? "▲" : repo.accel < 1 ? "▼" : "="}${repo.accel.toFixed(1)}x` : "—"}
                 </span>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
                   {repo.forecast ?? "—"}
@@ -405,9 +411,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                 <span
                   className={`font-mono tabular-nums text-xs w-12 text-right hidden sm:block ${(repo.rankChange ?? 0) > 0 ? "text-positive" : (repo.rankChange ?? 0) < 0 ? "text-negative" : "text-text-muted/40"}`}
                 >
-                  {repo.rankChange != null && repo.rankChange !== 0
-                    ? `${repo.rankChange > 0 ? "▲" : "▼"}${Math.abs(repo.rankChange)}`
-                    : "—"}
+                  {repo.rankChange != null && repo.rankChange !== 0 ? `${repo.rankChange > 0 ? "▲" : "▼"}${Math.abs(repo.rankChange)}` : "—"}
                 </span>
                 <span className="w-12 shrink-0 hidden sm:block">
                   {repo.sparkline.length > 1 && (
