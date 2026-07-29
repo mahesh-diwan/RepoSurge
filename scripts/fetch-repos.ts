@@ -3,9 +3,28 @@ import path from "path";
 import { z } from "zod";
 
 const GITHUB_API = "https://api.github.com";
-const OUTPUT = path.join(process.cwd(), "src", "content", "repos.json");
+const OUTPUT = path.join(process.cwd(), "data", "repos.json");
 const REPOS_TO_FETCH = 50;
 const MAX_HISTORY = 90;
+
+const CATEGORY_KEYWORDS: Record<string, string[]> = {
+  ai: ["gpt", "llm", "transformer", "neural", "machine learning", "deep learning", "ai", "artificial intelligence", "language model", "token", "embedding", "rag", "diffusion", "stable diffusion"],
+  database: ["database", "sql", "postgres", "mysql", "sqlite", "redis", "mongodb", "cockroach", "dynamo", "cassandra", "neo4j", "duckdb"],
+  devtools: ["cli", "terminal", "compiler", "linter", "formatter", "debugger", "package manager", "bundler", "build tool", "ide", "editor"],
+  framework: ["framework", "react", "vue", "angular", "svelte", "nextjs", "next.js", "nuxt", "django", "rails", "spring", "laravel"],
+  infra: ["kubernetes", "k8s", "docker", "terraform", "ansible", "cloud", "aws", "gcp", "azure", "container", "orchestrator"],
+};
+
+function detectCategory(description: string | null): string | null {
+  if (!description) return null;
+  const lower = description.toLowerCase();
+  for (const [category, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
+    for (const kw of keywords) {
+      if (lower.includes(kw)) return category;
+    }
+  }
+  return null;
+}
 
 const GitHubRepoResponse = z.object({
   id: z.number(),
@@ -37,6 +56,8 @@ type RepoRecord = {
   created_at: string;
   fetched_at: string;
   history: HistoryRow[];
+  isNew: boolean;
+  category: string | null;
 };
 
 function sleep(ms: number) {
@@ -103,6 +124,8 @@ async function main() {
   const today = new Date().toISOString();
   const store = readExisting();
 
+  const existingNames = new Set(store.repos.map((r) => r.full_name));
+
   if (!process.env.GITHUB_TOKEN) {
     console.warn("GITHUB_TOKEN not set — running unauthenticated (60 req/hr limit).");
     console.warn("Set GITHUB_TOKEN in .env.local for 5000 req/hr.");
@@ -113,11 +136,14 @@ async function main() {
 
   for (const repo of repos) {
     const existing = store.repos.find((r) => r.full_name === repo.full_name);
+    const category = detectCategory(repo.description);
 
     if (existing) {
       existing.stars = repo.stargazers_count;
       existing.language = repo.language;
       existing.fetched_at = today;
+      existing.isNew = false;
+      existing.category = category;
       existing.history.push({
         stars: repo.stargazers_count,
         recorded_at: today,
@@ -139,6 +165,8 @@ async function main() {
         created_at: repo.created_at,
         fetched_at: today,
         history,
+        isNew: !existingNames.has(repo.full_name),
+        category,
       });
     }
   }
