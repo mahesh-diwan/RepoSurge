@@ -311,7 +311,6 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
       </div>
 
       <div className="flex items-center justify-between mb-3">
-        <span className="font-mono text-text-muted text-[10px]">{sorted.length} repos</span>
         <button
           onClick={() => { setCompareMode(prev => { if (!prev) setCompareSet([]); return !prev; }); }}
           className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer"
@@ -417,7 +416,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
                   className={`font-mono tabular-nums text-xs w-20 text-right ${(repo.gainedPrev ?? 0) > 0 ? "text-positive" : (repo.gainedPrev ?? 0) < 0 ? "text-negative" : "text-text-muted/40"}`}
                 >
                   {repo.gainedPrev != null
-                    ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev >= 0 ? repo.gainedPrev.toLocaleString("en-US") : repo.gainedPrev.toLocaleString("en-US")}`
+                    ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}`
                     : "—"}
                 </span>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-16 text-right hidden sm:block">
