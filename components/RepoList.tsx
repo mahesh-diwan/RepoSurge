@@ -56,20 +56,20 @@ function exportCSV(repos: RepoWithVelocity[]) {
   URL.revokeObjectURL(url);
 }
 
-export default function RepoList({ repos }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] } }) {
+export default function RepoList({ repos, defaultPeriod }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] }; defaultPeriod?: "day" | "week" | "month" }) {
   return (
     <ToastProvider>
-      <RepoListContent repos={repos} />
+      <RepoListContent repos={repos} defaultPeriod={defaultPeriod} />
     </ToastProvider>
   );
 }
 
-function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] } }) {
+function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] }; defaultPeriod?: "day" | "week" | "month" }) {
   const { toast } = useToast();
 
   const [search, setSearch] = useState("");
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const [period, setPeriod] = useState<"day" | "week" | "month">("week");
+  const [period, setPeriod] = useState<"day" | "week" | "month">(defaultPeriod ?? "week");
 
   type SortKey = "rank" | "name" | "gained" | "stars" | "velocity" | "gainedPrev" | "accel" | "forecast";
   type SortDir = "asc" | "desc";

@@ -114,17 +114,47 @@ async function fetchTopRepos(count: number): Promise<GitHubRepo[]> {
 
 function readExisting(): { repos: RepoRecord[] } {
   try {
-    return JSON.parse(fs.readFileSync(OUTPUT, "utf8"));
+    const parsed = JSON.parse(fs.readFileSync(OUTPUT, "utf8"));
+    if (validateStore(parsed)) return parsed;
+    console.warn("Invalid data format, starting fresh.");
+    return { repos: [] };
   } catch {
     return { repos: [] };
   }
 }
 
+function validateStore(store: unknown): store is { repos: RepoRecord[] } {
+  if (typeof store !== "object" || store === null) return false;
+  const s = store as Record<string, unknown>;
+  if (!Array.isArray(s.repos)) return false;
+  return s.repos.every(
+    (r) =>
+      typeof r === "object" &&
+      r !== null &&
+      typeof (r as Record<string, unknown>).full_name === "string",
+  );
+}
+
+function todayStr(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
 async function main() {
-  const today = new Date().toISOString();
-  const store = readExisting();
+  const today = todayStr();
+  let store = readExisting();
+
+  if (!validateStore(store)) {
+    console.warn("Invalid data file, starting fresh.");
+    store = { repos: [] };
+  }
 
   const existingNames = new Set(store.repos.map((r) => r.full_name));
+  const staleCutoff = new Date(Date.now() - 31 * 86400000);
+  store.repos = store.repos.filter(
+    (r) =>
+      existingNames.has(r.full_name) ||
+      new Date(r.fetched_at) > staleCutoff,
+  );
 
   if (!process.env.GITHUB_TOKEN) {
     console.warn("GITHUB_TOKEN not set — running unauthenticated (60 req/hr limit).");
@@ -173,13 +203,20 @@ async function main() {
 
   store.repos.sort(
     (a, b) =>
-      (b.history?.[b.history.length - 1]?.stars ?? 0) -
-      (a.history?.[a.history.length - 1]?.stars ?? 0),
+      (b.history?.[b.history.length - 1]?.stars ?? b.stars) -
+      (a.history?.[a.history.length - 1]?.stars ?? a.stars),
   );
 
-  fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
-  fs.writeFileSync(OUTPUT, JSON.stringify(store, null, 2));
-  console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
+  try {
+    fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
+    const tmp = `${OUTPUT}.tmp`;
+    fs.writeFileSync(tmp, JSON.stringify(store, null, 2));
+    fs.renameSync(tmp, OUTPUT);
+    console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
+  } catch (err) {
+    console.error("Failed to write output:", err);
+    process.exit(1);
+  }
 }
 
 main().catch((err) => {

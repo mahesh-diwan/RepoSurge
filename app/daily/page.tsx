@@ -15,7 +15,7 @@ export default function DailyPage() {
   const week = getRepos("week");
   const month = getRepos("month");
 
-  const empty = day.length === 0 && week.length === 0 && month.length === 0;
+  const empty = day.length === 0;
 
   return (
     <>
@@ -23,11 +23,11 @@ export default function DailyPage() {
       <main className="max-w-7xl mx-auto px-6">
         {empty ? (
           <div className="py-16 text-center">
-            <p className="text-text-muted text-sm">no repository data available</p>
-            <p className="text-text-muted/40 text-xs mt-1">Data is refreshed daily. Check back soon.</p>
+            <p className="text-text-muted text-sm">no data for the last 24 hours</p>
+            <p className="text-text-muted/40 text-xs mt-1">Daily data is updated once per day. Check back tomorrow.</p>
           </div>
         ) : (
-          <RepoList repos={{ day, week, month }} />
+          <RepoList repos={{ day, week, month }} defaultPeriod="day" />
         )}
       </main>
     </>
