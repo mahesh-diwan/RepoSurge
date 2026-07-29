@@ -47,7 +47,7 @@ export default function SearchInput({
         }}
         aria-label="Search repos"
         placeholder="search repos..."
-        className="w-72 pl-7 pr-10 py-2 bg-surface border border-white/[0.06] rounded-xl text-sm text-text-body placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
+        className="w-full max-w-xs pl-7 pr-10 py-2 bg-surface border border-white/[0.06] rounded-xl text-sm text-text-body placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all"
       />
       <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-accent/60 px-1.5 py-0.5 border border-white/[0.06] rounded-md">
         ⌘K

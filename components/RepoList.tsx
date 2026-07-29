@@ -194,12 +194,12 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
   return (
     <>
 
-      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06]">
+      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06] overflow-x-auto">
         {(["day", "week", "month"] as const).map((p) => (
           <button
             key={p}
             onClick={() => setPeriod(p)}
-            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer active:scale-[0.97] ${
+            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer active:scale-[0.97] whitespace-nowrap shrink-0 ${
               period === p ? "bg-accent text-midnight" : "text-text-muted hover:text-text-body"
             }`}
           >
@@ -353,7 +353,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
             return (
               <div
                 key={repo.full_name}
-                className={`w-full flex items-center gap-3 py-2.5 px-2 border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors ${isHot ? "bg-amber-500/[0.015]" : ""}`}
+                className={`w-full flex items-center gap-2 py-2 px-2 border-b border-white/[0.03] hover:bg-white/[0.01] transition-colors ${isHot ? "bg-amber-500/[0.015]" : ""}`}
               >
                 {compareMode && (
                   <input
