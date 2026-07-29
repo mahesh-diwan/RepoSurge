@@ -423,9 +423,9 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
                   {repo.velocity != null ? repo.velocity : "—"}
                 </span>
                 <span className="font-mono tabular-nums text-xs w-14 text-right hidden sm:block text-text-muted/40">
-                  {repo.accel != null
-                    ? `${repo.accel > 0 ? "▲" : "▼"}${Math.abs(repo.accel)}x`
-                    : "—"}
+{repo.accel != null
+                     ? `${repo.accel > 1 ? "▲" : repo.accel < 1 ? "▼" : "="}${repo.accel.toFixed(1)}x`
+                     : "—"}
                 </span>
                 <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
                   {repo.forecast ?? "—"}
