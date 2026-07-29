@@ -1,5 +1,5 @@
 import { type MetadataRoute } from "next";
-import repos from "@/src/content/repos.json";
+import repos from "@/data/repos.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://reposurge.vercel.app";

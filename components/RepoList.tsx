@@ -186,12 +186,12 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
         </div>
       )}
 
-      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-lg p-0.5 border border-white/[0.06]">
+      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06]">
         {(["day", "week", "month"] as const).map((p) => (
           <button
             key={p}
             onClick={() => setPeriod(p)}
-            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
+            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer active:scale-[0.97] ${
               period === p ? "bg-accent text-midnight" : "text-text-muted hover:text-text-body"
             }`}
           >
@@ -204,7 +204,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
         <div className="flex flex-wrap justify-center gap-1 mb-6">
           <button
             onClick={() => setLangFilter(null)}
-            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer ${
+            className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
               langFilter === null
                 ? "bg-accent/10 border-accent/30 text-accent"
                 : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
@@ -216,7 +216,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
             <button
               key={lang}
               onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer ${
+              className={`px-2 py-0.5 text-[11px] rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
                 langFilter === lang
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
@@ -282,7 +282,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           <Tooltip label="Sort by rank">
             <button
               onClick={() => handleSort("rank")}
-              className="w-6 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
+              className="w-6 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
               aria-label="Sort by rank"
             >
               #{arrow("rank")}
@@ -293,7 +293,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           <Tooltip label="Sort alphabetically">
             <button
               onClick={() => handleSort("name")}
-              className="flex-1 min-w-0 shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer text-left"
+              className="flex-1 min-w-0 shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98] text-left"
               aria-label="Sort alphabetically"
             >
               repo{arrow("name")}
@@ -304,7 +304,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
           <Tooltip label="Sort by stars gained">
             <button
               onClick={() => handleSort("gained")}
-              className="w-20 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
+              className="w-20 text-right shrink-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
               aria-label="Sort by stars gained"
             >
               gained{arrow("gained")}
@@ -323,7 +323,7 @@ function RepoListContent({ repos }: { repos: { day: RepoWithVelocity[]; week: Re
             <Tooltip label="Sort by stars">
               <button
                 onClick={() => handleSort("stars")}
-                className="w-full text-right hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer"
+                className="w-full text-right hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:text-accent/70 transition-colors cursor-pointer active:scale-[0.98]"
                 aria-label="Sort by stars"
               >
                 stars{arrow("stars")}

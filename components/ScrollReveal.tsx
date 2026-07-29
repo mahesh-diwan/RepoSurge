@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 
 export default function ScrollReveal({
   children,
@@ -12,27 +12,22 @@ export default function ScrollReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    if (el.classList.contains("is-visible")) return;
-
-    el.style.opacity = "0";
-    el.style.transform = "translateY(4rem)";
-    el.style.filter = "blur(8px)";
-    el.style.transitionDelay = `${delay}s`;
-
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            (entry.target as HTMLElement).style.opacity = "";
-            (entry.target as HTMLElement).style.transform = "";
-            (entry.target as HTMLElement).style.filter = "";
-            (entry.target as HTMLElement).style.transitionDelay = "";
+            setVisible(true);
             observer.unobserve(entry.target);
           }
         }
@@ -42,12 +37,13 @@ export default function ScrollReveal({
 
     observer.observe(el);
     return () => observer.unobserve(el);
-  }, [delay]);
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[800ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${className}`}
+      className={`transition-all duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${mounted && visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} ${className}`}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
     </div>

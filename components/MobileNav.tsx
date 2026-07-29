@@ -71,19 +71,17 @@ export default function MobileNav() {
           aria-modal="true"
           aria-label="navigation"
           aria-hidden={!open}
-          className="fixed inset-0 z-40 glass-strong flex items-center justify-center md:hidden animate-fade-in"
+          className="fixed inset-0 z-40 bg-[#0A0A0A]/95 border border-white/[0.06] flex items-center justify-center md:hidden animate-fade-in"
           onClick={close}
           onKeyDown={(e) => {
             if (e.key === "Escape") close();
           }}
         >
           <nav
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center gap-4 animate-fade-up"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="opacity-0 animate-stagger-1">
-              <NavLinks links={NAV_LINKS} onItemClick={close} />
-            </div>
+            <NavLinks links={NAV_LINKS} onItemClick={close} />
           </nav>
         </div>
       )}

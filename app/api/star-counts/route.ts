@@ -6,7 +6,7 @@ const cache = new Map<string, { data: any; ts: number }>();
 const CACHE_TTL = 120_000;
 
 function getRepoNames(): { owner: string; name: string }[] {
-  const file = path.join(process.cwd(), "src", "content", "repos.json");
+  const file = path.join(process.cwd(), "data", "repos.json");
   const raw = JSON.parse(fs.readFileSync(file, "utf8"));
   const list = raw.repos ?? raw;
   return (Array.isArray(list) ? list : [])

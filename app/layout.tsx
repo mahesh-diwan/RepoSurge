@@ -39,37 +39,31 @@ export default function RootLayout({
         >
           skip to content
         </a>
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="card-outer !p-[1px] !rounded-full">
-            <div className="glass !rounded-full flex items-center gap-6 px-5 py-2 !border-0 !bg-midnight/60">
-              <a
-                href="/"
-                className="text-accent font-bold tracking-wider text-sm"
-                title="RepoSurge"
-              >
-                RS
-              </a>
+        <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-midnight">
+          <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+            <a href="/" className="text-accent font-bold tracking-wider" title="RepoSurge">
+              RS
+            </a>
+            <div className="flex items-center gap-6">
               <NavLinks links={NAV_LINKS} />
               <MobileNav />
             </div>
           </div>
-        </nav>
+        </header>
 
         <div
           id="main-content"
-          className="relative z-[2] pt-24 mx-4 md:mx-8 lg:mx-auto max-w-7xl p-4 md:p-6 mb-8"
+          className="relative z-[2] max-w-7xl mx-auto px-6 pt-24 pb-16"
         >
           {children}
         </div>
 
-        <footer aria-label="site footer" className="py-6 mt-16 relative z-[2]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-surface/60 border border-white/[0.04] rounded-full px-6 py-3 flex items-center justify-between">
-              <p className="text-text-muted text-[10px] sm:text-xs">
-                data: github api &middot; refreshed daily
-              </p>
-              {lastUpdated && <LastUpdated dateStr={lastUpdated} />}
-            </div>
+        <footer aria-label="site footer" className="border-t border-white/[0.06] py-6 mt-16 relative z-[2]">
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <p className="text-text-muted text-[10px] sm:text-xs">
+              data: github api &middot; refreshed daily
+            </p>
+            {lastUpdated && <LastUpdated dateStr={lastUpdated} />}
           </div>
         </footer>
       </body>

@@ -1,4 +1,4 @@
-import rawRepos from "@/src/content/repos.json";
+import rawRepos from "@/data/repos.json";
 
 export function formatVelocity(v: number | null): string {
   if (v === null) return "\u2014";
@@ -30,6 +30,7 @@ export interface RepoWithVelocity extends RepoRecord {
   sparkline: number[];
   velocity: number | null;
   slug: string;
+  rankChange: number | null;
 }
 
 const reposData: RepoRecord[] = (() => {
@@ -104,7 +105,37 @@ export function getRepos(period: string = "week"): RepoWithVelocity[] {
   });
 
   withVelocity.sort((a, b) => (b.stars_gained ?? 0) - (a.stars_gained ?? 0));
-  return withVelocity.map((repo, i) => ({ ...repo, rank: i + 1 }));
+  withVelocity.forEach((repo, i) => { (repo as RepoWithVelocity).rank = i + 1; });
+
+  // Compute previous period ranks for rankChange
+  const prevDays = PERIOD_TO_DAYS[period] ?? 7;
+  const prevEnd = Date.now() - prevDays * 86400000;
+  const prevStart = prevEnd - prevDays * 86400000;
+
+  const prevGains: { full_name: string; gain: number }[] = [];
+  for (const repo of loadRepos()) {
+    const prevWindow = repo.history.filter(h => {
+      const t = new Date(h.recorded_at).getTime();
+      return t >= prevStart && t < prevEnd;
+    });
+    if (prevWindow.length >= 2) {
+      const base = prevWindow[0].stars;
+      prevGains.push({ full_name: repo.full_name, gain: prevWindow[prevWindow.length - 1].stars - base });
+    } else {
+      prevGains.push({ full_name: repo.full_name, gain: 0 });
+    }
+  }
+  prevGains.sort((a, b) => b.gain - a.gain);
+  const prevRankMap = new Map(prevGains.map((c, i) => [c.full_name, i + 1]));
+
+  withVelocity.forEach(repo => {
+    (repo as RepoWithVelocity).rankChange = prevRankMap.has(repo.full_name)
+      ? prevRankMap.get(repo.full_name)! - repo.rank
+      : null;
+  });
+
+  const result = withVelocity as RepoWithVelocity[];
+  return result.slice(0, 25).map((repo, i) => ({ ...repo, rank: i + 1 }));
 }
 
 export function getStats() {
@@ -127,7 +158,7 @@ export function getLastUpdated(): string {
 export function getRepoDetails(
   slug: string,
   period: string = "week"
-): (RepoWithVelocity & { created_at: string; gained7d: number | null }) | null {
+): (RepoWithVelocity & { created_at: string; gained7d: number | null; rankChange: number | null }) | null {
   const repos = getRepos(period);
 
   const matchSlug = slug.replace("/", "-");

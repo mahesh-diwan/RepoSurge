@@ -26,6 +26,5 @@ export default function LastUpdated({ dateStr }: { dateStr: string }) {
 
   if (!label) return null;
 
-  // ponytail: single-line display, no tooltip needed
   return <span className="text-text-muted text-[10px] sm:text-xs">updated {label}</span>;
 }

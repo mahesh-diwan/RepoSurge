@@ -33,11 +33,6 @@ export default function NavLinks({
             aria-current={isActive ? "page" : undefined}
           >
             {link.label}
-            <span
-              className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-accent transition-all duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                isActive ? "w-4" : "w-0"
-              }`}
-            />
           </Link>
         );
       })}

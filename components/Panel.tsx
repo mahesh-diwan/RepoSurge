@@ -30,14 +30,14 @@ export default function Panel({ open, onClose, children }: PanelProps) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`fixed inset-0 z-40 bg-black/40 transition-opacity duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
         aria-hidden="true"
       />
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md glass-strong transform transition-transform duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+        className={`fixed top-0 right-0 z-50 h-full w-full max-w-md bg-surface border-l border-white/[0.06] transform transition-transform duration-[600ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
@@ -48,7 +48,7 @@ export default function Panel({ open, onClose, children }: PanelProps) {
           <h2 className="text-sm font-semibold text-text-body">REPO DETAILS</h2>
           <button
             onClick={onClose}
-            className="w-7 h-7 rounded-full glass flex items-center justify-center text-text-muted/60 hover:text-accent transition-colors cursor-pointer"
+            className="w-7 h-7 rounded-full bg-surface border border-white/[0.06] flex items-center justify-center text-text-muted/60 hover:text-accent transition-colors cursor-pointer"
             aria-label="Close panel"
           >
             <svg

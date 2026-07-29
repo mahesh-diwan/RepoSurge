@@ -12,8 +12,8 @@ export default function AboutPage() {
       <div className="max-w-2xl space-y-8">
         <ScrollReveal>
           <section>
-            <h2 className="text-dim text-xs mb-3">what is this</h2>
-            <p className="text-dim text-sm leading-relaxed">
+            <h2 className="text-text-muted text-xs mb-3">what is this</h2>
+            <p className="text-text-muted text-sm leading-relaxed">
               reposurge tracks the fastest-rising open source projects on github.
               repos are ranked by star velocity: how quickly a repo gains stars
               relative to its existing count.
@@ -23,12 +23,12 @@ export default function AboutPage() {
 
         <ScrollReveal delay={0.1}>
           <section>
-            <h2 className="text-dim text-xs mb-3">how it works</h2>
-            <p className="text-dim text-sm leading-relaxed">
+            <h2 className="text-text-muted text-xs mb-3">how it works</h2>
+            <p className="text-text-muted text-sm leading-relaxed">
               top repos by stars are fetched daily from the github search api.
               star counts are compared against a baseline to calculate velocity:
             </p>
-            <p className="text-dim text-sm leading-relaxed mt-2">
+            <p className="text-text-muted text-sm leading-relaxed mt-2">
               velocity = (stars gained / baseline) &times; 1000
             </p>
           </section>
@@ -36,8 +36,8 @@ export default function AboutPage() {
 
         <ScrollReveal delay={0.2}>
           <section>
-            <h2 className="text-dim text-xs mb-3">stack</h2>
-            <p className="text-dim text-sm leading-relaxed">
+            <h2 className="text-text-muted text-xs mb-3">stack</h2>
+            <p className="text-text-muted text-sm leading-relaxed">
               next.js 14 &middot; react 18 &middot; tailwind css
             </p>
           </section>
