@@ -83,7 +83,10 @@ async function githubFetch(apiPath: string): Promise<any> {
       continue;
     }
 
-    if (!res.ok) throw new Error(`GitHub API ${res.status} for ${apiPath}`);
+    if (!res.ok) {
+      const body = await res.text();
+      throw new Error(`GitHub API ${res.status} for ${apiPath}: ${body}`);
+    }
     return res.json();
   }
   throw new Error(`Exhausted retries for ${apiPath}`);
@@ -139,7 +142,7 @@ function todayStr(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-async function main() {
+async function main(): Promise<number> {
   const today = todayStr();
   let store = readExisting();
 
@@ -156,13 +159,22 @@ async function main() {
       new Date(r.fetched_at) > staleCutoff,
   );
 
-  if (!process.env.GITHUB_TOKEN) {
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
     console.warn("GITHUB_TOKEN not set — running unauthenticated (60 req/hr limit).");
     console.warn("Set GITHUB_TOKEN in .env.local for 5000 req/hr.");
+  } else {
+    console.log("GitHub token configured, using authenticated requests.");
   }
 
   console.log(`Fetching top ${REPOS_TO_FETCH} repos by stars...`);
-  const repos = await fetchTopRepos(REPOS_TO_FETCH);
+  let repos: Awaited<ReturnType<typeof fetchTopRepos>>;
+  try {
+    repos = await fetchTopRepos(REPOS_TO_FETCH);
+  } catch (err) {
+    console.error("Failed to fetch repos:", err);
+    return 1;
+  }
 
   for (const repo of repos) {
     const existing = store.repos.find((r) => r.full_name === repo.full_name);
@@ -215,11 +227,12 @@ async function main() {
     console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
   } catch (err) {
     console.error("Failed to write output:", err);
-    process.exit(1);
+    return 1;
   }
+  return 0;
 }
 
-main().catch((err) => {
+main().then((code) => process.exit(code)).catch((err) => {
   console.error(err);
   process.exit(1);
 });

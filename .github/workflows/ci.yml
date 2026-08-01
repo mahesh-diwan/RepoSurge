@@ -6,15 +6,88 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  NODE_OPTIONS: --max-old-space-size=4096
+
 jobs:
   quality:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          npm ci
+        timeout-minutes: 10
+        continue-on-error: false
+
+      - name: Check for lock file changes
+        run: |
+          echo "Checking for lock file changes..."
+          git diff --name-only origin/${{ github.base_ref || 'main' }} -- package-lock.json || echo "Lock file not changed or no base reference"
+        continue-on-error: true
+
+      - name: Run linting (if configured)
+        run: |
+          if npm run --dry-run lint 2>/dev/null; then
+            echo "Running linting..."
+            npm run lint
+          else
+            echo "Linting not configured, skipping..."
+          fi
+        continue-on-error: true
+        timeout-minutes: 5
+
+      - name: Run type checking (if configured)
+        run: |
+          if npm run --dry-run typecheck 2>/dev/null; then
+            echo "Running type checking..."
+            npm run typecheck
+          else
+            echo "Type checking not configured, skipping..."
+          fi
+        continue-on-error: true
+        timeout-minutes: 5
+
+      - name: Run build
+        run: |
+          echo "Building application..."
+          npm run build
+        timeout-minutes: 15
+        continue-on-error: false
+
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          npm test
+        timeout-minutes: 30
+        continue-on-error: false
+
+      - name: Upload build artifacts (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            .next/
+            dist/
+          retention-days: 1
+
+      - name: Display failed job logs
+        if: failure()
+        run: |
+          echo "Build/Test job failed. Displaying relevant logs..."
+          echo "Check GitHub Actions logs for detailed error information."
+        continue-on-error: true
