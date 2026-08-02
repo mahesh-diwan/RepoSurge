@@ -1,23 +1,23 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "page not found - reposurge",
-};
-
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
-    <main className="max-w-7xl mx-auto px-6 pt-24">
-      <div className="max-w-xl text-center mx-auto space-y-4">
-        <p className="text-accent font-bold text-5xl tabular-nums data-mono">404</p>
-        <p className="text-text-muted text-sm">this route doesn&apos;t exist.</p>
-        <Link
-          href="/"
-          className="inline-block mt-4 text-xs bg-accent text-midnight px-4 py-2 rounded hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-midnight transition-colors"
-        >
-          back to reposurge
-        </Link>
-      </div>
-    </main>
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+      <p className="font-mono text-6xl md:text-8xl font-bold text-border tracking-[-0.06em] mb-4">
+        404
+      </p>
+      <h2 className="text-text-body text-xl md:text-2xl font-semibold mb-2">
+        page not found
+      </h2>
+      <p className="text-text-muted text-sm mb-8 max-w-md">
+        the repo you&apos;re looking for doesn&apos;t exist or has been moved.
+      </p>
+      <Link
+        href="/"
+        className="px-5 py-2.5 bg-accent text-midnight font-medium text-sm rounded-xl hover:bg-accent/90 transition-colors"
+      >
+        back to dashboard
+      </Link>
+    </div>
   );
 }

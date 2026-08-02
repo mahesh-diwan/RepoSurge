@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@fontsource/chivo/400.css";
 import "@fontsource/chivo/500.css";
+import "@fontsource/chivo/600.css";
 import "@fontsource/chivo/700.css";
 import "@fontsource/fragment-mono/400.css";
 import FloatingPill from "@/components/FloatingPill";
@@ -12,6 +13,18 @@ export const metadata: Metadata = {
   title: "reposurge - repos rising. fast.",
   description: "star velocity tracker for github repos",
   icons: { icon: "/favicon.svg" },
+  openGraph: {
+    title: "reposurge",
+    description: "star velocity tracker for github repos",
+    url: "https://reposurge.vercel.app",
+    siteName: "reposurge",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "reposurge",
+    description: "star velocity tracker for github repos",
+  },
 };
 
 const lastUpdated = getLastUpdated();
@@ -39,11 +52,15 @@ export default function RootLayout({
           {children}
         </div>
 
-        <footer aria-label="site footer" className="border-t border-white/[0.06] py-6 mt-16 relative z-[2]">
-          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-            <p className="text-text-muted text-[10px] sm:text-xs">
-              data: github api &middot; refreshed daily
-            </p>
+        <footer aria-label="site footer" className="border-t border-white/[0.06] py-8 mt-16 relative z-[2]">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <span className="font-sans text-sm font-semibold text-text-body tracking-[-0.02em]">REPO<span className="text-accent">SURGE</span></span>
+              <span className="text-text-muted text-xs">·</span>
+              <p className="text-text-muted text-xs">
+                data from github api · refreshed daily
+              </p>
+            </div>
             {lastUpdated && <LastUpdated dateStr={lastUpdated} />}
           </div>
         </footer>

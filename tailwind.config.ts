@@ -29,6 +29,8 @@ const config: Config = {
       boxShadow: {
         accent: "0 4px 24px -8px rgba(217,119,6,0.15)",
         "accent-lg": "0 8px 40px -12px rgba(217,119,6,0.2)",
+        "card": "0 1px 3px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03)",
+        "card-hover": "0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)",
       },
       animation: {
         "surge-pulse": "surge-pulse 2s ease-in-out infinite",

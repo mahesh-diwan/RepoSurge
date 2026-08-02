@@ -17,7 +17,7 @@ export default function Header() {
     <header className="px-4 md:px-6 pt-6 pb-4 relative z-[2]">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div className="flex items-center gap-3">
-          <h1 className="font-sans text-2xl md:text-3xl font-bold tracking-tight leading-none text-text-body">
+          <h1 className="font-sans text-3xl md:text-4xl font-bold tracking-[-0.04em] leading-none text-text-body">
             REPO<span className="text-accent">SURGE</span>
           </h1>
           <LiveIndicator />

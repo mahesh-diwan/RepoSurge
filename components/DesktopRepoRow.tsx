@@ -10,7 +10,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
   return (
     <Link
       href={`/repo/${repo.slug}`}
-      className="group grid grid-cols-[40px_1fr_90px_100px_100px_140px_70px] gap-4 items-center px-4 py-3 rounded-xl border border-transparent hover:border-border hover:bg-surface/50 transition-all"
+      className="group grid grid-cols-[40px_1fr_90px_100px_100px_140px_70px] gap-4 items-center px-4 py-3 rounded-xl hover:bg-surface/80 transition-all"
       style={{ animationDelay: `${Math.min(index * 30, 600)}ms` }}
     >
       <span className="font-mono text-text-muted text-sm">{repo.rank}</span>

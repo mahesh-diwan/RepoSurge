@@ -15,7 +15,7 @@ export default function MobileRepoCard({ repo, index, onSelect }: {
       <Link href={`/repo/${repo.slug}`} onClick={(e) => {
         if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) { e.preventDefault(); onSelect(repo); }
       }}>
-        <div className="bg-surface border border-border rounded-2xl p-4 active:scale-[0.98] transition-transform">
+        <div className="bg-surface shadow-card rounded-2xl p-4 active:scale-[0.98] transition-all hover:shadow-card-hover">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
               <span className="font-mono text-text-muted text-xs shrink-0">{repo.rank}</span>
