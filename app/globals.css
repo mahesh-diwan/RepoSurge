@@ -90,25 +90,6 @@
   .text-balance {
     text-wrap: balance;
   }
-  .data-mono {
-    font-family: "Fragment Mono", ui-monospace, monospace;
-    font-variant-numeric: tabular-nums;
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-row {
-  animation: fade-in-up 0.4s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {

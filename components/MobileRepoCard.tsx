@@ -11,7 +11,7 @@ export default function MobileRepoCard({ repo, index, onSelect }: {
 }) {
   const isHot = (repo.stars_gained ?? 0) > 1000;
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.03, duration: 0.4 }}>
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(index * 0.03, 0.3), duration: 0.4 }}>
       <Link href={`/repo/${repo.slug}`} onClick={(e) => {
         if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) { e.preventDefault(); onSelect(repo); }
       }}>
@@ -57,13 +57,13 @@ export default function MobileRepoCard({ repo, index, onSelect }: {
 
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-text-muted text-[10px] uppercase tracking-wider">Gained</p>
+              <p className="text-text-muted text-xs">Gained</p>
               <p className={`font-mono text-sm tabular-nums ${(repo.stars_gained ?? 0) > 0 ? "text-positive" : "text-text-muted"}`}>
                 {repo.stars_gained != null ? `${repo.stars_gained > 0 ? "+" : ""}${repo.stars_gained.toLocaleString()}` : "—"}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-text-muted text-[10px] uppercase tracking-wider">Velocity</p>
+              <p className="text-text-muted text-xs">Velocity</p>
               <p className="font-mono text-sm tabular-nums text-text-body">
                 {repo.velocity != null ? `${repo.velocity}/d` : "—"}
               </p>

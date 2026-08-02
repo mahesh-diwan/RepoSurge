@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
 import SearchInput from "./SearchInput";
 import MobileRepoCard from "./MobileRepoCard";
@@ -8,30 +8,6 @@ import DesktopRepoRow from "./DesktopRepoRow";
 import RepoBottomSheet from "./RepoBottomSheet";
 import { ToastProvider, useToast } from "./Toast";
 import ShortcutsModal from "./ShortcutsModal";
-
-class RepoListBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
-  constructor(props: { children: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() { return { hasError: true }; }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="text-center py-12">
-          <p className="text-text-muted text-sm mb-4">Something went wrong</p>
-          <button
-            onClick={() => this.setState({ hasError: false })}
-            className="px-4 py-2 bg-zinc-800 text-text-body text-sm rounded hover:bg-zinc-700 transition-colors"
-          >
-            Try Again
-          </button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 function exportCSV(repos: RepoWithVelocity[]) {
   function csvEscape(v: string) {
@@ -182,15 +158,11 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
         {period === "week" && sorted.length > 0 && (() => {
           const top = sorted[0];
           return (
-            <div className="mb-6 bg-surface border border-accent/20 rounded-2xl px-5 py-4 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent text-lg">🔥</div>
-              <div>
-                <p className="text-text-muted text-xs uppercase tracking-wider">This week&apos;s top gainer</p>
-                <p className="text-text-body font-semibold text-sm mt-0.5">
-                  {top.full_name} <span className="text-accent">+{top.stars_gained?.toLocaleString("en-US")}</span> stars
-                  {top.rankChange != null && top.rankChange > 0 && <span className="text-positive ml-2">▲{top.rankChange}</span>}
-                </p>
-              </div>
+            <div className="mb-6 bg-surface border border-accent/20 rounded-2xl px-5 py-4">
+              <p className="text-text-body font-semibold text-sm">
+                {top.full_name} <span className="text-accent">+{top.stars_gained?.toLocaleString("en-US")}</span> stars this week
+                {top.rankChange != null && top.rankChange > 0 && <span className="text-positive ml-2">▲{top.rankChange}</span>}
+              </p>
             </div>
           );
         })()}
@@ -198,18 +170,18 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
         {(allCategories.length > 0 || allLanguages.length > 0) && (
           <div className="flex flex-wrap gap-2 mb-6">
             <button onClick={() => { setCatFilter(null); setLangFilter(null); }}
-              className={`px-3 py-2 text-xs rounded-full border transition-colors ${catFilter === null && langFilter === null ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+              className={`px-3 py-2.5 text-xs rounded-full border transition-colors min-h-[44px] ${catFilter === null && langFilter === null ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
               all
             </button>
             {allCategories.map(cat => (
               <button key={cat} onClick={() => setCatFilter(cat === catFilter ? null : cat)}
-                className={`px-3 py-2 text-xs rounded-full border transition-colors ${catFilter === cat ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+                className={`px-3 py-2.5 text-xs rounded-full border transition-colors min-h-[44px] ${catFilter === cat ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
                 #{cat}
               </button>
             ))}
             {allLanguages.map(lang => (
               <button key={lang} onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-                className={`px-3 py-2 text-xs rounded-full border transition-colors ${langFilter === lang ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+                className={`px-3 py-2.5 text-xs rounded-full border transition-colors min-h-[44px] ${langFilter === lang ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
                 {lang}
               </button>
             ))}
@@ -229,7 +201,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
         </div>
 
         {!isMobile && (
-          <div className="hidden md:grid grid-cols-[40px_1fr_90px_100px_100px_140px_70px] gap-4 px-4 py-2 text-text-muted text-[10px] uppercase tracking-widest border-b border-border">
+          <div className="hidden md:grid grid-cols-[40px_1fr_90px_100px_100px_140px_70px] gap-4 px-4 py-2 text-text-muted text-xs border-b border-border">
             <button onClick={() => handleSort("rank")} className="text-left hover:text-accent">#{arrow("rank")}</button>
             <button onClick={() => handleSort("name")} className="text-left hover:text-accent">repo{arrow("name")}</button>
             <button onClick={() => handleSort("stars")} className="text-right hover:text-accent">stars{arrow("stars")}</button>

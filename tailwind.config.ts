@@ -5,7 +5,6 @@ const config: Config = {
     "./app/**/*.tsx",
     "./components/**/*.tsx",
     "./hooks/**/*.tsx",
-    "./data/**/*.json",
   ],
   theme: {
     extend: {
@@ -33,22 +32,12 @@ const config: Config = {
       },
       animation: {
         "surge-pulse": "surge-pulse 2s ease-in-out infinite",
-        "surge-glow": "surge-glow 3s ease-in-out infinite",
-        "fade-in-up": "fade-in-up 0.4s ease-out both",
       },
       keyframes: {
         "surge-pulse": {
           "0%": { boxShadow: "0 0 0 0 rgba(52,211,153,0.5)" },
           "70%": { boxShadow: "0 0 0 8px rgba(52,211,153,0)" },
           "100%": { boxShadow: "0 0 0 0 rgba(52,211,153,0)" },
-        },
-        "surge-glow": {
-          "0%, 100%": { boxShadow: "inset 0 0 16px rgba(217,119,6,0.06)" },
-          "50%": { boxShadow: "inset 0 0 24px rgba(217,119,6,0.12)" },
-        },
-        "fade-in-up": {
-          from: { opacity: "0", transform: "translateY(8px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
     },
