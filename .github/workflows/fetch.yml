@@ -36,45 +36,40 @@ jobs:
         run: npm ci
         timeout-minutes: 10
 
-      - name: Verify GITHUB_TOKEN is set
-        run: |
-          if [ -z "${{ secrets.GITHUB_TOKEN }}" ]; then
-            echo "::error::GITHUB_TOKEN is not configured"
-            exit 1
-          fi
-        shell: bash
-
       - name: Check if already fetched today
+        id: check_date
         if: github.event.inputs.force != 'true'
         run: |
           TODAY=$(date -u +%Y-%m-%d)
           LAST_FETCH=$(git log -1 --format=%ci -- data/repos.json 2>/dev/null | cut -d' ' -f1)
           if [ "$LAST_FETCH" = "$TODAY" ]; then
-            echo "Already fetched today ($TODAY). Use force=true to override."
-            exit 0
+            echo "Already fetched today ($TODAY)."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
           fi
         shell: bash
 
       - name: Fetch repos
+        if: steps.check_date.outputs.skip != 'true'
         run: npx tsx scripts/fetch-repos.ts
         timeout-minutes: 20
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if data changed
+        if: steps.check_date.outputs.skip != 'true'
+        id: check
         run: |
           if git diff --quiet data/repos.json; then
-            echo "No changes to commit"
             echo "changed=false" >> $GITHUB_OUTPUT
           else
-            echo "Data changed, will commit"
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
-        id: check
         shell: bash
 
       - name: Commit database
-        if: steps.check.outputs.changed == 'true'
+        if: steps.check_date.outputs.skip != 'true' && steps.check.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -88,5 +83,5 @@ jobs:
         run: |
           echo "## Daily Fetch Summary" >> $GITHUB_STEP_SUMMARY
           echo "- Timestamp: $(date -u)" >> $GITHUB_STEP_SUMMARY
-          echo "- Repos: $(cat data/repos.json | jq '.repos | length' 2>/dev/null || echo 'N/A')" >> $GITHUB_STEP_SUMMARY
+          echo "- Skip: ${{ steps.check_date.outputs.skip }}" >> $GITHUB_STEP_SUMMARY
           echo "- Changed: ${{ steps.check.outputs.changed }}" >> $GITHUB_STEP_SUMMARY

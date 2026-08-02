@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <StatsBar />
+      <StatsBar period="week" />
       <main className="max-w-7xl mx-auto">
         {empty ? (
           <div className="py-16 text-center">

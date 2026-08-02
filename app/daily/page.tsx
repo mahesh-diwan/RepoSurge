@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import { getRepos } from "@/lib/db";
 import Header from "@/components/Header";
+import StatsBar from "@/components/StatsBar";
 import RepoList from "@/components/RepoList";
 
 export const revalidate = 3600;
@@ -20,6 +21,7 @@ export default function DailyPage() {
   return (
     <>
       <Header />
+      <StatsBar period="day" />
       <main className="max-w-7xl mx-auto">
         {empty ? (
           <div className="py-16 text-center">

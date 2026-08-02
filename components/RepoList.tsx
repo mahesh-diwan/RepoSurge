@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
+import { languageColor } from "@/lib/language-color";
 import SearchInput from "./SearchInput";
 import Panel from "./Panel";
 import RepoDetail from "./RepoDetail";
@@ -351,10 +352,11 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
               }
             }
             return (
-               <div
-                 key={repo.full_name}
-                 className="flex flex-col gap-2 py-3 px-3 sm:py-2 sm:px-2 sm:flex-row sm:items-center border-b border-white/[0.03] hover:bg-white/[0.06] sm:hover:bg-white/[0.01] transition-colors rounded-lg sm:rounded-none"
-               >
+                <div
+                  key={repo.full_name}
+                  className="animate-row flex flex-col gap-2 py-3 px-3 sm:py-2 sm:px-2 sm:flex-row sm:items-center border-b border-white/[0.03] hover:bg-white/[0.06] sm:hover:bg-white/[0.01] transition-colors rounded-lg sm:rounded-none"
+                  style={{ animationDelay: `${Math.min(i * 30, 600)}ms` }}
+                >
                 {compareMode && (
                   <label className="flex items-center justify-center w-11 h-11 -m-2.5 cursor-pointer">
                     <input
@@ -376,6 +378,15 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
                   {repo.name}
                   {repo.isNew && <span className="text-amber-500 text-[10px] ml-1 font-mono">NEW</span>}
                 </button>
+                {repo.language && (
+                  <span className="hidden sm:flex items-center gap-1.5 w-24 text-left">
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ backgroundColor: languageColor(repo.language) }}
+                    />
+                    <span className="text-text-muted text-[11px] truncate">{repo.language}</span>
+                  </span>
+                )}
                 <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
                   {(repo.stars / 1000).toFixed(1)}K
                 </span>
@@ -468,7 +479,10 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
       )}
 
       <Panel open={!!selectedRepo} onClose={() => setSelectedRepo(null)}>
-        {selectedRepo && <RepoDetail slug={selectedRepo} />}
+        {selectedRepo && (() => {
+          const detailRepo = sorted.find(r => r.slug === selectedRepo);
+          return detailRepo ? <RepoDetail repo={detailRepo} /> : null;
+        })()}
       </Panel>
 
       <ShortcutsModal open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />

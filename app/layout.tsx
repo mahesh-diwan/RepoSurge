@@ -34,7 +34,7 @@ export default function RootLayout({
 
         <div
           id="main-content"
-          className="relative z-[2] max-w-7xl mx-auto px-4 md:px-6 pt-16 md:pt-20 pb-16"
+          className="relative z-[2] px-4 md:px-6 pt-16 md:pt-20 pb-16"
         >
           {children}
         </div>

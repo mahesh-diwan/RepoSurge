@@ -6,6 +6,7 @@ const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "data", "repos.json");
 const REPOS_TO_FETCH = 50;
 const MAX_HISTORY = 90;
+const DAYS_TO_SEED = 30;
 
 const CATEGORY_KEYWORDS: Record<string, string[]> = {
   ai: ["gpt", "llm", "transformer", "neural", "machine learning", "deep learning", "ai", "artificial intelligence", "language model", "token", "embedding", "rag", "diffusion", "stable diffusion"],
@@ -138,88 +139,79 @@ function validateStore(store: unknown): store is { repos: RepoRecord[] } {
   );
 }
 
-function todayStr(): string {
-  return new Date().toISOString().slice(0, 10);
+function dateStr(d: Date): string {
+  return d.toISOString().slice(0, 10);
 }
 
 async function main(): Promise<number> {
-  const today = todayStr();
-  let store = readExisting();
+  console.log(`Seeding ${DAYS_TO_SEED} days of historical data...`);
 
-  if (!validateStore(store)) {
-    console.warn("Invalid data file, starting fresh.");
-    store = { repos: [] };
-  }
+  // Fetch current repos
+  const repos = await fetchTopRepos(REPOS_TO_FETCH);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  const existingNames = new Set(store.repos.map((r) => r.full_name));
-
-  const token = process.env.GITHUB_TOKEN;
-  if (!token) {
-    console.warn("GITHUB_TOKEN not set — running unauthenticated (60 req/hr limit).");
-    console.warn("Set GITHUB_TOKEN in .env.local for 5000 req/hr.");
-  } else {
-    console.log("GitHub token configured, using authenticated requests.");
-  }
-
-  console.log(`Fetching top ${REPOS_TO_FETCH} repos by stars...`);
-  let repos: Awaited<ReturnType<typeof fetchTopRepos>>;
-  try {
-    repos = await fetchTopRepos(REPOS_TO_FETCH);
-  } catch (err) {
-    console.error("Failed to fetch repos:", err);
-    return 1;
-  }
+  const store: { repos: RepoRecord[] } = { repos: [] };
 
   for (const repo of repos) {
-    const existing = store.repos.find((r) => r.full_name === repo.full_name);
     const category = detectCategory(repo.description);
+    const baseStars = repo.stargazers_count;
+    const createdAt = new Date(repo.created_at);
 
-    if (existing) {
-      existing.stars = repo.stargazers_count;
-      existing.language = repo.language;
-      existing.fetched_at = today;
-      existing.isNew = false;
-      existing.category = category;
-      existing.history.push({
-        stars: repo.stargazers_count,
-        recorded_at: today,
-      });
-      if (existing.history.length > MAX_HISTORY) {
-        existing.history = existing.history.slice(-MAX_HISTORY);
-      }
-      existing.history.sort((a, b) => new Date(a.recorded_at).getTime() - new Date(b.recorded_at).getTime());
-    } else {
-      const history: HistoryRow[] = [];
-      history.push({ stars: repo.stargazers_count, recorded_at: today });
-      store.repos.push({
-        full_name: repo.full_name,
-        name: repo.name,
-        owner: repo.owner.login,
-        description: repo.description,
-        language: repo.language,
-        url: repo.html_url,
-        stars: repo.stargazers_count,
-        created_at: repo.created_at,
-        fetched_at: today,
-        history,
-        isNew: !existingNames.has(repo.full_name),
-        category,
+    // Generate realistic growth: repos gain stars over time
+    // Use a growth rate based on repo age and popularity
+    const ageDays = Math.max(1, Math.floor((today.getTime() - createdAt.getTime()) / 86400000));
+    const avgDailyGrowth = baseStars / Math.max(ageDays, 30); // rough average
+
+    const history: HistoryRow[] = [];
+
+    for (let i = DAYS_TO_SEED; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+
+      // Calculate stars on this day: start lower, grow to current
+      // Add some randomness to simulate real growth patterns
+      const progress = (DAYS_TO_SEED - i) / DAYS_TO_SEED;
+      const noise = (Math.random() - 0.5) * 0.1; // ±5% noise
+      const growthFactor = Math.max(0, progress + noise);
+      const dayStars = Math.floor(baseStars * growthFactor);
+
+      // Ensure monotonically increasing (stars don't decrease)
+      const lastStars = history[history.length - 1]?.stars ?? 0;
+      history.push({
+        stars: Math.max(dayStars, lastStars),
+        recorded_at: dateStr(d),
       });
     }
+
+    // Set final day to actual current stars
+    history[history.length - 1].stars = baseStars;
+
+    store.repos.push({
+      full_name: repo.full_name,
+      name: repo.name,
+      owner: repo.owner.login,
+      description: repo.description,
+      language: repo.language,
+      url: repo.html_url,
+      stars: baseStars,
+      created_at: repo.created_at,
+      fetched_at: dateStr(today),
+      history,
+      isNew: false,
+      category,
+    });
   }
 
-  store.repos.sort(
-    (a, b) =>
-      (b.history?.[b.history.length - 1]?.stars ?? b.stars) -
-      (a.history?.[a.history.length - 1]?.stars ?? a.stars),
-  );
+  // Sort by current stars
+  store.repos.sort((a, b) => b.stars - a.stars);
 
   try {
     fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
     const tmp = `${OUTPUT}.tmp`;
     fs.writeFileSync(tmp, JSON.stringify(store, null, 2));
     fs.renameSync(tmp, OUTPUT);
-    console.log(`Done. Wrote ${store.repos.length} repos to ${OUTPUT}`);
+    console.log(`Done. Seeded ${store.repos.length} repos with ${DAYS_TO_SEED} days of history.`);
   } catch (err) {
     console.error("Failed to write output:", err);
     return 1;

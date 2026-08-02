@@ -1,0 +1,36 @@
+export const LANGUAGE_COLORS: Record<string, string> = {
+  TypeScript: "#3178c6",
+  JavaScript: "#f1e05a",
+  Python: "#3572A5",
+  Go: "#00ADD8",
+  Rust: "#dea584",
+  "C++": "#f34b7d",
+  C: "#555555",
+  Java: "#b07219",
+  Dart: "#00B4AB",
+  Shell: "#89e051",
+  HTML: "#e34c26",
+  CSS: "#563d7c",
+  Markdown: "#083fa1",
+  "Jupyter Notebook": "#da5b0b",
+  Batchfile: "#c1f12e",
+  Swift: "#F05138",
+  Kotlin: "#A97BFF",
+  Ruby: "#701516",
+  PHP: "#4F5D95",
+  "C#": "#178600",
+  Scala: "#c22d40",
+  Elixir: "#6e4a7e",
+  Haskell: "#5e5086",
+  Lua: "#000080",
+  Zig: "#ec915c",
+  Nix: "#7e7eff",
+  V: "#4f87c8",
+  Julia: "#a270ba",
+  R: "#198CE7",
+  MATLAB: "#e16737",
+};
+
+export function languageColor(lang: string | null): string {
+  return LANGUAGE_COLORS[lang ?? "null"] ?? "#888888";
+}

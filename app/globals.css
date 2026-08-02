@@ -14,6 +14,7 @@
   body {
     min-height: 100dvh;
     position: relative;
+    font-feature-settings: "cv11", "ss01";
   }
 
   body::before {
@@ -22,21 +23,38 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background: radial-gradient(
-      ellipse 60% 50% at 50% 0%,
-      rgba(217, 119, 6, 0.03) 0%,
-      transparent 60%
-    );
+    background:
+      radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        rgba(217, 119, 6, 0.04) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 90%,
+        rgba(52, 211, 153, 0.02) 0%,
+        transparent 50%
+      );
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
   }
 
   ::selection {
     background: rgba(217, 119, 6, 0.25);
-    color: #e5e5e5;
+    color: #fff;
   }
 
   ::-moz-selection {
     background: rgba(217, 119, 6, 0.25);
-    color: #e5e5e5;
+    color: #fff;
   }
 
   :focus-visible {
@@ -44,30 +62,53 @@
     outline-offset: 2px;
     box-shadow:
       0 0 0 2px #0a0a0a,
-      0 0 8px rgba(217, 119, 6, 0.3);
+      0 0 12px rgba(217, 119, 6, 0.25);
   }
 
   a {
     text-decoration: none;
     color: inherit;
   }
-}
 
-@layer utilities {
-  .data-mono {
-    font-family: "Fragment Mono", ui-monospace, monospace;
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333;
   }
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.015;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .data-mono {
+    font-family: "Fragment Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-row {
+  animation: fade-in-up 0.4s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
