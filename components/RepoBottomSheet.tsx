@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import InteractiveSparkline from "./InteractiveSparkline";
 import { languageColor } from "@/lib/language-color";
@@ -8,19 +8,24 @@ import type { RepoWithVelocity } from "@/lib/db";
 export default function RepoBottomSheet({ repo, onClose }: {
   repo: RepoWithVelocity | null; onClose: () => void;
 }) {
+  const prefersReduced = useReducedMotion();
   return (
     <AnimatePresence>
       {repo && (
         <>
           <motion.div
             className="fixed inset-0 bg-black/60 z-40"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={prefersReduced ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={prefersReduced ? undefined : { opacity: 0 }}
             onClick={onClose}
           />
           <motion.div
             className="fixed bottom-0 left-0 right-0 bg-surface border-t border-border rounded-t-3xl z-50 max-h-[80vh] overflow-y-auto"
-            initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            initial={prefersReduced ? false : { y: "100%" }}
+            animate={{ y: 0 }}
+            exit={prefersReduced ? undefined : { y: "100%" }}
+            transition={prefersReduced ? { duration: 0 } : { type: "spring", damping: 30, stiffness: 300 }}
           >
             <div className="sticky top-0 bg-surface border-b border-border px-5 py-4 flex items-center justify-between rounded-t-3xl">
               <div>

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import InteractiveSparkline from "./InteractiveSparkline";
 import { languageColor } from "@/lib/language-color";
@@ -10,8 +10,9 @@ export default function MobileRepoCard({ repo, index, onSelect }: {
   repo: RepoWithVelocity; index: number; onSelect: (r: RepoWithVelocity) => void;
 }) {
   const isHot = (repo.stars_gained ?? 0) > 1000;
+  const prefersReduced = useReducedMotion();
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(index * 0.03, 0.3), duration: 0.4 }}>
+    <motion.div initial={prefersReduced ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={prefersReduced ? { duration: 0 } : { delay: Math.min(index * 0.03, 0.3), duration: 0.4 }}>
       <Link href={`/repo/${repo.slug}`} onClick={(e) => {
         if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) { e.preventDefault(); onSelect(repo); }
       }}>

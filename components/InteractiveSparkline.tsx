@@ -1,12 +1,13 @@
 "use client";
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function InteractiveSparkline({
   data, width = 120, height = 40, color,
 }: { data: number[]; width?: number; height?: number; color?: string }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const prefersReduced = useReducedMotion();
   if (data.length < 2) return <div className="h-10" />;
 
   const min = Math.min(...data), max = Math.max(...data), range = max - min || 1;
@@ -43,8 +44,10 @@ export default function InteractiveSparkline({
         <motion.path
           d={pathD}
           fill="none" stroke={stroke} strokeWidth="2"
-          strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          strokeLinecap="round"
+          initial={prefersReduced ? false : { pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={prefersReduced ? { duration: 0 } : { duration: 0.8, ease: "easeOut" }}
         />
         {hovered !== null && (
           <>

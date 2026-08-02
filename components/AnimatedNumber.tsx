@@ -7,6 +7,12 @@ export default function AnimatedNumber({ value, duration = 1200 }: { value: numb
   const fromRef = useRef(0);
 
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      setDisplay(value);
+      return;
+    }
+
     fromRef.current = display;
     startRef.current = null;
     let raf: number;
