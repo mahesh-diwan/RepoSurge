@@ -2,10 +2,10 @@
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import type { RepoWithVelocity } from "@/lib/db";
-import { languageColor } from "@/lib/language-color";
 import SearchInput from "./SearchInput";
-import Panel from "./Panel";
-import RepoDetail from "./RepoDetail";
+import MobileRepoCard from "./MobileRepoCard";
+import DesktopRepoRow from "./DesktopRepoRow";
+import RepoBottomSheet from "./RepoBottomSheet";
 import { ToastProvider, useToast } from "./Toast";
 import ShortcutsModal from "./ShortcutsModal";
 
@@ -69,7 +69,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
   const { toast } = useToast();
 
   const [search, setSearch] = useState("");
-  const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
+  const [selectedRepo, setSelectedRepo] = useState<RepoWithVelocity | null>(null);
   const [period, setPeriod] = useState<"day" | "week" | "month">(defaultPeriod ?? "week");
 
   type SortKey = "rank" | "name" | "gained" | "stars" | "velocity" | "gainedPrev" | "accel" | "forecast";
@@ -95,7 +95,15 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
   const [compareMode, setCompareMode] = useState(false);
   const [compareSet, setCompareSet] = useState<RepoWithVelocity[]>([]);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const categoryFiltered = catFilter
     ? currentRepos.filter(r => r.category === catFilter)
@@ -114,24 +122,15 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
     return [...searchFiltered].sort((a, b) => {
       const dir = sortDir === "asc" ? 1 : -1;
       switch (sortKey) {
-        case "rank":
-          return (a.rank - b.rank) * dir;
-        case "name":
-          return a.full_name.localeCompare(b.full_name) * dir;
-        case "gained":
-          return ((a.stars_gained ?? 0) - (b.stars_gained ?? 0)) * dir;
-        case "stars":
-          return (a.stars - b.stars) * dir;
-        case "velocity":
-          return ((a.velocity ?? 0) - (b.velocity ?? 0)) * dir;
-        case "gainedPrev":
-          return ((a.gainedPrev ?? 0) - (b.gainedPrev ?? 0)) * dir;
-        case "accel":
-          return ((a.accel ?? 0) - (b.accel ?? 0)) * dir;
-        case "forecast":
-          return ((a.forecast ?? "").localeCompare(b.forecast ?? "")) * dir;
-        default:
-          return 0;
+        case "rank": return (a.rank - b.rank) * dir;
+        case "name": return a.full_name.localeCompare(b.full_name) * dir;
+        case "gained": return ((a.stars_gained ?? 0) - (b.stars_gained ?? 0)) * dir;
+        case "stars": return (a.stars - b.stars) * dir;
+        case "velocity": return ((a.velocity ?? 0) - (b.velocity ?? 0)) * dir;
+        case "gainedPrev": return ((a.gainedPrev ?? 0) - (b.gainedPrev ?? 0)) * dir;
+        case "accel": return ((a.accel ?? 0) - (b.accel ?? 0)) * dir;
+        case "forecast": return ((a.forecast ?? "").localeCompare(b.forecast ?? "")) * dir;
+        default: return 0;
       }
     });
   }, [searchFiltered, sortKey, sortDir]);
@@ -139,323 +138,137 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
   function handleSort(key: SortKey) {
     if (sortKey === key) {
       if (sortDir === "asc") setSortDir("desc");
-      else {
-        setSortKey(null);
-        setSortDir("asc");
-      }
-    } else {
-      setSortKey(key);
-      setSortDir("asc");
-    }
+      else { setSortKey(null); setSortDir("asc"); }
+    } else { setSortKey(key); setSortDir("asc"); }
   }
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "?" && !e.metaKey && !e.ctrlKey) {
-        e.preventDefault();
-        setShortcutsOpen(prev => !prev);
-        return;
-      }
-      if (e.key === "Escape") {
-        if (shortcutsOpen) {
-          setShortcutsOpen(false);
-          return;
-        }
-        setSelectedRepo(null);
-        return;
-      }
+      if (e.key === "?" && !e.metaKey && !e.ctrlKey) { e.preventDefault(); setShortcutsOpen(prev => !prev); return; }
+      if (e.key === "Escape") { if (shortcutsOpen) { setShortcutsOpen(false); return; } setSelectedRepo(null); return; }
       if (selectedRepo) return;
       if ((e.metaKey || e.ctrlKey) && e.key === "c" && focusedIndex >= 0) {
         e.preventDefault();
-        const repo = sorted[focusedIndex];
-        navigator.clipboard.writeText(repo.full_name).then(() => {
-          toast({ type: "info", message: `Copied "${repo.full_name}"` });
-        });
+        navigator.clipboard.writeText(sorted[focusedIndex].full_name).then(() => { toast({ type: "info", message: `Copied "${sorted[focusedIndex].full_name}"` }); });
         return;
       }
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setFocusedIndex(i => Math.min(i + 1, sorted.length - 1));
-      }
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setFocusedIndex(i => Math.max(i - 1, 0));
-      }
-      if (e.key === "Enter" && focusedIndex >= 0) {
-        setSelectedRepo(sorted[focusedIndex].slug);
-      }
+      if (e.key === "ArrowDown") { e.preventDefault(); setFocusedIndex(i => Math.min(i + 1, sorted.length - 1)); }
+      if (e.key === "ArrowUp") { e.preventDefault(); setFocusedIndex(i => Math.max(i - 1, 0)); }
+      if (e.key === "Enter" && focusedIndex >= 0) { setSelectedRepo(sorted[focusedIndex]); }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   }, [selectedRepo, sorted, focusedIndex, shortcutsOpen, toast]);
 
-  const arrow = (key: SortKey) =>
-    sortKey === key ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
+  const arrow = (key: SortKey) => sortKey === key ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
 
   return (
     <>
-
-      <div className="flex justify-center gap-0.5 mb-6 bg-surface rounded-xl p-0.5 border border-white/[0.06]">
-        {(["day", "week", "month"] as const).map((p) => (
-          <button
-            key={p}
-            onClick={() => setPeriod(p)}
-            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer active:scale-[0.97] whitespace-nowrap shrink-0 ${
-              period === p ? "bg-accent text-midnight" : "text-text-muted hover:text-text-body"
-            }`}
-          >
-            {p === "day" ? "daily" : p === "week" ? "weekly" : "monthly"}
-          </button>
-        ))}
-      </div>
-
-      {
-        period === "week" &&
-          sorted.length > 0 &&
-          (() => {
-            const top = sorted[0];
-            return (
-              <div className="flex items-center gap-2 mb-4 px-3 py-2 rounded-xl bg-amber-500/[0.04] border border-amber-500/10">
-                <span className="text-amber-500 text-xs font-mono">
-                  this week's top gainer:
-                </span>
-                <button
-                  onClick={() => setSelectedRepo(top.slug)}
-                  className="font-mono text-accent text-xs hover:underline cursor-pointer"
-                >
-                  {top.name}
-                </button>
-                <span className="font-mono text-positive text-xs">
-                  +{(top.stars_gained ?? 0).toLocaleString("en-US")} stars
-                </span>
-                {top.rankChange != null && top.rankChange > 0 && (
-                  <span className="font-mono text-text-muted text-xs">
-                    ▲{top.rankChange} positions
-                  </span>
-                )}
-              </div>
-            );
-          })()
-      }
-
-      {(allCategories.length > 0 || allLanguages.length > 0) && (
-        <div className="flex flex-wrap justify-center gap-1 mb-6">
-          <button
-            onClick={() => { setCatFilter(null); setLangFilter(null); }}
-            className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-              catFilter === null && langFilter === null
-                ? "bg-accent/10 border-accent/30 text-accent"
-                : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-            }`}
-          >
-            all
-          </button>
-          {allCategories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setCatFilter(cat === catFilter ? null : cat)}
-              className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                catFilter === cat
-                  ? "bg-accent/10 border-accent/30 text-accent"
-                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-              }`}
-            >
-              #{cat}
-            </button>
-          ))}
-          {allLanguages.map(lang => (
-            <button
-              key={lang}
-              onClick={() => setLangFilter(lang === langFilter ? null : lang)}
-              className={`px-3 py-2 text-xs rounded-full border transition-colors cursor-pointer active:scale-[0.97] ${
-                langFilter === lang
-                  ? "bg-accent/10 border-accent/30 text-accent"
-                  : "border-white/[0.06] text-text-muted hover:border-white/[0.12]"
-              }`}
-            >
-              {lang}
-            </button>
-          ))}
+      <div className="px-4 md:px-6">
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="flex bg-surface border border-border rounded-xl p-1 self-start">
+            {(["day", "week", "month"] as const).map((p) => (
+              <button key={p} onClick={() => setPeriod(p)}
+                className={`px-4 py-1.5 rounded-lg text-xs font-medium capitalize transition-all ${period === p ? "bg-accent/10 text-accent" : "text-text-muted hover:text-text-body"}`}>
+                {p}
+              </button>
+            ))}
+          </div>
+          <div className="relative flex-1 max-w-md">
+            <SearchInput value={search} onChange={setSearch} autoFocus />
+          </div>
         </div>
-      )}
 
-      <div className="flex justify-center mb-6">
-        <SearchInput value={search} onChange={setSearch} autoFocus />
-      </div>
+        {period === "week" && sorted.length > 0 && (() => {
+          const top = sorted[0];
+          return (
+            <div className="mb-6 bg-surface border border-accent/20 rounded-2xl px-5 py-4 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent text-lg">🔥</div>
+              <div>
+                <p className="text-text-muted text-xs uppercase tracking-wider">This week&apos;s top gainer</p>
+                <p className="text-text-body font-semibold text-sm mt-0.5">
+                  {top.full_name} <span className="text-accent">+{top.stars_gained?.toLocaleString("en-US")}</span> stars
+                  {top.rankChange != null && top.rankChange > 0 && <span className="text-positive ml-2">▲{top.rankChange}</span>}
+                </p>
+              </div>
+            </div>
+          );
+        })()}
 
-      <div className="flex items-center justify-between mb-3">
-          <button
-            onClick={() => { setCompareMode(prev => { if (!prev) setCompareSet([]); return !prev; }); }}
-            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer px-2 py-2 -m-2"
-          >
+        {(allCategories.length > 0 || allLanguages.length > 0) && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            <button onClick={() => { setCatFilter(null); setLangFilter(null); }}
+              className={`px-3 py-2 text-xs rounded-full border transition-colors ${catFilter === null && langFilter === null ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+              all
+            </button>
+            {allCategories.map(cat => (
+              <button key={cat} onClick={() => setCatFilter(cat === catFilter ? null : cat)}
+                className={`px-3 py-2 text-xs rounded-full border transition-colors ${catFilter === cat ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+                #{cat}
+              </button>
+            ))}
+            {allLanguages.map(lang => (
+              <button key={lang} onClick={() => setLangFilter(lang === langFilter ? null : lang)}
+                className={`px-3 py-2 text-xs rounded-full border transition-colors ${langFilter === lang ? "bg-accent/10 border-accent/30 text-accent" : "border-border text-text-muted hover:border-border/80"}`}>
+                {lang}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="flex items-center justify-between mb-3">
+          <button onClick={() => { setCompareMode(prev => { if (!prev) setCompareSet([]); return !prev; }); }}
+            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors">
             {compareMode ? "done comparing" : "compare"}
           </button>
           <span className="text-text-muted/20">·</span>
-          <button
-            onClick={() => exportCSV(sorted)}
-            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors cursor-pointer px-2 py-2 -m-2"
-          >
-          export data ↓
-        </button>
-      </div>
-
-      <div className="flex items-center gap-3 py-2 px-2 text-[10px] font-sans text-text-muted border-b border-border mb-1 sticky top-0 bg-midnight z-10">
-        <button onClick={() => handleSort("rank")} className="w-8 text-left hover:text-accent transition-colors cursor-pointer py-2">
-          #{arrow("rank")}
-        </button>
-        <button onClick={() => handleSort("name")} className="flex-1 min-w-0 text-left hover:text-accent transition-colors cursor-pointer sticky left-0 z-[2] bg-midnight py-2">
-          repo{arrow("name")}
-        </button>
-        <button onClick={() => handleSort("stars")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
-          stars{arrow("stars")}
-        </button>
-        <button onClick={() => handleSort("gained")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer py-2">
-          gained{arrow("gained")}
-        </button>
-        <button onClick={() => handleSort("gainedPrev")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer py-2">
-          vs LAST{arrow("gainedPrev")}
-        </button>
-        <button onClick={() => handleSort("velocity")} className="w-16 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
-          velocity{arrow("velocity")}
-        </button>
-        <button onClick={() => handleSort("accel")} className="w-14 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
-          accel{arrow("accel")}
-        </button>
-        <button onClick={() => handleSort("forecast")} className="w-20 text-right hover:text-accent transition-colors cursor-pointer hidden sm:block py-2">
-          forecast{arrow("forecast")}
-        </button>
-        <div className="w-12 text-right hidden sm:block">Δ rank</div>
-        <span className="w-12 shrink-0 hidden sm:block" />
-      </div>
-
-      {searchFiltered.length === 0 ? (
-        <div className="mt-8 text-center">
-          <p className="text-text-muted text-xs">no repos match &ldquo;{search}&rdquo;{langFilter ? ` in ${langFilter}` : ""}</p>
-          <button
-            onClick={() => { setSearch(""); setLangFilter(null); }}
-            className="text-accent text-xs mt-2 hover:underline cursor-pointer"
-          >
-            clear filters
+          <button onClick={() => exportCSV(sorted)}
+            className="font-mono text-text-muted text-[10px] hover:text-accent transition-colors">
+            export data ↓
           </button>
         </div>
-) : (
-         <div ref={listRef}>
-           {sorted.slice(0, showAll ? sorted.length : 25).map((repo, i) => {
-            const isHot = (repo.stars_gained ?? 0) > 1000;
-            function toggleCompare(r: RepoWithVelocity) {
-              if (compareSet.find(c => c.full_name === r.full_name)) {
-                setCompareSet(prev => prev.filter(c => c.full_name !== r.full_name));
-              } else if (compareSet.length >= 3) {
-                toast({ type: "info", message: "Max 3 repos for comparison" });
-              } else {
-                setCompareSet(prev => [...prev, r]);
-              }
-            }
-            return (
-                <div
-                  key={repo.full_name}
-                  className="animate-row flex flex-col gap-2 py-3 px-3 sm:py-2 sm:px-2 sm:flex-row sm:items-center border-b border-white/[0.03] hover:bg-white/[0.06] sm:hover:bg-white/[0.01] transition-colors rounded-lg sm:rounded-none"
-                  style={{ animationDelay: `${Math.min(i * 30, 600)}ms` }}
-                >
-                {compareMode && (
-                  <label className="flex items-center justify-center w-11 h-11 -m-2.5 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={!!compareSet.find(c => c.full_name === repo.full_name)}
-                      onChange={() => toggleCompare(repo)}
-                      className="accent-accent w-4 h-4"
-                    />
-                  </label>
-                )}
-                  <span className="font-mono tabular-nums text-text-muted text-xs w-5 shrink-0">
-                  {repo.rank}
-                </span>
-                <button
-                  onClick={() => setSelectedRepo(repo.slug)}
-                  className="flex-1 min-w-0 font-sans text-text-body text-sm font-medium truncate text-left cursor-pointer"
-                >
-                  {isHot && <span className="text-amber-500 mr-1">🔥</span>}
-                  {repo.name}
-                  {repo.isNew && <span className="text-amber-500 text-[10px] ml-1 font-mono">NEW</span>}
+
+        {!isMobile && (
+          <div className="hidden md:grid grid-cols-[40px_1fr_90px_100px_100px_140px_70px] gap-4 px-4 py-2 text-text-muted text-[10px] uppercase tracking-widest border-b border-border">
+            <button onClick={() => handleSort("rank")} className="text-left hover:text-accent">#{arrow("rank")}</button>
+            <button onClick={() => handleSort("name")} className="text-left hover:text-accent">repo{arrow("name")}</button>
+            <button onClick={() => handleSort("stars")} className="text-right hover:text-accent">stars{arrow("stars")}</button>
+            <button onClick={() => handleSort("gained")} className="text-right hover:text-accent">gained{arrow("gained")}</button>
+            <button onClick={() => handleSort("velocity")} className="text-right hover:text-accent">velocity{arrow("velocity")}</button>
+            <div className="text-right">trend</div>
+            <button onClick={() => handleSort("rank")} className="text-right hover:text-accent">rank{arrow("rank")}</button>
+          </div>
+        )}
+
+        {searchFiltered.length === 0 ? (
+          <div className="py-16 text-center">
+            <p className="text-text-muted text-sm">no repos match &ldquo;{search}&rdquo;</p>
+            <button onClick={() => { setSearch(""); setLangFilter(null); }} className="text-accent text-xs mt-2 hover:underline">
+              clear filters
+            </button>
+          </div>
+        ) : (
+          <div ref={listRef} className={isMobile ? "flex flex-col gap-3" : "flex flex-col"}>
+            {sorted.slice(0, showAll ? sorted.length : 25).map((repo, i) => (
+              isMobile ? (
+                <MobileRepoCard key={repo.slug} repo={repo} index={i} onSelect={setSelectedRepo} />
+              ) : (
+                <DesktopRepoRow key={repo.slug} repo={repo} index={i} />
+              )
+            ))}
+            {sorted.length > 25 && (
+              <div className="flex justify-center mt-4">
+                <button onClick={() => setShowAll(prev => !prev)} className="font-mono text-accent text-[11px] hover:underline">
+                  {showAll ? "show top 25" : `show all ${sorted.length} repos`}
                 </button>
-                {repo.language && (
-                  <span className="hidden sm:flex items-center gap-1.5 w-24 text-left">
-                    <span
-                      className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: languageColor(repo.language) }}
-                    />
-                    <span className="text-text-muted text-[11px] truncate">{repo.language}</span>
-                  </span>
-                )}
-                <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
-                  {(repo.stars / 1000).toFixed(1)}K
-                </span>
-                <span
-                  className={`font-mono tabular-nums text-xs w-20 text-right ${(repo.stars_gained ?? 0) > 0 ? "text-positive" : "text-text-muted/40"}`}
-                >
-                  {repo.stars_gained != null
-                    ? `${repo.stars_gained > 0 ? "+" : ""}${repo.stars_gained.toLocaleString("en-US")}`
-                    : "—"}
-                </span>
-                <span
-                  className={`font-mono tabular-nums text-xs w-20 text-right ${(repo.gainedPrev ?? 0) > 0 ? "text-positive" : (repo.gainedPrev ?? 0) < 0 ? "text-negative" : "text-text-muted/40"}`}
-                >
-                  {repo.gainedPrev != null
-                    ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}`
-                    : "—"}
-                </span>
-                <div className="sm:hidden flex items-center gap-4 text-[11px] font-mono text-text-muted mt-1">
-                  <span className={(repo.stars_gained ?? 0) > 0 ? "text-positive font-semibold" : ""}>
-                    {repo.stars_gained != null ? `+${repo.stars_gained.toLocaleString("en-US")}` : "—"}
-                  </span>
-                  <span className="text-text-muted/50">vs last</span>
-                  <span className={(repo.gainedPrev ?? 0) > 0 ? "text-positive" : (repo.gainedPrev ?? 0) < 0 ? "text-negative" : "text-text-muted/50"}>
-                    {repo.gainedPrev != null ? `${repo.gainedPrev > 0 ? "+" : ""}${repo.gainedPrev.toLocaleString("en-US")}` : "—"}
-                  </span>
-                  {repo.velocity != null && <span className="text-text-muted/40">{repo.velocity} vel</span>}
-                </div>
-                <span className="font-mono tabular-nums text-text-muted text-xs w-16 text-right hidden sm:block">
-                  {repo.velocity != null ? repo.velocity : "—"}
-                </span>
-                <span className="font-mono tabular-nums text-xs w-14 text-right hidden sm:block text-text-muted/40">
-                  {repo.accel != null ? `${repo.accel > 1 ? "▲" : repo.accel < 1 ? "▼" : "="}${repo.accel.toFixed(1)}x` : "—"}
-                </span>
-                <span className="font-mono tabular-nums text-text-muted text-xs w-20 text-right hidden sm:block">
-                  {repo.forecast ?? "—"}
-                </span>
-                <span
-                  className={`font-mono tabular-nums text-xs w-12 text-right hidden sm:block ${(repo.rankChange ?? 0) > 0 ? "text-positive" : (repo.rankChange ?? 0) < 0 ? "text-negative" : "text-text-muted/40"}`}
-                >
-                  {repo.rankChange != null && repo.rankChange !== 0 ? `${repo.rankChange > 0 ? "▲" : "▼"}${Math.abs(repo.rankChange)}` : "—"}
-                </span>
-                <span className="w-12 shrink-0 hidden sm:block">
-                  {repo.sparkline.length > 1 && (
-                    <svg viewBox={`0 0 ${repo.sparkline.length - 1} 12`} className="w-full h-3" preserveAspectRatio="none">
-                      <path
-                        d={repo.sparkline.map((s, i) => `${i === 0 ? "M" : "L"}${i},${12 - ((s - Math.min(...repo.sparkline)) / (Math.max(...repo.sparkline) - Math.min(...repo.sparkline) || 1)) * 10}`).join(" ")}
-                        fill="none" stroke="rgba(217,119,6,0.3)" strokeWidth="1.5"
-                      />
-                    </svg>
-                  )}
-                </span>
               </div>
-            );
-          })}
-          {sorted.length > 25 && (
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={() => setShowAll(prev => !prev)}
-                className="font-mono text-accent text-[11px] hover:underline cursor-pointer"
-              >
-                {showAll ? "show top 25" : `show all ${sorted.length} repos`}
-              </button>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
 
       {compareMode && compareSet.length >= 2 && (
-        <div className="mt-6 bg-surface border border-border rounded-2xl p-4">
+        <div className="mx-4 md:mx-6 mt-6 bg-surface border border-border rounded-2xl p-4">
           <p className="font-mono text-text-muted text-[10px] mb-3">compare: star trend</p>
           <svg viewBox="0 0 300 60" className="w-full h-16">
             {compareSet.map((repo, idx) => {
@@ -470,7 +283,7 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
           <div className="flex gap-4 mt-2">
             {compareSet.map((repo, idx) => (
               <span key={repo.full_name} className="font-mono text-[10px] text-text-muted flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: ["#D97706", "#34D399", "#F87171"][idx] }} />
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: ["#D97706", "#34D399", "#F87171"][idx] }} />
                 {repo.name}
               </span>
             ))}
@@ -478,12 +291,21 @@ function RepoListContent({ repos, defaultPeriod }: { repos: { day: RepoWithVeloc
         </div>
       )}
 
-      <Panel open={!!selectedRepo} onClose={() => setSelectedRepo(null)}>
-        {selectedRepo && (() => {
-          const detailRepo = sorted.find(r => r.slug === selectedRepo);
-          return detailRepo ? <RepoDetail repo={detailRepo} /> : null;
-        })()}
-      </Panel>
+      {isMobile ? (
+        <RepoBottomSheet repo={selectedRepo} onClose={() => setSelectedRepo(null)} />
+      ) : (
+        selectedRepo && (
+          <div className="fixed inset-0 bg-black/60 z-40 flex items-center justify-center p-4" onClick={() => setSelectedRepo(null)}>
+            <div className="bg-surface border border-border rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-5" onClick={e => e.stopPropagation()}>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-medium text-text-body">{selectedRepo.full_name}</h3>
+                <button onClick={() => setSelectedRepo(null)} className="text-text-muted hover:text-text-body">✕</button>
+              </div>
+              <p className="text-text-muted text-sm">{selectedRepo.description || "No description"}</p>
+            </div>
+          </div>
+        )
+      )}
 
       <ShortcutsModal open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
     </>

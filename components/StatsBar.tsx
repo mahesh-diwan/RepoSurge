@@ -1,40 +1,25 @@
 import { getStats } from "@/lib/db";
+import AnimatedNumber from "./AnimatedNumber";
 
 export default function StatsBar({ period = "week" }: { period?: string }) {
   const { totalRepos, totalStars, languages, totalGained } = getStats(period);
 
   const cards = [
-    { label: "TRACKED REPOS", value: totalRepos.toLocaleString("en-US") },
-    { label: "TOTAL STARS", value: totalStars.toLocaleString("en-US") },
-    { label: "LANGUAGES", value: languages.toString() },
-    {
-      label: `GAINED THIS ${period.toUpperCase()}`,
-      value: `+${totalGained.toLocaleString("en-US")}`,
-      highlight: true,
-    },
+    { label: "TRACKED REPOS", value: totalRepos },
+    { label: "TOTAL STARS", value: totalStars },
+    { label: "LANGUAGES", value: languages },
+    { label: `GAINED THIS ${period.toUpperCase()}`, value: totalGained, highlight: true },
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8 px-0">
-      {cards.map((card) => (
-        <div
-          key={card.label}
-          className={`relative overflow-hidden bg-surface border border-border rounded-2xl px-4 py-3 md:px-5 md:py-4 ${
-            card.highlight ? "border-accent/20" : ""
-          }`}
-        >
-          {card.highlight && (
-            <div className="absolute top-0 right-0 w-16 h-16 bg-accent/5 rounded-bl-full -mr-4 -mt-4" />
-          )}
-          <p className="text-text-muted text-[10px] tracking-widest uppercase mb-1">
-            {card.label}
-          </p>
-          <p
-            className={`font-mono text-lg md:text-xl tabular-nums ${
-              card.highlight ? "text-accent font-bold" : "text-text-body font-semibold"
-            }`}
-          >
-            {card.value}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 mb-6 md:mb-8 px-4 md:px-6">
+      {cards.map((c) => (
+        <div key={c.label} className={`relative overflow-hidden bg-surface border rounded-2xl px-4 py-3 md:px-5 md:py-4 ${c.highlight ? "border-accent/20" : "border-border"}`}>
+          {c.highlight && <div className="absolute top-0 right-0 w-20 h-20 bg-accent/5 rounded-bl-full -mr-6 -mt-6" />}
+          <p className="text-text-muted text-[10px] tracking-widest uppercase mb-2">{c.label}</p>
+          <p className={`font-mono text-xl md:text-2xl tabular-nums ${c.highlight ? "text-accent font-bold" : "text-text-body font-semibold"}`}>
+            {c.highlight && c.value > 0 ? "+" : ""}
+            <AnimatedNumber value={c.value} />
           </p>
         </div>
       ))}
