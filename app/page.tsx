@@ -22,14 +22,14 @@ export default function Home() {
         {topRepo && (
           <div className="px-4 md:px-6 mb-8">
             <div className="card-shell animate-fade-up">
-              <div className="card-core">
+              <div className="card-core overflow-hidden">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div className="min-w-0">
+                  <div className="min-w-0 overflow-hidden">
                     <p className="section-label mb-2">This week's top gainer</p>
                     <h2 className="text-xl md:text-2xl font-bold text-text-body tracking-tight truncate">
                       {topRepo.full_name}
                     </h2>
-                    <div className="flex items-center gap-3 mt-2">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
                       <span className="data-mono text-accent font-bold text-lg">
                         +{topRepo.stars_gained?.toLocaleString()} ★
                       </span>

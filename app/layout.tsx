@@ -6,6 +6,7 @@ import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
 import FloatingPill from "@/components/FloatingPill";
 import LastUpdated from "@/components/LastUpdated";
+import Logo from "@/components/Logo";
 import { getLastUpdated } from "@/lib/db";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         <footer className="border-t border-border py-10 relative z-[2]">
           <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
+              <Logo className="w-5 h-5" />
               <span className="text-sm font-semibold text-text-body tracking-tighter">
                 REPO<span className="text-accent">SURGE</span>
               </span>
