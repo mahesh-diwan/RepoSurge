@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import type { RepoWithVelocity } from "@/lib/db";
 import { useRepoList } from "@/lib/useRepoList";
 import { downloadCSV } from "@/lib/repo-export";
@@ -38,7 +37,6 @@ function RepoListContent({
   const { toast } = useToast();
   const list = useRepoList(repos, defaultPeriod ?? "week");
   const [isMobile, setIsMobile] = useState(false);
-  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -125,11 +123,7 @@ function RepoListContent({
 
         {/* Weekly highlight */}
         {list.period === "week" && list.sorted.length > 0 && (
-          <motion.div
-            initial={prefersReduced ? false : { opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6 card border-accent/20 px-5 py-4"
-          >
+          <div className="mb-6 card border-accent/20 px-5 py-4 animate-fade-up">
             <p className="text-text-body text-sm">
               <span className="font-semibold">{list.sorted[0].full_name}</span>{" "}
               <span className="data-mono text-accent">
@@ -142,7 +136,7 @@ function RepoListContent({
                 </span>
               )}
             </p>
-          </motion.div>
+          </div>
         )}
 
         {/* Filters */}
@@ -298,11 +292,8 @@ function RepoListContent({
             className="fixed inset-0 bg-black/60 z-40 flex items-center justify-center p-4"
             onClick={() => list.setSelectedRepo(null)}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="card max-w-lg w-full max-h-[80vh] overflow-y-auto p-6"
+            <div
+              className="card max-w-lg w-full max-h-[80vh] overflow-y-auto p-6 animate-fade-in"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
@@ -317,7 +308,7 @@ function RepoListContent({
               <p className="text-text-muted text-sm">
                 {list.selectedRepo.description || "No description"}
               </p>
-            </motion.div>
+            </div>
           </div>
         )
       )}

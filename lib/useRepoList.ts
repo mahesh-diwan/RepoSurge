@@ -2,7 +2,11 @@
 
 import { useState, useMemo, useCallback } from "react";
 import type { RepoWithVelocity } from "./db";
-import { applyFilters, sortRepos, type SortKey, type SortDir } from "./repo-filter";
+import { filterByCategory, filterByLanguage, searchRepos, sortRepos, type SortKey, type SortDir } from "./repo-filter";
+
+function applyFilters(repos: RepoWithVelocity[], search: string, lang: string | null, cat: string | null): RepoWithVelocity[] {
+  return searchRepos(filterByLanguage(filterByCategory(repos, cat), lang), search);
+}
 
 export type Period = "day" | "week" | "month";
 

@@ -1,11 +1,10 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import InteractiveSparkline from "./InteractiveSparkline";
 import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
-import { Flame, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Flame, TrendingUp, TrendingDown, Minus } from "./icons";
 
 export default function MobileRepoCard({
   repo,
@@ -17,14 +16,9 @@ export default function MobileRepoCard({
   onSelect: (r: RepoWithVelocity) => void;
 }) {
   const isHot = (repo.stars_gained ?? 0) > 1000;
-  const prefersReduced = useReducedMotion();
 
   return (
-    <motion.div
-      initial={prefersReduced ? false : { opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={prefersReduced ? { duration: 0 } : { delay: Math.min(index * 0.03, 0.2), duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <div className="animate-fade-up" style={{ animationDelay: `${Math.min(index * 30, 200)}ms` }}>
       <Link
         href={`/repo/${repo.slug}`}
         onClick={(e) => {
@@ -35,7 +29,6 @@ export default function MobileRepoCard({
         }}
       >
         <div className="card p-4 active:scale-[0.98] transition-all duration-200 hover:shadow-card-hover">
-          {/* Header row */}
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
               <span className="data-mono text-text-dim text-xs shrink-0 tabular-nums">
@@ -66,7 +59,6 @@ export default function MobileRepoCard({
             </div>
           </div>
 
-          {/* Meta row */}
           <div className="flex items-center gap-2 mb-3">
             {repo.language && (
               <span className="flex items-center gap-1">
@@ -85,12 +77,10 @@ export default function MobileRepoCard({
             )}
           </div>
 
-          {/* Sparkline */}
           <div className="mb-3">
             <InteractiveSparkline data={repo.sparkline} width={120} height={36} />
           </div>
 
-          {/* Stats row */}
           <div className="flex items-center justify-between">
             <div>
               <p className="text-text-dim text-[10px] font-mono">GAINED</p>
@@ -111,6 +101,6 @@ export default function MobileRepoCard({
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }

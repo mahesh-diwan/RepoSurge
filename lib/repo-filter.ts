@@ -65,14 +65,4 @@ export function sortRepos(
   });
 }
 
-export function applyFilters(
-  repos: RepoWithVelocity[],
-  search: string,
-  lang: string | null,
-  cat: string | null
-): RepoWithVelocity[] {
-  let result = filterByCategory(repos, cat);
-  result = filterByLanguage(result, lang);
-  result = searchRepos(result, search);
-  return result;
-}
+

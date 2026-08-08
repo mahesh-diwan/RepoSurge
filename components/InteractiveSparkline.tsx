@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { scalePoints, pointsToPathD } from "@/lib/scale-points";
 
 export default function InteractiveSparkline({
@@ -17,13 +16,16 @@ export default function InteractiveSparkline({
 }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  const prefersReduced = useReducedMotion();
+  const prefersReduced = typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   if (data.length < 2) return <div className="h-10" />;
 
   const { points } = scalePoints(data, width, height, { top: 4, bottom: 4 });
   const pathD = "M " + pointsToPathD(points);
   const isUp = data.at(-1)! >= data[0];
   const stroke = color || (isUp ? "#34D399" : "#F87171");
+  const pathLength = points.length * 20; // approx for dasharray
 
   const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!svgRef.current) return;
@@ -45,15 +47,18 @@ export default function InteractiveSparkline({
         onTouchMove={handleMove}
         onTouchEnd={() => setHovered(null)}
       >
-        <motion.path
+        <path
           d={pathD}
           fill="none"
           stroke={stroke}
           strokeWidth="2"
           strokeLinecap="round"
-          initial={prefersReduced ? false : { pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={prefersReduced ? { duration: 0 } : { duration: 0.8, ease: "easeOut" }}
+          style={prefersReduced ? {} : {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength,
+            animation: "draw-line 0.8s ease-out forwards",
+            "--path-length": pathLength,
+          } as React.CSSProperties}
         />
         {hovered !== null && (
           <>
