@@ -67,7 +67,16 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
         <div className="text-right">
           {repo.rankChange != null ? (
             <span
-              className={`inline-flex items-center gap-0.5 data-mono text-xs tabular-nums ${repo.rankChange > 0 ? "text-positive" : repo.rankChange < 0 ? "text-negative" : "text-text-dim"}`}
+              className={`inline-flex items-center gap-0.5 data-mono text-xs tabular-nums transition-all duration-500 ease-out-expo ${
+                repo.rankChange > 0
+                  ? "text-positive"
+                  : repo.rankChange < 0
+                  ? "text-negative"
+                  : "text-text-dim"
+              }`}
+              style={{
+                transform: repo.rankChange > 0 ? "translateY(-1px)" : repo.rankChange < 0 ? "translateY(1px)" : "translateY(0)",
+              }}
             >
               {repo.rankChange > 0 ? (
                 <>

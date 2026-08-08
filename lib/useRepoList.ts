@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import type { RepoWithVelocity } from "./db";
 import { filterByCategory, filterByLanguage, searchRepos, sortRepos, type SortKey, type SortDir } from "./repo-filter";
 
@@ -55,18 +56,42 @@ export function useRepoList(
   repos: { day: RepoWithVelocity[]; week: RepoWithVelocity[]; month: RepoWithVelocity[] },
   defaultPeriod: Period = "week"
 ): UseRepoListResult {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Initialize state from URL params
   const [period, setPeriod] = useState<Period>(defaultPeriod);
-  const [search, setSearch] = useState("");
-  const [sortKey, setSortKey] = useState<SortKey | null>(null);
-  const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [langFilters, setLangFilters] = useState<string[]>([]);
-  const [catFilters, setCatFilters] = useState<string[]>([]);
+  const [search, setSearch] = useState(searchParams.get("q") ?? "");
+  const [sortKey, setSortKey] = useState<SortKey | null>(
+    (searchParams.get("sort") as SortKey) ?? null
+  );
+  const [sortDir, setSortDir] = useState<SortDir>(
+    (searchParams.get("dir") as SortDir) ?? "asc"
+  );
+  const [langFilters, setLangFilters] = useState<string[]>(
+    searchParams.get("langs")?.split(",").filter(Boolean) ?? []
+  );
+  const [catFilters, setCatFilters] = useState<string[]>(
+    searchParams.get("cats")?.split(",").filter(Boolean) ?? []
+  );
   const [showAll, setShowAll] = useState(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoWithVelocity | null>(null);
   const [compareMode, setCompareMode] = useState(false);
   const [compareSet, setCompareSet] = useState<RepoWithVelocity[]>([]);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
+
+  // Sync state to URL (debounced for search)
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (search) params.set("q", search);
+    if (sortKey) params.set("sort", sortKey);
+    if (sortDir === "desc") params.set("dir", "desc");
+    if (langFilters.length) params.set("langs", langFilters.join(","));
+    if (catFilters.length) params.set("cats", catFilters.join(","));
+    const url = params.toString() ? `?${params.toString()}` : window.location.pathname;
+    router.replace(url, { scroll: false });
+  }, [search, sortKey, sortDir, langFilters, catFilters, router]);
 
   const currentRepos = repos[period];
 

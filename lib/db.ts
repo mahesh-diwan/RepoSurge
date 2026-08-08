@@ -33,13 +33,22 @@ export interface RepoWithVelocity extends RepoRecord {
 
 // ─── normalization ──────────────────────────────────────────────────────────
 
+const NEW_BADGE_DAYS = 7;
+
+function isNewRepo(r: RepoRecord): boolean {
+  const firstSeen = r.firstSeen ?? r.fetched_at ?? r.history?.[0]?.recorded_at;
+  if (!firstSeen) return false;
+  const daysSinceSeen = (Date.now() - new Date(firstSeen).getTime()) / 86400000;
+  return daysSinceSeen <= NEW_BADGE_DAYS;
+}
+
 function normalizeRepos(raw: RepoRecord[]): RepoRecord[] {
   return raw.map((r) => ({
     ...r,
     history: [...(r.history ?? [])].sort(
       (a, b) => new Date(a.recorded_at).getTime() - new Date(b.recorded_at).getTime()
     ),
-    isNew: r.isNew ?? false,
+    isNew: isNewRepo(r),
     category: r.category ?? null,
     created_at: r.created_at ?? r.fetched_at ?? r.history?.[0]?.recorded_at ?? "",
   }));

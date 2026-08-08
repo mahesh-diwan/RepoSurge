@@ -40,6 +40,7 @@ type RepoRecord = {
   fetched_at: string;
   history: HistoryRow[];
   isNew: boolean;
+  firstSeen?: string;
   category: string | null;
 };
 
@@ -184,6 +185,7 @@ async function main(): Promise<number> {
     } else {
       const history: HistoryRow[] = [];
       history.push({ stars: repo.stargazers_count, recorded_at: today });
+      const isNew = !existingNames.has(repo.full_name);
       store.repos.push({
         full_name: repo.full_name,
         name: repo.name,
@@ -195,7 +197,8 @@ async function main(): Promise<number> {
         created_at: repo.created_at,
         fetched_at: today,
         history,
-        isNew: !existingNames.has(repo.full_name),
+        isNew,
+        firstSeen: isNew ? today : undefined,
         category,
       });
     }

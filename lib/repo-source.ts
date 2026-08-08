@@ -18,6 +18,7 @@ export interface RepoRecord {
   fetched_at: string;
   history: HistoryEntry[];
   isNew?: boolean;
+  firstSeen?: string;
   category?: string | null;
 }
 
