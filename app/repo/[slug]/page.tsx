@@ -45,7 +45,7 @@ export default function RepoDetailPage({
       <main className="max-w-7xl mx-auto px-6 py-16">
         <Link
           href="/"
-          className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block"
+          className="text-text-dim text-xs hover:text-accent transition-colors mb-8 inline-block"
         >
           Back
         </Link>
@@ -61,33 +61,38 @@ export default function RepoDetailPage({
   });
 
   return (
-    <main className="max-w-7xl mx-auto px-4 md:px-6 py-12">
+    <main className="max-w-7xl mx-auto px-4 md:px-6 py-16">
       <Link
         href="/"
-        className="text-text-dim text-xs font-mono hover:text-accent transition-colors mb-8 inline-block"
+        className="text-text-dim text-xs font-mono hover:text-accent transition-colors mb-10 inline-block"
       >
         BACK
       </Link>
 
       <div className="max-w-3xl">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <h1 className="text-2xl md:text-3xl font-bold mb-2 text-text-body tracking-tight text-balance">
             {repo.full_name}
           </h1>
-          <p className="text-text-muted text-sm mb-4">{repo.description ?? "—"}</p>
+          <p className="text-text-muted text-sm mb-5">{repo.description ?? "—"}</p>
           <a
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 transition-colors"
+            className="group inline-flex items-center gap-2 text-xs font-mono bg-accent/10 text-accent px-4 py-2 rounded-full hover:bg-accent/20 transition-all duration-500 ease-out-expo active:scale-[0.97]"
           >
             VIEW ON GITHUB
+            <span className="btn-icon">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </span>
           </a>
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-10">
           <div className="card p-3">
             <p className="section-label mb-1">Stars</p>
             <p className="data-mono text-lg font-bold tabular-nums text-text-body">
@@ -132,13 +137,13 @@ export default function RepoDetailPage({
         </div>
 
         {/* Period selector */}
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-8">
           <span className="section-label mr-1">Period:</span>
           {periods.map((p) =>
             period === p ? (
               <span
                 key={p}
-className="rounded-full px-3 py-1 text-xs bg-accent text-midnight font-medium"
+                className="rounded-full px-3 py-1 text-xs bg-accent text-midnight font-medium"
               >
                 {periodLabels[p]}
               </span>
@@ -146,7 +151,7 @@ className="rounded-full px-3 py-1 text-xs bg-accent text-midnight font-medium"
               <Link
                 key={p}
                 href={`/repo/${slug}?period=${p}`}
-                className="rounded-full px-3 py-1 text-xs bg-surface border border-border text-text-muted hover:text-text-body transition-colors duration-200"
+                className="rounded-full px-3 py-1 text-xs bg-surface border border-border text-text-muted hover:text-text-body transition-all duration-300"
               >
                 {periodLabels[p]}
               </Link>
@@ -155,10 +160,12 @@ className="rounded-full px-3 py-1 text-xs bg-accent text-midnight font-medium"
         </div>
 
         {/* Chart */}
-        <div className="card p-4">
-          <p className="section-label mb-3">Star history</p>
-          <div className="h-40 w-full">
-            <StarChart history={repo.history} period={period} />
+        <div className="card-shell">
+          <div className="card-core">
+            <p className="section-label mb-3">Star history</p>
+            <div className="h-40 w-full">
+              <StarChart history={repo.history} period={period} />
+            </div>
           </div>
         </div>
       </div>

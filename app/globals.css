@@ -4,15 +4,20 @@
 
 @layer base {
   :root {
-    --bg: #09090B;
-    --surface: #111113;
-    --surface-elevated: #18181B;
-    --border: #27272A;
+    --bg: #050505;
+    --surface: #0A0A0B;
+    --surface-elevated: #111113;
+    --border: #1E1E21;
+    --border-hairline: rgba(255, 255, 255, 0.06);
     --text: #FAFAFA;
     --text-muted: #A1A1AA;
+    --text-dim: #71717A;
     --accent: #D97706;
     --positive: #34D399;
     --negative: #F87171;
+    --info: #60A5FA;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
   }
 
   html {
@@ -29,7 +34,7 @@
     font-feature-settings: "cv11", "ss01", "tnum";
   }
 
-  /* Subtle ambient background */
+  /* Ambient mesh gradient background */
   body::before {
     content: "";
     position: fixed;
@@ -37,8 +42,9 @@
     z-index: 0;
     pointer-events: none;
     background:
-      radial-gradient(ellipse 60% 40% at 20% -5%, rgba(217, 119, 6, 0.03) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 30% at 90% 80%, rgba(52, 211, 153, 0.015) 0%, transparent 50%);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(217, 119, 6, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 90%, rgba(52, 211, 153, 0.03) 0%, transparent 40%),
+      radial-gradient(ellipse 40% 30% at 10% 60%, rgba(96, 165, 250, 0.02) 0%, transparent 30%);
   }
 
   /* Film grain overlay */
@@ -48,8 +54,8 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.015;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 256px 256px;
   }
 
@@ -64,11 +70,11 @@
   }
 
   :focus-visible {
-    outline: 2px solid #D97706;
+    outline: 2px solid rgba(217, 119, 6, 0.6);
     outline-offset: 2px;
     box-shadow:
-      0 0 0 2px #09090B,
-      0 0 12px rgba(217, 119, 6, 0.25);
+      0 0 0 3px rgba(5, 5, 5, 0.8),
+      0 0 20px rgba(217, 119, 6, 0.15);
   }
 
   a {
@@ -77,8 +83,8 @@
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -102,17 +108,50 @@
 
   /* Section heading */
   .section-label {
-    @apply text-[10px] uppercase tracking-[0.18em] font-mono text-text-dim;
+    @apply text-[10px] uppercase tracking-[0.2em] font-mono text-text-dim;
   }
 
-  /* Card surface */
+  /* Double-Bezel Card: outer shell + inner core */
+  .card-shell {
+    @apply p-[3px] rounded-[1.75rem];
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .card-core {
+    @apply rounded-[1.625rem] p-5 md:p-6;
+    background: linear-gradient(180deg, rgba(17,17,19,0.95) 0%, rgba(10,10,11,0.98) 100%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.04);
+  }
+
+  /* Standard card surface */
   .card {
-    @apply bg-surface border border-border rounded-2xl;
+    @apply bg-surface-elevated border border-border rounded-2xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.03);
   }
 
   /* Subtle divider */
   .divider {
-    @apply border-t border-border-subtle;
+    @apply border-t border-border;
+  }
+
+  /* Eyebrow tag */
+  .eyebrow {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium;
+    background: rgba(217, 119, 6, 0.08);
+    border: 1px solid rgba(217, 119, 6, 0.15);
+    color: var(--accent);
+  }
+
+  /* Button-in-button trailing icon */
+  .btn-icon {
+    @apply w-7 h-7 rounded-full flex items-center justify-center;
+    background: rgba(255,255,255,0.06);
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+
+  .group:hover .btn-icon {
+    transform: translateX(2px) translateY(-1px) scale(1.05);
   }
 }
 
@@ -122,13 +161,43 @@
   }
 
   .animate-in {
-    animation: fade-in 0.5s ease-out;
+    animation: fade-in 0.5s var(--ease-out-expo);
   }
 
   .animate-up {
-    animation: fade-up 0.5s ease-out;
+    animation: fade-up 0.6s var(--ease-out-expo);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }
+
+/* Scroll-driven entry animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo), filter 0.8s var(--ease-out-expo);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 60ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 120ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 180ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -138,5 +207,11 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .reveal, .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

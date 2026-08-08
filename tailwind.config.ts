@@ -10,11 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        midnight: "#09090B",
-        surface: "#111113",
-        "surface-elevated": "#18181B",
-        border: "#27272A",
-        "border-subtle": "#1E1E21",
+        midnight: "#050505",
+        surface: "#0A0A0B",
+        "surface-elevated": "#111113",
+        border: "#1E1E21",
+        "border-hairline": "rgba(255, 255, 255, 0.06)",
         "text-body": "#FAFAFA",
         "text-muted": "#A1A1AA",
         "text-dim": "#71717A",
@@ -32,6 +32,7 @@ const config: Config = {
       letterSpacing: {
         tightest: "-0.04em",
         tighter: "-0.02em",
+        widest: "0.2em",
       },
       borderRadius: {
         xl: "0.875rem",
@@ -39,24 +40,35 @@ const config: Config = {
         "3xl": "1.5rem",
       },
       boxShadow: {
-        accent: "0 4px 24px -8px rgba(217,119,6,0.15)",
-        "accent-lg": "0 8px 40px -12px rgba(217,119,6,0.2)",
-        card: "0 1px 3px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03)",
-        "card-hover": "0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)",
-        glow: "0 0 20px rgba(217,119,6,0.12)",
+        accent: "0 4px 24px -8px rgba(217,119,6,0.12)",
+        "accent-lg": "0 8px 40px -12px rgba(217,119,6,0.18)",
+        card: "0 1px 3px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.03)",
+        "card-hover": "0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
+        glow: "0 0 30px rgba(217,119,6,0.1)",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "in-out-quint": "cubic-bezier(0.83, 0, 0.17, 1)",
+      },
+      transitionDuration: {
+        "400": "400ms",
+        "600": "600ms",
+        "800": "800ms",
+        "1200": "1200ms",
       },
       animation: {
         "surge-pulse": "surge-pulse 2s ease-in-out infinite",
-        "fade-in": "fade-in 0.4s ease-out",
-        "fade-up": "fade-up 0.4s ease-out",
-        "slide-in": "slide-in 0.3s ease-out",
-        "slide-up": "slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "fade-in": "fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+        "fade-up": "fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        "slide-in": "slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        "slide-up": "slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
         shimmer: "shimmer 2s linear infinite",
-        "draw-line": "draw-line 0.8s ease-out forwards",
+        "draw-line": "draw-line 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        float: "float 6s ease-in-out infinite",
       },
       keyframes: {
         "surge-pulse": {
-          "0%": { boxShadow: "0 0 0 0 rgba(52,211,153,0.5)" },
+          "0%": { boxShadow: "0 0 0 0 rgba(52,211,153,0.4)" },
           "70%": { boxShadow: "0 0 0 8px rgba(52,211,153,0)" },
           "100%": { boxShadow: "0 0 0 0 rgba(52,211,153,0)" },
         },
@@ -65,7 +77,7 @@ const config: Config = {
           "100%": { opacity: "1" },
         },
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "slide-in": {
@@ -83,6 +95,10 @@ const config: Config = {
         "draw-line": {
           "0%": { strokeDashoffset: "var(--path-length, 1000)" },
           "100%": { strokeDashoffset: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
         },
       },
     },

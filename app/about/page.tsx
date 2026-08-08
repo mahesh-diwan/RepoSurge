@@ -10,17 +10,17 @@ export default function AboutPage() {
   const stats = getStats();
 
   return (
-    <main className="max-w-3xl mx-auto px-4 md:px-6 pt-16">
-      <h1 className="text-2xl md:text-3xl font-bold text-text-body tracking-tight mb-2">
+    <main className="max-w-3xl mx-auto px-4 md:px-6 pt-20">
+      <h1 className="text-2xl md:text-3xl font-bold text-text-body tracking-tight mb-2 text-balance">
         About RepoSurge
       </h1>
-      <p className="text-text-muted text-sm mb-10">
+      <p className="text-text-muted text-sm mb-12">
         Star velocity leaderboard for GitHub
       </p>
 
-      {/* Stats - asymmetric layout, not 3 identical cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
-        <div className="card p-4 sm:col-span-1">
+      {/* Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-12">
+        <div className="card p-4">
           <p className="data-mono text-2xl font-bold text-accent tabular-nums">
             {stats.totalRepos}
           </p>
@@ -42,13 +42,15 @@ export default function AboutPage() {
 
       {/* Methodology */}
       <div className="space-y-4">
-        <div className="card p-5">
-          <p className="section-label mb-2">Methodology</p>
-          <p className="text-text-muted text-sm leading-relaxed">
-            Repos are ranked by star velocity: the number of stars gained per day over a
-            given period (24 hours, 7 days, or 30 days). The top 50 repositories by total
-            stars are tracked daily, and their star counts are recorded to compute deltas.
-          </p>
+        <div className="card-shell">
+          <div className="card-core">
+            <p className="section-label mb-2">Methodology</p>
+            <p className="text-text-muted text-sm leading-relaxed">
+              Repos are ranked by star velocity: the number of stars gained per day over a
+              given period (24 hours, 7 days, or 30 days). The top 50 repositories by total
+              stars are tracked daily, and their star counts are recorded to compute deltas.
+            </p>
+          </div>
         </div>
 
         <div className="card p-5">

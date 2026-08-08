@@ -11,16 +11,19 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
   const isHot = (repo.stars_gained ?? 0) > 1000;
 
   return (
-    <div className="animate-fade-up" style={{ animationDelay: `${Math.min(index * 20, 400)}ms` }}>
+    <div
+      className="animate-fade-up"
+      style={{ animationDelay: `${Math.min(index * 15, 300)}ms` }}
+    >
       <Link
         href={`/repo/${repo.slug}`}
-        className="group grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 items-center px-4 py-3.5 rounded-xl hover:bg-surface-elevated/80 transition-all duration-200 border border-transparent hover:border-border-subtle"
+        className="group grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 items-center px-4 py-3.5 rounded-xl hover:bg-surface-elevated/60 transition-all duration-400 ease-out-expo border border-transparent hover:border-border"
       >
         <span className="data-mono text-text-dim text-sm tabular-nums">{repo.rank}</span>
 
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-text-body text-sm truncate group-hover:text-accent transition-colors duration-200">
+            <span className="font-medium text-text-body text-sm truncate group-hover:text-accent transition-colors duration-300">
               {repo.full_name}
             </span>
             {isHot && <Flame className="w-3.5 h-3.5 text-accent shrink-0" />}

@@ -49,15 +49,15 @@ export default function RootLayout({
           {children}
         </div>
 
-        <footer className="border-t border-border-subtle py-10 relative z-[2]">
+        <footer className="border-t border-border py-10 relative z-[2]">
           <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold text-text-body tracking-tighter">
                 REPO<span className="text-accent">SURGE</span>
               </span>
-              <span className="text-text-dim text-xs">·</span>
+              <span className="text-text-dim text-xs">-</span>
               <p className="text-text-dim text-xs">
-                Data from GitHub API · refreshed daily
+                Data from GitHub API - refreshed daily
               </p>
             </div>
             {lastUpdated && <LastUpdated dateStr={lastUpdated} />}

@@ -7,16 +7,21 @@ export default function NotFound() {
         404
       </p>
       <h2 className="text-text-body text-xl md:text-2xl font-semibold mb-2">
-        page not found
+        Page not found
       </h2>
       <p className="text-text-muted text-sm mb-8 max-w-md">
-        the repo you&apos;re looking for doesn&apos;t exist or has been moved.
+        The repo you&apos;re looking for doesn&apos;t exist or has been moved.
       </p>
       <Link
         href="/"
-        className="px-5 py-2.5 bg-accent text-midnight font-medium text-sm rounded-xl hover:bg-accent/90 transition-colors"
+        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-midnight font-medium text-sm rounded-full hover:bg-accent/90 transition-all duration-500 ease-out-expo active:scale-[0.97]"
       >
-        back to dashboard
+        Back to dashboard
+        <span className="btn-icon bg-midnight/10">
+          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
       </Link>
     </div>
   );

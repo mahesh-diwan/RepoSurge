@@ -15,9 +15,7 @@ export default function RepoBottomSheet({
 }) {
   const [active, setActive] = useState(false);
 
-  // Trigger enter animation on change
   if (repo && !active) setActive(true);
-
   if (!repo) return null;
 
   return (
@@ -27,10 +25,10 @@ export default function RepoBottomSheet({
         onClick={onClose}
       />
       <div
-        className="fixed bottom-0 left-0 right-0 bg-surface-elevated border-t border-border rounded-t-3xl z-50 max-h-[80vh] overflow-y-auto animate-slide-up"
+        className="fixed bottom-0 left-0 right-0 bg-surface-elevated/95 backdrop-blur-xl border-t border-border rounded-t-3xl z-50 max-h-[85vh] overflow-y-auto animate-slide-up"
         style={active ? {} : { transform: "translateY(100%)" }}
       >
-        <div className="sticky top-0 bg-surface-elevated border-b border-border px-5 py-4 flex items-center justify-between rounded-t-3xl">
+        <div className="sticky top-0 bg-surface-elevated/95 backdrop-blur-xl border-b border-border px-5 py-4 flex items-center justify-between rounded-t-3xl">
           <div>
             <h3 className="font-medium text-text-body text-base">{repo.full_name}</h3>
             <div className="flex items-center gap-2 mt-0.5">
