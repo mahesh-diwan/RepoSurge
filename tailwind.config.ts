@@ -26,8 +26,8 @@ const config: Config = {
         info: "#60A5FA",
       },
       fontFamily: {
-        sans: ["Geist", "system-ui", "sans-serif"],
-        mono: ["Geist Mono", "ui-monospace", "monospace"],
+        sans: ["DM Sans", "system-ui", "sans-serif"],
+        mono: ["DM Mono", "ui-monospace", "monospace"],
       },
       letterSpacing: {
         tightest: "-0.04em",
