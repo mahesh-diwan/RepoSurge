@@ -10,20 +10,20 @@ import { getLastUpdated } from "@/lib/db";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "reposurge - repos rising. fast.",
-  description: "star velocity tracker for github repos",
+  title: "RepoSurge - GitHub star velocity leaderboard",
+  description: "Track the top 50 GitHub repos by star velocity. Daily, weekly, monthly rankings with live polling.",
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "reposurge",
-    description: "star velocity tracker for github repos",
+    title: "RepoSurge",
+    description: "GitHub star velocity leaderboard - track the fastest-growing repos",
     url: "https://reposurge.vercel.app",
-    siteName: "reposurge",
+    siteName: "RepoSurge",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "reposurge",
-    description: "star velocity tracker for github repos",
+    title: "RepoSurge",
+    description: "GitHub star velocity leaderboard",
   },
 };
 
@@ -36,29 +36,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans bg-midnight relative z-[2]">
+      <body className="font-sans bg-midnight relative">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-surface focus:text-accent focus:outline-1 focus:outline-accent"
         >
-          skip to content
+          Skip to content
         </a>
         <FloatingPill />
 
-        <div
-          id="main-content"
-          className="relative z-[2] px-4 md:px-6 pt-16 md:pt-20 pb-16"
-        >
+        <div id="main-content" className="relative z-[2] pt-16 md:pt-20 pb-20">
           {children}
         </div>
 
-        <footer aria-label="site footer" className="border-t border-white/[0.06] py-8 mt-16 relative z-[2]">
+        <footer className="border-t border-border-subtle py-10 relative z-[2]">
           <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="font-sans text-sm font-semibold text-text-body tracking-[-0.02em]">REPO<span className="text-accent">SURGE</span></span>
-              <span className="text-text-muted text-xs">·</span>
-              <p className="text-text-muted text-xs">
-                data from github api · refreshed daily
+              <span className="font-sans text-sm font-semibold text-text-body tracking-tighter">
+                REPO<span className="text-accent">SURGE</span>
+              </span>
+              <span className="text-text-dim text-xs">·</span>
+              <p className="text-text-dim text-xs">
+                Data from GitHub API · refreshed daily
               </p>
             </div>
             {lastUpdated && <LastUpdated dateStr={lastUpdated} />}

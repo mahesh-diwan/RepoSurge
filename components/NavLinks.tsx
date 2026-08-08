@@ -16,18 +16,18 @@ export default function NavLinks({
     <nav
       role="navigation"
       aria-label="main"
-      className="hidden md:flex items-center gap-2"
+      className="hidden md:flex items-center gap-0.5"
     >
       {links.map((link) => {
-        const isActive = pathname === link.href;
+        const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
         return (
           <Link
             key={link.href}
             href={link.href}
             onClick={onItemClick}
-            className={`relative text-xs px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-300 ${
+            className={`relative text-[11px] font-medium px-3 py-1.5 rounded-full transition-all duration-200 ${
               isActive
-                ? "text-accent font-medium"
+                ? "bg-accent/10 text-accent"
                 : "text-text-muted hover:text-text-body"
             }`}
             aria-current={isActive ? "page" : undefined}

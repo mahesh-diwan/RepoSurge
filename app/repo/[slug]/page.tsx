@@ -2,11 +2,10 @@ import { type Metadata } from "next";
 import Link from "next/link";
 import { getRepoDetails, formatVelocity } from "@/lib/db";
 import StarChart from "@/components/StarChart";
-
 import { gainedColor } from "@/lib/gained-color";
 
 const periods = ["day", "week", "month"];
-const periodLabels: Record<string, string> = { day: "daily", week: "weekly", month: "monthly" };
+const periodLabels: Record<string, string> = { day: "Daily", week: "Weekly", month: "Monthly" };
 
 export const revalidate = 3600;
 
@@ -19,13 +18,12 @@ export async function generateMetadata({
   const repo = getRepoDetails(slug);
 
   if (!repo) {
-    return { title: "repo not found - reposurge" };
+    return { title: "Repo not found - RepoSurge" };
   }
 
   return {
-    title: `${repo.full_name} - reposurge`,
-    description:
-      repo.description ?? `${repo.full_name} star velocity on reposurge`,
+    title: `${repo.full_name} - RepoSurge`,
+    description: repo.description ?? `${repo.full_name} star velocity on RepoSurge`,
   };
 }
 
@@ -37,16 +35,21 @@ export default function RepoDetailPage({
   searchParams: { period?: string };
 }) {
   const { slug } = params;
-  const period = periods.includes(searchParams.period ?? "") ? searchParams.period! : "week";
+  const period = periods.includes(searchParams.period ?? "")
+    ? searchParams.period!
+    : "week";
   const repo = getRepoDetails(slug, period);
 
   if (!repo) {
     return (
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <Link href="/" className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block">
-          &larr; back
+        <Link
+          href="/"
+          className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block"
+        >
+          Back
         </Link>
-        <p className="text-text-muted text-xs mt-8">repo not found</p>
+        <p className="text-text-muted text-sm mt-8">Repo not found</p>
       </main>
     );
   }
@@ -58,103 +61,109 @@ export default function RepoDetailPage({
   });
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-16">
+    <main className="max-w-7xl mx-auto px-4 md:px-6 py-12">
       <Link
         href="/"
-        className="text-text-muted text-xs hover:text-accent transition-colors mb-8 inline-block"
+        className="text-text-dim text-xs font-mono hover:text-accent transition-colors mb-8 inline-block"
       >
-        &larr; back
+        BACK
       </Link>
 
-      <div className="max-w-2xl">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-balance text-text-body">{repo.full_name}</h1>
-          <p className="text-text-muted text-sm mb-6">{repo.description ?? "-"}</p>
-
+      <div className="max-w-3xl">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-text-body tracking-tight">
+            {repo.full_name}
+          </h1>
+          <p className="text-text-muted text-sm mb-4">{repo.description ?? "—"}</p>
           <a
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-block text-xs bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 transition-colors mb-10"
+            className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 transition-colors"
           >
-            view on github
+            VIEW ON GITHUB
           </a>
+        </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
-              <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">stars</p>
-              <p className="text-lg font-bold tabular-nums data-mono text-text-body">
-                {repo.stars.toLocaleString("en-US")}
-              </p>
-            </div>
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
-              <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">gained</p>
-              <p
-                className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
-              >
-                {repo.stars_gained !== null
-                  ? (repo.stars_gained > 0 ? "+" : "") +
-                    repo.stars_gained.toLocaleString("en-US")
-                  : "\u2014"}
-              </p>
-            </div>
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
-              <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">velocity</p>
-              <p
-                className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
-              >
-                {formatVelocity(repo.velocity)}
-              </p>
-            </div>
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
-              <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">7d gain</p>
-              <p
-                className={`text-lg font-bold tabular-nums data-mono text-text-body ${gainedColor(repo.stars_gained ?? 0)}`}
-              >
-                {repo.gained7d !== null
-                  ? (repo.gained7d > 0 ? "+" : "") +
-                    repo.gained7d.toLocaleString("en-US")
-                  : "\u2014"}
-              </p>
-            </div>
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-3">
-              <p className="text-text-muted/60 text-[10px] sm:text-xs mb-1">created</p>
-              <p className="text-lg font-bold tabular-nums data-mono text-text-body">
-                {createdDate}
-              </p>
-            </div>
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
+          <div className="card p-3">
+            <p className="section-label mb-1">Stars</p>
+            <p className="data-mono text-lg font-bold tabular-nums text-text-body">
+              {repo.stars.toLocaleString("en-US")}
+            </p>
           </div>
-
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-text-muted/60 text-[10px] mr-1">period:</span>
-            {periods.map((p) =>
-              period === p ? (
-                <span
-                  key={p}
-                  className="rounded-full px-3 py-1 text-xs bg-accent text-white font-medium"
-                >
-                  {periodLabels[p]}
-                </span>
-              ) : (
-                <Link
-                  key={p}
-                  href={`/repo/${slug}?period=${p}`}
-                  className="rounded-full px-3 py-1 text-xs bg-surface border border-white/[0.06] text-text-muted hover:text-text-body transition-colors duration-300"
-                >
-                  {periodLabels[p]}
-                </Link>
-              ),
-            )}
+          <div className="card p-3">
+            <p className="section-label mb-1">Gained</p>
+            <p
+              className={`data-mono text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained ?? 0)}`}
+            >
+              {repo.stars_gained !== null
+                ? (repo.stars_gained > 0 ? "+" : "") +
+                  repo.stars_gained.toLocaleString("en-US")
+                : "—"}
+            </p>
           </div>
-
-          <div>
-            <p className="text-text-muted/60 text-[10px] mb-3">star history</p>
-            <div className="bg-surface border border-white/[0.06] rounded-xl p-4">
-              <div className="h-40 w-full">
-                <StarChart history={repo.history} period={period} />
-              </div>
-            </div>
+          <div className="card p-3">
+            <p className="section-label mb-1">Velocity</p>
+            <p
+              className={`data-mono text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained ?? 0)}`}
+            >
+              {formatVelocity(repo.velocity)}
+              <span className="text-text-dim text-xs ml-0.5">/d</span>
+            </p>
+          </div>
+          <div className="card p-3">
+            <p className="section-label mb-1">7d gain</p>
+            <p
+              className={`data-mono text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained ?? 0)}`}
+            >
+              {repo.gained7d !== null
+                ? (repo.gained7d > 0 ? "+" : "") +
+                  repo.gained7d.toLocaleString("en-US")
+                : "—"}
+            </p>
+          </div>
+          <div className="card p-3">
+            <p className="section-label mb-1">Created</p>
+            <p className="data-mono text-lg font-bold tabular-nums text-text-body">
+              {createdDate}
+            </p>
           </div>
         </div>
+
+        {/* Period selector */}
+        <div className="flex items-center gap-2 mb-6">
+          <span className="section-label mr-1">Period:</span>
+          {periods.map((p) =>
+            period === p ? (
+              <span
+                key={p}
+                className="rounded-full px-3 py-1 text-xs bg-accent text-white font-medium"
+              >
+                {periodLabels[p]}
+              </span>
+            ) : (
+              <Link
+                key={p}
+                href={`/repo/${slug}?period=${p}`}
+                className="rounded-full px-3 py-1 text-xs bg-surface border border-border text-text-muted hover:text-text-body transition-colors duration-200"
+              >
+                {periodLabels[p]}
+              </Link>
+            )
+          )}
+        </div>
+
+        {/* Chart */}
+        <div className="card p-4">
+          <p className="section-label mb-3">Star history</p>
+          <div className="h-40 w-full">
+            <StarChart history={repo.history} period={period} />
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
