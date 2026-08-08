@@ -11,6 +11,7 @@ import RepoBottomSheet from "./RepoBottomSheet";
 import CompareChart from "./CompareChart";
 import { ToastProvider, useToast } from "./Toast";
 import ShortcutsModal from "./ShortcutsModal";
+import EmptyState from "./EmptyState";
 import type { SortKey } from "@/lib/repo-filter";
 
 export default function RepoList({
@@ -234,26 +235,19 @@ function RepoListContent({
 
         {/* List or empty state */}
         {list.filtered.length === 0 ? (
-          <div className="py-20 text-center">
-            <div className="inline-flex flex-col items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-surface-elevated border border-border flex items-center justify-center animate-float">
-                <span className="text-text-dim text-lg">◐</span>
-              </div>
-              <p className="text-text-muted text-sm">
-                No repos match &ldquo;{list.search}&rdquo;
-              </p>
-              <button
-                onClick={() => {
-                  list.setSearch("");
-                  list.setLangFilter(null);
-                  list.setCatFilter(null);
-                }}
-                className="text-accent text-xs hover:underline"
-              >
-                Clear filters
-              </button>
-            </div>
-          </div>
+          <EmptyState
+            icon="⌕"
+            title={`No repos match "${list.search}"`}
+            description="Try adjusting your search or filters."
+            action={{
+              label: "Clear filters",
+              onClick: () => {
+                list.setSearch("");
+                list.setLangFilter(null);
+                list.setCatFilter(null);
+              },
+            }}
+          />
         ) : (
           <div className={isMobile ? "flex flex-col gap-3" : "flex flex-col gap-px"}>
             {list.sorted

@@ -17,7 +17,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
     >
       <Link
         href={`/repo/${repo.slug}`}
-        className="group grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 items-center px-4 py-3.5 rounded-xl hover:bg-surface-elevated/60 transition-all duration-400 ease-out-expo border border-transparent hover:border-border"
+        className="group grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 items-center px-4 py-3.5 rounded-xl hover:bg-surface-elevated/60 transition-all duration-400 ease-out-expo hover:shadow-[inset_0_0_0_1px_var(--border)]"
       >
         <span className="data-mono text-text-dim text-sm tabular-nums">{repo.rank}</span>
 

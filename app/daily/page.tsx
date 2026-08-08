@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { getRepos, getStats } from "@/lib/db";
 import StatsBar from "@/components/StatsBar";
 import RepoList from "@/components/RepoList";
+import EmptyState from "@/components/EmptyState";
 
 export const revalidate = 3600;
 
@@ -25,10 +26,12 @@ export default function DailyPage() {
       </div>
 
       {empty ? (
-        <div className="py-24 text-center">
-          <p className="text-text-muted text-sm">No data for the last 24 hours</p>
-          <p className="text-text-dim text-xs mt-1">Daily data is updated once per day. Check back tomorrow.</p>
-        </div>
+        <EmptyState
+          icon="◐"
+          title="No data for the last 24 hours"
+          description="Daily data is updated once per day. Check back tomorrow or view a different period."
+          action={{ label: "View weekly", href: "/weekly" }}
+        />
       ) : (
         <RepoList repos={{ day, week, month }} defaultPeriod="day" />
       )}

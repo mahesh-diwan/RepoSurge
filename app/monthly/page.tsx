@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { getRepos, getStats } from "@/lib/db";
 import StatsBar from "@/components/StatsBar";
 import RepoList from "@/components/RepoList";
+import EmptyState from "@/components/EmptyState";
 
 export const revalidate = 3600;
 
@@ -25,10 +26,12 @@ export default function MonthlyPage() {
       </div>
 
       {empty ? (
-        <div className="py-24 text-center">
-          <p className="text-text-muted text-sm">No data for the last 30 days</p>
-          <p className="text-text-dim text-xs mt-1">Monthly data aggregates on a rolling 30-day window.</p>
-        </div>
+        <EmptyState
+          icon="◐"
+          title="No data for the last 30 days"
+          description="Monthly data aggregates on a rolling 30-day window. Check back soon."
+          action={{ label: "View weekly", href: "/weekly" }}
+        />
       ) : (
         <RepoList repos={{ day, week, month }} defaultPeriod="month" />
       )}
