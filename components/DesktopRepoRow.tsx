@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import InteractiveSparkline from "./InteractiveSparkline";
+import Sparkline from "./Sparkline";
 import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
@@ -75,7 +75,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
 
         {/* Sparkline */}
         <div className="flex justify-end">
-          <InteractiveSparkline data={repo.sparkline} width={110} height={28} />
+          <Sparkline data={repo.sparkline} width={110} height={28} variant="inline" />
         </div>
 
         {/* Rank change */}

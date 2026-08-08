@@ -81,17 +81,32 @@ export function useRepoList(
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
 
-  // Sync state to URL (debounced for search)
+  // Sync non-search params immediately
   useEffect(() => {
-    const params = new URLSearchParams();
-    if (search) params.set("q", search);
+    const params = new URLSearchParams(searchParams);
     if (sortKey) params.set("sort", sortKey);
+    else params.delete("sort");
     if (sortDir === "desc") params.set("dir", "desc");
+    else params.delete("dir");
     if (langFilters.length) params.set("langs", langFilters.join(","));
+    else params.delete("langs");
     if (catFilters.length) params.set("cats", catFilters.join(","));
+    else params.delete("cats");
     const url = params.toString() ? `?${params.toString()}` : window.location.pathname;
     router.replace(url, { scroll: false });
-  }, [search, sortKey, sortDir, langFilters, catFilters, router]);
+  }, [sortKey, sortDir, langFilters, catFilters, router, searchParams]);
+
+  // Debounce search param separately (150ms)
+  useEffect(() => {
+    const id = setTimeout(() => {
+      const params = new URLSearchParams(searchParams);
+      if (search) params.set("q", search);
+      else params.delete("q");
+      const url = params.toString() ? `?${params.toString()}` : window.location.pathname;
+      router.replace(url, { scroll: false });
+    }, 150);
+    return () => clearTimeout(id);
+  }, [search, router, searchParams]);
 
   const currentRepos = repos[period];
 

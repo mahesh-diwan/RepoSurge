@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import Link from "next/link";
 import { getRepoDetails, formatVelocity } from "@/lib/db";
-import StarChart from "@/components/StarChart";
+import Sparkline from "@/components/Sparkline";
 import { gainedColor } from "@/lib/gained-color";
 import ForecastBar from "@/components/ForecastBar";
 
@@ -165,7 +165,7 @@ export default function RepoDetailPage({
           <div className="card-core">
             <p className="section-label mb-3">Star history</p>
             <div className="h-40 w-full">
-              <StarChart history={repo.history} period={period} />
+              <Sparkline history={repo.history} period={period} variant="chart" />
             </div>
           </div>
         </div>

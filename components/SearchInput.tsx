@@ -13,9 +13,15 @@ export default function SearchInput({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Auto-focus on mount (desktop only)
   useEffect(() => {
-    if (autoFocus && window.matchMedia("(pointer: fine)").matches)
+    if (autoFocus && window.matchMedia("(pointer: fine)").matches) {
       inputRef.current?.focus();
+    }
+  }, [autoFocus]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();

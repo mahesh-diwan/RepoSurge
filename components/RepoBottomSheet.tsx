@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import InteractiveSparkline from "./InteractiveSparkline";
+import { useState, useEffect, useRef } from "react";
+import Sparkline from "./Sparkline";
 import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
@@ -15,8 +15,18 @@ export default function RepoBottomSheet({
   onClose: () => void;
 }) {
   const [active, setActive] = useState(false);
+  const prevRepo = useRef<string | null>(null);
 
-  if (repo && !active) setActive(true);
+  // Animate in when repo changes — effect, not render
+  useEffect(() => {
+    if (repo && repo.slug !== prevRepo.current) {
+      setActive(false);
+      // Force reflow then animate in
+      requestAnimationFrame(() => setActive(true));
+    }
+    prevRepo.current = repo?.slug ?? null;
+  }, [repo]);
+
   if (!repo) return null;
 
   return (
@@ -77,7 +87,7 @@ export default function RepoBottomSheet({
 
           <div>
             <p className="text-text-dim text-[10px] font-mono mb-2">TREND</p>
-            <InteractiveSparkline data={repo.sparkline} width={300} height={56} />
+            <Sparkline data={repo.sparkline} width={300} height={56} variant="inline" />
           </div>
 
           {repo.forecast && (
