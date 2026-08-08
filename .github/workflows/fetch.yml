@@ -55,7 +55,7 @@ jobs:
         run: npx tsx scripts/fetch-repos.ts
         timeout-minutes: 20
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Check if data changed
         if: steps.check_date.outputs.skip != 'true'

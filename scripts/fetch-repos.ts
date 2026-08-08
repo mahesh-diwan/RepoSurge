@@ -1,30 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { z } from "zod";
+import { detectCategory } from "../lib/repo-category";
 
 const GITHUB_API = "https://api.github.com";
 const OUTPUT = path.join(process.cwd(), "data", "repos.json");
 const REPOS_TO_FETCH = 50;
 const MAX_HISTORY = 90;
 
-const CATEGORY_KEYWORDS: Record<string, string[]> = {
-  ai: ["gpt", "llm", "transformer", "neural", "machine learning", "deep learning", "ai", "artificial intelligence", "language model", "token", "embedding", "rag", "diffusion", "stable diffusion"],
-  database: ["database", "sql", "postgres", "mysql", "sqlite", "redis", "mongodb", "cockroach", "dynamo", "cassandra", "neo4j", "duckdb"],
-  devtools: ["cli", "terminal", "compiler", "linter", "formatter", "debugger", "package manager", "bundler", "build tool", "ide", "editor"],
-  framework: ["framework", "react", "vue", "angular", "svelte", "nextjs", "next.js", "nuxt", "django", "rails", "spring", "laravel"],
-  infra: ["kubernetes", "k8s", "docker", "terraform", "ansible", "cloud", "aws", "gcp", "azure", "container", "orchestrator"],
-};
-
-function detectCategory(description: string | null): string | null {
-  if (!description) return null;
-  const lower = description.toLowerCase();
-  for (const [category, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
-    for (const kw of keywords) {
-      if (lower.includes(kw)) return category;
-    }
-  }
-  return null;
-}
 
 const GitHubRepoResponse = z.object({
   id: z.number(),
@@ -142,6 +125,14 @@ function todayStr(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+/**
+ * Returns true if the repo already has a history entry for today.
+ * Prevents duplicate entries when the script runs multiple times per day.
+ */
+function alreadyHasTodayHistory(repo: RepoRecord, today: string): boolean {
+  return repo.history.some((h) => h.recorded_at === today);
+}
+
 async function main(): Promise<number> {
   const today = todayStr();
   let store = readExisting();
@@ -180,14 +171,16 @@ async function main(): Promise<number> {
       existing.fetched_at = today;
       existing.isNew = false;
       existing.category = category;
-      existing.history.push({
-        stars: repo.stargazers_count,
-        recorded_at: today,
-      });
-      if (existing.history.length > MAX_HISTORY) {
-        existing.history = existing.history.slice(-MAX_HISTORY);
+      if (!alreadyHasTodayHistory(existing, today)) {
+        existing.history.push({
+          stars: repo.stargazers_count,
+          recorded_at: today,
+        });
+        if (existing.history.length > MAX_HISTORY) {
+          existing.history = existing.history.slice(-MAX_HISTORY);
+        }
+        existing.history.sort((a, b) => new Date(a.recorded_at).getTime() - new Date(b.recorded_at).getTime());
       }
-      existing.history.sort((a, b) => new Date(a.recorded_at).getTime() - new Date(b.recorded_at).getTime());
     } else {
       const history: HistoryRow[] = [];
       history.push({ stars: repo.stargazers_count, recorded_at: today });
