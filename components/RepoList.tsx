@@ -195,7 +195,7 @@ function RepoListContent({
 
         {/* Desktop column headers */}
         {!isMobile && (
-          <div className="grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 px-4 py-2 mb-1">
+          <div className="grid grid-cols-[40px_1fr_90px_100px_100px_130px_70px] gap-3 px-4 py-2 mb-1">
             <button
               onClick={() => list.handleSort("rank")}
               className="text-left hover:text-accent transition-colors duration-300"

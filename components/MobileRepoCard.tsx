@@ -16,8 +16,10 @@ export default function MobileRepoCard({
   index: number;
   onSelect: (r: RepoWithVelocity) => void;
 }) {
+  const isTop = index === 0;
+
   return (
-    <div className="animate-fade-up" style={{ animationDelay: `${Math.min(index * 30, 200)}ms` }}>
+    <div className="animate-fade-up" style={{ animationDelay: `${Math.min(index * 25, 200)}ms` }}>
       <Link
         href={`/repo/${repo.slug}`}
         onClick={(e) => {
@@ -27,10 +29,13 @@ export default function MobileRepoCard({
           }
         }}
       >
-        <div className="card p-4 active:scale-[0.98] transition-all duration-400 ease-out-expo hover:shadow-card-hover">
+        <div className={`card p-4 active:scale-[0.98] transition-all duration-400 ease-out-expo hover:shadow-card-hover ${
+          isTop ? "border-accent/20 bg-accent/[0.03]" : ""
+        }`}>
+          {/* Header row */}
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
-              <span className="data-mono text-text-dim text-xs shrink-0 tabular-nums">
+              <span className={`data-mono text-xs shrink-0 tabular-nums ${isTop ? "text-accent font-semibold" : "text-text-dim"}`}>
                 {repo.rank}
               </span>
               <span className="font-medium text-text-body text-sm truncate">
@@ -58,6 +63,7 @@ export default function MobileRepoCard({
             </div>
           </div>
 
+          {/* Meta row */}
           <div className="flex items-center gap-2 mb-3">
             {repo.language && (
               <span className="flex items-center gap-1">
@@ -76,10 +82,12 @@ export default function MobileRepoCard({
             )}
           </div>
 
+          {/* Sparkline */}
           <div className="mb-3">
             <InteractiveSparkline data={repo.sparkline} width={120} height={36} />
           </div>
 
+          {/* Stats row */}
           <div className="flex items-center justify-between">
             <div>
               <p className="text-text-dim text-[10px] font-mono">GAINED</p>

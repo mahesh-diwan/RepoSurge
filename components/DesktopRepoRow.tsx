@@ -9,17 +9,27 @@ import { TrendingUp, TrendingDown, Minus } from "./icons";
 import HotStreak from "./HotStreak";
 
 export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity; index: number }) {
+  const isTop = index === 0;
+
   return (
     <div
       className="animate-fade-up"
-      style={{ animationDelay: `${Math.min(index * 15, 300)}ms` }}
+      style={{ animationDelay: `${Math.min(index * 12, 240)}ms` }}
     >
       <Link
         href={`/repo/${repo.slug}`}
-        className="group grid grid-cols-[36px_1fr_80px_90px_90px_130px_64px] gap-3 items-center px-4 py-3.5 rounded-xl hover:bg-surface-elevated/60 transition-all duration-400 ease-out-expo hover:shadow-[inset_0_0_0_1px_var(--border)]"
+        className={`group grid grid-cols-[40px_1fr_90px_100px_100px_130px_70px] gap-3 items-center px-4 py-3 rounded-xl transition-all duration-400 ease-out-expo border ${
+          isTop
+            ? "bg-accent/[0.03] border-accent/20 hover:bg-accent/[0.06]"
+            : "border-transparent hover:bg-surface-elevated/60 hover:shadow-[inset_0_0_0_1px_var(--border)]"
+        }`}
       >
-        <span className="data-mono text-text-dim text-sm tabular-nums">{repo.rank}</span>
+        {/* Rank */}
+        <span className={`data-mono text-sm tabular-nums ${isTop ? "text-accent font-semibold" : "text-text-dim"}`}>
+          {repo.rank}
+        </span>
 
+        {/* Repo info */}
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <span className="font-medium text-text-body text-sm truncate group-hover:text-accent transition-colors duration-300">
@@ -45,25 +55,30 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
           </div>
         </div>
 
+        {/* Stars */}
         <span className="data-mono text-text-body text-sm text-right tabular-nums">
           {(repo.stars / 1000).toFixed(1)}K
         </span>
 
+        {/* Gained */}
         <span className={`data-mono text-sm text-right tabular-nums ${gainedColor(repo.stars_gained)}`}>
           {repo.stars_gained != null
             ? `${repo.stars_gained > 0 ? "+" : ""}${repo.stars_gained.toLocaleString()}`
             : "—"}
         </span>
 
+        {/* Velocity */}
         <span className="data-mono text-text-muted text-sm text-right tabular-nums">
           {repo.velocity != null ? `${repo.velocity}` : "—"}
           <span className="text-text-dim text-[10px] ml-0.5">/d</span>
         </span>
 
+        {/* Sparkline */}
         <div className="flex justify-end">
           <InteractiveSparkline data={repo.sparkline} width={110} height={28} />
         </div>
 
+        {/* Rank change */}
         <div className="text-right">
           {repo.rankChange != null ? (
             <span
@@ -75,7 +90,12 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
                   : "text-text-dim"
               }`}
               style={{
-                transform: repo.rankChange > 0 ? "translateY(-1px)" : repo.rankChange < 0 ? "translateY(1px)" : "translateY(0)",
+                transform:
+                  repo.rankChange > 0
+                    ? "translateY(-1px)"
+                    : repo.rankChange < 0
+                    ? "translateY(1px)"
+                    : "translateY(0)",
               }}
             >
               {repo.rankChange > 0 ? (
