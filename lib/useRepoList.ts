@@ -4,8 +4,8 @@ import { useState, useMemo, useCallback } from "react";
 import type { RepoWithVelocity } from "./db";
 import { filterByCategory, filterByLanguage, searchRepos, sortRepos, type SortKey, type SortDir } from "./repo-filter";
 
-function applyFilters(repos: RepoWithVelocity[], search: string, lang: string | null, cat: string | null): RepoWithVelocity[] {
-  return searchRepos(filterByLanguage(filterByCategory(repos, cat), lang), search);
+function applyFilters(repos: RepoWithVelocity[], search: string, langs: string[] | null, cats: string[] | null): RepoWithVelocity[] {
+  return searchRepos(filterByLanguage(filterByCategory(repos, cats), langs), search);
 }
 
 export type Period = "day" | "week" | "month";
@@ -16,8 +16,8 @@ export interface UseRepoListResult {
   search: string;
   sortKey: SortKey | null;
   sortDir: SortDir;
-  langFilter: string | null;
-  catFilter: string | null;
+  langFilters: string[];
+  catFilters: string[];
   showAll: boolean;
   selectedRepo: RepoWithVelocity | null;
   compareMode: boolean;
@@ -36,8 +36,9 @@ export interface UseRepoListResult {
   setPeriod: (p: Period) => void;
   setSearch: (s: string) => void;
   handleSort: (key: SortKey) => void;
-  setLangFilter: (l: string | null) => void;
-  setCatFilter: (c: string | null) => void;
+  toggleLangFilter: (lang: string) => void;
+  toggleCatFilter: (cat: string) => void;
+  clearFilters: () => void;
   setShowAll: (v: boolean) => void;
   setSelectedRepo: (r: RepoWithVelocity | null) => void;
   toggleCompareMode: () => void;
@@ -46,6 +47,8 @@ export interface UseRepoListResult {
   moveFocus: (delta: number) => void;
   toggleShortcuts: () => void;
   closeShortcuts: () => void;
+  // derived flags
+  compareFull: boolean;
 }
 
 export function useRepoList(
@@ -56,8 +59,8 @@ export function useRepoList(
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>("asc");
-  const [langFilter, setLangFilter] = useState<string | null>(null);
-  const [catFilter, setCatFilter] = useState<string | null>(null);
+  const [langFilters, setLangFilters] = useState<string[]>([]);
+  const [catFilters, setCatFilters] = useState<string[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [selectedRepo, setSelectedRepo] = useState<RepoWithVelocity | null>(null);
   const [compareMode, setCompareMode] = useState(false);
@@ -84,9 +87,27 @@ export function useRepoList(
   }, [currentRepos]);
 
   const filtered = useMemo(
-    () => applyFilters(currentRepos, search, langFilter, catFilter),
-    [currentRepos, search, langFilter, catFilter]
+    () => applyFilters(currentRepos, search, langFilters, catFilters),
+    [currentRepos, search, langFilters, catFilters]
   );
+
+  const toggleLangFilter = useCallback((lang: string) => {
+    setLangFilters((prev) =>
+      prev.includes(lang) ? prev.filter((l) => l !== lang) : [...prev, lang]
+    );
+  }, []);
+
+  const toggleCatFilter = useCallback((cat: string) => {
+    setCatFilters((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }, []);
+
+  const clearFilters = useCallback(() => {
+    setLangFilters([]);
+    setCatFilters([]);
+    setSearch("");
+  }, []);
 
   const sorted = useMemo(
     () => sortRepos(filtered, sortKey, sortDir),
@@ -116,13 +137,18 @@ export function useRepoList(
     });
   }, []);
 
+  const MAX_COMPARE = 3;
+
   const toggleCompareRepo = useCallback((repo: RepoWithVelocity) => {
     setCompareSet((prev) => {
       const exists = prev.find((r) => r.slug === repo.slug);
       if (exists) return prev.filter((r) => r.slug !== repo.slug);
+      if (prev.length >= MAX_COMPARE) return prev; // limit reached
       return [...prev, repo];
     });
   }, []);
+
+  const compareFull = compareSet.length >= MAX_COMPARE;
 
   const moveFocus = useCallback(
     (delta: number) => {
@@ -144,8 +170,8 @@ export function useRepoList(
     search,
     sortKey,
     sortDir,
-    langFilter,
-    catFilter,
+    langFilters,
+    catFilters,
     showAll,
     selectedRepo,
     compareMode,
@@ -160,8 +186,9 @@ export function useRepoList(
     setPeriod,
     setSearch,
     handleSort,
-    setLangFilter,
-    setCatFilter,
+    toggleLangFilter,
+    toggleCatFilter,
+    clearFilters,
     setShowAll,
     setSelectedRepo,
     toggleCompareMode,
@@ -170,5 +197,6 @@ export function useRepoList(
     moveFocus,
     toggleShortcuts,
     closeShortcuts,
+    compareFull,
   };
 }

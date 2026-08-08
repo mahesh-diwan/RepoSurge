@@ -12,26 +12,42 @@ export type SortKey =
 
 export type SortDir = "asc" | "desc";
 
+/**
+ * Simple fuzzy match: checks if all characters of the query appear
+ * in order within the target string. Tolerant of typos and partial input.
+ */
+function fuzzyMatch(target: string, query: string): boolean {
+  const t = target.toLowerCase();
+  const q = query.toLowerCase().trim();
+  if (!q) return true;
+  if (t.includes(q)) return true; // fast path for substring match
+
+  let qi = 0;
+  for (let i = 0; i < t.length && qi < q.length; i++) {
+    if (t[i] === q[qi]) qi++;
+  }
+  return qi === q.length;
+}
+
 export function searchRepos(repos: RepoWithVelocity[], query: string): RepoWithVelocity[] {
   if (!query) return repos;
-  const q = query.toLowerCase();
-  return repos.filter((r) => r.full_name.toLowerCase().includes(q));
+  return repos.filter((r) => fuzzyMatch(r.full_name, query));
 }
 
 export function filterByLanguage(
   repos: RepoWithVelocity[],
-  lang: string | null
+  langs: string[] | null
 ): RepoWithVelocity[] {
-  if (!lang) return repos;
-  return repos.filter((r) => r.language === lang);
+  if (!langs || langs.length === 0) return repos;
+  return repos.filter((r) => r.language && langs.includes(r.language));
 }
 
 export function filterByCategory(
   repos: RepoWithVelocity[],
-  cat: string | null
+  cats: string[] | null
 ): RepoWithVelocity[] {
-  if (!cat) return repos;
-  return repos.filter((r) => r.category === cat);
+  if (!cats || cats.length === 0) return repos;
+  return repos.filter((r) => r.category && cats.includes(r.category));
 }
 
 export function sortRepos(
@@ -64,5 +80,3 @@ export function sortRepos(
     }
   });
 }
-
-

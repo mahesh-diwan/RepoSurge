@@ -112,6 +112,11 @@ function RepoListContent({
               }`}
             >
               {list.compareMode ? "DONE" : "COMPARE"}
+              {list.compareMode && (
+                <span className="ml-1.5 text-text-dim">
+                  {list.compareSet.length}/3
+                </span>
+              )}
             </button>
             <button
               onClick={() => downloadCSV(list.sorted)}
@@ -147,24 +152,24 @@ function RepoListContent({
         {(list.allCategories.length > 0 || list.allLanguages.length > 0) && (
           <div className="flex flex-wrap gap-2 mb-6">
             <button
-              onClick={() => {
-                list.setCatFilter(null);
-                list.setLangFilter(null);
-              }}
+              onClick={list.clearFilters}
               className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-400 ease-out-expo active:scale-[0.97] ${
-                list.catFilter === null && list.langFilter === null
+                list.catFilters.length === 0 && list.langFilters.length === 0
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-border text-text-dim hover:text-text-muted"
               }`}
             >
               ALL
+              {(list.catFilters.length + list.langFilters.length) > 0 && (
+                <span className="ml-1 text-accent">({list.catFilters.length + list.langFilters.length})</span>
+              )}
             </button>
             {list.allCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => list.setCatFilter(cat === list.catFilter ? null : cat)}
+                onClick={() => list.toggleCatFilter(cat)}
                 className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-400 ease-out-expo active:scale-[0.97] ${
-                  list.catFilter === cat
+                  list.catFilters.includes(cat)
                     ? "bg-accent/10 border-accent/30 text-accent"
                     : "border-border text-text-dim hover:text-text-muted"
                 }`}
@@ -175,9 +180,9 @@ function RepoListContent({
             {list.allLanguages.map((lang) => (
               <button
                 key={lang}
-                onClick={() => list.setLangFilter(lang === list.langFilter ? null : lang)}
+                onClick={() => list.toggleLangFilter(lang)}
                 className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-400 ease-out-expo active:scale-[0.97] ${
-                  list.langFilter === lang
+                  list.langFilters.includes(lang)
                     ? "bg-accent/10 border-accent/30 text-accent"
                     : "border-border text-text-dim hover:text-text-muted"
                 }`}
@@ -241,11 +246,7 @@ function RepoListContent({
             description="Try adjusting your search or filters."
             action={{
               label: "Clear filters",
-              onClick: () => {
-                list.setSearch("");
-                list.setLangFilter(null);
-                list.setCatFilter(null);
-              },
+              onClick: list.clearFilters,
             }}
           />
         ) : (
