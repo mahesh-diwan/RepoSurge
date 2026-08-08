@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getRepoDetails, formatVelocity } from "@/lib/db";
 import StarChart from "@/components/StarChart";
 import { gainedColor } from "@/lib/gained-color";
+import ForecastBar from "@/components/ForecastBar";
 
 const periods = ["day", "week", "month"];
 const periodLabels: Record<string, string> = { day: "Daily", week: "Weekly", month: "Monthly" };
@@ -168,6 +169,16 @@ export default function RepoDetailPage({
             </div>
           </div>
         </div>
+
+        {/* Forecast */}
+        {repo.forecast && (
+          <div className="mt-4 card-shell">
+            <div className="card-core">
+              <p className="section-label mb-3">Forecast</p>
+              <ForecastBar forecast={repo.forecast} currentStars={repo.stars} />
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

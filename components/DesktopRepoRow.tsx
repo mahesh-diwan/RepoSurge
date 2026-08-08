@@ -5,11 +5,10 @@ import InteractiveSparkline from "./InteractiveSparkline";
 import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
-import { Flame, TrendingUp, TrendingDown, Minus } from "./icons";
+import { TrendingUp, TrendingDown, Minus } from "./icons";
+import HotStreak from "./HotStreak";
 
 export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity; index: number }) {
-  const isHot = (repo.stars_gained ?? 0) > 1000;
-
   return (
     <div
       className="animate-fade-up"
@@ -26,7 +25,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
             <span className="font-medium text-text-body text-sm truncate group-hover:text-accent transition-colors duration-300">
               {repo.full_name}
             </span>
-            {isHot && <Flame className="w-3.5 h-3.5 text-accent shrink-0" />}
+            <HotStreak velocity={repo.velocity} />
             {repo.isNew && (
               <span className="px-1.5 py-0.5 text-[9px] font-mono bg-info/10 text-info border border-info/20 rounded-full">
                 NEW

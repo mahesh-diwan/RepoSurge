@@ -4,7 +4,8 @@ import InteractiveSparkline from "./InteractiveSparkline";
 import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
-import { Flame, TrendingUp, TrendingDown, Minus } from "./icons";
+import { TrendingUp, TrendingDown, Minus } from "./icons";
+import HotStreak from "./HotStreak";
 
 export default function MobileRepoCard({
   repo,
@@ -15,8 +16,6 @@ export default function MobileRepoCard({
   index: number;
   onSelect: (r: RepoWithVelocity) => void;
 }) {
-  const isHot = (repo.stars_gained ?? 0) > 1000;
-
   return (
     <div className="animate-fade-up" style={{ animationDelay: `${Math.min(index * 30, 200)}ms` }}>
       <Link
@@ -28,7 +27,7 @@ export default function MobileRepoCard({
           }
         }}
       >
-        <div className="card p-4 active:scale-[0.98] transition-all duration-200 hover:shadow-card-hover">
+        <div className="card p-4 active:scale-[0.98] transition-all duration-400 ease-out-expo hover:shadow-card-hover">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2 min-w-0 flex-1">
               <span className="data-mono text-text-dim text-xs shrink-0 tabular-nums">
@@ -37,7 +36,7 @@ export default function MobileRepoCard({
               <span className="font-medium text-text-body text-sm truncate">
                 {repo.full_name}
               </span>
-              {isHot && <Flame className="w-3.5 h-3.5 text-accent shrink-0" />}
+              <HotStreak velocity={repo.velocity} />
             </div>
             <div className="flex items-center gap-1 shrink-0 ml-2">
               {repo.rankChange != null ? (

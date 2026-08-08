@@ -5,6 +5,7 @@ import { languageColor } from "@/lib/language-color";
 import { gainedColor } from "@/lib/gained-color";
 import type { RepoWithVelocity } from "@/lib/db";
 import { X } from "./icons";
+import ForecastBar from "./ForecastBar";
 
 export default function RepoBottomSheet({
   repo,
@@ -81,8 +82,8 @@ export default function RepoBottomSheet({
 
           {repo.forecast && (
             <div className="card p-3">
-              <p className="text-text-dim text-[10px] font-mono mb-1">FORECAST</p>
-              <p className="data-mono text-sm text-text-body">{repo.forecast}</p>
+              <p className="text-text-dim text-[10px] font-mono mb-2">FORECAST</p>
+              <ForecastBar forecast={repo.forecast} currentStars={repo.stars} />
             </div>
           )}
         </div>
