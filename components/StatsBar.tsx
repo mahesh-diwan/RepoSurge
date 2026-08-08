@@ -10,7 +10,7 @@ interface StatsBarProps {
   };
 }
 
-export default function StatsBar({ period = "week", stats }: StatsBarProps) {
+export default function StatsBar({ period = "period", stats }: StatsBarProps) {
   if (!stats) return null;
 
   const { totalRepos, totalStars, totalGained } = stats;

@@ -30,26 +30,26 @@ export default function Home() {
                       {topRepo.full_name}
                     </h2>
                     <div className="flex items-center gap-3 mt-2">
-                      <span className="data-mono text-accent font-semibold text-lg">
+                      <span className="data-mono text-accent font-bold text-lg">
                         +{topRepo.stars_gained?.toLocaleString()} ★
                       </span>
                       {topRepo.rankChange != null && topRepo.rankChange > 0 && (
-                        <span className="text-positive data-mono text-xs">
+                        <span className="text-positive data-mono text-sm font-medium">
                           ▲ {topRepo.rankChange} ranks
                         </span>
                       )}
                       {topRepo.velocity != null && (
-                        <span className="text-text-dim data-mono text-xs">
+                        <span className="text-text-dim data-mono text-sm">
                           {topRepo.velocity}/day
                         </span>
                       )}
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="data-mono text-3xl md:text-4xl font-bold text-text-body tabular-nums leading-none">
+                    <p className="data-mono text-3xl md:text-4xl font-black text-text-body tabular-nums leading-none tracking-tight">
                       #{topRepo.rank}
                     </p>
-                    <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">WORLDWIDE</p>
+                    <p className="text-text-dim text-[10px] font-mono mt-1.5 tracking-wider">WORLDWIDE</p>
                   </div>
                 </div>
               </div>

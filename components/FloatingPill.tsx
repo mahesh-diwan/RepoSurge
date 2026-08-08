@@ -13,7 +13,7 @@ export default function FloatingPill() {
       <div className="flex items-center justify-between gap-2 px-2 py-1.5 rounded-full bg-surface-elevated/80 backdrop-blur-xl border border-border shadow-card">
         <a
           href="/"
-          className="font-mono text-accent font-bold text-sm tracking-wider shrink-0 pl-2 transition-transform duration-500 ease-out-expo hover:scale-105"
+          className="font-mono text-accent font-bold text-sm tracking-tight shrink-0 pl-2 transition-transform duration-500 ease-out-expo hover:scale-105"
           title="RepoSurge"
         >
           [RS]

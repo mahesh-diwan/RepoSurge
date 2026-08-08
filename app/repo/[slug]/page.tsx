@@ -73,7 +73,7 @@ export default function RepoDetailPage({
       <div className="max-w-3xl">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-text-body tracking-tight text-balance">
+          <h1 className="text-2xl md:text-3xl font-black mb-2 text-text-body tracking-tight text-balance">
             {repo.full_name}
           </h1>
           <p className="text-text-muted text-sm mb-5">{repo.description ?? "—"}</p>

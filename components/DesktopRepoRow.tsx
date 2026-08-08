@@ -25,7 +25,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
         }`}
       >
         {/* Rank */}
-        <span className={`data-mono text-sm tabular-nums ${isTop ? "text-accent font-semibold" : "text-text-dim"}`}>
+        <span className={`data-mono text-sm tabular-nums ${isTop ? "text-accent font-bold" : "text-text-dim"}`}>
           {repo.rank}
         </span>
 
