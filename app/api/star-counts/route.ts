@@ -1,21 +1,8 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { getRepoNames } from "@/lib/repo-source";
 
 const cache = new Map<string, { data: any; ts: number }>();
 const CACHE_TTL = 120_000;
-
-function getRepoNames(): { owner: string; name: string }[] {
-  const file = path.join(process.cwd(), "data", "repos.json");
-  const raw = JSON.parse(fs.readFileSync(file, "utf8"));
-  const list = raw.repos ?? raw;
-  return (Array.isArray(list) ? list : [])
-    .filter((r: any) => r.full_name)
-    .map((r: any) => {
-      const [owner, name] = r.full_name.split("/");
-      return { owner, name };
-    });
-}
 
 export async function GET() {
   const now = Date.now();
@@ -26,7 +13,10 @@ export async function GET() {
   const repoNames = getRepoNames();
 
   const token = process.env.GITHUB_TOKEN;
-  const headers: Record<string, string> = { Accept: "application/vnd.github.v3+json", "User-Agent": "RepoSurge" };
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github.v3+json",
+    "User-Agent": "RepoSurge",
+  };
   if (token) headers.Authorization = `Bearer ${token}`;
 
   try {
@@ -48,13 +38,19 @@ export async function GET() {
         });
     }
 
-    const payload = { ok: true, data: { repos, timestamp: new Date().toISOString() } };
+    const payload = {
+      ok: true,
+      data: { repos, timestamp: new Date().toISOString() },
+    };
     cache.set("stars", { data: payload, ts: Date.now() });
     return NextResponse.json(payload);
   } catch {
     if (cached) return NextResponse.json(cached.data);
     return NextResponse.json(
-      { ok: false, error: { code: "fetch_failed", message: "Unable to fetch star counts" } },
+      {
+        ok: false,
+        error: { code: "fetch_failed", message: "Unable to fetch star counts" },
+      },
       { status: 503 },
     );
   }

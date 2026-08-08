@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useCallback } from "react";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 const SHORTCUTS = [
   { keys: ["↑", "↓"], desc: "Navigate repo list" },
@@ -19,7 +20,7 @@ export default function ShortcutsModal({
   open: boolean;
   onClose: () => void;
 }) {
-  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useFocusTrap<HTMLDivElement>(open);
 
   useEffect(() => {
     if (!open) return;
@@ -34,39 +35,14 @@ export default function ShortcutsModal({
     return () => document.removeEventListener("keydown", handler);
   }, [open, onClose]);
 
-  // Auto-focus dialog on mount
-  useEffect(() => {
-    if (open && dialogRef.current) {
-      dialogRef.current.focus();
-    }
-  }, [open]);
-
   const handleOverlayKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key !== "Tab") return;
     const dialog = dialogRef.current;
     if (!dialog) return;
-
-    const focusable = dialog.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusable.length === 0) {
-      e.preventDefault();
-      dialog.focus();
-      return;
-    }
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    } else if (document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  }, []);
+    // Focus trap is handled by useFocusTrap — this prevents Tab from
+    // escaping to the overlay behind the dialog
+    e.preventDefault();
+  }, [dialogRef]);
 
   if (!open) return null;
 

@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import {
   PERIOD_TO_DAYS,
   SPARKLINE_LENGTH,
@@ -12,28 +10,12 @@ import {
   computeAcceleration,
   computeStats,
 } from "./repo-compute";
+import { loadRaw } from "./repo-source";
+import type { RepoRecord, HistoryEntry } from "./repo-source";
 
 // ─── types ──────────────────────────────────────────────────────────────────
 
-export interface HistoryEntry {
-  stars: number;
-  recorded_at: string;
-}
-
-export interface RepoRecord {
-  full_name: string;
-  name: string;
-  owner: string;
-  description: string | null;
-  language: string | null;
-  url: string;
-  stars: number;
-  created_at: string;
-  fetched_at: string;
-  history: HistoryEntry[];
-  isNew?: boolean;
-  category?: string | null;
-}
+export type { RepoRecord, HistoryEntry };
 
 export interface RepoWithVelocity extends RepoRecord {
   rank: number;
@@ -49,16 +31,7 @@ export interface RepoWithVelocity extends RepoRecord {
   category: string | null;
 }
 
-// ─── data-source adapter ────────────────────────────────────────────────────
-
-function loadRaw(): { repos: RepoRecord[] } {
-  const file = path.join(process.cwd(), "data", "repos.json");
-  if (!fs.existsSync(file)) return { repos: [] };
-  const parsed = JSON.parse(fs.readFileSync(file, "utf8"));
-  const list = parsed.repos ?? parsed;
-  if (!Array.isArray(list)) return { repos: [] };
-  return { repos: list };
-}
+// ─── normalization ──────────────────────────────────────────────────────────
 
 function normalizeRepos(raw: RepoRecord[]): RepoRecord[] {
   return raw.map((r) => ({

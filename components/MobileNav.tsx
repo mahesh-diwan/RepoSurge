@@ -1,44 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import NavLinks from "./NavLinks";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
-  const dialogRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const focusable = dialog.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
-    );
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    first?.focus();
-
-    function trap(e: KeyboardEvent) {
-      if (e.key !== "Tab") return;
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last?.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first?.focus();
-        }
-      }
-    }
-
-    dialog.addEventListener("keydown", trap);
-    return () => dialog.removeEventListener("keydown", trap);
-  }, [open]);
+  const dialogRef = useFocusTrap<HTMLDivElement>(open);
 
   return (
     <>

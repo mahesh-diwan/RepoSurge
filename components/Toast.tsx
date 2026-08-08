@@ -5,6 +5,8 @@ import {
   useContext,
   useState,
   useCallback,
+  useRef,
+  useEffect,
   ReactNode,
 } from "react";
 
@@ -36,18 +38,39 @@ let nextId = 1;
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<ToastItem[]>([]);
+  const timeouts = useRef(new Map<number, ReturnType<typeof setTimeout>>());
 
-  const toast = useCallback((input: ToastInput) => {
-    const id = nextId++;
-    setItems((prev) => [...prev.slice(-2), { ...input, id }]);
-    setTimeout(() => {
-      setItems((prev) => prev.filter((t) => t.id !== id));
-    }, 4000);
+  // Clear all timeouts on unmount
+  useEffect(() => {
+    return () => {
+      for (const id of timeouts.current.values()) {
+        clearTimeout(id);
+      }
+      timeouts.current.clear();
+    };
   }, []);
 
   const dismiss = useCallback((id: number) => {
+    const timer = timeouts.current.get(id);
+    if (timer) {
+      clearTimeout(timer);
+      timeouts.current.delete(id);
+    }
     setItems((prev) => prev.filter((t) => t.id !== id));
   }, []);
+
+  const toast = useCallback(
+    (input: ToastInput) => {
+      const id = nextId++;
+      setItems((prev) => [...prev.slice(-2), { ...input, id }]);
+      const timer = setTimeout(() => {
+        timeouts.current.delete(id);
+        setItems((prev) => prev.filter((t) => t.id !== id));
+      }, 4000);
+      timeouts.current.set(id, timer);
+    },
+    [],
+  );
 
   return (
     <ToastContext.Provider value={{ toast }}>
