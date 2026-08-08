@@ -1,7 +1,8 @@
 import { getRepos, getStats } from "@/lib/db";
-import Header from "@/components/Header";
 import RepoList from "@/components/RepoList";
 import AnimatedNumber from "@/components/AnimatedNumber";
+import Logo from "@/components/Logo";
+import LiveIndicator from "@/components/LiveIndicator";
 
 export const revalidate = 3600;
 
@@ -16,12 +17,20 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <main className="max-w-7xl mx-auto">
         {/* Hero + Stats combined card */}
         <div className="px-4 md:px-6 mb-8">
           <div className="card-shell animate-fade-up">
             <div className="card-core">
+              {/* Card header with branding */}
+              <div className="flex items-center gap-2.5 mb-5">
+                <Logo className="w-6 h-6" />
+                <span className="text-sm font-bold text-text-body tracking-tight">
+                  REPO<span className="text-accent">SURGE</span>
+                </span>
+                <LiveIndicator />
+              </div>
+
               {/* Hero metric */}
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                 <div className="min-w-0">
