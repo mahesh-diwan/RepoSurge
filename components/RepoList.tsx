@@ -104,7 +104,7 @@ function RepoListContent({
           <div className="flex items-center gap-2">
             <button
               onClick={list.toggleCompareMode}
-              className={`px-3 py-2 text-[11px] font-mono rounded-lg border transition-all duration-200 ${
+              className={`px-3 py-2 text-[11px] font-mono rounded-lg border transition-all duration-200 active:scale-[0.97] ${
                 list.compareMode
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-border text-text-muted hover:border-border hover:text-text-body"
@@ -114,7 +114,7 @@ function RepoListContent({
             </button>
             <button
               onClick={() => downloadCSV(list.sorted)}
-              className="px-3 py-2 text-[11px] font-mono rounded-lg border border-border text-text-muted hover:border-border hover:text-text-body transition-all duration-200"
+              className="px-3 py-2 text-[11px] font-mono rounded-lg border border-border text-text-muted hover:border-border hover:text-text-body transition-all duration-200 active:scale-[0.97]"
             >
               EXPORT
             </button>
@@ -147,10 +147,10 @@ function RepoListContent({
                 list.setCatFilter(null);
                 list.setLangFilter(null);
               }}
-              className={`px-2.5 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-200 ${
+              className={`px-2.5 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-200 active:scale-[0.97] ${
                 list.catFilter === null && list.langFilter === null
                   ? "bg-accent/10 border-accent/30 text-accent"
-                  : "border-border text-text-dim hover:border-border hover:text-text-muted"
+                  : "border-border text-text-dim hover:text-text-muted"
               }`}
             >
               ALL

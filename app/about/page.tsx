@@ -18,21 +18,21 @@ export default function AboutPage() {
         Star velocity leaderboard for GitHub
       </p>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-3 mb-10">
-        <div className="card p-4 text-center">
-          <p className="data-mono text-2xl font-bold text-text-body tabular-nums">
+      {/* Stats - asymmetric layout, not 3 identical cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+        <div className="card p-4 sm:col-span-1">
+          <p className="data-mono text-2xl font-bold text-accent tabular-nums">
             {stats.totalRepos}
           </p>
           <p className="section-label mt-1">Repos tracked</p>
         </div>
-        <div className="card p-4 text-center">
+        <div className="card p-4">
           <p className="data-mono text-2xl font-bold text-text-body tabular-nums">
             {(stats.totalStars / 1000000).toFixed(1)}M
           </p>
           <p className="section-label mt-1">Total stars</p>
         </div>
-        <div className="card p-4 text-center">
+        <div className="card p-4 col-span-2 sm:col-span-1">
           <p className="data-mono text-2xl font-bold text-text-body tabular-nums">
             {stats.languages}
           </p>
@@ -74,8 +74,8 @@ export default function AboutPage() {
         <div className="card p-5">
           <p className="section-label mb-2">Data</p>
           <p className="text-text-dim text-xs leading-relaxed">
-            GitHub API · refreshed daily via GitHub Actions · Next.js 14 · React 18 ·
-            Tailwind CSS · TypeScript
+            GitHub API - refreshed daily via GitHub Actions - Next.js 14 - React 18 -
+            Tailwind CSS - TypeScript
           </p>
         </div>
       </div>

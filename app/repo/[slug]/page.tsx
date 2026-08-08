@@ -140,7 +140,7 @@ export default function RepoDetailPage({
             period === p ? (
               <span
                 key={p}
-                className="rounded-full px-3 py-1 text-xs bg-accent text-white font-medium"
+className="rounded-full px-3 py-1 text-xs bg-accent text-midnight font-medium"
               >
                 {periodLabels[p]}
               </span>

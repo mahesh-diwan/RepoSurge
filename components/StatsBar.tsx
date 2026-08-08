@@ -13,7 +13,8 @@ interface StatsBarProps {
 export default function StatsBar({ period = "week", stats }: StatsBarProps) {
   if (!stats) return null;
 
-  const { totalRepos, totalStars, totalGained } = stats;
+  const { totalRepos, totalStars, totalGained, languages } = stats;
+  const avgStars = totalRepos > 0 ? Math.round(totalStars / totalRepos) : 0;
 
   return (
     <div className="card p-5 md:p-6">
@@ -47,9 +48,9 @@ export default function StatsBar({ period = "week", stats }: StatsBarProps) {
         </div>
         <div className="bg-surface px-4 py-3 text-center">
           <p className="data-mono text-lg md:text-xl font-semibold text-text-body tabular-nums">
-            {(totalStars / 1000000).toFixed(1)}M
+            {avgStars >= 1000 ? `${(avgStars / 1000).toFixed(1)}K` : avgStars}
           </p>
-          <p className="text-text-dim text-[10px] font-mono mt-0.5">COMBINED</p>
+          <p className="text-text-dim text-[10px] font-mono mt-0.5">AVG/REPO</p>
         </div>
       </div>
     </div>
