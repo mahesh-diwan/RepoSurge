@@ -15,7 +15,7 @@ export default function Header() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tightest leading-none text-text-body">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tightest leading-none text-text-body text-balance">
               REPO<span className="text-accent">SURGE</span>
             </h1>
             <LiveIndicator />

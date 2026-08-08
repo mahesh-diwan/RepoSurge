@@ -72,7 +72,7 @@ export default function RepoDetailPage({
       <div className="max-w-3xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-text-body tracking-tight">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-text-body tracking-tight text-balance">
             {repo.full_name}
           </h1>
           <p className="text-text-muted text-sm mb-4">{repo.description ?? "—"}</p>
@@ -107,9 +107,7 @@ export default function RepoDetailPage({
           </div>
           <div className="card p-3">
             <p className="section-label mb-1">Velocity</p>
-            <p
-              className={`data-mono text-lg font-bold tabular-nums ${gainedColor(repo.stars_gained ?? 0)}`}
-            >
+            <p className="data-mono text-lg font-bold tabular-nums text-text-body">
               {formatVelocity(repo.velocity)}
               <span className="text-text-dim text-xs ml-0.5">/d</span>
             </p>
