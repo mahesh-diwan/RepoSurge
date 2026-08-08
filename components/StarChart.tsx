@@ -1,3 +1,5 @@
+import { scalePoints, pointsToPathD, pointsToFillD } from "@/lib/scale-points";
+
 function abbreviateNumber(n: number): string {
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
   if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
@@ -26,21 +28,16 @@ export default function StarChart(props: StarChartProps) {
 
   if (values.length < 2) return null;
 
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const range = max - min || 1;
-
-  const W = 180, H = 32;
+  const W = 180;
+  const H = 32;
   const pad = { top: 2, bottom: 4, left: 32, right: 4 };
-  const drawW = W - pad.left - pad.right;
+
+  const { points, min, max, range } = scalePoints(values, W, H, pad);
+  const lineD = "M " + pointsToPathD(points);
+  const fillD = pointsToFillD(points, H);
+
   const drawH = H - pad.top - pad.bottom;
-
-  const yPos = (v: number) => pad.top + (1 - (v - min) / range) * drawH;
-  const xPos = (i: number) => values.length > 1 ? pad.left + (i / (values.length - 1)) * drawW : pad.left;
-
-  const points = values.map((v, i) => `${xPos(i).toFixed(1)},${yPos(v).toFixed(1)}`);
-  const lineD = `M${points.join(" L")}`;
-  const fillD = `${lineD} L${xPos(values.length - 1).toFixed(1)},${pad.top + drawH} L${pad.left},${pad.top + drawH} Z`;
+  const yPos = (v: number) => pad.top + drawH - ((v - min) / range) * drawH;
 
   const yLabels = [min, (min + max) / 2, max];
 
@@ -61,7 +58,6 @@ export default function StarChart(props: StarChartProps) {
         const d = new Date(entry.recorded_at);
         if (period === "week") return d.toLocaleDateString("en-US", { weekday: "short" });
         if (period === "month") return `${d.getDate()}`;
-        if (period === "quarter") return `w${Math.ceil(d.getDate() / 7)}`;
         return `m${d.getMonth() + 1}`;
       }
     }
@@ -110,7 +106,7 @@ export default function StarChart(props: StarChartProps) {
       {xTickIndices.map((idx) => (
         <text
           key={idx}
-          x={xPos(idx)}
+          x={points[idx]?.x ?? 0}
           y={H - 1}
           textAnchor="middle"
           fill="rgba(91,127,255,0.2)"
@@ -120,13 +116,7 @@ export default function StarChart(props: StarChartProps) {
         </text>
       ))}
       {values.map((v, i) => (
-        <circle
-          key={i}
-          cx={xPos(i)}
-          cy={yPos(v)}
-          r="1.2"
-          fill="rgba(91,127,255,0.8)"
-        />
+        <circle key={i} cx={points[i].x} cy={points[i].y} r="1.2" fill="rgba(91,127,255,0.8)" />
       ))}
       <path d={fillD} fill={`url(#grad-${period})`} />
       <path d={lineD} fill="none" stroke="rgba(91,127,255,0.8)" strokeWidth="1" />
