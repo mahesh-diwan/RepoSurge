@@ -14,18 +14,22 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
   return (
     <div
       className="animate-fade-up"
-      style={{ animationDelay: `${Math.min(index * 12, 240)}ms` }}
+      style={{ animationDelay: `${Math.min(index * 10, 200)}ms` }}
     >
       <Link
         href={`/repo/${repo.slug}`}
-        className={`group grid grid-cols-[40px_1fr_90px_100px_100px_130px_70px] gap-3 items-center px-4 py-3 rounded-xl transition-all duration-400 ease-out-expo border ${
+        className={`group grid grid-cols-[36px_1fr_80px_90px_90px_120px_64px] gap-3 items-center px-4 py-2.5 rounded-xl transition-all duration-400 ease-out-expo border ${
           isTop
             ? "bg-accent/[0.03] border-accent/20 hover:bg-accent/[0.06]"
             : "border-transparent hover:bg-surface-elevated/60 hover:shadow-[inset_0_0_0_1px_var(--border)]"
         }`}
       >
-        {/* Rank */}
-        <span className={`data-mono text-sm tabular-nums ${isTop ? "text-accent font-bold" : "text-text-dim"}`}>
+        {/* Rank badge */}
+        <span className={`data-mono text-sm tabular-nums w-7 h-7 rounded-lg flex items-center justify-center ${
+          isTop
+            ? "bg-accent/10 text-accent font-bold"
+            : "bg-white/[0.03] text-text-dim"
+        }`}>
           {repo.rank}
         </span>
 
@@ -37,7 +41,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
             </span>
             <HotStreak velocity={repo.velocity} />
             {repo.isNew && (
-              <span className="px-1.5 py-0.5 text-[9px] font-mono bg-info/10 text-info border border-info/20 rounded-full">
+              <span className="px-1.5 py-0.5 text-[9px] font-mono bg-info/10 text-info border border-info/20 rounded-md">
                 NEW
               </span>
             )}
@@ -75,7 +79,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
 
         {/* Sparkline */}
         <div className="flex justify-end">
-          <Sparkline data={repo.sparkline} width={110} height={28} variant="inline" />
+          <Sparkline data={repo.sparkline} width={100} height={26} variant="inline" />
         </div>
 
         {/* Rank change */}
@@ -89,14 +93,6 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
                   ? "text-negative"
                   : "text-text-dim"
               }`}
-              style={{
-                transform:
-                  repo.rankChange > 0
-                    ? "translateY(-1px)"
-                    : repo.rankChange < 0
-                    ? "translateY(1px)"
-                    : "translateY(0)",
-              }}
             >
               {repo.rankChange > 0 ? (
                 <>

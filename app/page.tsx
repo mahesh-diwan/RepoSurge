@@ -1,7 +1,7 @@
 import { getRepos, getStats } from "@/lib/db";
 import Header from "@/components/Header";
-import StatsBar from "@/components/StatsBar";
 import RepoList from "@/components/RepoList";
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 export const revalidate = 3600;
 
@@ -18,48 +18,58 @@ export default function Home() {
     <>
       <Header />
       <main className="max-w-7xl mx-auto">
-        {/* Hero: live proof, not promise */}
-        {topRepo && (
-          <div className="px-4 md:px-6 mb-8">
-            <div className="card-shell animate-fade-up">
-              <div className="card-core overflow-hidden">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div className="min-w-0 overflow-hidden">
-                    <p className="section-label mb-2">This week's top gainer</p>
-                    <h2 className="text-xl md:text-2xl font-bold text-text-body tracking-tight truncate">
-                      {topRepo.full_name}
-                    </h2>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
-                      <span className="data-mono text-accent font-bold text-lg">
-                        +{topRepo.stars_gained?.toLocaleString()} ★
-                      </span>
-                      {topRepo.rankChange != null && topRepo.rankChange > 0 && (
-                        <span className="text-positive data-mono text-sm font-medium">
-                          ▲ {topRepo.rankChange} ranks
-                        </span>
-                      )}
-                      {topRepo.velocity != null && (
-                        <span className="text-text-dim data-mono text-sm">
-                          {topRepo.velocity}/day
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <p className="data-mono text-3xl md:text-4xl font-black text-text-body tabular-nums leading-none tracking-tight">
-                      #{topRepo.rank}
-                    </p>
-                    <p className="text-text-dim text-[10px] font-mono mt-1.5 tracking-wider">WORLDWIDE</p>
-                  </div>
+        {/* Hero + Stats combined card */}
+        <div className="px-4 md:px-6 mb-8">
+          <div className="card-shell animate-fade-up">
+            <div className="card-core">
+              {/* Hero metric */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                <div className="min-w-0">
+                  <p className="section-label mb-2">Top gainer this week</p>
+                  <h2 className="text-xl md:text-2xl font-bold text-text-body tracking-tight truncate">
+                    {topRepo?.full_name ?? "—"}
+                  </h2>
+                </div>
+                <div className="text-left sm:text-right shrink-0">
+                  <p className="data-mono text-4xl md:text-5xl font-black text-accent tabular-nums leading-none tracking-tight">
+                    +<AnimatedNumber value={topRepo?.stars_gained ?? 0} />
+                  </p>
+                  <p className="text-text-dim text-[10px] font-mono mt-1.5 tracking-wider">STARS THIS WEEK</p>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-border mb-5" />
+
+              {/* KPI tiles */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden">
+                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                  <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
+                    <AnimatedNumber value={stats.totalRepos} />
+                  </p>
+                  <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">REPOS</p>
+                </div>
+                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                  <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
+                    <AnimatedNumber value={stats.totalStars} />
+                  </p>
+                  <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">TOTAL STARS</p>
+                </div>
+                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                  <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
+                    {stats.totalRepos > 0 ? `${Math.round(stats.totalStars / stats.totalRepos / 1000).toFixed(1)}K` : "—"}
+                  </p>
+                  <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">AVG/REPO</p>
+                </div>
+                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                  <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
+                    {stats.languages}
+                  </p>
+                  <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">LANGUAGES</p>
                 </div>
               </div>
             </div>
           </div>
-        )}
-
-        {/* Stats overview */}
-        <div className="px-4 md:px-6 mb-8">
-          <StatsBar period="week" stats={stats} />
         </div>
 
         {empty ? (
