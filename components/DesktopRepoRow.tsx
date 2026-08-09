@@ -18,11 +18,11 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
     >
       <Link
         href={`/repo/${repo.slug}`}
-        className={`group grid grid-cols-[36px_1fr_80px_90px_90px_120px_64px] gap-3 items-center px-4 py-2.5 rounded-xl transition-all duration-400 ease-out-expo border ${
+        className={`group grid grid-cols-[36px_1fr_80px_90px_90px_120px_64px] gap-3 items-center px-4 py-2.5 rounded-xl transition-all duration-250 ease-spring border ${
           isTop
             ? "bg-accent/[0.03] border-accent/20 hover:bg-accent/[0.06]"
-            : "border-transparent hover:bg-surface-elevated/60 hover:shadow-[inset_0_0_0_1px_var(--border)]"
-        }`}
+            : "border-transparent hover:bg-surface-elevated/50 hover:shadow-[inset_0_0_0_1px_var(--border)]"
+        } active:scale-[0.99] active:bg-surface-elevated/40`}
       >
         {/* Rank badge */}
         <span className={`data-mono text-sm tabular-nums w-7 h-7 rounded-lg flex items-center justify-center ${

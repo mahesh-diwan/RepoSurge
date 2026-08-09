@@ -47,14 +47,16 @@ const config: Config = {
         glow: "0 0 30px rgba(217,119,6,0.1)",
       },
       transitionTimingFunction: {
+        "spring": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "spring-bounce": "cubic-bezier(0.34, 1.56, 0.64, 1)",
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
         "in-out-quint": "cubic-bezier(0.83, 0, 0.17, 1)",
       },
       transitionDuration: {
+        "150": "150ms",
+        "250": "250ms",
         "400": "400ms",
         "600": "600ms",
-        "800": "800ms",
-        "1200": "1200ms",
       },
       animation: {
         "surge-pulse": "surge-pulse 2s ease-in-out infinite",
