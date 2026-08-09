@@ -5,6 +5,7 @@ import "@fontsource/dm-sans/700.css";
 import "@fontsource/dm-mono/400.css";
 import "@fontsource/dm-mono/500.css";
 import FloatingPill from "@/components/FloatingPill";
+import MobileTabBar from "@/components/MobileTabBar";
 import LastUpdated from "@/components/LastUpdated";
 import Logo from "@/components/Logo";
 import { getLastUpdated } from "@/lib/db";
@@ -44,9 +45,14 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <FloatingPill />
+        <div className="md:hidden">
+          <MobileTabBar />
+        </div>
+        <div className="hidden md:block">
+          <FloatingPill />
+        </div>
 
-        <div id="main-content" className="relative z-[2] pt-16 md:pt-20 pb-20">
+        <div id="main-content" className="relative z-[2] pt-16 md:pt-20 pb-20 md:pb-20 pb-24">
           {children}
         </div>
 

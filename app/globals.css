@@ -74,6 +74,8 @@
 
   a { text-decoration: none; color: inherit; }
 
+  .safe-area-pb { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 3px; }

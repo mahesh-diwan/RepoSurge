@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "43ed50eb-442b-46e0-a518-4db62f177952",
+  "title": "You are testing the RepoSurge site as a DESKTOP USER. The site is running at http://localhost:300...",
+  "objective": "You are testing the RepoSurge site as a DESKTOP USER. The site is running at http://localhost:3000 (production build). Thoroughly test every page and interaction. Document ALL bugs, visual issues, alignment problems, broken interactions, and errors.\n\nPages to test: Home (/), Daily (/daily), Weekly (/weekly), Monthly (/monthly), About (/about), Repo detail (/repo/facebook-react), 404 (/repo/nonexistent).\n\nInteractions: Sort by each column, filter by language/category, compare mode, search, \"show all repos\", period selector, keyboard shortcuts.\n\nVisual checks: Grid column alignment, hero alignment, overflow, animations, spacing.\n\nUse curl -s http://localhost:3000/page | python3 -c \"...\" to examine HTML.\n\nReturn a detailed bug report with file:line numbers, expected vs found, severity (HIGH/MEDIUM/LOW), and steps to reproduce.",
+  "status": "failed",
+  "createdAt": "2026-08-09T10:08:03.471Z",
+  "updatedAt": "2026-08-09T10:08:03.652Z",
+  "runs": [
+    {
+      "runId": "c7244085-7782-4913-899c-578b95018d0f",
+      "mode": "workflow",
+      "asyncDir": "/tmp/pi-subagents-uid-1000/async-subagent-runs/c7244085-7782-4913-899c-578b95018d0f",
+      "status": "failed",
+      "startedAt": "2026-08-09T10:08:03.484Z",
+      "completedAt": "2026-08-09T10:08:03.652Z"
+    }
+  ],
+  "decisions": [],
+  "artifacts": [
+    {
+      "kind": "status",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/c7244085-7782-4913-899c-578b95018d0f/status.json"
+    },
+    {
+      "kind": "other",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/c7244085-7782-4913-899c-578b95018d0f/events.jsonl",
+      "description": "Lifecycle events"
+    }
+  ],
+  "receipts": [],
+  "cwd": "/home/mahesh-diwan/SPECTRE/Projects/RepoSurge",
+  "ownerSessionId": "/home/mahesh-diwan/.pi/agent/sessions/--home-mahesh-diwan-SPECTRE-Projects-RepoSurge--/2026-08-08T06-50-07-552Z_019fe022-d740-7d5c-94a2-46036f170071.jsonl",
+  "summary": "Error: Run 'desktop-tester' failed: Unknown agent: main\n    at MessagePort.<anonymous> ([worker eval]:133:23)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:856:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)"
+}

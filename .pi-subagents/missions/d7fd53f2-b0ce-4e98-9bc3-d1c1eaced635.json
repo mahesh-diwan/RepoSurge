@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "d7fd53f2-b0ce-4e98-9bc3-d1c1eaced635",
+  "title": "You are testing the RepoSurge site as a DESKTOP USER. The site is running at http://localhost:300...",
+  "objective": "You are testing the RepoSurge site as a DESKTOP USER. The site is running at http://localhost:3000 (production build). Thoroughly test every page and interaction. Document ALL bugs, visual issues, alignment problems, broken interactions, and errors.\n\nPages to test: Home (/), Daily (/daily), Weekly (/weekly), Monthly (/monthly), About (/about), Repo detail (/repo/facebook-react), 404 (/repo/nonexistent).\n\nInteractions: Sort by each column, filter by language/category, compare mode, search, \"show all repos\", period selector, keyboard shortcuts.\n\nVisual checks: Grid column alignment, hero alignment, overflow, animations, spacing.\n\nUse curl -s http://localhost:3000/page | python3 -c \"...\" to examine HTML.\n\nReturn a detailed bug report with file:line numbers, expected vs found, severity (HIGH/MEDIUM/LOW), and steps to reproduce.",
+  "status": "failed",
+  "createdAt": "2026-08-09T10:07:14.513Z",
+  "updatedAt": "2026-08-09T10:07:14.713Z",
+  "runs": [
+    {
+      "runId": "1b8f6596-c1be-44c7-ab89-4b3fee8a96a9",
+      "mode": "workflow",
+      "asyncDir": "/tmp/pi-subagents-uid-1000/async-subagent-runs/1b8f6596-c1be-44c7-ab89-4b3fee8a96a9",
+      "status": "failed",
+      "startedAt": "2026-08-09T10:07:14.515Z",
+      "completedAt": "2026-08-09T10:07:14.713Z"
+    }
+  ],
+  "decisions": [],
+  "artifacts": [
+    {
+      "kind": "status",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/1b8f6596-c1be-44c7-ab89-4b3fee8a96a9/status.json"
+    },
+    {
+      "kind": "other",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/1b8f6596-c1be-44c7-ab89-4b3fee8a96a9/events.jsonl",
+      "description": "Lifecycle events"
+    }
+  ],
+  "receipts": [],
+  "cwd": "/home/mahesh-diwan/SPECTRE/Projects/RepoSurge",
+  "ownerSessionId": "/home/mahesh-diwan/.pi/agent/sessions/--home-mahesh-diwan-SPECTRE-Projects-RepoSurge--/2026-08-08T06-50-07-552Z_019fe022-d740-7d5c-94a2-46036f170071.jsonl",
+  "summary": "Error: runs.all item 0 has an invalid key.\n    at validateRunCall ([worker eval]:34:66)\n    at Object.all ([worker eval]:68:7)\n    at workflow-script.js:2:13\n    at workflow-script.js:12:3\n    at Script.runInContext (node:vm:150:12)\n    at MessagePort.<anonymous> ([worker eval]:143:34)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:856:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)"
+}

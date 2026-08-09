@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "b93d2c6e-9487-40bd-8e99-8b81aca447d2",
+  "title": "You are testing the RepoSurge site as a MOBILE USER (375px viewport). The site is running at http...",
+  "objective": "You are testing the RepoSurge site as a MOBILE USER (375px viewport). The site is running at http://localhost:3000 (production build). Thoroughly test every page and interaction on mobile. Document ALL bugs, visual issues, broken interactions, overflow problems.\n\nPages to test with mobile User-Agent header: Home (/), Daily (/daily), Weekly (/weekly), Monthly (/monthly), About (/about), Repo detail (/repo/facebook-react), 404 (/repo/nonexistent).\n\nMobile checks: Nav pill fit, hamburger menu functionality, mobile menu links, horizontal overflow, table row readability, touch targets, text readability.\n\nUse curl -s -H \"User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X)\" http://localhost:3000/page to simulate mobile.\n\nReturn a detailed bug report with file:line numbers, expected vs found, severity (HIGH/MEDIUM/LOW), and steps to reproduce.",
+  "status": "failed",
+  "createdAt": "2026-08-09T10:08:30.570Z",
+  "updatedAt": "2026-08-09T10:08:30.722Z",
+  "runs": [
+    {
+      "runId": "56c45394-4966-456c-a32f-87d353642ea3",
+      "mode": "workflow",
+      "asyncDir": "/tmp/pi-subagents-uid-1000/async-subagent-runs/56c45394-4966-456c-a32f-87d353642ea3",
+      "status": "failed",
+      "startedAt": "2026-08-09T10:08:30.573Z",
+      "completedAt": "2026-08-09T10:08:30.722Z"
+    }
+  ],
+  "decisions": [],
+  "artifacts": [
+    {
+      "kind": "status",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/56c45394-4966-456c-a32f-87d353642ea3/status.json"
+    },
+    {
+      "kind": "other",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/56c45394-4966-456c-a32f-87d353642ea3/events.jsonl",
+      "description": "Lifecycle events"
+    }
+  ],
+  "receipts": [],
+  "cwd": "/home/mahesh-diwan/SPECTRE/Projects/RepoSurge",
+  "ownerSessionId": "/home/mahesh-diwan/.pi/agent/sessions/--home-mahesh-diwan-SPECTRE-Projects-RepoSurge--/2026-08-08T06-50-07-552Z_019fe022-d740-7d5c-94a2-46036f170071.jsonl",
+  "summary": "Error: Run 'mobile-tester' failed: Unknown agent: main\n    at MessagePort.<anonymous> ([worker eval]:133:23)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:856:20)\n    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)"
+}
