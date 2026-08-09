@@ -12,7 +12,7 @@ interface EmptyStateProps {
 
 export default function EmptyState({ icon = "◐", title, description, action }: EmptyStateProps) {
   return (
-    <div className="py-20 text-center">
+    <div className="py-20 text-center animate-fade-up">
       <div className="inline-flex flex-col items-center gap-4 max-w-sm">
         <div className="w-14 h-14 rounded-2xl bg-surface-elevated border border-border flex items-center justify-center animate-float">
           <span className="text-text-dim text-xl">{icon}</span>

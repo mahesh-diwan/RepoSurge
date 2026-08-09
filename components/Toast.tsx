@@ -20,6 +20,7 @@ interface ToastInput {
 
 interface ToastItem extends ToastInput {
   id: number;
+  exiting?: boolean;
 }
 
 interface ToastContextValue {
@@ -56,16 +57,23 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       clearTimeout(timer);
       timeouts.current.delete(id);
     }
-    setItems((prev) => prev.filter((t) => t.id !== id));
+    // Mark as exiting, then remove after animation
+    setItems((prev) => prev.map((t) => (t.id === id ? { ...t, exiting: true } : t)));
+    setTimeout(() => {
+      setItems((prev) => prev.filter((t) => t.id !== id));
+    }, 150);
   }, []);
 
   const toast = useCallback(
     (input: ToastInput) => {
       const id = nextId++;
-      setItems((prev) => [...prev.slice(-2), { ...input, id }]);
+      setItems((prev) => [...prev.slice(-2), { ...input, id, exiting: false }]);
       const timer = setTimeout(() => {
         timeouts.current.delete(id);
-        setItems((prev) => prev.filter((t) => t.id !== id));
+        setItems((prev) => prev.map((t) => (t.id === id ? { ...t, exiting: true } : t)));
+        setTimeout(() => {
+          setItems((prev) => prev.filter((t) => t.id !== id));
+        }, 150);
       }, 4000);
       timeouts.current.set(id, timer);
     },
@@ -84,7 +92,8 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={item.id}
             className={`flex items-center gap-3 px-4 py-2.5 rounded-xl shadow-accent text-sm cursor-pointer
-                        transition-[transform,opacity] duration-200 animate-in slide-in-from-right-2
+                        transition-[transform,opacity] duration-200
+                        ${item.exiting ? "opacity-0 translate-y-2" : "animate-in slide-in-from-right-2"}
                         ${item.type === "error" ? "bg-red-900/80 text-white" : "bg-zinc-800/90 text-text-body"}`}
             onClick={() => dismiss(item.id)}
           >

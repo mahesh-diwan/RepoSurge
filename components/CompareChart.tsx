@@ -32,7 +32,7 @@ export default function CompareChart({ repos }: { repos: RepoWithVelocity[] }) {
   });
 
   return (
-    <div className="mx-4 md:mx-6 mt-6 card-shell animate-fade-up">
+    <div className="mx-4 md:mx-6 mt-6 card-shell animate-fade-up" style={{ animationDuration: "0.25s" }}>
       <div className="card-core">
         <div className="flex items-center justify-between mb-4">
           <p className="section-label">Compare: star trend</p>
