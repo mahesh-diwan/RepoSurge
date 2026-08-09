@@ -14,7 +14,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-midnight font-medium text-sm rounded-full hover:bg-accent/90 transition-all duration-500 ease-out-expo active:scale-[0.97]"
+        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-midnight font-medium text-sm rounded-full hover:bg-accent/90 transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97]"
       >
         Back to dashboard
         <span className="btn-icon bg-midnight/10">

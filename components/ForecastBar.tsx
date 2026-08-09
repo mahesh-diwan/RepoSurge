@@ -32,7 +32,7 @@ export default function ForecastBar({ forecast, currentStars }: ForecastBarProps
     <div className="flex items-center gap-2">
       <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
         <div
-          className="h-full rounded-full transition-all duration-1000 ease-out-expo"
+          className="h-full rounded-full transition-[transform,opacity] duration-300 ease-spring"
           style={{
             width: `${progress * 100}%`,
             background: `linear-gradient(90deg, #D97706, #F59E0B)`,

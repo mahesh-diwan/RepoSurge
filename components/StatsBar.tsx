@@ -35,19 +35,19 @@ export default function StatsBar({ period = "period", stats }: StatsBarProps) {
         </div>
 
         <div className="grid grid-cols-3 gap-px bg-border rounded-xl overflow-hidden">
-          <div className="bg-surface/50 px-4 py-3 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+          <div className="bg-surface/50 px-4 py-3 text-center transition-colors duration-150 ease-spring hover:bg-surface">
             <p className="data-mono text-lg md:text-xl font-semibold text-text-body tabular-nums">
               <AnimatedNumber value={totalRepos} />
             </p>
             <p className="text-text-dim text-[10px] font-mono mt-0.5 tracking-wider">REPOS</p>
           </div>
-          <div className="bg-surface/50 px-4 py-3 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+          <div className="bg-surface/50 px-4 py-3 text-center transition-colors duration-150 ease-spring hover:bg-surface">
             <p className="data-mono text-lg md:text-xl font-semibold text-text-body tabular-nums">
               <AnimatedNumber value={totalStars} />
             </p>
             <p className="text-text-dim text-[10px] font-mono mt-0.5 tracking-wider">TOTAL STARS</p>
           </div>
-          <div className="bg-surface/50 px-4 py-3 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+          <div className="bg-surface/50 px-4 py-3 text-center transition-colors duration-150 ease-spring hover:bg-surface">
             <p className="data-mono text-lg md:text-xl font-semibold text-text-body tabular-nums">
               {avgStars >= 1000 ? `${(avgStars / 1000).toFixed(1)}K` : avgStars}
             </p>

@@ -25,14 +25,14 @@ export default function EmptyState({ icon = "◐", title, description, action }:
           action.href ? (
             <Link
               href={action.href}
-              className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full hover:bg-accent/20 active:scale-[0.97] transition-all duration-400 ease-out-expo"
+              className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full hover:bg-accent/20 active:scale-[0.97] transition-[transform,background-color] duration-200 ease-spring"
             >
               {action.label}
             </Link>
           ) : (
             <button
               onClick={action.onClick}
-              className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full hover:bg-accent/20 active:scale-[0.97] transition-all duration-400 ease-out-expo"
+              className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full hover:bg-accent/20 active:scale-[0.97] transition-[transform,background-color] duration-200 ease-spring"
             >
               {action.label}
             </button>

@@ -14,7 +14,7 @@ export default function FloatingPill() {
       <div className="flex items-center justify-between gap-1.5 px-2 py-1.5 rounded-2xl bg-surface-elevated/70 backdrop-blur-2xl border border-border-hairline shadow-card">
         <a
           href="/"
-          className="shrink-0 pl-1 transition-transform duration-400 ease-spring hover:scale-105 active:scale-95"
+          className="shrink-0 pl-1 transition-transform duration-400 ease-spring hover:scale-105 active:scale-[0.97]"
           title="RepoSurge"
         >
           <Logo className="w-7 h-7" />

@@ -18,11 +18,11 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
     >
       <Link
         href={`/repo/${repo.slug}`}
-        className={`group grid grid-cols-[36px_1fr_80px_90px_90px_120px_64px] gap-3 items-center px-4 py-2.5 rounded-xl transition-all duration-250 ease-spring border ${
+        className={`group grid grid-cols-[36px_1fr_80px_90px_90px_120px_64px] gap-3 items-center px-4 py-2.5 rounded-xl transition-[transform,background-color,box-shadow] duration-200 ease-spring border ${
           isTop
             ? "bg-accent/[0.03] border-accent/20 hover:bg-accent/[0.06]"
             : "border-transparent hover:bg-surface-elevated/50 hover:shadow-[inset_0_0_0_1px_var(--border)]"
-        } active:scale-[0.99] active:bg-surface-elevated/40`}
+        } active:scale-[0.97] active:bg-surface-elevated/40`}
       >
         {/* Rank badge */}
         <span className={`data-mono text-sm tabular-nums w-7 h-7 rounded-lg flex items-center justify-center ${
@@ -86,7 +86,7 @@ export default function DesktopRepoRow({ repo, index }: { repo: RepoWithVelocity
         <div className="text-right">
           {repo.rankChange != null ? (
             <span
-              className={`inline-flex items-center gap-0.5 data-mono text-xs tabular-nums transition-all duration-500 ease-out-expo ${
+              className={`inline-flex items-center gap-0.5 data-mono text-xs tabular-nums transition-[transform,color] duration-200 ease-spring ${
                 repo.rankChange > 0
                   ? "text-positive"
                   : repo.rankChange < 0

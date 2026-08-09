@@ -105,7 +105,7 @@ function RepoListContent({
           <div className="flex items-center gap-2">
             <button
               onClick={list.toggleCompareMode}
-              className={`group px-4 py-2 text-[11px] font-mono rounded-full border transition-all duration-250 ease-spring active:scale-[0.95] ${
+              className={`group px-4 py-2 text-[11px] font-mono rounded-full border transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97] ${
                 list.compareMode
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-border text-text-muted hover:text-text-body"
@@ -120,7 +120,7 @@ function RepoListContent({
             </button>
             <button
               onClick={() => downloadCSV(list.sorted)}
-              className="group px-4 py-2 text-[11px] font-mono rounded-full border border-border text-text-muted hover:text-text-body transition-all duration-250 ease-spring active:scale-[0.95]"
+              className="group px-4 py-2 text-[11px] font-mono rounded-full border border-border text-text-muted hover:text-text-body transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97]"
             >
               EXPORT
             </button>
@@ -153,7 +153,7 @@ function RepoListContent({
           <div className="flex flex-wrap gap-2 mb-6">
             <button
               onClick={list.clearFilters}
-              className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-250 ease-spring active:scale-[0.95] ${
+              className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97] ${
                 list.catFilters.length === 0 && list.langFilters.length === 0
                   ? "bg-accent/10 border-accent/30 text-accent"
                   : "border-border text-text-dim hover:text-text-muted"
@@ -168,7 +168,7 @@ function RepoListContent({
               <button
                 key={cat}
                 onClick={() => list.toggleCatFilter(cat)}
-                className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-250 ease-spring active:scale-[0.95] ${
+                className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97] ${
                   list.catFilters.includes(cat)
                     ? "bg-accent/10 border-accent/30 text-accent"
                     : "border-border text-text-dim hover:text-text-muted"
@@ -181,7 +181,7 @@ function RepoListContent({
               <button
                 key={lang}
                 onClick={() => list.toggleLangFilter(lang)}
-                className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all duration-250 ease-spring active:scale-[0.95] ${
+                className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97] ${
                   list.langFilters.includes(lang)
                     ? "bg-accent/10 border-accent/30 text-accent"
                     : "border-border text-text-dim hover:text-text-muted"

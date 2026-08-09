@@ -25,7 +25,7 @@ export default function NavLinks({
             key={link.href}
             href={link.href}
             onClick={onItemClick}
-            className={`relative text-[11px] font-medium px-2.5 py-1.5 rounded-xl transition-all duration-400 ease-out-expo ${
+            className={`relative text-[11px] font-medium px-2.5 py-1.5 rounded-xl transition-[transform,color] duration-200 ease-spring ${
               isActive
                 ? "bg-accent/10 text-accent"
                 : "text-text-muted hover:text-text-body"

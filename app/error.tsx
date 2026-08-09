@@ -14,7 +14,7 @@ export default function ErrorPage({
         <p className="text-text-muted text-sm">{error.message || "An unexpected error occurred."}</p>
         <button
           onClick={reset}
-          className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 active:scale-[0.97] transition-all duration-200"
+          className="inline-flex items-center gap-1.5 text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-lg hover:bg-accent/20 active:scale-[0.97] transition-[transform,background-color] duration-200 ease-spring"
         >
           TRY AGAIN
         </button>

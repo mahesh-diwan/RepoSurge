@@ -81,7 +81,7 @@ export default function RepoDetailPage({
             href={repo.url}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-2 text-xs font-mono bg-accent/10 text-accent px-4 py-2 rounded-full hover:bg-accent/20 transition-all duration-500 ease-out-expo active:scale-[0.97]"
+            className="group inline-flex items-center gap-2 text-xs font-mono bg-accent/10 text-accent px-4 py-2 rounded-full hover:bg-accent/20 transition-[transform,background-color] duration-200 ease-spring active:scale-[0.97]"
           >
             VIEW ON GITHUB
             <span className="btn-icon">
@@ -152,7 +152,7 @@ export default function RepoDetailPage({
               <Link
                 key={p}
                 href={`/repo/${slug}?period=${p}`}
-                className="rounded-full px-3 py-1 text-xs bg-surface border border-border text-text-muted hover:text-text-body transition-all duration-300"
+                className="rounded-full px-3 py-1 text-xs bg-surface border border-border text-text-muted hover:text-text-body transition-colors duration-200 ease-spring"
               >
                 {periodLabels[p]}
               </Link>

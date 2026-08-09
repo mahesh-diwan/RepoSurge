@@ -146,7 +146,20 @@
   .animate-in { animation: fade-in 0.4s var(--ease-spring); }
   .animate-up { animation: fade-up 0.5s var(--ease-spring); }
   .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-gentle-pulse { animation: gentle-pulse 2s ease-in-out infinite; }
 }
+
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-scale-in { animation: scale-in 0.3s var(--ease-spring) forwards; }
 
 /* Entry animations with spring-like easing */
 .reveal {
@@ -174,6 +187,7 @@
     transform: none !important;
     filter: none !important;
   }
+  .animate-gentle-pulse { animation: none !important; opacity: 0.85 !important; }
 }
 
 @media (prefers-reduced-transparency: reduce) {

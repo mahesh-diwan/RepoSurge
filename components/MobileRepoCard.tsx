@@ -29,7 +29,7 @@ export default function MobileRepoCard({
           }
         }}
       >
-        <div className={`card p-4 active:scale-[0.98] transition-all duration-400 ease-out-expo hover:shadow-card-hover ${
+        <div className={`card p-4 active:scale-[0.97] transition-[transform,box-shadow] duration-200 ease-spring hover:shadow-card-hover ${
           isTop ? "border-accent/20 bg-accent/[0.03]" : ""
         }`}>
           {/* Header row */}

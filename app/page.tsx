@@ -52,25 +52,25 @@ export default function Home() {
 
               {/* KPI tiles */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-xl overflow-hidden">
-                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                <div className="bg-surface/50 px-4 py-4 text-center transition-colors duration-150 ease-spring hover:bg-surface">
                   <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
                     <AnimatedNumber value={stats.totalRepos} />
                   </p>
                   <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">REPOS</p>
                 </div>
-                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                <div className="bg-surface/50 px-4 py-4 text-center transition-colors duration-150 ease-spring hover:bg-surface">
                   <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
                     <AnimatedNumber value={stats.totalStars} />
                   </p>
                   <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">TOTAL STARS</p>
                 </div>
-                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                <div className="bg-surface/50 px-4 py-4 text-center transition-colors duration-150 ease-spring hover:bg-surface">
                   <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
                     {stats.totalRepos > 0 ? `${Math.round(stats.totalStars / stats.totalRepos / 1000).toFixed(1)}K` : "—"}
                   </p>
                   <p className="text-text-dim text-[10px] font-mono mt-1 tracking-wider">AVG/REPO</p>
                 </div>
-                <div className="bg-surface/50 px-4 py-4 text-center transition-all duration-500 ease-out-expo hover:bg-surface">
+                <div className="bg-surface/50 px-4 py-4 text-center transition-colors duration-150 ease-spring hover:bg-surface">
                   <p className="data-mono text-lg md:text-xl font-bold text-text-body tabular-nums">
                     {stats.languages}
                   </p>
