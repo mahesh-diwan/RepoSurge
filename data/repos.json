@@ -7,7 +7,7 @@
       "language": "Markdown",
       "url": "https://github.com/codecrafters-io/build-your-own-x",
       "description": "Master programming by recreating technologies.",
-      "stars": 538841,
+      "stars": 539155,
       "history": [
         {
           "stars": 527559,
@@ -136,9 +136,13 @@
         {
           "stars": 538841,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 539155,
+          "recorded_at": "2026-08-13"
         }
       ],
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "isNew": false,
       "category": null
     },
@@ -149,9 +153,9 @@
       "description": "😎 Awesome lists about all kinds of interesting topics",
       "language": null,
       "url": "https://github.com/sindresorhus/awesome",
-      "stars": 494646,
+      "stars": 495018,
       "created_at": "2014-07-11T13:42:37Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 488723,
@@ -220,6 +224,10 @@
         {
           "stars": 494646,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 495018,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -232,9 +240,9 @@
       "description": "A collective list of free APIs",
       "language": "Python",
       "url": "https://github.com/public-apis/public-apis",
-      "stars": 455517,
+      "stars": 455729,
       "created_at": "2016-03-20T23:49:42Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 452427,
@@ -303,6 +311,10 @@
         {
           "stars": 455517,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 455729,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -315,9 +327,9 @@
       "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
       "language": "TypeScript",
       "url": "https://github.com/freeCodeCamp/freeCodeCamp",
-      "stars": 453831,
+      "stars": 453904,
       "created_at": "2014-12-24T17:49:19Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 452784,
@@ -386,6 +398,10 @@
         {
           "stars": 453831,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 453904,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -398,9 +414,9 @@
       "description": ":books: Freely available programming books",
       "language": "Python",
       "url": "https://github.com/EbookFoundation/free-programming-books",
-      "stars": 394174,
+      "stars": 394270,
       "created_at": "2013-10-11T06:50:37Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 392962,
@@ -469,6 +485,10 @@
         {
           "stars": 394174,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 394270,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -481,9 +501,9 @@
       "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
       "language": "TypeScript",
       "url": "https://github.com/openclaw/openclaw",
-      "stars": 385973,
+      "stars": 386091,
       "created_at": "2025-11-24T10:16:47Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 384072,
@@ -552,6 +572,10 @@
         {
           "stars": 385973,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 386091,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -564,9 +588,9 @@
       "description": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
       "language": "TypeScript",
       "url": "https://github.com/nilbuild/developer-roadmap",
-      "stars": 364179,
+      "stars": 364264,
       "created_at": "2017-03-15T13:45:52Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 362612,
@@ -635,6 +659,10 @@
         {
           "stars": 364179,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 364264,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -647,9 +675,9 @@
       "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
       "language": "Python",
       "url": "https://github.com/donnemartin/system-design-primer",
-      "stars": 363237,
+      "stars": 363483,
       "created_at": "2017-02-26T16:15:28Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 359107,
@@ -718,6 +746,10 @@
         {
           "stars": 363237,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 363483,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -730,9 +762,9 @@
       "description": "A complete computer science study plan to become a software engineer.",
       "language": null,
       "url": "https://github.com/jwasham/coding-interview-university",
-      "stars": 358410,
+      "stars": 358546,
       "created_at": "2016-06-06T02:34:12Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 357098,
@@ -801,6 +833,10 @@
         {
           "stars": 358410,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 358546,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -813,9 +849,9 @@
       "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
       "language": "Python",
       "url": "https://github.com/vinta/awesome-python",
-      "stars": 313467,
+      "stars": 313632,
       "created_at": "2014-06-27T21:00:06Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 310210,
@@ -884,6 +920,10 @@
         {
           "stars": 313467,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 313632,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -896,9 +936,9 @@
       "description": "A list of Free Software network services and web applications which can be hosted on your own servers",
       "language": null,
       "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
-      "stars": 312074,
+      "stars": 312271,
       "created_at": "2015-06-01T02:33:17Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 308092,
@@ -967,6 +1007,10 @@
         {
           "stars": 312074,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 312271,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -979,9 +1023,9 @@
       "description": "Curated list of project-based tutorials",
       "language": "Python",
       "url": "https://github.com/practical-tutorials/project-based-learning",
-      "stars": 278481,
+      "stars": 278867,
       "created_at": "2017-04-12T05:07:46Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 275140,
@@ -1050,6 +1094,10 @@
         {
           "stars": 278481,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 278867,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1064,7 +1112,7 @@
       "url": "https://github.com/996icu/996.ICU",
       "stars": 276618,
       "created_at": "2019-03-26T07:31:14Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 276477,
@@ -1133,6 +1181,10 @@
         {
           "stars": 276618,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 276618,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1145,9 +1197,9 @@
       "description": "An agentic skills framework & software development methodology that works.",
       "language": "Shell",
       "url": "https://github.com/obra/superpowers",
-      "stars": 270780,
+      "stars": 271277,
       "created_at": "2025-10-09T19:45:18Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 260701,
@@ -1216,6 +1268,10 @@
         {
           "stars": 270780,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 271277,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1228,9 +1284,9 @@
       "description": "The library for web and native user interfaces.",
       "language": "JavaScript",
       "url": "https://github.com/react/react",
-      "stars": 247168,
+      "stars": 247202,
       "created_at": "2013-05-24T16:15:54Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 246712,
@@ -1299,6 +1355,10 @@
         {
           "stars": 247168,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 247202,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1311,9 +1371,9 @@
       "description": "Linux kernel source tree",
       "language": "C",
       "url": "https://github.com/torvalds/linux",
-      "stars": 242531,
+      "stars": 242646,
       "created_at": "2011-09-04T22:48:12Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 240372,
@@ -1382,6 +1442,10 @@
         {
           "stars": 242531,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 242646,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1394,9 +1458,9 @@
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
       "language": "JavaScript",
       "url": "https://github.com/affaan-m/ECC",
-      "stars": 239490,
+      "stars": 239763,
       "created_at": "2026-01-18T00:51:51Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 233002,
@@ -1465,6 +1529,10 @@
         {
           "stars": 239490,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 239763,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1477,9 +1545,9 @@
       "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
       "language": null,
       "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
-      "stars": 237868,
+      "stars": 238054,
       "created_at": "2018-06-23T10:43:14Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 235059,
@@ -1548,6 +1616,10 @@
         {
           "stars": 237868,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 238054,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1560,9 +1632,9 @@
       "description": "The agent that grows with you",
       "language": "Python",
       "url": "https://github.com/NousResearch/hermes-agent",
-      "stars": 229059,
+      "stars": 229608,
       "created_at": "2025-07-22T22:22:28Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 220145,
@@ -1631,6 +1703,10 @@
         {
           "stars": 229059,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 229608,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1643,9 +1719,9 @@
       "description": "All Algorithms implemented in Python",
       "language": "Python",
       "url": "https://github.com/TheAlgorithms/Python",
-      "stars": 223664,
+      "stars": 223690,
       "created_at": "2016-07-16T09:44:01Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 223125,
@@ -1714,6 +1790,10 @@
         {
           "stars": 223664,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 223690,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1726,9 +1806,9 @@
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
       "language": "Shell",
       "url": "https://github.com/mattpocock/skills",
-      "stars": 213889,
+      "stars": 215125,
       "created_at": "2026-02-03T11:15:53Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 187263,
@@ -1797,6 +1877,10 @@
         {
           "stars": 213889,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 215125,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1809,9 +1893,9 @@
       "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
       "language": "TypeScript",
       "url": "https://github.com/vuejs/vue",
-      "stars": 210226,
+      "stars": 210232,
       "created_at": "2013-07-29T03:24:51Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 210139,
@@ -1880,6 +1964,10 @@
         {
           "stars": 210226,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 210232,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1892,9 +1980,9 @@
       "description": "🎓 Path to a free self-taught education in Computer Science!",
       "language": "HTML",
       "url": "https://github.com/ossu/computer-science",
-      "stars": 207895,
+      "stars": 207933,
       "created_at": "2014-05-04T00:18:39Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 207215,
@@ -1963,6 +2051,10 @@
         {
           "stars": 207895,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 207933,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -1975,9 +2067,9 @@
       "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
       "language": null,
       "url": "https://github.com/multica-ai/andrej-karpathy-skills",
-      "stars": 201623,
+      "stars": 201915,
       "created_at": "2026-01-27T03:53:13Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 196133,
@@ -2046,6 +2138,10 @@
         {
           "stars": 201623,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 201915,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2058,7 +2154,7 @@
       "language": "TypeScript",
       "url": "https://github.com/n8n-io/n8n",
       "description": "Fair-code workflow automation with native AI.",
-      "stars": 200272,
+      "stars": 200401,
       "history": [
         {
           "stars": 196866,
@@ -2187,9 +2283,13 @@
         {
           "stars": 200272,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 200401,
+          "recorded_at": "2026-08-13"
         }
       ],
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "isNew": false,
       "category": "ai"
     },
@@ -2200,9 +2300,9 @@
       "description": "An Open Source Machine Learning Framework for Everyone",
       "language": "C++",
       "url": "https://github.com/tensorflow/tensorflow",
-      "stars": 196955,
+      "stars": 196982,
       "created_at": "2015-11-07T01:19:20Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 196516,
@@ -2271,93 +2371,14 @@
         {
           "stars": 196955,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 196982,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
       "category": "ai"
-    },
-    {
-      "full_name": "trekhleb/javascript-algorithms",
-      "name": "javascript-algorithms",
-      "owner": "trekhleb",
-      "description": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
-      "language": "JavaScript",
-      "url": "https://github.com/trekhleb/javascript-algorithms",
-      "stars": 196438,
-      "created_at": "2018-03-24T07:47:04Z",
-      "fetched_at": "2026-08-12",
-      "history": [
-        {
-          "stars": 196325,
-          "recorded_at": "2026-07-25T07:42:46.434Z"
-        },
-        {
-          "stars": 196338,
-          "recorded_at": "2026-07-27T03:18:11.666Z"
-        },
-        {
-          "stars": 196341,
-          "recorded_at": "2026-07-28T02:36:39.765Z"
-        },
-        {
-          "stars": 196343,
-          "recorded_at": "2026-07-29T02:43:49.767Z"
-        },
-        {
-          "stars": 196342,
-          "recorded_at": "2026-07-29T12:15:02.009Z"
-        },
-        {
-          "stars": 196361,
-          "recorded_at": "2026-08-01"
-        },
-        {
-          "stars": 196365,
-          "recorded_at": "2026-08-02"
-        },
-        {
-          "stars": 196363,
-          "recorded_at": "2026-08-03"
-        },
-        {
-          "stars": 196370,
-          "recorded_at": "2026-08-04"
-        },
-        {
-          "stars": 196376,
-          "recorded_at": "2026-08-05"
-        },
-        {
-          "stars": 196389,
-          "recorded_at": "2026-08-06"
-        },
-        {
-          "stars": 196408,
-          "recorded_at": "2026-08-07"
-        },
-        {
-          "stars": 196410,
-          "recorded_at": "2026-08-08"
-        },
-        {
-          "stars": 196417,
-          "recorded_at": "2026-08-09"
-        },
-        {
-          "stars": 196419,
-          "recorded_at": "2026-08-10"
-        },
-        {
-          "stars": 196423,
-          "recorded_at": "2026-08-11"
-        },
-        {
-          "stars": 196438,
-          "recorded_at": "2026-08-12"
-        }
-      ],
-      "isNew": false,
-      "category": null
     },
     {
       "full_name": "anomalyco/opencode",
@@ -2366,7 +2387,7 @@
       "language": "TypeScript",
       "url": "https://github.com/anomalyco/opencode",
       "description": "The open source AI coding agent. Free models included.",
-      "stars": 196254,
+      "stars": 196637,
       "history": [
         {
           "stars": 186998,
@@ -2495,9 +2516,100 @@
         {
           "stars": 196254,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 196637,
+          "recorded_at": "2026-08-13"
         }
       ],
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
+      "isNew": false,
+      "category": null
+    },
+    {
+      "full_name": "trekhleb/javascript-algorithms",
+      "name": "javascript-algorithms",
+      "owner": "trekhleb",
+      "description": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
+      "language": "JavaScript",
+      "url": "https://github.com/trekhleb/javascript-algorithms",
+      "stars": 196448,
+      "created_at": "2018-03-24T07:47:04Z",
+      "fetched_at": "2026-08-13",
+      "history": [
+        {
+          "stars": 196325,
+          "recorded_at": "2026-07-25T07:42:46.434Z"
+        },
+        {
+          "stars": 196338,
+          "recorded_at": "2026-07-27T03:18:11.666Z"
+        },
+        {
+          "stars": 196341,
+          "recorded_at": "2026-07-28T02:36:39.765Z"
+        },
+        {
+          "stars": 196343,
+          "recorded_at": "2026-07-29T02:43:49.767Z"
+        },
+        {
+          "stars": 196342,
+          "recorded_at": "2026-07-29T12:15:02.009Z"
+        },
+        {
+          "stars": 196361,
+          "recorded_at": "2026-08-01"
+        },
+        {
+          "stars": 196365,
+          "recorded_at": "2026-08-02"
+        },
+        {
+          "stars": 196363,
+          "recorded_at": "2026-08-03"
+        },
+        {
+          "stars": 196370,
+          "recorded_at": "2026-08-04"
+        },
+        {
+          "stars": 196376,
+          "recorded_at": "2026-08-05"
+        },
+        {
+          "stars": 196389,
+          "recorded_at": "2026-08-06"
+        },
+        {
+          "stars": 196408,
+          "recorded_at": "2026-08-07"
+        },
+        {
+          "stars": 196410,
+          "recorded_at": "2026-08-08"
+        },
+        {
+          "stars": 196417,
+          "recorded_at": "2026-08-09"
+        },
+        {
+          "stars": 196419,
+          "recorded_at": "2026-08-10"
+        },
+        {
+          "stars": 196423,
+          "recorded_at": "2026-08-11"
+        },
+        {
+          "stars": 196438,
+          "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 196448,
+          "recorded_at": "2026-08-13"
+        }
+      ],
       "isNew": false,
       "category": null
     },
@@ -2508,9 +2620,9 @@
       "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention.",
       "language": "Rust",
       "url": "https://github.com/ultraworkers/claw-code",
-      "stars": 195047,
+      "stars": 195069,
       "created_at": "2026-03-31T08:58:08Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 194890,
@@ -2579,6 +2691,10 @@
         {
           "stars": 195047,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 195069,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2589,11 +2705,11 @@
       "name": "FreeDomain",
       "owner": "DigitalPlatDev",
       "description": "DigitalPlat FreeDomain: Free Domain For Everyone",
-      "language": null,
+      "language": "Markdown",
       "url": "https://github.com/DigitalPlatDev/FreeDomain",
-      "stars": 192278,
+      "stars": 192409,
       "created_at": "2024-05-30T13:23:00Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 188369,
@@ -2662,6 +2778,10 @@
         {
           "stars": 192278,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 192409,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2674,9 +2794,9 @@
       "description": "🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
       "language": "Shell",
       "url": "https://github.com/ohmyzsh/ohmyzsh",
-      "stars": 189116,
+      "stars": 189135,
       "created_at": "2009-08-28T18:15:37Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 188814,
@@ -2745,6 +2865,10 @@
         {
           "stars": 189116,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 189135,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2757,9 +2881,9 @@
       "description": "Visual Studio Code",
       "language": "TypeScript",
       "url": "https://github.com/microsoft/vscode",
-      "stars": 188608,
+      "stars": 188632,
       "created_at": "2015-09-03T20:23:38Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 187887,
@@ -2828,6 +2952,10 @@
         {
           "stars": 188608,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 188632,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2840,9 +2968,9 @@
       "description": "Open-source Windows and Office activator featuring HWID, Ohook, TSforge, and Online KMS activation methods, along with advanced troubleshooting.",
       "language": "Batchfile",
       "url": "https://github.com/massgravel/Microsoft-Activation-Scripts",
-      "stars": 186736,
+      "stars": 186838,
       "created_at": "2020-01-12T23:03:34Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 184436,
@@ -2911,6 +3039,10 @@
         {
           "stars": 186736,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 186838,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -2923,9 +3055,9 @@
       "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
       "language": "Python",
       "url": "https://github.com/Significant-Gravitas/AutoGPT",
-      "stars": 186530,
+      "stars": 186565,
       "created_at": "2023-03-16T09:21:07Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 185683,
@@ -2994,6 +3126,10 @@
         {
           "stars": 186530,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 186565,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3006,9 +3142,9 @@
       "description": "Python - 100天从新手到大师",
       "language": "Jupyter Notebook",
       "url": "https://github.com/jackfrued/Python-100-Days",
-      "stars": 185111,
+      "stars": 185146,
       "created_at": "2018-03-01T16:05:52Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 184562,
@@ -3077,6 +3213,10 @@
         {
           "stars": 185111,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 185146,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3089,9 +3229,9 @@
       "description": ":books: 技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计",
       "language": null,
       "url": "https://github.com/CyC2018/CS-Notes",
-      "stars": 185026,
+      "stars": 185033,
       "created_at": "2018-02-13T14:56:24Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 184888,
@@ -3160,6 +3300,10 @@
         {
           "stars": 185026,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 185033,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3172,9 +3316,9 @@
       "description": "A book series (2 published editions) on the JS language.",
       "language": null,
       "url": "https://github.com/getify/You-Dont-Know-JS",
-      "stars": 184645,
+      "stars": 184648,
       "created_at": "2013-11-16T02:37:24Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 184623,
@@ -3243,6 +3387,10 @@
         {
           "stars": 184645,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 184648,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3255,9 +3403,9 @@
       "description": "A feature-rich command-line audio/video downloader",
       "language": "Python",
       "url": "https://github.com/yt-dlp/yt-dlp",
-      "stars": 183940,
+      "stars": 184109,
       "created_at": "2020-10-26T04:22:55Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 179944,
@@ -3326,6 +3474,10 @@
         {
           "stars": 183940,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 184109,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3338,9 +3490,9 @@
       "description": "A curated list of awesome Go frameworks, libraries and software",
       "language": "Go",
       "url": "https://github.com/avelino/awesome-go",
-      "stars": 180817,
+      "stars": 180912,
       "created_at": "2014-07-06T13:42:15Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 179147,
@@ -3409,93 +3561,14 @@
         {
           "stars": 180817,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 180912,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
       "category": "framework"
-    },
-    {
-      "full_name": "flutter/flutter",
-      "name": "flutter",
-      "owner": "flutter",
-      "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
-      "language": "Dart",
-      "url": "https://github.com/flutter/flutter",
-      "stars": 178331,
-      "created_at": "2015-03-06T22:54:58Z",
-      "fetched_at": "2026-08-12",
-      "history": [
-        {
-          "stars": 177923,
-          "recorded_at": "2026-07-25T07:42:46.434Z"
-        },
-        {
-          "stars": 177951,
-          "recorded_at": "2026-07-27T03:18:11.666Z"
-        },
-        {
-          "stars": 177961,
-          "recorded_at": "2026-07-28T02:36:39.765Z"
-        },
-        {
-          "stars": 177956,
-          "recorded_at": "2026-07-29T02:43:49.767Z"
-        },
-        {
-          "stars": 177966,
-          "recorded_at": "2026-07-29T12:15:02.009Z"
-        },
-        {
-          "stars": 178031,
-          "recorded_at": "2026-08-01"
-        },
-        {
-          "stars": 178051,
-          "recorded_at": "2026-08-02"
-        },
-        {
-          "stars": 178091,
-          "recorded_at": "2026-08-03"
-        },
-        {
-          "stars": 178163,
-          "recorded_at": "2026-08-04"
-        },
-        {
-          "stars": 178189,
-          "recorded_at": "2026-08-05"
-        },
-        {
-          "stars": 178232,
-          "recorded_at": "2026-08-06"
-        },
-        {
-          "stars": 178255,
-          "recorded_at": "2026-08-07"
-        },
-        {
-          "stars": 178264,
-          "recorded_at": "2026-08-08"
-        },
-        {
-          "stars": 178273,
-          "recorded_at": "2026-08-09"
-        },
-        {
-          "stars": 178278,
-          "recorded_at": "2026-08-10"
-        },
-        {
-          "stars": 178290,
-          "recorded_at": "2026-08-11"
-        },
-        {
-          "stars": 178331,
-          "recorded_at": "2026-08-12"
-        }
-      ],
-      "isNew": false,
-      "category": null
     },
     {
       "full_name": "ollama/ollama",
@@ -3504,9 +3577,9 @@
       "description": "Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
       "language": "Go",
       "url": "https://github.com/ollama/ollama",
-      "stars": 178298,
+      "stars": 178376,
       "created_at": "2023-06-26T19:39:32Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 176829,
@@ -3575,10 +3648,101 @@
         {
           "stars": 178298,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 178376,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
       "category": "ai"
+    },
+    {
+      "full_name": "flutter/flutter",
+      "name": "flutter",
+      "owner": "flutter",
+      "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+      "language": "Dart",
+      "url": "https://github.com/flutter/flutter",
+      "stars": 178371,
+      "created_at": "2015-03-06T22:54:58Z",
+      "fetched_at": "2026-08-13",
+      "history": [
+        {
+          "stars": 177923,
+          "recorded_at": "2026-07-25T07:42:46.434Z"
+        },
+        {
+          "stars": 177951,
+          "recorded_at": "2026-07-27T03:18:11.666Z"
+        },
+        {
+          "stars": 177961,
+          "recorded_at": "2026-07-28T02:36:39.765Z"
+        },
+        {
+          "stars": 177956,
+          "recorded_at": "2026-07-29T02:43:49.767Z"
+        },
+        {
+          "stars": 177966,
+          "recorded_at": "2026-07-29T12:15:02.009Z"
+        },
+        {
+          "stars": 178031,
+          "recorded_at": "2026-08-01"
+        },
+        {
+          "stars": 178051,
+          "recorded_at": "2026-08-02"
+        },
+        {
+          "stars": 178091,
+          "recorded_at": "2026-08-03"
+        },
+        {
+          "stars": 178163,
+          "recorded_at": "2026-08-04"
+        },
+        {
+          "stars": 178189,
+          "recorded_at": "2026-08-05"
+        },
+        {
+          "stars": 178232,
+          "recorded_at": "2026-08-06"
+        },
+        {
+          "stars": 178255,
+          "recorded_at": "2026-08-07"
+        },
+        {
+          "stars": 178264,
+          "recorded_at": "2026-08-08"
+        },
+        {
+          "stars": 178273,
+          "recorded_at": "2026-08-09"
+        },
+        {
+          "stars": 178278,
+          "recorded_at": "2026-08-10"
+        },
+        {
+          "stars": 178290,
+          "recorded_at": "2026-08-11"
+        },
+        {
+          "stars": 178331,
+          "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 178371,
+          "recorded_at": "2026-08-13"
+        }
+      ],
+      "isNew": false,
+      "category": null
     },
     {
       "full_name": "github/gitignore",
@@ -3587,9 +3751,9 @@
       "description": "A collection of useful .gitignore templates",
       "language": null,
       "url": "https://github.com/github/gitignore",
-      "stars": 175247,
+      "stars": 175266,
       "created_at": "2010-11-08T20:17:14Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 175015,
@@ -3658,6 +3822,10 @@
         {
           "stars": 175247,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 175266,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3670,9 +3838,9 @@
       "description": "The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.",
       "language": "MDX",
       "url": "https://github.com/twbs/bootstrap",
-      "stars": 174571,
+      "stars": 174576,
       "created_at": "2011-07-29T21:19:00Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 174530,
@@ -3741,6 +3909,10 @@
         {
           "stars": 174571,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 174576,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3753,9 +3925,9 @@
       "description": "Python tool for converting files and office documents to Markdown.",
       "language": "Python",
       "url": "https://github.com/microsoft/markitdown",
-      "stars": 173190,
+      "stars": 173395,
       "created_at": "2024-11-13T19:56:40Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 168869,
@@ -3824,6 +3996,10 @@
         {
           "stars": 173190,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 173395,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3836,9 +4012,9 @@
       "description": ":octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub.",
       "language": "Python",
       "url": "https://github.com/521xueweihan/HelloGitHub",
-      "stars": 170389,
+      "stars": 170563,
       "created_at": "2016-05-04T06:24:11Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 167123,
@@ -3907,6 +4083,10 @@
         {
           "stars": 170389,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 170563,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -3919,9 +4099,9 @@
       "description": "Public repository for Agent Skills",
       "language": "Python",
       "url": "https://github.com/anthropics/skills",
-      "stars": 168161,
+      "stars": 168547,
       "created_at": "2025-09-22T15:53:31Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 164017,
@@ -3990,6 +4170,10 @@
         {
           "stars": 168161,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 168547,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -4002,9 +4186,9 @@
       "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
       "language": "HTML",
       "url": "https://github.com/f/prompts.chat",
-      "stars": 167009,
+      "stars": 167064,
       "created_at": "2022-12-05T13:54:13Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 166327,
@@ -4073,6 +4257,10 @@
         {
           "stars": 167009,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 167064,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -4085,9 +4273,9 @@
       "description": "The context API to search, scrape, and interact with the web at scale. 🔥",
       "language": "TypeScript",
       "url": "https://github.com/firecrawl/firecrawl",
-      "stars": 165911,
+      "stars": 166469,
       "created_at": "2024-04-15T21:02:29Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 162399,
@@ -4112,6 +4300,10 @@
         {
           "stars": 165911,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 166469,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -4124,9 +4316,9 @@
       "description": "Stable Diffusion web UI",
       "language": "Python",
       "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
-      "stars": 164482,
+      "stars": 164500,
       "created_at": "2022-08-22T14:05:26Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 164265,
@@ -4195,6 +4387,10 @@
         {
           "stars": 164482,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 164500,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
@@ -4207,9 +4403,9 @@
       "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
       "language": "Python",
       "url": "https://github.com/huggingface/transformers",
-      "stars": 163825,
+      "stars": 164019,
       "created_at": "2018-10-29T13:56:00Z",
-      "fetched_at": "2026-08-12",
+      "fetched_at": "2026-08-13",
       "history": [
         {
           "stars": 162959,
@@ -4278,6 +4474,10 @@
         {
           "stars": 163825,
           "recorded_at": "2026-08-12"
+        },
+        {
+          "stars": 164019,
+          "recorded_at": "2026-08-13"
         }
       ],
       "isNew": false,
