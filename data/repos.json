@@ -7,12 +7,8 @@
       "language": "Markdown",
       "url": "https://github.com/codecrafters-io/build-your-own-x",
       "description": "Master programming by recreating technologies.",
-      "stars": 565607,
+      "stars": 565832,
       "history": [
-        {
-          "stars": 543753,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 543931,
           "recorded_at": "2026-08-30"
@@ -368,9 +364,13 @@
         {
           "stars": 565607,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 565832,
+          "recorded_at": "2026-11-27"
         }
       ],
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "isNew": false,
       "category": null
     },
@@ -381,14 +381,10 @@
       "description": "😎 Awesome lists about all kinds of interesting topics",
       "language": null,
       "url": "https://github.com/sindresorhus/awesome",
-      "stars": 542988,
+      "stars": 543600,
       "created_at": "2014-07-11T13:42:37Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 500903,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 501197,
           "recorded_at": "2026-08-30"
@@ -744,6 +740,10 @@
         {
           "stars": 542988,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 543600,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -756,14 +756,10 @@
       "description": "A collective list of free APIs",
       "language": "Python",
       "url": "https://github.com/public-apis/public-apis",
-      "stars": 501522,
+      "stars": 501711,
       "created_at": "2016-03-20T23:49:42Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 472457,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 472865,
           "recorded_at": "2026-08-30"
@@ -1119,6 +1115,10 @@
         {
           "stars": 501522,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 501711,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -1131,9 +1131,9 @@
       "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
       "language": "TypeScript",
       "url": "https://github.com/morluto/rea",
-      "stars": 478811,
+      "stars": 480172,
       "created_at": "2026-04-14T00:51:32Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
         {
           "stars": 170731,
@@ -1314,6 +1314,10 @@
         {
           "stars": 478811,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 480172,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -1327,14 +1331,10 @@
       "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
       "language": "TypeScript",
       "url": "https://github.com/freeCodeCamp/freeCodeCamp",
-      "stars": 459651,
+      "stars": 459689,
       "created_at": "2014-12-24T17:49:19Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 454757,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 454714,
           "recorded_at": "2026-08-30"
@@ -1690,6 +1690,10 @@
         {
           "stars": 459651,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 459689,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -1702,14 +1706,10 @@
       "description": ":books: Freely available programming books",
       "language": "Python",
       "url": "https://github.com/EbookFoundation/free-programming-books",
-      "stars": 402307,
+      "stars": 402349,
       "created_at": "2013-10-11T06:50:37Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 395486,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 395548,
           "recorded_at": "2026-08-30"
@@ -2065,6 +2065,10 @@
         {
           "stars": 402307,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 402349,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -2077,14 +2081,10 @@
       "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
       "language": "TypeScript",
       "url": "https://github.com/openclaw/openclaw",
-      "stars": 395249,
+      "stars": 395325,
       "created_at": "2025-11-24T10:16:47Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 387951,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 388025,
           "recorded_at": "2026-08-30"
@@ -2440,6 +2440,10 @@
         {
           "stars": 395249,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 395325,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -2452,14 +2456,10 @@
       "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
       "language": "Python",
       "url": "https://github.com/donnemartin/system-design-primer",
-      "stars": 379284,
+      "stars": 379404,
       "created_at": "2017-02-26T16:15:28Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 366607,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 366759,
           "recorded_at": "2026-08-30"
@@ -2815,6 +2815,10 @@
         {
           "stars": 379284,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 379404,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -2827,14 +2831,10 @@
       "description": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
       "language": "TypeScript",
       "url": "https://github.com/nilbuild/developer-roadmap",
-      "stars": 372799,
+      "stars": 372854,
       "created_at": "2017-03-15T13:45:52Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 365797,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 365858,
           "recorded_at": "2026-08-30"
@@ -3190,6 +3190,10 @@
         {
           "stars": 372799,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 372854,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -3202,14 +3206,10 @@
       "description": "A complete computer science study plan to become a software engineer.",
       "language": null,
       "url": "https://github.com/jwasham/coding-interview-university",
-      "stars": 365074,
+      "stars": 365120,
       "created_at": "2016-06-06T02:34:12Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 359927,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 359974,
           "recorded_at": "2026-08-30"
@@ -3565,6 +3565,10 @@
         {
           "stars": 365074,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 365120,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -3577,14 +3581,10 @@
       "description": "A list of Free Software network services and web applications which can be hosted on your own servers",
       "language": null,
       "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
-      "stars": 340577,
+      "stars": 340889,
       "created_at": "2015-06-01T02:33:17Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 315843,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 316029,
           "recorded_at": "2026-08-30"
@@ -3940,6 +3940,10 @@
         {
           "stars": 340577,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 340889,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -3952,14 +3956,10 @@
       "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
       "language": "Python",
       "url": "https://github.com/vinta/awesome-python",
-      "stars": 337204,
+      "stars": 337409,
       "created_at": "2014-06-27T21:00:06Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 316822,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 317045,
           "recorded_at": "2026-08-30"
@@ -4315,6 +4315,10 @@
         {
           "stars": 337204,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 337409,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -4327,14 +4331,10 @@
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
       "language": "Shell",
       "url": "https://github.com/mattpocock/skills",
-      "stars": 333072,
+      "stars": 333793,
       "created_at": "2026-02-03T11:15:53Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 240367,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 241131,
           "recorded_at": "2026-08-30"
@@ -4690,6 +4690,10 @@
         {
           "stars": 333072,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 333793,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -4702,14 +4706,10 @@
       "description": "An agentic skills framework & software development methodology that works.",
       "language": "Shell",
       "url": "https://github.com/obra/superpowers",
-      "stars": 326853,
+      "stars": 327717,
       "created_at": "2025-10-09T19:45:18Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 279127,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 279417,
           "recorded_at": "2026-08-30"
@@ -5065,6 +5065,10 @@
         {
           "stars": 326853,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 327717,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -5077,14 +5081,10 @@
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
       "language": "JavaScript",
       "url": "https://github.com/affaan-m/ECC",
-      "stars": 310863,
+      "stars": 311432,
       "created_at": "2026-01-18T00:51:51Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 244011,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 244313,
           "recorded_at": "2026-08-30"
@@ -5440,6 +5440,10 @@
         {
           "stars": 310863,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 311432,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -5452,14 +5456,10 @@
       "description": "Curated list of project-based tutorials",
       "language": "Python",
       "url": "https://github.com/practical-tutorials/project-based-learning",
-      "stars": 290516,
+      "stars": 290563,
       "created_at": "2017-04-12T05:07:46Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 281205,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 281277,
           "recorded_at": "2026-08-30"
@@ -5815,6 +5815,10 @@
         {
           "stars": 290516,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 290563,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -5827,14 +5831,10 @@
       "description": "DeepSeek Harness: Everything is a Plugin.",
       "language": "TypeScript",
       "url": "https://github.com/deepseek-ai/deepseek-harness",
-      "stars": 287229,
+      "stars": 287771,
       "created_at": "2026-08-13T11:56:32Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 202363,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 203612,
           "recorded_at": "2026-08-30"
@@ -6190,6 +6190,10 @@
         {
           "stars": 287229,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 287771,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -6203,14 +6207,10 @@
       "description": "Repo for counting stars and contributing. Press F to pay respect to glorious developers.",
       "language": null,
       "url": "https://github.com/996icu/996.ICU",
-      "stars": 277255,
+      "stars": 277252,
       "created_at": "2019-03-26T07:31:14Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 276799,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 276802,
           "recorded_at": "2026-08-30"
@@ -6566,6 +6566,10 @@
         {
           "stars": 277255,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 277252,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -6578,14 +6582,10 @@
       "description": "The agent that grows with you",
       "language": "Python",
       "url": "https://github.com/NousResearch/hermes-agent",
-      "stars": 266174,
+      "stars": 266473,
       "created_at": "2025-07-22T22:22:28Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 237823,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 238191,
           "recorded_at": "2026-08-30"
@@ -6941,6 +6941,10 @@
         {
           "stars": 266174,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 266473,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -6953,14 +6957,10 @@
       "description": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
       "language": null,
       "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
-      "stars": 261424,
+      "stars": 261699,
       "created_at": "2018-06-23T10:43:14Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 240952,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 241112,
           "recorded_at": "2026-08-30"
@@ -7316,6 +7316,10 @@
         {
           "stars": 261424,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 261699,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -7328,14 +7332,10 @@
       "description": "Linux kernel source tree",
       "language": "C",
       "url": "https://github.com/torvalds/linux",
-      "stars": 256801,
+      "stars": 256936,
       "created_at": "2011-09-04T22:48:12Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 244877,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 245220,
           "recorded_at": "2026-08-30"
@@ -7691,6 +7691,10 @@
         {
           "stars": 256801,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 256936,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -7703,14 +7707,10 @@
       "description": "The library for web and native user interfaces.",
       "language": "JavaScript",
       "url": "https://github.com/react/react",
-      "stars": 252976,
+      "stars": 253004,
       "created_at": "2013-05-24T16:15:54Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 248017,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 248321,
           "recorded_at": "2026-08-30"
@@ -8066,6 +8066,10 @@
         {
           "stars": 252976,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 253004,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -8078,14 +8082,10 @@
       "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
       "language": null,
       "url": "https://github.com/multica-ai/andrej-karpathy-skills",
-      "stars": 235764,
+      "stars": 235981,
       "created_at": "2026-01-27T03:53:13Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 208463,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 208695,
           "recorded_at": "2026-08-30"
@@ -8441,6 +8441,10 @@
         {
           "stars": 235764,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 235981,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -8453,12 +8457,8 @@
       "language": "TypeScript",
       "url": "https://github.com/anomalyco/opencode",
       "description": "The open source AI coding agent. Free models included.",
-      "stars": 229268,
+      "stars": 229477,
       "history": [
-        {
-          "stars": 202245,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 202416,
           "recorded_at": "2026-08-30"
@@ -8814,9 +8814,13 @@
         {
           "stars": 229268,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 229477,
+          "recorded_at": "2026-11-27"
         }
       ],
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "isNew": false,
       "category": null
     },
@@ -8827,14 +8831,10 @@
       "description": "All Algorithms implemented in Python",
       "language": "Python",
       "url": "https://github.com/TheAlgorithms/Python",
-      "stars": 226479,
+      "stars": 226493,
       "created_at": "2016-07-16T09:44:01Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 224083,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 224116,
           "recorded_at": "2026-08-30"
@@ -9190,6 +9190,10 @@
         {
           "stars": 226479,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 226493,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -9202,14 +9206,10 @@
       "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
       "language": "TypeScript",
       "url": "https://github.com/vuejs/vue",
-      "stars": 212557,
+      "stars": 212552,
       "created_at": "2013-07-29T03:24:51Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 210749,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 211004,
           "recorded_at": "2026-08-30"
@@ -9565,6 +9565,10 @@
         {
           "stars": 212557,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 212552,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -9577,12 +9581,8 @@
       "language": "TypeScript",
       "url": "https://github.com/n8n-io/n8n",
       "description": "Fair-code workflow automation with native AI.",
-      "stars": 212177,
+      "stars": 212368,
       "history": [
-        {
-          "stars": 202737,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 202822,
           "recorded_at": "2026-08-30"
@@ -9938,9 +9938,13 @@
         {
           "stars": 212177,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 212368,
+          "recorded_at": "2026-11-27"
         }
       ],
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "isNew": false,
       "category": "ai"
     },
@@ -9951,14 +9955,10 @@
       "description": "🎓 Path to a free self-taught education in Computer Science!",
       "language": "HTML",
       "url": "https://github.com/ossu/computer-science",
-      "stars": 211574,
+      "stars": 211612,
       "created_at": "2014-05-04T00:18:39Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 208492,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 208541,
           "recorded_at": "2026-08-30"
@@ -10314,385 +10314,14 @@
         {
           "stars": 211574,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 211612,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
       "category": null
-    },
-    {
-      "full_name": "yt-dlp/yt-dlp",
-      "name": "yt-dlp",
-      "owner": "yt-dlp",
-      "description": "A feature-rich command-line audio/video downloader",
-      "language": "Python",
-      "url": "https://github.com/yt-dlp/yt-dlp",
-      "stars": 210811,
-      "created_at": "2020-10-26T04:22:55Z",
-      "fetched_at": "2026-11-26",
-      "history": [
-        {
-          "stars": 187614,
-          "recorded_at": "2026-08-29"
-        },
-        {
-          "stars": 187779,
-          "recorded_at": "2026-08-30"
-        },
-        {
-          "stars": 187985,
-          "recorded_at": "2026-08-31"
-        },
-        {
-          "stars": 188194,
-          "recorded_at": "2026-09-01"
-        },
-        {
-          "stars": 188402,
-          "recorded_at": "2026-09-02"
-        },
-        {
-          "stars": 188589,
-          "recorded_at": "2026-09-03"
-        },
-        {
-          "stars": 188777,
-          "recorded_at": "2026-09-04"
-        },
-        {
-          "stars": 189003,
-          "recorded_at": "2026-09-05"
-        },
-        {
-          "stars": 189245,
-          "recorded_at": "2026-09-06"
-        },
-        {
-          "stars": 189469,
-          "recorded_at": "2026-09-07"
-        },
-        {
-          "stars": 189698,
-          "recorded_at": "2026-09-08"
-        },
-        {
-          "stars": 189885,
-          "recorded_at": "2026-09-09"
-        },
-        {
-          "stars": 190032,
-          "recorded_at": "2026-09-10"
-        },
-        {
-          "stars": 190266,
-          "recorded_at": "2026-09-11"
-        },
-        {
-          "stars": 190515,
-          "recorded_at": "2026-09-12"
-        },
-        {
-          "stars": 190705,
-          "recorded_at": "2026-09-13"
-        },
-        {
-          "stars": 190957,
-          "recorded_at": "2026-09-14"
-        },
-        {
-          "stars": 191222,
-          "recorded_at": "2026-09-15"
-        },
-        {
-          "stars": 191468,
-          "recorded_at": "2026-09-16"
-        },
-        {
-          "stars": 191659,
-          "recorded_at": "2026-09-17"
-        },
-        {
-          "stars": 191808,
-          "recorded_at": "2026-09-18"
-        },
-        {
-          "stars": 192009,
-          "recorded_at": "2026-09-19"
-        },
-        {
-          "stars": 192183,
-          "recorded_at": "2026-09-20"
-        },
-        {
-          "stars": 192392,
-          "recorded_at": "2026-09-21"
-        },
-        {
-          "stars": 192642,
-          "recorded_at": "2026-09-22"
-        },
-        {
-          "stars": 193005,
-          "recorded_at": "2026-09-23"
-        },
-        {
-          "stars": 193252,
-          "recorded_at": "2026-09-24"
-        },
-        {
-          "stars": 193442,
-          "recorded_at": "2026-09-25"
-        },
-        {
-          "stars": 193624,
-          "recorded_at": "2026-09-26"
-        },
-        {
-          "stars": 193792,
-          "recorded_at": "2026-09-27"
-        },
-        {
-          "stars": 194000,
-          "recorded_at": "2026-09-28"
-        },
-        {
-          "stars": 194188,
-          "recorded_at": "2026-09-29"
-        },
-        {
-          "stars": 194408,
-          "recorded_at": "2026-09-30"
-        },
-        {
-          "stars": 194616,
-          "recorded_at": "2026-10-01"
-        },
-        {
-          "stars": 194826,
-          "recorded_at": "2026-10-02"
-        },
-        {
-          "stars": 195056,
-          "recorded_at": "2026-10-03"
-        },
-        {
-          "stars": 195325,
-          "recorded_at": "2026-10-04"
-        },
-        {
-          "stars": 195587,
-          "recorded_at": "2026-10-05"
-        },
-        {
-          "stars": 195806,
-          "recorded_at": "2026-10-06"
-        },
-        {
-          "stars": 196024,
-          "recorded_at": "2026-10-07"
-        },
-        {
-          "stars": 196234,
-          "recorded_at": "2026-10-08"
-        },
-        {
-          "stars": 196264,
-          "recorded_at": "2026-10-09"
-        },
-        {
-          "stars": 196500,
-          "recorded_at": "2026-10-10"
-        },
-        {
-          "stars": 196726,
-          "recorded_at": "2026-10-11"
-        },
-        {
-          "stars": 196989,
-          "recorded_at": "2026-10-12"
-        },
-        {
-          "stars": 197261,
-          "recorded_at": "2026-10-13"
-        },
-        {
-          "stars": 197542,
-          "recorded_at": "2026-10-14"
-        },
-        {
-          "stars": 197832,
-          "recorded_at": "2026-10-15"
-        },
-        {
-          "stars": 198188,
-          "recorded_at": "2026-10-16"
-        },
-        {
-          "stars": 198524,
-          "recorded_at": "2026-10-17"
-        },
-        {
-          "stars": 198939,
-          "recorded_at": "2026-10-18"
-        },
-        {
-          "stars": 199244,
-          "recorded_at": "2026-10-19"
-        },
-        {
-          "stars": 199524,
-          "recorded_at": "2026-10-20"
-        },
-        {
-          "stars": 199772,
-          "recorded_at": "2026-10-21"
-        },
-        {
-          "stars": 200131,
-          "recorded_at": "2026-10-22"
-        },
-        {
-          "stars": 200498,
-          "recorded_at": "2026-10-23"
-        },
-        {
-          "stars": 201049,
-          "recorded_at": "2026-10-24"
-        },
-        {
-          "stars": 201598,
-          "recorded_at": "2026-10-25"
-        },
-        {
-          "stars": 202166,
-          "recorded_at": "2026-10-26"
-        },
-        {
-          "stars": 202666,
-          "recorded_at": "2026-10-27"
-        },
-        {
-          "stars": 203088,
-          "recorded_at": "2026-10-28"
-        },
-        {
-          "stars": 203488,
-          "recorded_at": "2026-10-29"
-        },
-        {
-          "stars": 203762,
-          "recorded_at": "2026-10-30"
-        },
-        {
-          "stars": 204027,
-          "recorded_at": "2026-10-31"
-        },
-        {
-          "stars": 204271,
-          "recorded_at": "2026-11-01"
-        },
-        {
-          "stars": 204553,
-          "recorded_at": "2026-11-02"
-        },
-        {
-          "stars": 204831,
-          "recorded_at": "2026-11-03"
-        },
-        {
-          "stars": 205045,
-          "recorded_at": "2026-11-04"
-        },
-        {
-          "stars": 205309,
-          "recorded_at": "2026-11-05"
-        },
-        {
-          "stars": 205583,
-          "recorded_at": "2026-11-06"
-        },
-        {
-          "stars": 205824,
-          "recorded_at": "2026-11-07"
-        },
-        {
-          "stars": 206059,
-          "recorded_at": "2026-11-08"
-        },
-        {
-          "stars": 206280,
-          "recorded_at": "2026-11-09"
-        },
-        {
-          "stars": 206547,
-          "recorded_at": "2026-11-10"
-        },
-        {
-          "stars": 206766,
-          "recorded_at": "2026-11-11"
-        },
-        {
-          "stars": 207042,
-          "recorded_at": "2026-11-12"
-        },
-        {
-          "stars": 207364,
-          "recorded_at": "2026-11-13"
-        },
-        {
-          "stars": 207640,
-          "recorded_at": "2026-11-14"
-        },
-        {
-          "stars": 207901,
-          "recorded_at": "2026-11-15"
-        },
-        {
-          "stars": 208165,
-          "recorded_at": "2026-11-16"
-        },
-        {
-          "stars": 208502,
-          "recorded_at": "2026-11-17"
-        },
-        {
-          "stars": 208755,
-          "recorded_at": "2026-11-18"
-        },
-        {
-          "stars": 209015,
-          "recorded_at": "2026-11-19"
-        },
-        {
-          "stars": 209254,
-          "recorded_at": "2026-11-20"
-        },
-        {
-          "stars": 209455,
-          "recorded_at": "2026-11-21"
-        },
-        {
-          "stars": 209731,
-          "recorded_at": "2026-11-22"
-        },
-        {
-          "stars": 210056,
-          "recorded_at": "2026-11-23"
-        },
-        {
-          "stars": 210302,
-          "recorded_at": "2026-11-24"
-        },
-        {
-          "stars": 210538,
-          "recorded_at": "2026-11-25"
-        },
-        {
-          "stars": 210811,
-          "recorded_at": "2026-11-26"
-        }
-      ],
-      "isNew": false,
-      "category": "devtools"
     },
     {
       "full_name": "firecrawl/firecrawl",
@@ -10701,14 +10330,10 @@
       "description": "The context API to search, scrape, and interact with the web at scale. 🔥",
       "language": "TypeScript",
       "url": "https://github.com/firecrawl/firecrawl",
-      "stars": 210320,
+      "stars": 211159,
       "created_at": "2024-04-15T21:02:29Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 173724,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 174130,
           "recorded_at": "2026-08-30"
@@ -11064,6 +10689,385 @@
         {
           "stars": 210320,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 211159,
+          "recorded_at": "2026-11-27"
+        }
+      ],
+      "isNew": false,
+      "category": "devtools"
+    },
+    {
+      "full_name": "yt-dlp/yt-dlp",
+      "name": "yt-dlp",
+      "owner": "yt-dlp",
+      "description": "A feature-rich command-line audio/video downloader",
+      "language": "Python",
+      "url": "https://github.com/yt-dlp/yt-dlp",
+      "stars": 211048,
+      "created_at": "2020-10-26T04:22:55Z",
+      "fetched_at": "2026-11-27",
+      "history": [
+        {
+          "stars": 187779,
+          "recorded_at": "2026-08-30"
+        },
+        {
+          "stars": 187985,
+          "recorded_at": "2026-08-31"
+        },
+        {
+          "stars": 188194,
+          "recorded_at": "2026-09-01"
+        },
+        {
+          "stars": 188402,
+          "recorded_at": "2026-09-02"
+        },
+        {
+          "stars": 188589,
+          "recorded_at": "2026-09-03"
+        },
+        {
+          "stars": 188777,
+          "recorded_at": "2026-09-04"
+        },
+        {
+          "stars": 189003,
+          "recorded_at": "2026-09-05"
+        },
+        {
+          "stars": 189245,
+          "recorded_at": "2026-09-06"
+        },
+        {
+          "stars": 189469,
+          "recorded_at": "2026-09-07"
+        },
+        {
+          "stars": 189698,
+          "recorded_at": "2026-09-08"
+        },
+        {
+          "stars": 189885,
+          "recorded_at": "2026-09-09"
+        },
+        {
+          "stars": 190032,
+          "recorded_at": "2026-09-10"
+        },
+        {
+          "stars": 190266,
+          "recorded_at": "2026-09-11"
+        },
+        {
+          "stars": 190515,
+          "recorded_at": "2026-09-12"
+        },
+        {
+          "stars": 190705,
+          "recorded_at": "2026-09-13"
+        },
+        {
+          "stars": 190957,
+          "recorded_at": "2026-09-14"
+        },
+        {
+          "stars": 191222,
+          "recorded_at": "2026-09-15"
+        },
+        {
+          "stars": 191468,
+          "recorded_at": "2026-09-16"
+        },
+        {
+          "stars": 191659,
+          "recorded_at": "2026-09-17"
+        },
+        {
+          "stars": 191808,
+          "recorded_at": "2026-09-18"
+        },
+        {
+          "stars": 192009,
+          "recorded_at": "2026-09-19"
+        },
+        {
+          "stars": 192183,
+          "recorded_at": "2026-09-20"
+        },
+        {
+          "stars": 192392,
+          "recorded_at": "2026-09-21"
+        },
+        {
+          "stars": 192642,
+          "recorded_at": "2026-09-22"
+        },
+        {
+          "stars": 193005,
+          "recorded_at": "2026-09-23"
+        },
+        {
+          "stars": 193252,
+          "recorded_at": "2026-09-24"
+        },
+        {
+          "stars": 193442,
+          "recorded_at": "2026-09-25"
+        },
+        {
+          "stars": 193624,
+          "recorded_at": "2026-09-26"
+        },
+        {
+          "stars": 193792,
+          "recorded_at": "2026-09-27"
+        },
+        {
+          "stars": 194000,
+          "recorded_at": "2026-09-28"
+        },
+        {
+          "stars": 194188,
+          "recorded_at": "2026-09-29"
+        },
+        {
+          "stars": 194408,
+          "recorded_at": "2026-09-30"
+        },
+        {
+          "stars": 194616,
+          "recorded_at": "2026-10-01"
+        },
+        {
+          "stars": 194826,
+          "recorded_at": "2026-10-02"
+        },
+        {
+          "stars": 195056,
+          "recorded_at": "2026-10-03"
+        },
+        {
+          "stars": 195325,
+          "recorded_at": "2026-10-04"
+        },
+        {
+          "stars": 195587,
+          "recorded_at": "2026-10-05"
+        },
+        {
+          "stars": 195806,
+          "recorded_at": "2026-10-06"
+        },
+        {
+          "stars": 196024,
+          "recorded_at": "2026-10-07"
+        },
+        {
+          "stars": 196234,
+          "recorded_at": "2026-10-08"
+        },
+        {
+          "stars": 196264,
+          "recorded_at": "2026-10-09"
+        },
+        {
+          "stars": 196500,
+          "recorded_at": "2026-10-10"
+        },
+        {
+          "stars": 196726,
+          "recorded_at": "2026-10-11"
+        },
+        {
+          "stars": 196989,
+          "recorded_at": "2026-10-12"
+        },
+        {
+          "stars": 197261,
+          "recorded_at": "2026-10-13"
+        },
+        {
+          "stars": 197542,
+          "recorded_at": "2026-10-14"
+        },
+        {
+          "stars": 197832,
+          "recorded_at": "2026-10-15"
+        },
+        {
+          "stars": 198188,
+          "recorded_at": "2026-10-16"
+        },
+        {
+          "stars": 198524,
+          "recorded_at": "2026-10-17"
+        },
+        {
+          "stars": 198939,
+          "recorded_at": "2026-10-18"
+        },
+        {
+          "stars": 199244,
+          "recorded_at": "2026-10-19"
+        },
+        {
+          "stars": 199524,
+          "recorded_at": "2026-10-20"
+        },
+        {
+          "stars": 199772,
+          "recorded_at": "2026-10-21"
+        },
+        {
+          "stars": 200131,
+          "recorded_at": "2026-10-22"
+        },
+        {
+          "stars": 200498,
+          "recorded_at": "2026-10-23"
+        },
+        {
+          "stars": 201049,
+          "recorded_at": "2026-10-24"
+        },
+        {
+          "stars": 201598,
+          "recorded_at": "2026-10-25"
+        },
+        {
+          "stars": 202166,
+          "recorded_at": "2026-10-26"
+        },
+        {
+          "stars": 202666,
+          "recorded_at": "2026-10-27"
+        },
+        {
+          "stars": 203088,
+          "recorded_at": "2026-10-28"
+        },
+        {
+          "stars": 203488,
+          "recorded_at": "2026-10-29"
+        },
+        {
+          "stars": 203762,
+          "recorded_at": "2026-10-30"
+        },
+        {
+          "stars": 204027,
+          "recorded_at": "2026-10-31"
+        },
+        {
+          "stars": 204271,
+          "recorded_at": "2026-11-01"
+        },
+        {
+          "stars": 204553,
+          "recorded_at": "2026-11-02"
+        },
+        {
+          "stars": 204831,
+          "recorded_at": "2026-11-03"
+        },
+        {
+          "stars": 205045,
+          "recorded_at": "2026-11-04"
+        },
+        {
+          "stars": 205309,
+          "recorded_at": "2026-11-05"
+        },
+        {
+          "stars": 205583,
+          "recorded_at": "2026-11-06"
+        },
+        {
+          "stars": 205824,
+          "recorded_at": "2026-11-07"
+        },
+        {
+          "stars": 206059,
+          "recorded_at": "2026-11-08"
+        },
+        {
+          "stars": 206280,
+          "recorded_at": "2026-11-09"
+        },
+        {
+          "stars": 206547,
+          "recorded_at": "2026-11-10"
+        },
+        {
+          "stars": 206766,
+          "recorded_at": "2026-11-11"
+        },
+        {
+          "stars": 207042,
+          "recorded_at": "2026-11-12"
+        },
+        {
+          "stars": 207364,
+          "recorded_at": "2026-11-13"
+        },
+        {
+          "stars": 207640,
+          "recorded_at": "2026-11-14"
+        },
+        {
+          "stars": 207901,
+          "recorded_at": "2026-11-15"
+        },
+        {
+          "stars": 208165,
+          "recorded_at": "2026-11-16"
+        },
+        {
+          "stars": 208502,
+          "recorded_at": "2026-11-17"
+        },
+        {
+          "stars": 208755,
+          "recorded_at": "2026-11-18"
+        },
+        {
+          "stars": 209015,
+          "recorded_at": "2026-11-19"
+        },
+        {
+          "stars": 209254,
+          "recorded_at": "2026-11-20"
+        },
+        {
+          "stars": 209455,
+          "recorded_at": "2026-11-21"
+        },
+        {
+          "stars": 209731,
+          "recorded_at": "2026-11-22"
+        },
+        {
+          "stars": 210056,
+          "recorded_at": "2026-11-23"
+        },
+        {
+          "stars": 210302,
+          "recorded_at": "2026-11-24"
+        },
+        {
+          "stars": 210538,
+          "recorded_at": "2026-11-25"
+        },
+        {
+          "stars": 210811,
+          "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 211048,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -11076,14 +11080,10 @@
       "description": "DigitalPlat FreeDomain: Free Domain For Everyone",
       "language": "Markdown",
       "url": "https://github.com/DigitalPlatDev/FreeDomain",
-      "stars": 209294,
+      "stars": 209388,
       "created_at": "2024-05-30T13:23:00Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 196255,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 196441,
           "recorded_at": "2026-08-30"
@@ -11439,6 +11439,10 @@
         {
           "stars": 209294,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 209388,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -11451,14 +11455,10 @@
       "description": "An Open Source Machine Learning Framework for Everyone",
       "language": "C++",
       "url": "https://github.com/tensorflow/tensorflow",
-      "stars": 201841,
+      "stars": 201868,
       "created_at": "2015-11-07T01:19:20Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 197769,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 198020,
           "recorded_at": "2026-08-30"
@@ -11814,385 +11814,14 @@
         {
           "stars": 201841,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 201868,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
       "category": "ai"
-    },
-    {
-      "full_name": "massgravel/Microsoft-Activation-Scripts",
-      "name": "Microsoft-Activation-Scripts",
-      "owner": "massgravel",
-      "description": "Open-source Windows and Office activator featuring HWID, Ohook, TSforge, and Online KMS activation methods, along with advanced troubleshooting.",
-      "language": "Batchfile",
-      "url": "https://github.com/massgravel/Microsoft-Activation-Scripts",
-      "stars": 201007,
-      "created_at": "2020-01-12T23:03:34Z",
-      "fetched_at": "2026-11-26",
-      "history": [
-        {
-          "stars": 188605,
-          "recorded_at": "2026-08-29"
-        },
-        {
-          "stars": 188702,
-          "recorded_at": "2026-08-30"
-        },
-        {
-          "stars": 188803,
-          "recorded_at": "2026-08-31"
-        },
-        {
-          "stars": 188918,
-          "recorded_at": "2026-09-01"
-        },
-        {
-          "stars": 189027,
-          "recorded_at": "2026-09-02"
-        },
-        {
-          "stars": 189146,
-          "recorded_at": "2026-09-03"
-        },
-        {
-          "stars": 189278,
-          "recorded_at": "2026-09-04"
-        },
-        {
-          "stars": 189388,
-          "recorded_at": "2026-09-05"
-        },
-        {
-          "stars": 189484,
-          "recorded_at": "2026-09-06"
-        },
-        {
-          "stars": 189599,
-          "recorded_at": "2026-09-07"
-        },
-        {
-          "stars": 189731,
-          "recorded_at": "2026-09-08"
-        },
-        {
-          "stars": 189845,
-          "recorded_at": "2026-09-09"
-        },
-        {
-          "stars": 189954,
-          "recorded_at": "2026-09-10"
-        },
-        {
-          "stars": 190090,
-          "recorded_at": "2026-09-11"
-        },
-        {
-          "stars": 190241,
-          "recorded_at": "2026-09-12"
-        },
-        {
-          "stars": 190370,
-          "recorded_at": "2026-09-13"
-        },
-        {
-          "stars": 190481,
-          "recorded_at": "2026-09-14"
-        },
-        {
-          "stars": 190633,
-          "recorded_at": "2026-09-15"
-        },
-        {
-          "stars": 190775,
-          "recorded_at": "2026-09-16"
-        },
-        {
-          "stars": 190903,
-          "recorded_at": "2026-09-17"
-        },
-        {
-          "stars": 191033,
-          "recorded_at": "2026-09-18"
-        },
-        {
-          "stars": 191169,
-          "recorded_at": "2026-09-19"
-        },
-        {
-          "stars": 191300,
-          "recorded_at": "2026-09-20"
-        },
-        {
-          "stars": 191384,
-          "recorded_at": "2026-09-21"
-        },
-        {
-          "stars": 191511,
-          "recorded_at": "2026-09-22"
-        },
-        {
-          "stars": 191624,
-          "recorded_at": "2026-09-23"
-        },
-        {
-          "stars": 191735,
-          "recorded_at": "2026-09-24"
-        },
-        {
-          "stars": 191863,
-          "recorded_at": "2026-09-25"
-        },
-        {
-          "stars": 191992,
-          "recorded_at": "2026-09-26"
-        },
-        {
-          "stars": 192080,
-          "recorded_at": "2026-09-27"
-        },
-        {
-          "stars": 192174,
-          "recorded_at": "2026-09-28"
-        },
-        {
-          "stars": 192310,
-          "recorded_at": "2026-09-29"
-        },
-        {
-          "stars": 192411,
-          "recorded_at": "2026-09-30"
-        },
-        {
-          "stars": 192534,
-          "recorded_at": "2026-10-01"
-        },
-        {
-          "stars": 192763,
-          "recorded_at": "2026-10-02"
-        },
-        {
-          "stars": 193053,
-          "recorded_at": "2026-10-03"
-        },
-        {
-          "stars": 193193,
-          "recorded_at": "2026-10-04"
-        },
-        {
-          "stars": 193378,
-          "recorded_at": "2026-10-05"
-        },
-        {
-          "stars": 193477,
-          "recorded_at": "2026-10-06"
-        },
-        {
-          "stars": 193585,
-          "recorded_at": "2026-10-07"
-        },
-        {
-          "stars": 193719,
-          "recorded_at": "2026-10-08"
-        },
-        {
-          "stars": 193642,
-          "recorded_at": "2026-10-09"
-        },
-        {
-          "stars": 193733,
-          "recorded_at": "2026-10-10"
-        },
-        {
-          "stars": 193868,
-          "recorded_at": "2026-10-11"
-        },
-        {
-          "stars": 194015,
-          "recorded_at": "2026-10-12"
-        },
-        {
-          "stars": 194188,
-          "recorded_at": "2026-10-13"
-        },
-        {
-          "stars": 194332,
-          "recorded_at": "2026-10-14"
-        },
-        {
-          "stars": 194503,
-          "recorded_at": "2026-10-15"
-        },
-        {
-          "stars": 194630,
-          "recorded_at": "2026-10-16"
-        },
-        {
-          "stars": 194751,
-          "recorded_at": "2026-10-17"
-        },
-        {
-          "stars": 194863,
-          "recorded_at": "2026-10-18"
-        },
-        {
-          "stars": 194982,
-          "recorded_at": "2026-10-19"
-        },
-        {
-          "stars": 195118,
-          "recorded_at": "2026-10-20"
-        },
-        {
-          "stars": 195257,
-          "recorded_at": "2026-10-21"
-        },
-        {
-          "stars": 195505,
-          "recorded_at": "2026-10-22"
-        },
-        {
-          "stars": 195618,
-          "recorded_at": "2026-10-23"
-        },
-        {
-          "stars": 195739,
-          "recorded_at": "2026-10-24"
-        },
-        {
-          "stars": 196004,
-          "recorded_at": "2026-10-25"
-        },
-        {
-          "stars": 196147,
-          "recorded_at": "2026-10-26"
-        },
-        {
-          "stars": 196307,
-          "recorded_at": "2026-10-27"
-        },
-        {
-          "stars": 196491,
-          "recorded_at": "2026-10-28"
-        },
-        {
-          "stars": 196727,
-          "recorded_at": "2026-10-29"
-        },
-        {
-          "stars": 196891,
-          "recorded_at": "2026-10-30"
-        },
-        {
-          "stars": 197019,
-          "recorded_at": "2026-10-31"
-        },
-        {
-          "stars": 197133,
-          "recorded_at": "2026-11-01"
-        },
-        {
-          "stars": 197268,
-          "recorded_at": "2026-11-02"
-        },
-        {
-          "stars": 197455,
-          "recorded_at": "2026-11-03"
-        },
-        {
-          "stars": 197580,
-          "recorded_at": "2026-11-04"
-        },
-        {
-          "stars": 197715,
-          "recorded_at": "2026-11-05"
-        },
-        {
-          "stars": 197815,
-          "recorded_at": "2026-11-06"
-        },
-        {
-          "stars": 197930,
-          "recorded_at": "2026-11-07"
-        },
-        {
-          "stars": 198040,
-          "recorded_at": "2026-11-08"
-        },
-        {
-          "stars": 198168,
-          "recorded_at": "2026-11-09"
-        },
-        {
-          "stars": 198330,
-          "recorded_at": "2026-11-10"
-        },
-        {
-          "stars": 198471,
-          "recorded_at": "2026-11-11"
-        },
-        {
-          "stars": 198631,
-          "recorded_at": "2026-11-12"
-        },
-        {
-          "stars": 198770,
-          "recorded_at": "2026-11-13"
-        },
-        {
-          "stars": 198914,
-          "recorded_at": "2026-11-14"
-        },
-        {
-          "stars": 199380,
-          "recorded_at": "2026-11-15"
-        },
-        {
-          "stars": 199573,
-          "recorded_at": "2026-11-16"
-        },
-        {
-          "stars": 199778,
-          "recorded_at": "2026-11-17"
-        },
-        {
-          "stars": 199952,
-          "recorded_at": "2026-11-18"
-        },
-        {
-          "stars": 200068,
-          "recorded_at": "2026-11-19"
-        },
-        {
-          "stars": 200223,
-          "recorded_at": "2026-11-20"
-        },
-        {
-          "stars": 200338,
-          "recorded_at": "2026-11-21"
-        },
-        {
-          "stars": 200441,
-          "recorded_at": "2026-11-22"
-        },
-        {
-          "stars": 200594,
-          "recorded_at": "2026-11-23"
-        },
-        {
-          "stars": 200734,
-          "recorded_at": "2026-11-24"
-        },
-        {
-          "stars": 200868,
-          "recorded_at": "2026-11-25"
-        },
-        {
-          "stars": 201007,
-          "recorded_at": "2026-11-26"
-        }
-      ],
-      "isNew": false,
-      "category": null
     },
     {
       "full_name": "anthropics/skills",
@@ -12201,14 +11830,10 @@
       "description": "Public repository for Agent Skills",
       "language": "Python",
       "url": "https://github.com/anthropics/skills",
-      "stars": 200682,
+      "stars": 201174,
       "created_at": "2025-09-22T15:53:31Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 172327,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 172495,
           "recorded_at": "2026-08-30"
@@ -12564,6 +12189,385 @@
         {
           "stars": 200682,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 201174,
+          "recorded_at": "2026-11-27"
+        }
+      ],
+      "isNew": false,
+      "category": null
+    },
+    {
+      "full_name": "massgravel/Microsoft-Activation-Scripts",
+      "name": "Microsoft-Activation-Scripts",
+      "owner": "massgravel",
+      "description": "Open-source Windows and Office activator featuring HWID, Ohook, TSforge, and Online KMS activation methods, along with advanced troubleshooting.",
+      "language": "Batchfile",
+      "url": "https://github.com/massgravel/Microsoft-Activation-Scripts",
+      "stars": 201104,
+      "created_at": "2020-01-12T23:03:34Z",
+      "fetched_at": "2026-11-27",
+      "history": [
+        {
+          "stars": 188702,
+          "recorded_at": "2026-08-30"
+        },
+        {
+          "stars": 188803,
+          "recorded_at": "2026-08-31"
+        },
+        {
+          "stars": 188918,
+          "recorded_at": "2026-09-01"
+        },
+        {
+          "stars": 189027,
+          "recorded_at": "2026-09-02"
+        },
+        {
+          "stars": 189146,
+          "recorded_at": "2026-09-03"
+        },
+        {
+          "stars": 189278,
+          "recorded_at": "2026-09-04"
+        },
+        {
+          "stars": 189388,
+          "recorded_at": "2026-09-05"
+        },
+        {
+          "stars": 189484,
+          "recorded_at": "2026-09-06"
+        },
+        {
+          "stars": 189599,
+          "recorded_at": "2026-09-07"
+        },
+        {
+          "stars": 189731,
+          "recorded_at": "2026-09-08"
+        },
+        {
+          "stars": 189845,
+          "recorded_at": "2026-09-09"
+        },
+        {
+          "stars": 189954,
+          "recorded_at": "2026-09-10"
+        },
+        {
+          "stars": 190090,
+          "recorded_at": "2026-09-11"
+        },
+        {
+          "stars": 190241,
+          "recorded_at": "2026-09-12"
+        },
+        {
+          "stars": 190370,
+          "recorded_at": "2026-09-13"
+        },
+        {
+          "stars": 190481,
+          "recorded_at": "2026-09-14"
+        },
+        {
+          "stars": 190633,
+          "recorded_at": "2026-09-15"
+        },
+        {
+          "stars": 190775,
+          "recorded_at": "2026-09-16"
+        },
+        {
+          "stars": 190903,
+          "recorded_at": "2026-09-17"
+        },
+        {
+          "stars": 191033,
+          "recorded_at": "2026-09-18"
+        },
+        {
+          "stars": 191169,
+          "recorded_at": "2026-09-19"
+        },
+        {
+          "stars": 191300,
+          "recorded_at": "2026-09-20"
+        },
+        {
+          "stars": 191384,
+          "recorded_at": "2026-09-21"
+        },
+        {
+          "stars": 191511,
+          "recorded_at": "2026-09-22"
+        },
+        {
+          "stars": 191624,
+          "recorded_at": "2026-09-23"
+        },
+        {
+          "stars": 191735,
+          "recorded_at": "2026-09-24"
+        },
+        {
+          "stars": 191863,
+          "recorded_at": "2026-09-25"
+        },
+        {
+          "stars": 191992,
+          "recorded_at": "2026-09-26"
+        },
+        {
+          "stars": 192080,
+          "recorded_at": "2026-09-27"
+        },
+        {
+          "stars": 192174,
+          "recorded_at": "2026-09-28"
+        },
+        {
+          "stars": 192310,
+          "recorded_at": "2026-09-29"
+        },
+        {
+          "stars": 192411,
+          "recorded_at": "2026-09-30"
+        },
+        {
+          "stars": 192534,
+          "recorded_at": "2026-10-01"
+        },
+        {
+          "stars": 192763,
+          "recorded_at": "2026-10-02"
+        },
+        {
+          "stars": 193053,
+          "recorded_at": "2026-10-03"
+        },
+        {
+          "stars": 193193,
+          "recorded_at": "2026-10-04"
+        },
+        {
+          "stars": 193378,
+          "recorded_at": "2026-10-05"
+        },
+        {
+          "stars": 193477,
+          "recorded_at": "2026-10-06"
+        },
+        {
+          "stars": 193585,
+          "recorded_at": "2026-10-07"
+        },
+        {
+          "stars": 193719,
+          "recorded_at": "2026-10-08"
+        },
+        {
+          "stars": 193642,
+          "recorded_at": "2026-10-09"
+        },
+        {
+          "stars": 193733,
+          "recorded_at": "2026-10-10"
+        },
+        {
+          "stars": 193868,
+          "recorded_at": "2026-10-11"
+        },
+        {
+          "stars": 194015,
+          "recorded_at": "2026-10-12"
+        },
+        {
+          "stars": 194188,
+          "recorded_at": "2026-10-13"
+        },
+        {
+          "stars": 194332,
+          "recorded_at": "2026-10-14"
+        },
+        {
+          "stars": 194503,
+          "recorded_at": "2026-10-15"
+        },
+        {
+          "stars": 194630,
+          "recorded_at": "2026-10-16"
+        },
+        {
+          "stars": 194751,
+          "recorded_at": "2026-10-17"
+        },
+        {
+          "stars": 194863,
+          "recorded_at": "2026-10-18"
+        },
+        {
+          "stars": 194982,
+          "recorded_at": "2026-10-19"
+        },
+        {
+          "stars": 195118,
+          "recorded_at": "2026-10-20"
+        },
+        {
+          "stars": 195257,
+          "recorded_at": "2026-10-21"
+        },
+        {
+          "stars": 195505,
+          "recorded_at": "2026-10-22"
+        },
+        {
+          "stars": 195618,
+          "recorded_at": "2026-10-23"
+        },
+        {
+          "stars": 195739,
+          "recorded_at": "2026-10-24"
+        },
+        {
+          "stars": 196004,
+          "recorded_at": "2026-10-25"
+        },
+        {
+          "stars": 196147,
+          "recorded_at": "2026-10-26"
+        },
+        {
+          "stars": 196307,
+          "recorded_at": "2026-10-27"
+        },
+        {
+          "stars": 196491,
+          "recorded_at": "2026-10-28"
+        },
+        {
+          "stars": 196727,
+          "recorded_at": "2026-10-29"
+        },
+        {
+          "stars": 196891,
+          "recorded_at": "2026-10-30"
+        },
+        {
+          "stars": 197019,
+          "recorded_at": "2026-10-31"
+        },
+        {
+          "stars": 197133,
+          "recorded_at": "2026-11-01"
+        },
+        {
+          "stars": 197268,
+          "recorded_at": "2026-11-02"
+        },
+        {
+          "stars": 197455,
+          "recorded_at": "2026-11-03"
+        },
+        {
+          "stars": 197580,
+          "recorded_at": "2026-11-04"
+        },
+        {
+          "stars": 197715,
+          "recorded_at": "2026-11-05"
+        },
+        {
+          "stars": 197815,
+          "recorded_at": "2026-11-06"
+        },
+        {
+          "stars": 197930,
+          "recorded_at": "2026-11-07"
+        },
+        {
+          "stars": 198040,
+          "recorded_at": "2026-11-08"
+        },
+        {
+          "stars": 198168,
+          "recorded_at": "2026-11-09"
+        },
+        {
+          "stars": 198330,
+          "recorded_at": "2026-11-10"
+        },
+        {
+          "stars": 198471,
+          "recorded_at": "2026-11-11"
+        },
+        {
+          "stars": 198631,
+          "recorded_at": "2026-11-12"
+        },
+        {
+          "stars": 198770,
+          "recorded_at": "2026-11-13"
+        },
+        {
+          "stars": 198914,
+          "recorded_at": "2026-11-14"
+        },
+        {
+          "stars": 199380,
+          "recorded_at": "2026-11-15"
+        },
+        {
+          "stars": 199573,
+          "recorded_at": "2026-11-16"
+        },
+        {
+          "stars": 199778,
+          "recorded_at": "2026-11-17"
+        },
+        {
+          "stars": 199952,
+          "recorded_at": "2026-11-18"
+        },
+        {
+          "stars": 200068,
+          "recorded_at": "2026-11-19"
+        },
+        {
+          "stars": 200223,
+          "recorded_at": "2026-11-20"
+        },
+        {
+          "stars": 200338,
+          "recorded_at": "2026-11-21"
+        },
+        {
+          "stars": 200441,
+          "recorded_at": "2026-11-22"
+        },
+        {
+          "stars": 200594,
+          "recorded_at": "2026-11-23"
+        },
+        {
+          "stars": 200734,
+          "recorded_at": "2026-11-24"
+        },
+        {
+          "stars": 200868,
+          "recorded_at": "2026-11-25"
+        },
+        {
+          "stars": 201007,
+          "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 201104,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -12576,9 +12580,9 @@
       "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
       "language": "JavaScript",
       "url": "https://github.com/DietrichGebert/ponytail",
-      "stars": 198887,
+      "stars": 199526,
       "created_at": "2026-06-12T00:52:37Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
         {
           "stars": 174872,
@@ -12715,6 +12719,10 @@
         {
           "stars": 198887,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 199526,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -12728,14 +12736,10 @@
       "description": "Python tool for converting files and office documents to Markdown.",
       "language": "Python",
       "url": "https://github.com/microsoft/markitdown",
-      "stars": 198518,
+      "stars": 198651,
       "created_at": "2024-11-13T19:56:40Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 176880,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 177051,
           "recorded_at": "2026-08-30"
@@ -13091,6 +13095,10 @@
         {
           "stars": 198518,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 198651,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -13103,14 +13111,10 @@
       "description": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
       "language": "JavaScript",
       "url": "https://github.com/trekhleb/javascript-algorithms",
-      "stars": 196769,
+      "stars": 196764,
       "created_at": "2018-03-24T07:47:04Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 196576,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 196579,
           "recorded_at": "2026-08-30"
@@ -13466,6 +13470,10 @@
         {
           "stars": 196769,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 196764,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -13478,14 +13486,10 @@
       "description": "A curated list of awesome Go frameworks, libraries and software",
       "language": "Go",
       "url": "https://github.com/avelino/awesome-go",
-      "stars": 196027,
+      "stars": 196218,
       "created_at": "2014-07-06T13:42:15Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 182563,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 182651,
           "recorded_at": "2026-08-30"
@@ -13841,6 +13845,10 @@
         {
           "stars": 196027,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 196218,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -13853,14 +13861,10 @@
       "description": "Visual Studio Code",
       "language": "TypeScript",
       "url": "https://github.com/microsoft/vscode",
-      "stars": 195816,
+      "stars": 195848,
       "created_at": "2015-09-03T20:23:38Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 189756,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 190042,
           "recorded_at": "2026-08-30"
@@ -14216,6 +14220,10 @@
         {
           "stars": 195816,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 195848,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -14228,14 +14236,10 @@
       "description": "An agent-managed museum exhibit, built in Rust with Gajae-Code / LazyCodex — developed and maintained with no human intervention.",
       "language": "Rust",
       "url": "https://github.com/ultraworkers/claw-code",
-      "stars": 194724,
+      "stars": 194718,
       "created_at": "2026-03-31T08:58:08Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 195140,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 195148,
           "recorded_at": "2026-08-30"
@@ -14591,6 +14595,10 @@
         {
           "stars": 194724,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 194718,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -14603,14 +14611,10 @@
       "description": ":octocat: 分享 GitHub 上有趣、入门级的开源项目。Share interesting, entry-level open source projects on GitHub.",
       "language": "Python",
       "url": "https://github.com/521xueweihan/HelloGitHub",
-      "stars": 191324,
+      "stars": 191516,
       "created_at": "2016-05-04T06:24:11Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 173509,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 173643,
           "recorded_at": "2026-08-30"
@@ -14966,6 +14970,10 @@
         {
           "stars": 191324,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 191516,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -14978,14 +14986,10 @@
       "description": "🙃   A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
       "language": "Shell",
       "url": "https://github.com/ohmyzsh/ohmyzsh",
-      "stars": 190896,
+      "stars": 190932,
       "created_at": "2009-08-28T18:15:37Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 189428,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 189446,
           "recorded_at": "2026-08-30"
@@ -15341,381 +15345,10 @@
         {
           "stars": 190896,
           "recorded_at": "2026-11-26"
-        }
-      ],
-      "isNew": false,
-      "category": "ai"
-    },
-    {
-      "full_name": "Significant-Gravitas/AutoGPT",
-      "name": "AutoGPT",
-      "owner": "Significant-Gravitas",
-      "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
-      "language": "Python",
-      "url": "https://github.com/Significant-Gravitas/AutoGPT",
-      "stars": 188203,
-      "created_at": "2023-03-16T09:21:07Z",
-      "fetched_at": "2026-11-26",
-      "history": [
-        {
-          "stars": 186965,
-          "recorded_at": "2026-08-29"
-        },
-        {
-          "stars": 186993,
-          "recorded_at": "2026-08-30"
-        },
-        {
-          "stars": 187019,
-          "recorded_at": "2026-08-31"
-        },
-        {
-          "stars": 187043,
-          "recorded_at": "2026-09-01"
-        },
-        {
-          "stars": 187064,
-          "recorded_at": "2026-09-02"
-        },
-        {
-          "stars": 187089,
-          "recorded_at": "2026-09-03"
-        },
-        {
-          "stars": 187109,
-          "recorded_at": "2026-09-04"
-        },
-        {
-          "stars": 187134,
-          "recorded_at": "2026-09-05"
-        },
-        {
-          "stars": 187162,
-          "recorded_at": "2026-09-06"
-        },
-        {
-          "stars": 187176,
-          "recorded_at": "2026-09-07"
-        },
-        {
-          "stars": 187187,
-          "recorded_at": "2026-09-08"
-        },
-        {
-          "stars": 187213,
-          "recorded_at": "2026-09-09"
-        },
-        {
-          "stars": 187235,
-          "recorded_at": "2026-09-10"
-        },
-        {
-          "stars": 187249,
-          "recorded_at": "2026-09-11"
-        },
-        {
-          "stars": 187271,
-          "recorded_at": "2026-09-12"
-        },
-        {
-          "stars": 187294,
-          "recorded_at": "2026-09-13"
-        },
-        {
-          "stars": 187314,
-          "recorded_at": "2026-09-14"
-        },
-        {
-          "stars": 187346,
-          "recorded_at": "2026-09-15"
-        },
-        {
-          "stars": 187372,
-          "recorded_at": "2026-09-16"
-        },
-        {
-          "stars": 187397,
-          "recorded_at": "2026-09-17"
-        },
-        {
-          "stars": 187421,
-          "recorded_at": "2026-09-18"
-        },
-        {
-          "stars": 187442,
-          "recorded_at": "2026-09-19"
-        },
-        {
-          "stars": 187448,
-          "recorded_at": "2026-09-20"
-        },
-        {
-          "stars": 187469,
-          "recorded_at": "2026-09-21"
-        },
-        {
-          "stars": 187483,
-          "recorded_at": "2026-09-22"
-        },
-        {
-          "stars": 187503,
-          "recorded_at": "2026-09-23"
-        },
-        {
-          "stars": 187517,
-          "recorded_at": "2026-09-24"
-        },
-        {
-          "stars": 187538,
-          "recorded_at": "2026-09-25"
-        },
-        {
-          "stars": 187565,
-          "recorded_at": "2026-09-26"
-        },
-        {
-          "stars": 187583,
-          "recorded_at": "2026-09-27"
-        },
-        {
-          "stars": 187596,
-          "recorded_at": "2026-09-28"
-        },
-        {
-          "stars": 187598,
-          "recorded_at": "2026-09-29"
-        },
-        {
-          "stars": 187622,
-          "recorded_at": "2026-09-30"
-        },
-        {
-          "stars": 187630,
-          "recorded_at": "2026-10-01"
-        },
-        {
-          "stars": 187652,
-          "recorded_at": "2026-10-02"
-        },
-        {
-          "stars": 187641,
-          "recorded_at": "2026-10-03"
-        },
-        {
-          "stars": 187642,
-          "recorded_at": "2026-10-04"
-        },
-        {
-          "stars": 187657,
-          "recorded_at": "2026-10-05"
-        },
-        {
-          "stars": 187664,
-          "recorded_at": "2026-10-06"
-        },
-        {
-          "stars": 187677,
-          "recorded_at": "2026-10-07"
-        },
-        {
-          "stars": 187691,
-          "recorded_at": "2026-10-08"
-        },
-        {
-          "stars": 187488,
-          "recorded_at": "2026-10-09"
-        },
-        {
-          "stars": 187500,
-          "recorded_at": "2026-10-10"
-        },
-        {
-          "stars": 187517,
-          "recorded_at": "2026-10-11"
-        },
-        {
-          "stars": 187526,
-          "recorded_at": "2026-10-12"
-        },
-        {
-          "stars": 187540,
-          "recorded_at": "2026-10-13"
-        },
-        {
-          "stars": 187564,
-          "recorded_at": "2026-10-14"
-        },
-        {
-          "stars": 187581,
-          "recorded_at": "2026-10-15"
-        },
-        {
-          "stars": 187599,
-          "recorded_at": "2026-10-16"
-        },
-        {
-          "stars": 187617,
-          "recorded_at": "2026-10-17"
-        },
-        {
-          "stars": 187630,
-          "recorded_at": "2026-10-18"
-        },
-        {
-          "stars": 187644,
-          "recorded_at": "2026-10-19"
-        },
-        {
-          "stars": 187663,
-          "recorded_at": "2026-10-20"
-        },
-        {
-          "stars": 187680,
-          "recorded_at": "2026-10-21"
-        },
-        {
-          "stars": 187704,
-          "recorded_at": "2026-10-22"
-        },
-        {
-          "stars": 187715,
-          "recorded_at": "2026-10-23"
-        },
-        {
-          "stars": 187722,
-          "recorded_at": "2026-10-24"
-        },
-        {
-          "stars": 187731,
-          "recorded_at": "2026-10-25"
-        },
-        {
-          "stars": 187750,
-          "recorded_at": "2026-10-26"
-        },
-        {
-          "stars": 187783,
-          "recorded_at": "2026-10-27"
-        },
-        {
-          "stars": 187794,
-          "recorded_at": "2026-10-28"
-        },
-        {
-          "stars": 187806,
-          "recorded_at": "2026-10-29"
-        },
-        {
-          "stars": 187826,
-          "recorded_at": "2026-10-30"
-        },
-        {
-          "stars": 187841,
-          "recorded_at": "2026-10-31"
-        },
-        {
-          "stars": 187851,
-          "recorded_at": "2026-11-01"
-        },
-        {
-          "stars": 187861,
-          "recorded_at": "2026-11-02"
-        },
-        {
-          "stars": 187885,
-          "recorded_at": "2026-11-03"
-        },
-        {
-          "stars": 187893,
-          "recorded_at": "2026-11-04"
-        },
-        {
-          "stars": 187906,
-          "recorded_at": "2026-11-05"
-        },
-        {
-          "stars": 187915,
-          "recorded_at": "2026-11-06"
-        },
-        {
-          "stars": 187932,
-          "recorded_at": "2026-11-07"
-        },
-        {
-          "stars": 187933,
-          "recorded_at": "2026-11-08"
-        },
-        {
-          "stars": 187958,
-          "recorded_at": "2026-11-09"
-        },
-        {
-          "stars": 187976,
-          "recorded_at": "2026-11-10"
-        },
-        {
-          "stars": 187987,
-          "recorded_at": "2026-11-11"
-        },
-        {
-          "stars": 187999,
-          "recorded_at": "2026-11-12"
-        },
-        {
-          "stars": 188012,
-          "recorded_at": "2026-11-13"
-        },
-        {
-          "stars": 188019,
-          "recorded_at": "2026-11-14"
-        },
-        {
-          "stars": 188031,
-          "recorded_at": "2026-11-15"
-        },
-        {
-          "stars": 188046,
-          "recorded_at": "2026-11-16"
-        },
-        {
-          "stars": 188070,
-          "recorded_at": "2026-11-17"
-        },
-        {
-          "stars": 188082,
-          "recorded_at": "2026-11-18"
-        },
-        {
-          "stars": 188097,
-          "recorded_at": "2026-11-19"
-        },
-        {
-          "stars": 188114,
-          "recorded_at": "2026-11-20"
-        },
-        {
-          "stars": 188120,
-          "recorded_at": "2026-11-21"
-        },
-        {
-          "stars": 188123,
-          "recorded_at": "2026-11-22"
-        },
-        {
-          "stars": 188144,
-          "recorded_at": "2026-11-23"
-        },
-        {
-          "stars": 188156,
-          "recorded_at": "2026-11-24"
-        },
-        {
-          "stars": 188176,
-          "recorded_at": "2026-11-25"
         },
         {
-          "stars": 188203,
-          "recorded_at": "2026-11-26"
+          "stars": 190932,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -15728,14 +15361,10 @@
       "description": "Get up and running with Kimi-K2.6, GLM-5.2, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
       "language": "Go",
       "url": "https://github.com/ollama/ollama",
-      "stars": 188167,
+      "stars": 188273,
       "created_at": "2023-06-26T19:39:32Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 179677,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 179750,
           "recorded_at": "2026-08-30"
@@ -16091,6 +15720,385 @@
         {
           "stars": 188167,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 188273,
+          "recorded_at": "2026-11-27"
+        }
+      ],
+      "isNew": false,
+      "category": "ai"
+    },
+    {
+      "full_name": "Significant-Gravitas/AutoGPT",
+      "name": "AutoGPT",
+      "owner": "Significant-Gravitas",
+      "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+      "language": "Python",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "stars": 188205,
+      "created_at": "2023-03-16T09:21:07Z",
+      "fetched_at": "2026-11-27",
+      "history": [
+        {
+          "stars": 186993,
+          "recorded_at": "2026-08-30"
+        },
+        {
+          "stars": 187019,
+          "recorded_at": "2026-08-31"
+        },
+        {
+          "stars": 187043,
+          "recorded_at": "2026-09-01"
+        },
+        {
+          "stars": 187064,
+          "recorded_at": "2026-09-02"
+        },
+        {
+          "stars": 187089,
+          "recorded_at": "2026-09-03"
+        },
+        {
+          "stars": 187109,
+          "recorded_at": "2026-09-04"
+        },
+        {
+          "stars": 187134,
+          "recorded_at": "2026-09-05"
+        },
+        {
+          "stars": 187162,
+          "recorded_at": "2026-09-06"
+        },
+        {
+          "stars": 187176,
+          "recorded_at": "2026-09-07"
+        },
+        {
+          "stars": 187187,
+          "recorded_at": "2026-09-08"
+        },
+        {
+          "stars": 187213,
+          "recorded_at": "2026-09-09"
+        },
+        {
+          "stars": 187235,
+          "recorded_at": "2026-09-10"
+        },
+        {
+          "stars": 187249,
+          "recorded_at": "2026-09-11"
+        },
+        {
+          "stars": 187271,
+          "recorded_at": "2026-09-12"
+        },
+        {
+          "stars": 187294,
+          "recorded_at": "2026-09-13"
+        },
+        {
+          "stars": 187314,
+          "recorded_at": "2026-09-14"
+        },
+        {
+          "stars": 187346,
+          "recorded_at": "2026-09-15"
+        },
+        {
+          "stars": 187372,
+          "recorded_at": "2026-09-16"
+        },
+        {
+          "stars": 187397,
+          "recorded_at": "2026-09-17"
+        },
+        {
+          "stars": 187421,
+          "recorded_at": "2026-09-18"
+        },
+        {
+          "stars": 187442,
+          "recorded_at": "2026-09-19"
+        },
+        {
+          "stars": 187448,
+          "recorded_at": "2026-09-20"
+        },
+        {
+          "stars": 187469,
+          "recorded_at": "2026-09-21"
+        },
+        {
+          "stars": 187483,
+          "recorded_at": "2026-09-22"
+        },
+        {
+          "stars": 187503,
+          "recorded_at": "2026-09-23"
+        },
+        {
+          "stars": 187517,
+          "recorded_at": "2026-09-24"
+        },
+        {
+          "stars": 187538,
+          "recorded_at": "2026-09-25"
+        },
+        {
+          "stars": 187565,
+          "recorded_at": "2026-09-26"
+        },
+        {
+          "stars": 187583,
+          "recorded_at": "2026-09-27"
+        },
+        {
+          "stars": 187596,
+          "recorded_at": "2026-09-28"
+        },
+        {
+          "stars": 187598,
+          "recorded_at": "2026-09-29"
+        },
+        {
+          "stars": 187622,
+          "recorded_at": "2026-09-30"
+        },
+        {
+          "stars": 187630,
+          "recorded_at": "2026-10-01"
+        },
+        {
+          "stars": 187652,
+          "recorded_at": "2026-10-02"
+        },
+        {
+          "stars": 187641,
+          "recorded_at": "2026-10-03"
+        },
+        {
+          "stars": 187642,
+          "recorded_at": "2026-10-04"
+        },
+        {
+          "stars": 187657,
+          "recorded_at": "2026-10-05"
+        },
+        {
+          "stars": 187664,
+          "recorded_at": "2026-10-06"
+        },
+        {
+          "stars": 187677,
+          "recorded_at": "2026-10-07"
+        },
+        {
+          "stars": 187691,
+          "recorded_at": "2026-10-08"
+        },
+        {
+          "stars": 187488,
+          "recorded_at": "2026-10-09"
+        },
+        {
+          "stars": 187500,
+          "recorded_at": "2026-10-10"
+        },
+        {
+          "stars": 187517,
+          "recorded_at": "2026-10-11"
+        },
+        {
+          "stars": 187526,
+          "recorded_at": "2026-10-12"
+        },
+        {
+          "stars": 187540,
+          "recorded_at": "2026-10-13"
+        },
+        {
+          "stars": 187564,
+          "recorded_at": "2026-10-14"
+        },
+        {
+          "stars": 187581,
+          "recorded_at": "2026-10-15"
+        },
+        {
+          "stars": 187599,
+          "recorded_at": "2026-10-16"
+        },
+        {
+          "stars": 187617,
+          "recorded_at": "2026-10-17"
+        },
+        {
+          "stars": 187630,
+          "recorded_at": "2026-10-18"
+        },
+        {
+          "stars": 187644,
+          "recorded_at": "2026-10-19"
+        },
+        {
+          "stars": 187663,
+          "recorded_at": "2026-10-20"
+        },
+        {
+          "stars": 187680,
+          "recorded_at": "2026-10-21"
+        },
+        {
+          "stars": 187704,
+          "recorded_at": "2026-10-22"
+        },
+        {
+          "stars": 187715,
+          "recorded_at": "2026-10-23"
+        },
+        {
+          "stars": 187722,
+          "recorded_at": "2026-10-24"
+        },
+        {
+          "stars": 187731,
+          "recorded_at": "2026-10-25"
+        },
+        {
+          "stars": 187750,
+          "recorded_at": "2026-10-26"
+        },
+        {
+          "stars": 187783,
+          "recorded_at": "2026-10-27"
+        },
+        {
+          "stars": 187794,
+          "recorded_at": "2026-10-28"
+        },
+        {
+          "stars": 187806,
+          "recorded_at": "2026-10-29"
+        },
+        {
+          "stars": 187826,
+          "recorded_at": "2026-10-30"
+        },
+        {
+          "stars": 187841,
+          "recorded_at": "2026-10-31"
+        },
+        {
+          "stars": 187851,
+          "recorded_at": "2026-11-01"
+        },
+        {
+          "stars": 187861,
+          "recorded_at": "2026-11-02"
+        },
+        {
+          "stars": 187885,
+          "recorded_at": "2026-11-03"
+        },
+        {
+          "stars": 187893,
+          "recorded_at": "2026-11-04"
+        },
+        {
+          "stars": 187906,
+          "recorded_at": "2026-11-05"
+        },
+        {
+          "stars": 187915,
+          "recorded_at": "2026-11-06"
+        },
+        {
+          "stars": 187932,
+          "recorded_at": "2026-11-07"
+        },
+        {
+          "stars": 187933,
+          "recorded_at": "2026-11-08"
+        },
+        {
+          "stars": 187958,
+          "recorded_at": "2026-11-09"
+        },
+        {
+          "stars": 187976,
+          "recorded_at": "2026-11-10"
+        },
+        {
+          "stars": 187987,
+          "recorded_at": "2026-11-11"
+        },
+        {
+          "stars": 187999,
+          "recorded_at": "2026-11-12"
+        },
+        {
+          "stars": 188012,
+          "recorded_at": "2026-11-13"
+        },
+        {
+          "stars": 188019,
+          "recorded_at": "2026-11-14"
+        },
+        {
+          "stars": 188031,
+          "recorded_at": "2026-11-15"
+        },
+        {
+          "stars": 188046,
+          "recorded_at": "2026-11-16"
+        },
+        {
+          "stars": 188070,
+          "recorded_at": "2026-11-17"
+        },
+        {
+          "stars": 188082,
+          "recorded_at": "2026-11-18"
+        },
+        {
+          "stars": 188097,
+          "recorded_at": "2026-11-19"
+        },
+        {
+          "stars": 188114,
+          "recorded_at": "2026-11-20"
+        },
+        {
+          "stars": 188120,
+          "recorded_at": "2026-11-21"
+        },
+        {
+          "stars": 188123,
+          "recorded_at": "2026-11-22"
+        },
+        {
+          "stars": 188144,
+          "recorded_at": "2026-11-23"
+        },
+        {
+          "stars": 188156,
+          "recorded_at": "2026-11-24"
+        },
+        {
+          "stars": 188176,
+          "recorded_at": "2026-11-25"
+        },
+        {
+          "stars": 188203,
+          "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 188205,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -16103,14 +16111,10 @@
       "description": "Python - 100天从新手到大师",
       "language": "Jupyter Notebook",
       "url": "https://github.com/jackfrued/Python-100-Days",
-      "stars": 188026,
+      "stars": 188031,
       "created_at": "2018-03-01T16:05:52Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 185709,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 185730,
           "recorded_at": "2026-08-30"
@@ -16466,6 +16470,10 @@
         {
           "stars": 188026,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 188031,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -16478,14 +16486,10 @@
       "description": ":books: 技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计",
       "language": "JavaScript",
       "url": "https://github.com/CyC2018/CS-Notes",
-      "stars": 186598,
+      "stars": 186604,
       "created_at": "2018-02-13T14:56:24Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 185699,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 185704,
           "recorded_at": "2026-08-30"
@@ -16841,6 +16845,10 @@
         {
           "stars": 186598,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 186604,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -16853,14 +16861,10 @@
       "description": "A book series (2 published editions) on the JS language.",
       "language": null,
       "url": "https://github.com/getify/You-Dont-Know-JS",
-      "stars": 184851,
+      "stars": 184845,
       "created_at": "2013-11-16T02:37:24Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 184747,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 184761,
           "recorded_at": "2026-08-30"
@@ -17216,6 +17220,10 @@
         {
           "stars": 184851,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 184845,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -17228,14 +17236,10 @@
       "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
       "language": "Dart",
       "url": "https://github.com/flutter/flutter",
-      "stars": 181518,
+      "stars": 181547,
       "created_at": "2015-03-06T22:54:58Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 178699,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 178709,
           "recorded_at": "2026-08-30"
@@ -17591,6 +17595,10 @@
         {
           "stars": 181518,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 181547,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -17603,14 +17611,10 @@
       "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
       "language": "MDX",
       "url": "https://github.com/f/prompts.chat",
-      "stars": 178544,
+      "stars": 178629,
       "created_at": "2022-12-05T13:54:13Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 167767,
-          "recorded_at": "2026-08-23"
-        },
         {
           "stars": 167821,
           "recorded_at": "2026-08-24"
@@ -17966,6 +17970,10 @@
         {
           "stars": 178544,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 178629,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
@@ -17980,12 +17988,8 @@
       "url": "https://github.com/github/gitignore",
       "stars": 176469,
       "created_at": "2010-11-08T20:17:14Z",
-      "fetched_at": "2026-11-26",
+      "fetched_at": "2026-11-27",
       "history": [
-        {
-          "stars": 175489,
-          "recorded_at": "2026-08-29"
-        },
         {
           "stars": 175504,
           "recorded_at": "2026-08-30"
@@ -18341,6 +18345,10 @@
         {
           "stars": 176469,
           "recorded_at": "2026-11-26"
+        },
+        {
+          "stars": 176469,
+          "recorded_at": "2026-11-27"
         }
       ],
       "isNew": false,
